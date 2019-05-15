@@ -1,4 +1,72 @@
 .search-results {
+  &.mobile-search-result {
+    .search-results__manufacturer,
+    .search-results__model,
+    .search-results__engine,
+    .search-results__year,
+    .search-results__transmission {
+      flex-shrink: 0;
+      flex-grow: 0;
+    }
+    .search-results {
+      &__manufacturer {
+        flex-basis: 15%;
+      }
+      &__model {
+        flex-basis: 10%;
+      }
+      &__engine {
+        flex-basis: 35%;
+      }
+      &__year{
+        flex-basis: 25%;
+      }
+      &__transmission{
+        flex-basis: 15%;
+      }
+    }
+
+    .already-in-bucket {
+    }
+    .search-results__body-row-item-optional {
+      
+      // display: none;
+      width: 100%;
+    }
+  }
+  &.desktop-search-result {
+    position: absolute;
+    width: 100%;
+    left: 0;
+    top: 48px;
+
+  }
+  &__manufacturer,
+  &__model,
+  &__engine,
+  &__year,
+  &__transmission {
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+
+  }
+  &__manufacturer {
+    flex-basis: 12.12%;
+  }
+  &__model {
+    flex-basis: 12.22%;
+  }
+  &__engine {
+    flex-basis: 24%;
+  }
+  &__year {
+    flex-basis: 15.57%;
+  }
+  &__transmission {
+    flex-basis: 10.69%;
+  }
+
   margin-top: 4px;
   position: relative;
   z-index: 1;
@@ -13,8 +81,10 @@
     position: relative;
     flex-wrap: wrap;
     box-shadow: inset 0px -1px 0px #efefef;
+    &:hover {
+      background-color: $hint-of-green;
+    }
     &-item {
-      width: calc(100% / 3);
       padding: 8px 0;
       flex-grow: 1;
       &:first-child {

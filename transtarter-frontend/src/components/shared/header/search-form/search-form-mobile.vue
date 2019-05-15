@@ -1,76 +1,52 @@
 <template>
-  <form class="search__form">
-    <div class="form-row">
-      <span class="search__select-numbers ">
-        123
-      </span>
-      <select
-        class="search__select"
-        name=""
-      >
-        <option
-          disabled
-          value=""
-          selected
-        >Номер детали</option>
-        <option value="detail_1">Детали 1</option>
-        <option value="detail_2">Детали 2</option>
-        <option value="detail_3">Детали 3</option>
-        <option value="detail_4">Детали 4</option>
-        <option value="detail_5">Детали 5</option>
-        <option value="detail_6">Детали 6</option>
-        <option value="detail_7">Детали 7</option>
-      </select>
-    </div>
+    <form class="search__form">
+        <div class="form-row">
+            <search-form-select
+                class="search-from-mobile"
+                @optionWasChanged="loadedInput = $event"
+            ></search-form-select>
+        </div>
 
-    <div
-      class="form-row"
-      style="position: relative;"
-    >
-      <div class="search__input-mobile search-input">
-        <input
-          type="text"
-          class="search-input-mobile"
-          ref="searchInputMobile"
-          v-model="searchText"
-        >
-        <div
-          class="search__clear"
-          @click="clearSearchInput"
-        ></div>
+        <template v-if="loadedInput === 'Номер детали'">
+            <search-by-number type="mobile" @searchText="searchText = $event" />
+        </template>
+        <template v-else-if="loadedInput === 'Марка'">
+            <search-by-model class="search-from-mobile" />
+            <button type="submit" style="height: 40px; width: 100%" class="search__btn-search">
+                <div class="search__icon-lins" style="left:50%; transform-translate: -50%"></div>
+            </button>
+        </template>
 
-      </div>
-      <button
-        type="submit"
-        class="search__btn-search"
-      >
-        <div class="search__icon-lins"></div>
-      </button>
-      <ts-ui-search-results
-        :found-items='foundItems'
-        v-if="foundItems.length"
-        class="mobile-search-result"
-        v-click-outside="closeSearchResult"
-      ></ts-ui-search-results>
-    </div>
-
-  </form>
+        <template v-else-if="loadedInput === 'VIN - номер'">
+            <search-by-vin type="mobile" />
+        </template>
+    </form>
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator'
+import { Component } from 'vue-property-decorator'
 import { HeaderSearchText } from '@/components/mixins/header-search-text'
 import { mixins } from 'vue-class-component'
 import SearchResults from '@/components/shared/header/search-results/search-results.vue'
 import { clickOutside } from '@/directives/v-click-outside'
+import SearchFormSelect from '@/components/shared/header/search-form/search-form-select/search-form-select'
+import SearchByModel from '@/components/shared/header/search-form/search-form-select/search-by-model/search-by-model'
+import SearchByVin from '@/components/shared/header/search-form/search-form-select/search-by-vin/search-by-vin'
+import SearchByNumber from '@/components/shared/header/search-form/search-form-select/search-by-number/search-by-number'
 
 @Component({
   components: {
-    'ts-ui-search-results': SearchResults
+    'ts-ui-search-results': SearchResults,
+    SearchFormSelect,
+    SearchByModel,
+    SearchByVin,
+    SearchByNumber
   },
   directives: {
     clickOutside
   }
 })
-export default class SearchFormMobile extends mixins(HeaderSearchText) {}
+export default class SearchFormMobile extends mixins(HeaderSearchText) {
+    loadedInput = 'Номер детали';
+}
 </script>

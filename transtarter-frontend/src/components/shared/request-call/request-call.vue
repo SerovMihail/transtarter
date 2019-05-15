@@ -117,6 +117,6 @@ export default class RequestCall extends mixins(ClosablePopup) {
 }
 </script>
 
-<style scoped lang="scss">
+<style  lang="scss">
 @import "./request-call-styles.scss";
 </style>

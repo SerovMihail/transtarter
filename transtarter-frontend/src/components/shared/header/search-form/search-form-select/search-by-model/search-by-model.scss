@@ -1,0 +1,8 @@
+.search-by-model {
+  display: flex;
+  justify-content: flex-start;
+  flex-grow: 1;
+  &.search-from-mobile {
+    flex-wrap: wrap;
+  }
+}

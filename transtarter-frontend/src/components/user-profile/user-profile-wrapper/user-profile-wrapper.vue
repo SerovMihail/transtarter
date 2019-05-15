@@ -49,6 +49,6 @@ export default class ContentSlot extends Vue {
 }
 </script>
 
-<style scoped lang="scss">
+<style  lang="scss">
 @import "./user-profile-wrapper-styles.scss";
 </style>

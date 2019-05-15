@@ -61,6 +61,6 @@ export default class ProfileSettings extends Vue {
 }
 </script>
 
-<style scoped lang="scss">
+<style  lang="scss">
 @import "./profile-settings-styles.scss";
 </style>

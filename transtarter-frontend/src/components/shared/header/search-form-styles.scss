@@ -31,7 +31,8 @@
     }
     &__input {
         position: relative;
-        width: 80%;
+        display: flex;
+        flex-grow: 1;
         input {
             height: 100%;
             border: 0;
@@ -43,9 +44,9 @@
             font-size: 24px;
             font-weight: 500;
             line-height: 1.33;
-        }
-        &:focus {
-            border: 1px solid $gold-approx
+            &:focus {
+                outline: none;
+            }
         }
     }
     &__select {
@@ -111,6 +112,8 @@
         height: 100%;
         font-weight: 600;
         padding: 0 16px;
+        display: flex;
+        align-items: center;
         font: 600 1em 'PT Sans';
         &:hover {
             background: $turbo-approx;

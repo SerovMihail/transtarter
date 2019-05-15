@@ -1,0 +1,95 @@
+// @import "assets/scss/base/colors";
+.search-form-select {
+  user-select: none;
+  position: relative;
+  display: flex;
+  background-color: white;
+  justify-content: flex-start;
+  align-items: center;
+  flex-basis: 223px;
+  cursor: pointer;
+  &.active .search-form-select__text::after{
+    transform: rotateX(180deg);
+    transform-origin: center 40%;
+  }
+  &:hover {
+    background-color: #f9f9f9;
+  }
+  &.search-from-mobile {
+    flex-grow: 1;
+    height: 40px;
+    z-index: 20;
+    .search-form-select__menu{
+      top: 40px;
+
+    }
+  }
+  &__text {
+    padding-right:10px;
+    padding-left: 10px;
+    font-size: 17px;
+    white-space: nowrap;
+    &::after {
+      // transition: all .2s;
+    	// display: inline-block;
+      // margin-left: .255em;
+      // vertical-align: .255em;
+      // content: "";
+      // border-top: .3em solid;
+      // border-right: .3em solid transparent;
+      // border-bottom: 0;
+      // border-left: .3em solid transparent;
+      // position: absolute;
+      // right: 9px;
+      // top: 44%;
+    }
+  }
+  &__icon {
+    display: flex;
+    width: 32px;
+    height: 32px;
+    background-color: $malachite;
+    margin-left: 10px;
+    border-radius: 50%;
+    color: white;
+    font-family: 'Exo 2';
+    font-style: normal;
+    font-weight: 900;
+    font-size: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+  &__menu {
+    position: absolute;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    top: 48px;
+    left: 0px;
+    width: 100%;
+    z-index: 8;
+    box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.30214);
+  }
+  &__item {
+    padding-left: 32px;
+    font-size: 16px;
+    background-color: white;
+    font-family: "PT Sans";
+    padding-top: 19px;
+    padding-bottom: 9px;
+    &:hover {
+        background: #e0ffe3;
+    }
+  }
+  &__selected {
+    position: relative;
+    display: flex;
+    align-items: center;
+    z-index: 9;
+    background-color: white;
+    flex-basis: 100%;
+    height: 100%;
+  }
+}
