@@ -17,7 +17,7 @@
   },
   "dependencies": {
     "axios": "^0.18.0",
-    "cookie-storage-domain": "^1.0.3",
+    "cookie-storage-domain": "^1.0.4",
     "extract-domain": "^2.0.6",
     "faker": "^4.1.0",
     "oidc-client": "^1.7.1",
