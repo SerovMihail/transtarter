@@ -13,7 +13,7 @@
     "test:e2e": "testcafe chrome ./tests/e2e/*.test.js --app \"npm run serve  -- --mode staging\" --app-init-delay 10000",
     "wc": "vue-cli-service build --target wc --name ts-ui ./src/components/**/*.vue --mode production --dest ./dist/wc",
     "wc:staging": "vue-cli-service build --target wc --name ts-ui ./src/components/**/*.vue --mode staging --dest ./dist/wc",
-    "wc-unix": "vue-cli-service build --target wc --name ts-ui './src/components/**/*.vue' --mode production --dest ./dist/wc"
+    "wc-unix:staging": "vue-cli-service build --target wc --name ts-ui './src/components/**/*.vue' --mode staging --dest ./dist/wc"
   },
   "dependencies": {
     "axios": "^0.18.0",
