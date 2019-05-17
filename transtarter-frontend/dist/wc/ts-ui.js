@@ -6037,11 +6037,11 @@ var axios_default = /*#__PURE__*/__webpack_require__.n(axios);
 
 class auth_service_AuthService {
   constructor() {
-    this.identityServer = "https://85.10.205.89:1122";
-    this.identityServerApi = "https://85.10.205.89:1123";
+    this.identityServer = Object({"NODE_ENV":"production","VUE_APP_HOST":"https://new.tstarter.ru","VUE_APP_WEB_APP":"https://85.10.205.89:8070","BASE_URL":"/"}).VUE_APP_IDENTITY_SERVER;
+    this.identityServerApi = Object({"NODE_ENV":"production","VUE_APP_HOST":"https://new.tstarter.ru","VUE_APP_WEB_APP":"https://85.10.205.89:8070","BASE_URL":"/"}).VUE_APP_IDENTITY_SERVER_API;
     this.webAddress = "https://85.10.205.89:8070";
     this.oldCatalogCookieStorageKey = 'ts-user';
-    console.log("https://85.10.205.89:1122");
+    console.log(Object({"NODE_ENV":"production","VUE_APP_HOST":"https://new.tstarter.ru","VUE_APP_WEB_APP":"https://85.10.205.89:8070","BASE_URL":"/"}).VUE_APP_IDENTITY_SERVER);
     var AUTH0_DOMAIN = this.identityServer;
     var MY_HOST = window.location.origin;
     var settings = {
@@ -8836,7 +8836,7 @@ var registration_data_tabvue_type_template_id_51b8f001_staticRenderFns = [functi
 class profile_service_ProfileService {
   constructor() {
     this.webAppHost = "https://85.10.205.89:8070";
-    this.identityServerHost = "https://85.10.205.89:1122";
+    this.identityServerHost = Object({"NODE_ENV":"production","VUE_APP_HOST":"https://new.tstarter.ru","VUE_APP_WEB_APP":"https://85.10.205.89:8070","BASE_URL":"/"}).VUE_APP_IDENTITY_SERVER;
     this.userKey = 'user';
     this.identityUserKey = `${this.userKey}:${this.identityServerHost}:kl`;
   }
