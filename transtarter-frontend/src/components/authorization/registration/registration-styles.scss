@@ -1,3 +1,4 @@
+@import "assets/scss/base/colors";
 .desktop-version-modal {
     .desktop-version-content {
         margin: 20px 0 20px 0;
@@ -47,7 +48,7 @@
                     margin-bottom: 30px;
                     position: relative;
                     font-size: 16px;
-                    justify-content: start;
+                    justify-content: flex-start;
                     .icon {
                         max-width: 30%;
                         position: relative;

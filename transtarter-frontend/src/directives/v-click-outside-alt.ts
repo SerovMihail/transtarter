@@ -1,10 +1,10 @@
 import { DirectiveOptions } from 'vue'
 let handleOutsideClick
 export const closable: DirectiveOptions = {
-  bind (el, binding, vnode) {
+  bind(el, binding, vnode) {
     // Here's the click/touchstart handler
     // (it is registered below)
-    handleOutsideClick = (e) => {
+    handleOutsideClick = e => {
       e.stopPropagation()
       // Get the handler method name and the exclude array
       // from the object used in v-closable
@@ -35,7 +35,7 @@ export const closable: DirectiveOptions = {
     document.addEventListener('click', handleOutsideClick)
     document.addEventListener('touchstart', handleOutsideClick)
   },
-  unbind () {
+  unbind() {
     // If the element that has v-closable is removed, then
     // unbind click/touchstart listeners from the whole page
     document.removeEventListener('click', handleOutsideClick)
