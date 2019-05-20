@@ -25,6 +25,7 @@
             v-closable="{
                 exclude: ['menu'],
                 handler: 'toggleMenu',
+                componentName: 'app-select',
             }"
             class="drop-down__menu"
         >

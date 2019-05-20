@@ -5,37 +5,37 @@ import axios from 'axios'
 // You can declare a mixin as the same style as components.
 @Component
 export class HeaderSearchText extends Vue {
-    searchText: string | number = '';
+    searchText: string | number = ''
 
-    foundItems: ISearchResult[] = [];
+    foundItems: ISearchResult[] = []
 
     /**
      * Mock Data
      */
 
-    private findItems () {
-      const result: ISearchResult[] = []
-      axios
-        .post(`https://new1.tstarter.ru/new/api/Products/search-by-number`, {
-          number: this.searchText,
-          skip: 0,
-          take: 4
-        })
-        .then(res => {
-          const data = res.data.hitsMetadata.hits
-          if (data.length > 0) {
-            data.forEach((el: any) => {
-              result.push({
-                id: el.id,
-                manufacturer: el.source.brand,
-                number: el.source.number,
-                desc: el.source.shortDescription,
-                alreadyInBucket: 1
-              })
+    private findItems() {
+        const result: ISearchResult[] = []
+        axios
+            .post(`https://new1.tstarter.ru/new/api/Products/search-by-number`, {
+                number: this.searchText,
+                skip: 0,
+                take: 4,
             })
-            this.foundItems = result
-          }
-        })
+            .then(res => {
+                const data = res.data.hitsMetadata.hits
+                if (data.length > 0) {
+                    data.forEach((el: any) => {
+                        result.push({
+                            id: el.id,
+                            manufacturer: el.source.brand,
+                            number: el.source.number,
+                            desc: el.source.shortDescription,
+                            alreadyInBucket: 1,
+                        })
+                    })
+                    this.foundItems = result
+                }
+            })
     }
     // mock data
     // potentialFoundItems2: ISearchResult[] = [
@@ -69,25 +69,25 @@ export class HeaderSearchText extends Vue {
     //     },
     // ];
 
-    closeSearchResult () {
-      this.foundItems = []
+    closeSearchResult() {
+        this.foundItems = []
     }
 
-    clearSearchInput () {
-      this.searchText = ''
-      this.foundItems = []
+    clearSearchInput() {
+        this.searchText = ''
+        this.foundItems = []
     }
-    idk () {
-      console.log('idk')
+    idk() {
+        console.log('idk')
     }
 
     @Watch('searchText')
-    onChildChanged (val: string, oldVal: string) {
-      if (val.length >= 3) {
-        this.findItems()
-      } else if (val.length <= 3 && oldVal.length >= 3) {
-        this.foundItems = []
-      }
-      this.$emit('searchText', this.searchText)
+    onChildChanged(val: string, oldVal: string) {
+        if (val.length >= 3) {
+            this.findItems()
+        } else if (val.length <= 3 && oldVal.length >= 3) {
+            this.foundItems = []
+        }
+        this.$emit('searchText', this.searchText)
     }
 }

@@ -3,7 +3,14 @@
         <search-from-select @optionWasChanged="optionWasChanged($event)"></search-from-select>
         <template v-if="loadedInput === 'Номер детали'">
             <search-by-number @searchText="searchText = $event" />
-            <a class="search__btn-search" :href="`https://www.tstarter.ru/store/?noScroll=true&searchInput=${searchText}&searchType=1`">Найти</a>
+            <a
+                class="search__btn-search"
+                :href="
+                    `https://www.tstarter.ru/store/?noScroll=true&searchInput=${searchText}&searchType=1`
+                "
+            >
+                Найти
+            </a>
         </template>
         <template v-else-if="loadedInput === 'Марка'">
             <search-by-model />
@@ -29,37 +36,37 @@ import { clickOutside } from '@/directives/v-click-outside'
 import Axios from 'axios'
 
 @Component({
-  components: {
-    'ts-ui-search-results': SearchResults,
-    SearchFromSelect,
-    SearchByModel,
-    SearchByVin,
-    SearchByNumber
-  },
-  directives: {
-    clickOutside
-  }
+    components: {
+        'ts-ui-search-results': SearchResults,
+        SearchFromSelect,
+        SearchByModel,
+        SearchByVin,
+        SearchByNumber,
+    },
+    directives: {
+        clickOutside,
+    },
 })
 export default class SearchFormDesktop extends Vue {
-    productSearchCriteria: any = {};
-    isLoading = false;
-    loadedInput = 'Номер детали';
-    foundItems: any = [];
-    searchText: string = '';
-    optionWasChanged (option: string) {
-      this.loadedInput = option
-      console.log('tst')
-      this.searchText = ''
+    productSearchCriteria: any = {}
+    isLoading = false
+    loadedInput = 'Номер детали'
+    foundItems: any = []
+    searchText: string = ''
+    optionWasChanged(option: string) {
+        this.loadedInput = option
+        console.log('tst')
+        this.searchText = ''
     }
-    get searchLink () {
-      if (this.loadedInput === 'Номер детали') {
-        return '/detail-number/' + this.searchText
-      } else if (this.loadedInput === 'VIN - номер') {
-        return '/vin-number/' + this.searchText
-      }
+    get searchLink() {
+        if (this.loadedInput === 'Номер детали') {
+            return '/detail-number/' + this.searchText
+        } else if (this.loadedInput === 'VIN - номер') {
+            return '/vin-number/' + this.searchText
+        }
     }
-    goToResults () {
-      this.$router.push({ path: this.searchLink })
+    goToResults() {
+        this.$router.push({ path: this.searchLink })
     }
 }
 </script>

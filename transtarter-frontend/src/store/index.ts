@@ -7,8 +7,8 @@ import { IDisplayState } from './modules/display.module'
 Vue.use(Vuex)
 
 export interface IRootState {
-  auth: IAuthState,
-  display: IDisplayState
+    auth: IAuthState
+    display: IDisplayState
 }
 
 // dynamic modules. You have to import module in one of your component and then module will be available

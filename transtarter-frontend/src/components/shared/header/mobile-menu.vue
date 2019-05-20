@@ -1,16 +1,16 @@
 <template>
- <div class="mobile-header__menu__left">
-    <div class="burger-wrapper">
-      <span
-        class="burger-icon"
-        @click="toggleMainMenu()"
-      >
-      </span>
+    <div class="mobile-header__menu__left">
+        <div class="burger-wrapper">
+            <span class="burger-icon" @click="toggleMainMenu()"></span>
+        </div>
+        <div class="logo">
+            <a href="/">
+                Транс
+                <br />
+                Стартер
+            </a>
+        </div>
     </div>
-    <div class="logo">
-      <a href="/">Транс<br> Стартер</a>
-    </div>
-  </div>
 </template>
 
 <script lang="ts">
@@ -19,10 +19,10 @@ import { store } from '@/store/index'
 
 @Component
 export default class MobileMenu extends Vue {
-  toggleMainMenu () {
-    setTimeout(() => {
-      store.dispatch('display/toggleBlockShowMenu')
-    })
-  }
+    toggleMainMenu() {
+        setTimeout(() => {
+            store.dispatch('display/toggleBlockShowMenu')
+        })
+    }
 }
 </script>

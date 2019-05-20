@@ -1,10 +1,11 @@
-
 <template>
-  <button
-    class="cards_group__card_link"
-    style="font-weight: bold;"
-    @click="toggleRequestCallPopup()"
-  >Заказать звонок</button>
+    <button
+        class="cards_group__card_link"
+        style="font-weight: bold;"
+        @click="toggleRequestCallPopup()"
+    >
+        Заказать звонок
+    </button>
 </template>
 
 <script lang="ts">
@@ -13,8 +14,8 @@ import { store } from '@/store/index'
 
 @Component
 export default class ToggleRequestCallPopup extends Vue {
-  toggleRequestCallPopup () {
-    store.dispatch('display/toggleRequest')
-  }
+    toggleRequestCallPopup() {
+        store.dispatch('display/toggleRequest')
+    }
 }
 </script>

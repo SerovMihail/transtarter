@@ -9,38 +9,38 @@ import { envArgs } from './env'
 Vue.use(Router)
 
 const vueRoutes = [
-  {
-    path: '/',
-    name: 'home',
-    component: ProfileOrders
-  },
-  {
-    path: '/settings',
-    name: 'settings',
-    component: UserSettings
-  },
-  {
-    path: '/cart',
-    name: 'cart',
-    component: ProfileCart
-  },
-  {
-    path: '/search-matches',
-    name: 'search-matches',
-    component: ProfileCart
-  }
+    {
+        path: '/',
+        name: 'home',
+        component: ProfileOrders,
+    },
+    {
+        path: '/settings',
+        name: 'settings',
+        component: UserSettings,
+    },
+    {
+        path: '/cart',
+        name: 'cart',
+        component: ProfileCart,
+    },
+    {
+        path: '/search-matches',
+        name: 'search-matches',
+        component: ProfileCart,
+    },
 ]
 
 if (envArgs.isServeBuild) {
-  vueRoutes.push({
-    path: '/style-guide',
-    name: 'style-guide',
-    component: StyleGuide
-  })
+    vueRoutes.push({
+        path: '/style-guide',
+        name: 'style-guide',
+        component: StyleGuide,
+    })
 }
 
 export default new Router({
-  mode: 'history',
-  base: '/new/account',
-  routes: vueRoutes
+    mode: 'history',
+    base: '/new/account',
+    routes: vueRoutes,
 })

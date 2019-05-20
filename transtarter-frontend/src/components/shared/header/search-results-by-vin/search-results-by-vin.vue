@@ -55,9 +55,9 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue, Prop } from "vue-property-decorator";
-import { clickOutside } from "@/directives/v-click-outside/index";
-import { ISearchResult } from "@/models/index";
+import { Component, Vue, Prop } from 'vue-property-decorator'
+import { clickOutside } from '@/directives/v-click-outside/index'
+import { ISearchResult } from '@/models/index'
 
 @Component({
     directives: {
@@ -65,10 +65,10 @@ import { ISearchResult } from "@/models/index";
     },
 })
 export default class SearchResultsByVin extends Vue {
-    @Prop({ default: () => [] }) readonly foundItems!: ISearchResult[];
+    @Prop({ default: () => [] }) readonly foundItems!: ISearchResult[]
 }
 </script>
 
 <style scoped lang="scss">
-@import "../search-results.scss";
+@import '../search-results.scss';
 </style>

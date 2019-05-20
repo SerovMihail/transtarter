@@ -35,18 +35,18 @@ import SearchByVin from '@/components/shared/header/search-form/search-form-sele
 import SearchByNumber from '@/components/shared/header/search-form/search-form-select/search-by-number/search-by-number'
 
 @Component({
-  components: {
-    'ts-ui-search-results': SearchResults,
-    SearchFormSelect,
-    SearchByModel,
-    SearchByVin,
-    SearchByNumber
-  },
-  directives: {
-    clickOutside
-  }
+    components: {
+        'ts-ui-search-results': SearchResults,
+        SearchFormSelect,
+        SearchByModel,
+        SearchByVin,
+        SearchByNumber,
+    },
+    directives: {
+        clickOutside,
+    },
 })
 export default class SearchFormMobile extends mixins(HeaderSearchText) {
-    loadedInput = 'Номер детали';
+    loadedInput = 'Номер детали'
 }
 </script>

@@ -8,7 +8,11 @@
             </div>
             <div class="search-results__body" @click="selected">
                 <a
-                    :href="`https://www.tstarter.ru/store/?noScroll=true&searchInput=${item.number}&searchType=1`"
+                    :href="
+                        `https://www.tstarter.ru/store/?noScroll=true&searchInput=${
+                            item.number
+                        }&searchType=1`
+                    "
                     v-for="(item, $index) in foundItems.slice(0, 5)"
                     :key="$index"
                     class="search-results__body-row"
@@ -40,18 +44,18 @@ import { clickOutside } from '@/directives/v-click-outside/index'
 import { ISearchResult } from '@/models/index'
 
 @Component({
-  directives: {
-    clickOutside
-  }
+    directives: {
+        clickOutside,
+    },
 })
 export default class SearchResults extends Vue {
-    @Prop({ default: () => [] }) readonly foundItems!: ISearchResult[];
-    selected () {
-      this.$emit('selected')
+    @Prop({ default: () => [] }) readonly foundItems!: ISearchResult[]
+    selected() {
+        this.$emit('selected')
     }
 }
 </script>
 
 <style scoped lang="scss">
-@import "../search-results.scss";
+@import '../search-results.scss';
 </style>

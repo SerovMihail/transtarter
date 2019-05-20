@@ -4,7 +4,7 @@
  */
 
 module.exports = {
-  isServeBuild: process.argv.includes('serve'),
-  isBasicBuild: process.argv.includes('./dist/app'), // basic configuration of Vue.js app
-  isWebComponentBuild: process.argv.includes('./dist/wc')
+    isServeBuild: process.argv.includes('serve'),
+    isBasicBuild: process.argv.includes('./dist/app'), // basic configuration of Vue.js app
+    isWebComponentBuild: process.argv.includes('./dist/wc'),
 }

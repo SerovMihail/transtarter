@@ -1,9 +1,12 @@
 <template>
-  <div>
-    <transition name="opacity">
-    <component @fill-out-status="selectedComponent = $event" :is="selectedComponent"></component>
-    </transition>
-  </div>
+    <div>
+        <transition name="opacity">
+            <component
+                @fill-out-status="selectedComponent = $event"
+                :is="selectedComponent"
+            ></component>
+        </transition>
+    </div>
 </template>
 
 <script lang="ts">
@@ -12,14 +15,14 @@ import fillOutAddress from './fill-out-address/fill-out-address.vue'
 import mainProfileHome from './main-profile-home/main-profile-home.vue'
 
 @Component({
-  components: {
-    fillOutAddress,
-    mainProfileHome
-  }
+    components: {
+        fillOutAddress,
+        mainProfileHome,
+    },
 })
 export default class ProfileOrders extends Vue {
-  // return 'mainProfileHome'
-  selectedComponent:string = 'fillOutAddress';
+    // return 'mainProfileHome'
+    selectedComponent: string = 'fillOutAddress'
 }
 </script>
 

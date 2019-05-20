@@ -7,11 +7,11 @@ import { closable } from '@/directives/v-click-outside-alt'
 
 Vue.config.productionTip = false
 export const eventBus = new Vue()
-Vue.component('AppSelect', AppSelect)
-Vue.directive('closable', closable)
+// Vue.component('AppSelect', AppSelect)
+// Vue.directive('closable', closable)
 
 new Vue({
-  router,
-  store,
-  render: h => h(App)
+    router,
+    store,
+    render: h => h(App),
 }).$mount('#app')

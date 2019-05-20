@@ -1,1 +1,1 @@
-export * from "./CookieConstants";
+export * from './CookieConstants'

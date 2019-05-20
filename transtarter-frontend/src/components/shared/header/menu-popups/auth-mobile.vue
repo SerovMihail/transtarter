@@ -1,27 +1,14 @@
-
 <template>
-  <div
-    class="menu-popup"
-    v-if="showBlocksShowUser && !loggedIn"
-  >
-    <ul
-      class="menu-popup_list"
-      v-click-outside="closeUserMenu"
-    >
-      <li
-        class="menu-popup_list-item"
-        @click="logIn()"
-      >
-        <a>Вход</a>
-      </li>
-      <li
-        class="menu-popup_list-item"
-        @click="toggleRegistrationPopup()"
-      >
-        <a class="register">Регистрация</a>
-      </li>
-    </ul>
-  </div>
+    <div class="menu-popup" v-if="showBlocksShowUser && !loggedIn">
+        <ul class="menu-popup_list" v-click-outside="closeUserMenu">
+            <li class="menu-popup_list-item" @click="logIn()">
+                <a>Вход</a>
+            </li>
+            <li class="menu-popup_list-item" @click="toggleRegistrationPopup()">
+                <a class="register">Регистрация</a>
+            </li>
+        </ul>
+    </div>
 </template>
 
 <script lang="ts">
@@ -32,29 +19,29 @@ import { clickOutside } from '@/directives/v-click-outside/index'
 import { store } from '@/store'
 
 @Component({
-  directives: {
-    clickOutside
-  }
+    directives: {
+        clickOutside,
+    },
 })
 export default class AuthMobile extends Vue {
-  get loggedIn () {
-    return AuthModule.logged
-  }
+    get loggedIn() {
+        return AuthModule.logged
+    }
 
-  get showBlocksShowUser () {
-    return DisplayModule.blocksShow.user
-  }
+    get showBlocksShowUser() {
+        return DisplayModule.blocksShow.user
+    }
 
-  toggleRegistrationPopup () {
-    store.dispatch('display/toggleRegistration')
-  }
+    toggleRegistrationPopup() {
+        store.dispatch('display/toggleRegistration')
+    }
 
-  closeUserMenu () {
-    store.dispatch('display/hideBlockShowUser')
-  }
+    closeUserMenu() {
+        store.dispatch('display/hideBlockShowUser')
+    }
 
-  logIn () {
-    store.dispatch('auth/login')
-  }
+    logIn() {
+        store.dispatch('auth/login')
+    }
 }
 </script>

@@ -1,207 +1,262 @@
 <template>
-  <div>
-    <div class="registration-text">
-      Регистрация
+    <div>
+        <div class="registration-text">
+            Регистрация
+        </div>
+
+        <form class="registration-form" @submit.prevent="onSubmit">
+            <div class="form-group">
+                <label class="label">Введите email</label>
+                <input
+                    v-model.trim="regForm.email"
+                    placeholder="Почта"
+                    class="form-control email-input"
+                    type="email"
+                    autocomplete="new-email"
+                    required
+                />
+            </div>
+
+            <div class="form-group">
+                <label class="label">Введите пароль</label>
+                <input
+                    v-model.trim="regForm.password"
+                    placeholder="Пароль"
+                    class="form-control password-input"
+                    type="password"
+                    required
+                    utocomplete="new-password"
+                    :class="{ 'invalid-input': errors.PasswordError }"
+                />
+                <div v-if="errors.PasswordError" class="invalid-text">
+                    Пароль
+                    <span v-if="errors.PasswordTooShort">должен быть как минимум 6 символов.</span>
+                    <span v-if="errors.PasswordRequiresNonAlphanumeric">
+                        должен содержать как минимум один спецсимвол.
+                    </span>
+                    <span v-if="errors.PasswordRequiresUpper">
+                        должны встречаться символы в верхнем регистре.
+                    </span>
+                    <span v-if="errors.PasswordRequiresLower">
+                        должны встречаться символы в нижнем регистре.
+                    </span>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="label">Введите имя контактного лица</label>
+                <input
+                    v-model.trim="regForm.userName"
+                    placeholder="Имя"
+                    class="form-control name-input"
+                    type="text"
+                    required
+                    :class="{ 'invalid-input': errors.UserNameError }"
+                />
+                <div v-if="errors.UserNameError" class="invalid-text">
+                    В имени пользователя нельзя использовать пробелы и специальные символы ($#!).
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="label">Введите фамилию контактного лица</label>
+                <input
+                    v-model.trim="regForm.userLastName"
+                    placeholder="Фамилия"
+                    class="form-control name-input"
+                    type="text"
+                    required
+                    :class="{ 'invalid-input': errors.UserLastNameError }"
+                />
+                <div v-if="errors.UserLastNameError" class="invalid-text">
+                    В фамилии пользователя нельзя использовать пробелы и специальные символы ($#!).
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="label">Введите отчество контактного лица</label>
+                <input
+                    v-model.trim="regForm.userPatronymic"
+                    placeholder="Отчество"
+                    class="form-control name-input"
+                    type="text"
+                    required
+                    :class="{ 'invalid-input': errors.UserPatronymicNameError }"
+                />
+                <div v-if="errors.UserPatronymicNameError" class="invalid-text">
+                    В отчестве пользователя нельзя использовать пробелы, цифры и специальные символы
+                    ($#!).
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="label">Введите телефон</label>
+                <input
+                    v-model.trim="regForm.phone"
+                    placeholder="Телефон"
+                    class="form-control phone-input"
+                    :class="{ 'invalid-input': errors.UserPhoneError }"
+                    type="tel"
+                    autocomplete="new-tel"
+                    required
+                />
+                <div v-if="errors.UserPhoneError" class="invalid-text">
+                    Неправильно введён номер.
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="label">Какую организацию вы представляете?</label>
+
+                <app-select
+                    :options="organizationVariants"
+                    :selected="organizationVariant"
+                    @updateOption="changeOrganizationVariant"
+                />
+            </div>
+
+            <div class="form-group">
+                <label class="label">Введите наименование организации</label>
+                <div class="two-selectors">
+                    <input type="hidden" :value="organizationType.name" />
+                    <app-select
+                        class="first-selector"
+                        style="display: block"
+                        :options="organizationTypes"
+                        :selected="organizationType"
+                        @updateOption="changeOption"
+                    />
+                    <input
+                        v-model.trim="organizationName"
+                        placeholder="Название огранизации"
+                        class="form-control second-selector"
+                        type="text"
+                        required
+                    />
+                </div>
+            </div>
+
+            <button type="submit" class="btn btn-yellow btn-reg">
+                Зарегистрироваться
+            </button>
+
+            <div class="accept-policy">
+                Нажимая на кнопку, вы даете согласие на обработку
+                <br />
+                своих персональных данных и соглашаетесь
+                <br />
+                с
+                <a href="/politika" class="policy-link solid-border-grey">
+                    Политикой конфиденциальности
+                </a>
+            </div>
+        </form>
+
+        <div class="already-have-account text-center">
+            <p>Уже зарегистрированы?</p>
+            <span href="#" class="go-log-in border-green" @click="logIn()">Войти</span>
+        </div>
     </div>
-
-    <form class="registration-form" @submit.prevent="onSubmit">
-      <div class="form-group">
-        <label class="label">Введите имя и фамилию контактного лица</label>
-        <input
-          v-model="regForm.login"
-          placeholder="Имя и фамилия"
-          class="form-control name-input"
-          type="text"
-          required
-          :class="{ 'invalid-input': errors.UserNameError }"
-          autocomplete="username"
-        />
-        <div v-if="errors.DuplicateUserName" class="invalid-text">
-          Пользователь с таким именем уже существует
-        </div>
-        <div v-if="errors.InvalidUserName" class="invalid-text">
-          Имя пользователя должно быть написано кириллицей, в имени пользователя нельзя использовать
-          пробелы, специальные символы ($#!),
-        </div>
-      </div>
-
-      <div class="form-group">
-        <label class="label">Введите телефон</label>
-        <input
-          v-model="regForm.phone"
-          placeholder="Телефон"
-          class="form-control phone-input"
-          type="tel"
-          autocomplete="new-tel"
-          required
-        />
-      </div>
-
-      <div class="form-group">
-        <label class="label">Введите email</label>
-        <input
-          v-model="regForm.email"
-          placeholder="Почта"
-          class="form-control email-input"
-          type="email"
-          autocomplete="new-email"
-          required
-        />
-      </div>
-
-      <div class="form-group">
-        <label class="label">Введите пароль</label>
-        <input
-          v-model="regForm.password"
-          placeholder="Пароль"
-          class="form-control password-input"
-          type="password"
-          required
-          utocomplete="new-password"
-          :class="{ 'invalid-input': errors.passwordError }"
-        />
-        <div v-if="errors.PasswordError" class="invalid-text">
-          пароль
-          <span v-if="errors.PasswordTooShort">должен быть как минимум 6 символов.</span>
-          <span v-if="errors.PasswordRequiresNonAlphanumeric">
-            должен быть один спецсимвол.
-          </span>
-          <span v-if="errors.PasswordRequiresUpper">
-            должны встречаться символы в верхнем регистре.
-          </span>
-          <span v-if="errors.PasswordRequiresLower">
-            должны встречаться символы в нижнем регистре.
-          </span>
-        </div>
-      </div>
-
-      <div class="form-group">
-        <label class="label">Какую организацию вы представляете?</label>
-
-        <app-select
-          :options="organizationVariants"
-          :selected="organizationVariant"
-          @updateOption="changeOrganizationVariant"
-        />
-      </div>
-
-      <div class="form-group">
-        <label class="label">Введите наименование организации</label>
-        <div class="two-selectors">
-          <input type="hidden" :value="organizationType.name" />
-          <app-select
-            class="first-selector"
-            style="display: block"
-            :options="organizationTypes"
-            :selected="organizationType"
-            @updateOption="changeOption"
-          />
-          <input
-            v-model="regForm.organizationName"
-            placeholder="Название огранизации"
-            class="form-control second-selector"
-            type="text"
-            required
-          />
-        </div>
-      </div>
-
-      <button type="submit" class="btn btn-yellow btn-reg">
-        Зарегистрироваться
-      </button>
-
-      <div class="accept-policy">
-        Нажимая на кнопку, вы даете согласие на обработку
-        <br />
-        своих персональных данных и соглашаетесь
-        <br />
-        с
-        <a href="/politika" class="policy-link solid-border-grey">
-          Политикой конфиденциальности
-        </a>
-      </div>
-    </form>
-
-    <div class="already-have-account text-center">
-      <p>Уже зарегистрированы?</p>
-      <span href="#" class="go-log-in border-green" @click="logIn()">Войти</span>
-    </div>
-  </div>
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue, Watch } from 'vue-property-decorator'
-import { AuthService } from '@/services/auth.service'
-import { IregistrationErrors } from '@/models/IregistrationErrors'
+import { Component, Prop, Vue, Watch } from "vue-property-decorator";
+import { AuthService } from "@/services/auth.service";
+import { IregistrationErrors } from "@/models/IregistrationErrors";
+import  appSelect from "@/components/core-ui/app-select/app-select"
 
-@Component({})
+@Component({
+    components: {appSelect},
+})
 export default class RegistrationForm extends Vue {
-  regForm = {
-      login: '',
-      phone: '',
-      email: '',
-      password: '',
-      organizationVariant: 'Автосервис',
-      organizationType: 'ООО',
-      organizationName: ''
-  }
-  organizationTypes = [
-      { name: 'ООО' },
-      { name: 'ИП' },
-      { name: 'Частное лицо' },
-      { name: 'Другое' }
-  ]
-  organizationType = { name: 'OOO' }
-  organizationVariants = [{ name: 'Автосервис' }, { name: 'Частное лицо' }]
-  organizationVariant = { name: 'Автосервис' }
-  changeOption(payload: any) {
-      this.organizationType = payload
-      this.regForm.organizationType = payload.name
-  }
-  changeOrganizationVariant(payload: any) {
-      this.organizationType = payload
-      this.regForm.organizationType = payload.name
-  }
-  errors: IregistrationErrors = {
-      PasswordError: false,
-      UserNameError: false
-  }
-  auth = new AuthService()
+    regForm = {
+        userName: "",
+        userLastName: "",
+        userPatronymic: "",
+        phone: "",
+        email: "",
+        password: "",
+        organizationVariant: "Автосервис",
+        companyName: "",
+    };
+    organizationTypes = [
+        { name: "ООО" },
+        { name: "ИП" },
+        { name: "Частное лицо" },
+        { name: "Другое" },
+    ];
+    organizationName = "";
+    organizationType = { name: "OOO" };
+    organizationVariants = [{ name: "Автосервис" }, { name: "Частное лицо" }];
+    organizationVariant = { name: "Автосервис" };
+    changeOption(payload: any) {
+        this.organizationType = payload;
+    }
+    changeOrganizationVariant(payload: any) {
+        this.organizationVariant = payload;
+        this.regForm.organizationVariant = payload.name;
+    }
+    errors: IregistrationErrors = {
+        PasswordError: false,
+        UserNameError: false,
+    };
+    auth = new AuthService();
+    @Watch("organizationName")
+    onOrangizationNameChanged(organizationName: string) {
+        this.regForm.companyName = organizationName + " " + this.organizationType.name;
+    }
 
-  logIn() {
-      this.$store.dispatch('authentication/login')
-      this.$store.dispatch('authentication/toggleRegistration')
-  }
+    @Watch("organizationType.name")
+    onOrangizationTypeChanged(organizationType: string) {
+        this.regForm.companyName = this.organizationName + " " + organizationType;
+    }
 
-  handleError(errorMessages: string[]) {
-      if (!errorMessages.length) {
-          return
-      }
-      errorMessages.forEach(errorMsg => {
-          this.errors[errorMsg] = true
-          if (errorMsg.includes('Password')) {
-              this.errors.PasswordError = true
-          }
-          if (errorMsg.includes('UserName')) {
-              this.errors.UserNameError = true
-          }
-      })
-  }
+    logIn() {
+        this.$store.dispatch("authentication/login");
+        this.$store.dispatch("authentication/toggleRegistration");
+    }
 
-  onSubmit(e: Event) {
-      this.auth
-          .registration(this.regForm)
-          .then(res => {
-              this.$store.dispatch('authentication/login')
-              this.$store.dispatch('display/toggleRegistration')
-          })
-          .catch(err => {
-              const errorMessages = (((err || []).response || []).data || []) as string
-              const errorMessagesArr = errorMessages.split(' ')
+    handleError(errorMessages: string[]) {
+        for (const key in this.errors) {
+            this.errors[key] = false;
+        }
+        errorMessages.forEach(errorMsg => {
+            this.errors[errorMsg] = true;
+            if (errorMsg.includes("Password")) {
+                this.errors.PasswordError = true;
+            }
+            if (errorMsg.includes("UserName")) {
+                this.errors.UserNameError = true;
+            }
+        });
 
-              this.handleError(errorMessagesArr)
-          })
-  }
+        const userNameRegExp = /^[a-zA-Zа-яА-я]+$/;
+        const userPhoneRegExp = /^\+?[\d\-\s()]{6,}$/;
+
+        if (!userNameRegExp.test(this.regForm.userName)) {
+            this.errors.UserNameError = true;
+        }
+        if (!userNameRegExp.test(this.regForm.userLastName)) {
+            this.errors.UserLastNameError = true;
+        }
+        if (!userNameRegExp.test(this.regForm.userPatronymic)) {
+            this.errors.UserPatronymicNameError = true;
+        }
+        this.errors.UserPhoneError = !userPhoneRegExp.test(this.regForm.phone);
+        this.$forceUpdate();
+    }
+
+    onSubmit(e: Event) {
+        this.auth
+            .registration(this.regForm)
+            .then(res => {
+                this.$store.dispatch("authentication/login");
+                this.$store.dispatch("display/toggleRegistration");
+            })
+            .catch(err => {
+                const errorMessages = (((err || []).response || []).data || []) as string;
+                const errorMessagesArr = errorMessages.split(" ");
+
+                this.handleError(errorMessagesArr);
+            });
+    }
 }
 </script>
 

@@ -1,3 +1,3 @@
 export interface IObjectWithStrings {
-  [k: string]: boolean;
+    [k: string]: boolean
 }

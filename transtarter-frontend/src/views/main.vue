@@ -1,33 +1,32 @@
 <template>
-  <div>
-    <!-- main sections -->
-    <layout-header></layout-header>
+    <div>
+        <!-- main sections -->
+        <layout-header></layout-header>
 
-    <!-- <div style="background-color: #0CB520; color: white; text-align: center
+        <!-- <div style="background-color: #0CB520; color: white; text-align: center
     margin-bottom: 10px; font-family: 'Exo 2'; font-size: 24px;
     ">
       <div style="padding: 10px; font-size: 24px;">Найдите запчасть или агрегат</div>
 <ts-ui-find-detail></ts-ui-find-detail>
     </div> -->
-    <user-profile-wrapper></user-profile-wrapper>
-    <layout-footer></layout-footer>
-    <!-- end main sections -->
+        <user-profile-wrapper></user-profile-wrapper>
+        <layout-footer></layout-footer>
+        <!-- end main sections -->
 
-    <!-- popups -->
-    <!-- <LogIn /> -->
-    <request-call></request-call>
-    <registration></registration>
-    <password-restore></password-restore>
-    <password-success-restore></password-success-restore>
-    <!-- <UnsupportedBrowser /> -->
-    <!-- end popups -->
+        <!-- popups -->
+        <!-- <LogIn /> -->
+        <request-call></request-call>
+        <registration></registration>
+        <password-restore></password-restore>
+        <password-success-restore></password-success-restore>
+        <!-- <UnsupportedBrowser /> -->
+        <!-- end popups -->
 
-    <!-- blocks  -->
-    <your-city></your-city>
-    <select-city></select-city>
-    <!-- end blocks  -->
-
-  </div>
+        <!-- blocks  -->
+        <your-city></your-city>
+        <select-city></select-city>
+        <!-- end blocks  -->
+    </div>
 </template>
 
 <script lang="ts">
@@ -54,28 +53,25 @@ import { DisplayModule } from '../store/modules/display.module'
 import FindDetail from '@/components/find-detail/find-detail.vue'
 
 @Component({
-  components: {
-    LayoutHeader,
-    LayoutFooter,
-    UserProfileWrapper,
-    // userSidebar,
-    // personalManager,
-    // profileSettings,
-    YourCity,
-    SelectCity,
-    // popups
-    Registration,
-    // logIn,
-    PasswordRestore,
-    PasswordSuccessRestore,
-    RequestCall,
-    FindDetail
-  }
+    components: {
+        LayoutHeader,
+        LayoutFooter,
+        UserProfileWrapper,
+        // userSidebar,
+        // personalManager,
+        // profileSettings,
+        YourCity,
+        SelectCity,
+        // popups
+        Registration,
+        // logIn,
+        PasswordRestore,
+        PasswordSuccessRestore,
+        RequestCall,
+        FindDetail,
+    },
 })
-export default class Main extends Vue {
-
-}
+export default class Main extends Vue {}
 </script>
 
-<style scoped lang="scss">
-</style>
+<style scoped lang="scss"></style>
