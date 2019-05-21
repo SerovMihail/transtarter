@@ -89,8 +89,9 @@
             <div class="form-group">
                 <label class="label">Введите телефон</label>
                 <input
-                    v-model.trim="regForm.phone"
-                    placeholder="Телефон"
+                    v-model.trim="phone"
+                    v-mask="'+# (###) ###-##-##'"
+                    placeholder="+7 (___) ___-__-__"
                     class="form-control phone-input"
                     :class="{ 'invalid-input': errors.UserPhoneError }"
                     type="tel"
@@ -115,7 +116,6 @@
             <div class="form-group">
                 <label class="label">Введите наименование организации</label>
                 <div class="two-selectors">
-                    <input type="hidden" :value="organizationType.name" />
                     <app-select
                         class="first-selector"
                         style="display: block"
@@ -157,105 +157,101 @@
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue, Watch } from "vue-property-decorator";
-import { AuthService } from "@/services/auth.service";
-import { IregistrationErrors } from "@/models/IregistrationErrors";
-import  appSelect from "@/components/core-ui/app-select/app-select"
+import { Component, Prop, Vue, Watch } from 'vue-property-decorator'
+import { AuthService } from '@/services/auth.service'
+import { IregistrationErrors } from '@/models/IregistrationErrors'
+import appSelect from '@/components/core-ui/app-select/app-select'
+import { VueMaskDirective } from 'v-mask'
+Vue.directive('mask', VueMaskDirective)
 
 @Component({
-    components: {appSelect},
+    components: { appSelect },
 })
 export default class RegistrationForm extends Vue {
-    regForm = {
-        userName: "",
-        userLastName: "",
-        userPatronymic: "",
-        phone: "",
-        email: "",
-        password: "",
-        organizationVariant: "Автосервис",
-        companyName: "",
-    };
+    get regForm() {
+        return {
+            userName: '',
+            userLastName: '',
+            userPatronymic: '',
+            phone: this.phone.replace(/[+ ()_-]/g, ''),
+            email: '',
+            password: '',
+            organizationVariant: 'Автосервис',
+            companyName: this.organizationName + ' ' + this.organizationType.name,
+        }
+    }
     organizationTypes = [
-        { name: "ООО" },
-        { name: "ИП" },
-        { name: "Частное лицо" },
-        { name: "Другое" },
-    ];
-    organizationName = "";
-    organizationType = { name: "OOO" };
-    organizationVariants = [{ name: "Автосервис" }, { name: "Частное лицо" }];
-    organizationVariant = { name: "Автосервис" };
+        { name: 'ООО' },
+        { name: 'ИП' },
+        { name: 'Частное лицо' },
+        { name: 'Другое' },
+    ]
+    phone = ''
+    organizationName = ''
+    organizationType = { name: 'OOO' }
+    organizationVariants = [{ name: 'Автосервис' }, { name: 'Частное лицо' }]
+    organizationVariant = { name: 'Автосервис' }
     changeOption(payload: any) {
-        this.organizationType = payload;
+        this.organizationType = payload
     }
     changeOrganizationVariant(payload: any) {
-        this.organizationVariant = payload;
-        this.regForm.organizationVariant = payload.name;
+        this.organizationVariant = payload
+        this.regForm.organizationVariant = payload.name
     }
     errors: IregistrationErrors = {
         PasswordError: false,
         UserNameError: false,
-    };
-    auth = new AuthService();
-    @Watch("organizationName")
-    onOrangizationNameChanged(organizationName: string) {
-        this.regForm.companyName = organizationName + " " + this.organizationType.name;
     }
-
-    @Watch("organizationType.name")
-    onOrangizationTypeChanged(organizationType: string) {
-        this.regForm.companyName = this.organizationName + " " + organizationType;
-    }
+    auth = new AuthService()
 
     logIn() {
-        this.$store.dispatch("authentication/login");
-        this.$store.dispatch("authentication/toggleRegistration");
+        this.$store.dispatch('authentication/login')
+        this.$store.dispatch('authentication/toggleRegistration')
     }
 
     handleError(errorMessages: string[]) {
         for (const key in this.errors) {
-            this.errors[key] = false;
+            this.errors[key] = false
         }
         errorMessages.forEach(errorMsg => {
-            this.errors[errorMsg] = true;
-            if (errorMsg.includes("Password")) {
-                this.errors.PasswordError = true;
+            this.errors[errorMsg] = true
+            if (errorMsg.includes('Password')) {
+                this.errors.PasswordError = true
             }
-            if (errorMsg.includes("UserName")) {
-                this.errors.UserNameError = true;
+            if (errorMsg.includes('UserName')) {
+                this.errors.UserNameError = true
             }
-        });
+        })
 
-        const userNameRegExp = /^[a-zA-Zа-яА-я]+$/;
-        const userPhoneRegExp = /^\+?[\d\-\s()]{6,}$/;
+        const userNameRegExp = /^[a-zA-Zа-яА-я]+$/
+        const userPhoneRegExp = /^\+?[\d\-\s()]{6,}$/
 
         if (!userNameRegExp.test(this.regForm.userName)) {
-            this.errors.UserNameError = true;
+            this.errors.UserNameError = true
         }
         if (!userNameRegExp.test(this.regForm.userLastName)) {
-            this.errors.UserLastNameError = true;
+            this.errors.UserLastNameError = true
         }
         if (!userNameRegExp.test(this.regForm.userPatronymic)) {
-            this.errors.UserPatronymicNameError = true;
+            this.errors.UserPatronymicNameError = true
         }
-        this.errors.UserPhoneError = !userPhoneRegExp.test(this.regForm.phone);
-        this.$forceUpdate();
+        this.errors.UserPhoneError = !userPhoneRegExp.test(this.regForm.phone)
+        this.$forceUpdate()
     }
 
     onSubmit(e: Event) {
         this.auth
             .registration(this.regForm)
             .then(res => {
-                this.$store.dispatch("authentication/login");
-                this.$store.dispatch("display/toggleRegistration");
+                this.$store.dispatch('authentication/login')
+                this.$store.dispatch('display/toggleRegistration')
             })
             .catch(err => {
-                const errorMessages = (((err || []).response || []).data || []) as string;
-                const errorMessagesArr = errorMessages.split(" ");
+                const errorMessages = (((err || []).response || []).data || []) as string
+                const errorMessagesArr = errorMessages.split(' ')
 
-                this.handleError(errorMessagesArr);
-            });
+                this.handleError(errorMessagesArr)
+            })
     }
 }
 </script>
