@@ -15,6 +15,13 @@
         </li>
         <!-- end for guests -->
         <!-- block for users -->
+        <div
+            v-if="loggedIn && !singleContrAgent"
+            class="desktop-header__login-item"
+            @click="toggleContrAgent"
+        >
+            {{ contrAgent }}
+        </div>
         <div class="user-info" v-if="loggedIn" @click="toggleUserMenu()">
             <div class="user-avatar"></div>
             <div class="user-name border-white">{{ userName }}</div>
@@ -38,6 +45,12 @@ export default class UserAccountDesktop extends Vue {
         return AuthModule.name.length > 10
             ? AuthModule.name.substring(0, 10) + '...'
             : AuthModule.name
+    }
+    get singleContrAgent() {
+        return AuthModule.userContragents.length === 1
+    }
+    toggleContrAgent() {
+        store.dispatch('display/toggleContrAgentModal')
     }
 
     logIn() {
