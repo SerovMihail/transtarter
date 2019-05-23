@@ -162,7 +162,7 @@ export class Authentication extends VuexModule implements IAuthState {
         this.userContragents = contragents
     }
     @Action
-    updateContrAgent({ commit }, contragent: any) {
+    updateContrAgent(contragent: any) {
         CookieStorage.setItem('selected-contragent', contragent)
         this.context.commit('UPDATE_CONTR_AGENT', contragent)
     }
