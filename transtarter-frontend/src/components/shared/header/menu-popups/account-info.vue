@@ -88,6 +88,9 @@ export default class AccountInfoMobile extends Vue {
     closeUserMenu() {
         store.dispatch('display/hideBlockShowUser')
     }
+    toggleContrAgent() {
+        store.dispatch('display/toggleContrAgentModal')
+    }
 
     get userName() {
         return AuthModule.name.length > 10
