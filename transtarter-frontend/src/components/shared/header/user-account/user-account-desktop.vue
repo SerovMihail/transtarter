@@ -46,6 +46,11 @@ export default class UserAccountDesktop extends Vue {
             ? AuthModule.name.substring(0, 10) + '...'
             : AuthModule.name
     }
+
+    get contrAgent() {
+        // @ts-ignore
+        return AuthModule.contragent.name
+    }
     get singleContrAgent() {
         return AuthModule.userContragents.length === 1
     }
