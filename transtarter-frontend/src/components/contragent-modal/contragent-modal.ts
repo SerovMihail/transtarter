@@ -4,7 +4,10 @@ import axios from 'axios'
 import { store } from '@/store/'
 import { DisplayModule } from '@/store/modules/display.module'
 import { AuthModule } from '@/store/modules/authentication.module'
-@Component({})
+import AppBtn from '@/components/core-ui/app-btn.vue'
+@Component({
+    components: { AppBtn },
+})
 class ContragentModal extends Vue {
     @Prop(Boolean) readonly cancelControls!: boolean
     @Prop(Boolean) readonly forLogin!: number
