@@ -9,6 +9,7 @@ import Axios from 'axios'
 import { COOKIE_AUTH_BEFORE_REDIRECT_LOCATION_KEY, COOKIE_STORAGE_KEY } from '@/constants'
 
 const userContragentsString = <string>CookieStorage.getItem('ts-user-contragent')
+debugger
 const contragentString = <string>CookieStorage.getItem('selected-contragent')
 const contragent: any = contragentString ? JSON.parse(contragentString) : null
 
