@@ -154,11 +154,11 @@ export class Authentication extends VuexModule implements IAuthState {
     }
 
     @Mutation
-    UPDATE_CONTR_AGENT(state, contragent: any) {
+    UPDATE_CONTR_AGENT(contragent: any) {
         this.contragent = contragent
     }
     @Mutation
-    UPDATE_CONTR_AGENTS(state, contragents: any) {
+    UPDATE_CONTR_AGENTS(contragents: any) {
         this.userContragents = contragents
     }
     @Action
