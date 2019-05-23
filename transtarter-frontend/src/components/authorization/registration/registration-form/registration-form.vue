@@ -220,8 +220,8 @@ export default class RegistrationForm extends Vue {
     auth = new AuthService()
 
     logIn() {
-        this.$store.dispatch('authentication/login')
-        this.$store.dispatch('authentication/toggleRegistration')
+        this.$store.dispatch('auth/login')
+        this.$store.dispatch('auth/toggleRegistration')
     }
 
     handleError(errorMessages: string[]) {
@@ -260,7 +260,7 @@ export default class RegistrationForm extends Vue {
             .registration(this.regForm)
             .then(res => {
                 this.loadingForm = false
-                store.dispatch('authentication/login')
+                store.dispatch('auth/login')
                 store.dispatch('display/toggleRegistration')
             })
             .catch(err => {

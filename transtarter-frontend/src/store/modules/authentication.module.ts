@@ -12,7 +12,6 @@ const userContragentsString = <string>CookieStorage.getItem('ts-user-contragent'
 const contragentString = <string>CookieStorage.getItem('selected-contragent')
 const contragent: any = contragentString ? JSON.parse(contragentString) : null
 
-debugger
 const userContragents = userContragentsString ? JSON.parse(userContragentsString) : null
 
 type contragent = { id: number; name: string; city: string }
