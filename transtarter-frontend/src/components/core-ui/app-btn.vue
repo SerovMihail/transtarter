@@ -12,23 +12,23 @@
 </template>
 
 <script lang="ts">
-import { Vue, Component, Prop } from "vue-property-decorator";
+import { Vue, Component, Prop } from 'vue-property-decorator'
 @Component({})
 class AppBtn extends Vue {
-    @Prop(String) readonly icon!: string;
-    @Prop(String) readonly variant!: string;
-    @Prop(Boolean) readonly block!: boolean;
+    @Prop(String) readonly icon!: string
+    @Prop(String) readonly variant!: string
+    @Prop(Boolean) readonly block!: boolean
     get variantType() {
-        if (this.variant === "shadow") {
-            return "btn-shadow";
-        } else if (this.variant === "small-icon") {
-            return ["btn-sm-icon", "btn-outline"];
+        if (this.variant === 'shadow') {
+            return 'btn-shadow'
+        } else if (this.variant === 'small-icon') {
+            return ['btn-sm-icon', 'btn-outline']
         } else {
-            return "btn-outline";
+            return 'btn-outline'
         }
     }
 }
-export default AppBtn;
+export default AppBtn
 </script>
 
 <style scoped lang="scss">
