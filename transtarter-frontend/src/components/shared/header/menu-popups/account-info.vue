@@ -59,11 +59,11 @@ import { clickOutside } from '@/directives/v-click-outside'
 })
 export default class AccountInfoMobile extends Vue {
     get contrAgent() {
-        return this.$store.state.authentication.contragent
+        return AuthModule.contragent
     }
 
     get singleContrAgent() {
-        return this.$store.state.authentication.userContragents.length === 1
+        return AuthModule.userContragents.length === 1
     }
     get loggedIn() {
         return AuthModule.logged

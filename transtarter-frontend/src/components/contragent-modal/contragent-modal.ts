@@ -2,16 +2,18 @@ import { Vue, Component, Prop } from 'vue-property-decorator'
 import cookieStorage from 'cookie-storage-domain'
 import axios from 'axios'
 import { store } from '@/store/'
+import { DisplayModule } from '@/store/modules/display.module'
+import { AuthModule } from '@/store/modules/authentication.module'
 @Component({})
 class ContragentModal extends Vue {
     @Prop(Boolean) readonly cancelControls!: boolean
     @Prop(Boolean) readonly forLogin!: number
     private readonly identityApi: string = process.env.VUE_APP_IDENTITY_SERVER_API || ''
     get contragentOpen() {
-        return this.$store.state.display.showPopup.changeContrAgent
+        return DisplayModule.showPopup.changeContrAgent
     }
     get contragentOptions() {
-        return this.$store.state.authentication.userContragents
+        return AuthModule.userContragents
     }
     private keyboardEscHandler(e: any) {
         if (e.keyCode === 27 && this.contragentOpen) {
@@ -19,7 +21,7 @@ class ContragentModal extends Vue {
         }
     }
     closeModal() {
-        this.$store.dispatch('display/toggleContrAgentModal')
+        store.dispatch('display/toggleContrAgentModal')
     }
     mounted() {
         if (!this.cancelControls) {
