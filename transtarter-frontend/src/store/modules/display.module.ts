@@ -8,6 +8,7 @@ export interface IDisplayState {
         restorePassword: boolean
         successRestore: boolean
         requestCall: boolean
+        changeContrAgent: boolean
     }
 
     showBlock: {
@@ -33,6 +34,7 @@ export class Display extends VuexModule implements IDisplayState {
         restorePassword: false,
         successRestore: false,
         requestCall: false,
+        changeContrAgent: false,
     }
     showBlock = {
         selectCity: false,
@@ -190,6 +192,14 @@ export class Display extends VuexModule implements IDisplayState {
     @Action
     public hideBlockShowUser(): void {
         this.context.commit('HIDE_BLOCK_SHOW_USER')
+    }
+    @Mutation
+    TOGGLE_CONTR_AGENT_MODAL() {
+        this.showPopup.changeContrAgent = !this.showPopup.changeContrAgent
+    }
+    @Action
+    toggleContrAgentModal() {
+        this.context.commit('TOGGLE_CONTR_AGENT_MODAL')
     }
 }
 

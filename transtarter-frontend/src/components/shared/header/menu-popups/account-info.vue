@@ -1,5 +1,5 @@
 <template>
-    <div class="menu-popup" v-if="showBlocksShowUser && loggedIn" v-click-outside="closeUserMenu">
+    <div v-if="showBlocksShowUser && loggedIn" v-click-outside="closeUserMenu" class="menu-popup">
         <div class="user-fullname">
             {{ userName }}
         </div>
@@ -9,6 +9,7 @@
         <div class="price-info">
             Оптовые цены (активны)
         </div>
+        <div v-if="!singleContrAgent" class="contragent">Контрагент: {{ contrAgent.name }}</div>
         <div class="wallet">
             <div class="wallet-with-icon">
                 <span class="icon"></span>
@@ -20,17 +21,22 @@
 
         <ul class="menu-popup_list">
             <li class="menu-popup_list-item">
-                Личный кабинет
+                <nuxt-link to="/account">Личный кабинет</nuxt-link>
             </li>
             <li class="menu-popup_list-item">
-                Профиль и настройки
+                <nuxt-link to="/account/settings">Профиль и настройки</nuxt-link>
             </li>
             <li class="menu-popup_list-item menu-popup_list-item-active">
-                Корзина
+                <nuxt-link to="/account/cart">Корзина</nuxt-link>
+
                 <span class="menu-popup_list-item-notify">3</span>
             </li>
             <li class="menu-popup_list-item">
                 Заказы и оплаты
+            </li>
+
+            <li v-if="!singleContrAgent" class="menu-popup_list-item" @click="toggleContrAgent">
+                Смена контрагента
             </li>
             <li class="menu-popup_list-item" @click="logout">
                 Выйти
@@ -52,6 +58,13 @@ import { clickOutside } from '@/directives/v-click-outside'
     },
 })
 export default class AccountInfoMobile extends Vue {
+    get contrAgent() {
+        return this.$store.state.authentication.contragent
+    }
+
+    get singleContrAgent() {
+        return this.$store.state.authentication.userContragents.length === 1
+    }
     get loggedIn() {
         return AuthModule.logged
     }
