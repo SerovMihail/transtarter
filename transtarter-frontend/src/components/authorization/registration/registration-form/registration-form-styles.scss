@@ -5,9 +5,27 @@
     margin-top: 24px;
     font-weight: bold;
 }
+.spinner {
+    position: absolute !important;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 99999999;
+}
 
 .registration-form {
     padding-right: 20%;
+    position: relative;
+}
+.registration-container {
+    position: relative;
+}
+.loading-wrapper {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    z-index: 99999;
+    background-color: rgba(white, .5);
 }
 
 

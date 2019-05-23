@@ -1,26 +1,35 @@
 <template>
-    <div>
+    <div class="registration-container">
+        <div v-if="loadingForm" class="loading-wrapper"></div>
         <div class="registration-text">
             Регистрация
         </div>
-
         <form class="registration-form" @submit.prevent="onSubmit">
+            <spinner v-if="loadingForm" class="spinner" />
             <div class="form-group">
                 <label class="label">Введите email</label>
                 <input
-                    v-model.trim="regForm.email"
+                    v-model.trim="email"
                     placeholder="Почта"
                     class="form-control email-input"
                     type="email"
                     autocomplete="new-email"
                     required
+                    :class="{ 'invalid-input': errors.UserEmailError }"
                 />
+
+                <div v-if="errors.DuplicateUserName" class="invalid-text">
+                    Данный email уже зарегистрирован
+                </div>
+                <div v-if="errors.InvalidEmail">
+                    Неправильно введён email
+                </div>
             </div>
 
             <div class="form-group">
                 <label class="label">Введите пароль</label>
                 <input
-                    v-model.trim="regForm.password"
+                    v-model.trim="password"
                     placeholder="Пароль"
                     class="form-control password-input"
                     type="password"
@@ -45,7 +54,7 @@
             <div class="form-group">
                 <label class="label">Введите имя контактного лица</label>
                 <input
-                    v-model.trim="regForm.userName"
+                    v-model.trim="userName"
                     placeholder="Имя"
                     class="form-control name-input"
                     type="text"
@@ -59,7 +68,7 @@
             <div class="form-group">
                 <label class="label">Введите фамилию контактного лица</label>
                 <input
-                    v-model.trim="regForm.userLastName"
+                    v-model.trim="userLastName"
                     placeholder="Фамилия"
                     class="form-control name-input"
                     type="text"
@@ -73,7 +82,7 @@
             <div class="form-group">
                 <label class="label">Введите отчество контактного лица</label>
                 <input
-                    v-model.trim="regForm.userPatronymic"
+                    v-model.trim="userPatronymic"
                     placeholder="Отчество"
                     class="form-control name-input"
                     type="text"
@@ -103,7 +112,7 @@
                 </div>
             </div>
 
-            <div class="form-group">
+            <!-- <div class="form-group">
                 <label class="label">Какую организацию вы представляете?</label>
 
                 <app-select
@@ -111,7 +120,7 @@
                     :selected="organizationVariant"
                     @updateOption="changeOrganizationVariant"
                 />
-            </div>
+            </div> -->
 
             <div class="form-group">
                 <label class="label">Введите наименование организации</label>
@@ -133,9 +142,7 @@
                 </div>
             </div>
 
-            <button type="submit" class="btn btn-yellow btn-reg">
-                Зарегистрироваться
-            </button>
+            <button type="submit" class="btn btn-yellow btn-reg">Зарегистрироваться</button>
 
             <div class="accept-policy">
                 Нажимая на кнопку, вы даете согласие на обработку
@@ -160,44 +167,52 @@
 import { Component, Prop, Vue, Watch } from 'vue-property-decorator'
 import { AuthService } from '@/services/auth.service'
 import { IregistrationErrors } from '@/models/IregistrationErrors'
-import appSelect from '@/components/core-ui/app-select/app-select'
 import { VueMaskDirective } from 'v-mask'
+import Spinner from '@/components/spinner/spinner.vue'
+import AppSelect from '@/components/core-ui/app-select/app-select'
+import { store } from '@/store'
 Vue.directive('mask', VueMaskDirective)
 
 @Component({
-    components: { appSelect },
+    components: { Spinner, AppSelect },
 })
 export default class RegistrationForm extends Vue {
     get regForm() {
         return {
-            userName: '',
-            userLastName: '',
-            userPatronymic: '',
+            userName: this.userName,
+            userLastName: this.userLastName,
+            userPatronymic: this.userPatronymic,
             phone: this.phone.replace(/[+ ()_-]/g, ''),
-            email: '',
-            password: '',
-            organizationVariant: 'Автосервис',
+            email: this.email,
+            password: this.password,
+            // organizationVariant: "Автосервис",
             companyName: this.organizationName + ' ' + this.organizationType.name,
         }
     }
+
     organizationTypes = [
         { name: 'ООО' },
         { name: 'ИП' },
         { name: 'Частное лицо' },
         { name: 'Другое' },
     ]
+    loadingForm = false
+    userName = ''
+    userLastName = ''
+    userPatronymic = ''
     phone = ''
+    email = ''
+    password = ''
     organizationName = ''
     organizationType = { name: 'OOO' }
-    organizationVariants = [{ name: 'Автосервис' }, { name: 'Частное лицо' }]
-    organizationVariant = { name: 'Автосервис' }
+    // organizationVariants = [{ name: "Автосервис" }, { name: "Частное лицо" }];
+    // organizationVariant = { name: "Автосервис" };
     changeOption(payload: any) {
         this.organizationType = payload
     }
-    changeOrganizationVariant(payload: any) {
-        this.organizationVariant = payload
-        this.regForm.organizationVariant = payload.name
-    }
+    // changeOrganizationVariant(payload: any) {
+    //     this.organizationVariant = payload;
+    // }
     errors: IregistrationErrors = {
         PasswordError: false,
         UserNameError: false,
@@ -219,20 +234,20 @@ export default class RegistrationForm extends Vue {
                 this.errors.PasswordError = true
             }
             if (errorMsg.includes('UserName')) {
-                this.errors.UserNameError = true
+                this.errors.UserEmailError = true
             }
         })
 
         const userNameRegExp = /^[a-zA-Zа-яА-я]+$/
-        const userPhoneRegExp = /^\+?[\d\-\s()]{6,}$/
+        const userPhoneRegExp = /^\d{11}$/
 
-        if (!userNameRegExp.test(this.regForm.userName)) {
+        if (!userNameRegExp.test(this.userName)) {
             this.errors.UserNameError = true
         }
-        if (!userNameRegExp.test(this.regForm.userLastName)) {
+        if (!userNameRegExp.test(this.userLastName)) {
             this.errors.UserLastNameError = true
         }
-        if (!userNameRegExp.test(this.regForm.userPatronymic)) {
+        if (!userNameRegExp.test(this.userPatronymic)) {
             this.errors.UserPatronymicNameError = true
         }
         this.errors.UserPhoneError = !userPhoneRegExp.test(this.regForm.phone)
@@ -240,13 +255,16 @@ export default class RegistrationForm extends Vue {
     }
 
     onSubmit(e: Event) {
+        this.loadingForm = true
         this.auth
             .registration(this.regForm)
             .then(res => {
-                this.$store.dispatch('authentication/login')
-                this.$store.dispatch('display/toggleRegistration')
+                this.loadingForm = false
+                store.dispatch('authentication/login')
+                store.dispatch('display/toggleRegistration')
             })
             .catch(err => {
+                this.loadingForm = false
                 const errorMessages = (((err || []).response || []).data || []) as string
                 const errorMessagesArr = errorMessages.split(' ')
 
