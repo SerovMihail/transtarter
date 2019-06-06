@@ -21,19 +21,19 @@
 
         <ul class="menu-popup_list">
             <li class="menu-popup_list-item">
-                <nuxt-link to="/account">Личный кабинет</nuxt-link>
+                <a :href="`${webAppHost}/account/settings`">Профиль и настройки</a>
             </li>
-            <li class="menu-popup_list-item">
+            <!-- <li class="menu-popup_list-item">
                 <nuxt-link to="/account/settings">Профиль и настройки</nuxt-link>
-            </li>
-            <li class="menu-popup_list-item menu-popup_list-item-active">
+            </li> -->
+            <!-- <li class="menu-popup_list-item menu-popup_list-item-active">
                 <nuxt-link to="/account/cart">Корзина</nuxt-link>
 
                 <span class="menu-popup_list-item-notify">3</span>
             </li>
             <li class="menu-popup_list-item">
                 Заказы и оплаты
-            </li>
+            </li> -->
 
             <li v-if="!singleContrAgent" class="menu-popup_list-item" @click="toggleContrAgent">
                 Смена контрагента
@@ -58,6 +58,7 @@ import { clickOutside } from '@/directives/v-click-outside'
     },
 })
 export default class AccountInfoMobile extends Vue {
+    private webAppHost = process.env.VUE_APP_WEB_APP
     get contrAgent() {
         return AuthModule.contragent
     }
