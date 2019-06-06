@@ -49,7 +49,7 @@ export default class UserAccountDesktop extends Vue {
 
     get contrAgent() {
         // @ts-ignore
-        return AuthModule.contragent.name
+        return AuthModule.contragent.name || ''
     }
     get singleContrAgent() {
         return AuthModule.userContragents.length === 1

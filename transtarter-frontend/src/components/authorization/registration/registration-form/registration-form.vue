@@ -224,22 +224,29 @@ export default class RegistrationForm extends Vue {
         this.$store.dispatch('auth/toggleRegistration')
     }
 
-    handleError(errorMessages: string[]) {
+    handleError(errorMessages?: string[]) {
         for (const key in this.errors) {
             this.errors[key] = false
         }
-        errorMessages.forEach(errorMsg => {
-            this.errors[errorMsg] = true
-            if (errorMsg.includes('Password')) {
-                this.errors.PasswordError = true
-            }
-            if (errorMsg.includes('UserName')) {
-                this.errors.UserEmailError = true
-            }
-        })
+        if (errorMessages) {
+            errorMessages.forEach(errorMsg => {
+                this.errors[errorMsg] = true
+                if (errorMsg.includes('Password')) {
+                    this.errors.PasswordError = true
+                } else {
+                    this.errors.PasswordError = false
+                }
+                if (errorMsg.includes('UserName')) {
+                    this.errors.UserEmailError = true
+                } else {
+                    this.errors.UserEmailError = false
+                }
+            })
+        }
 
         const userNameRegExp = /^[a-zA-Zа-яА-я]+$/
         const userPhoneRegExp = /^\d{11}$/
+        const OrganizationNameRegExpg = /^[^<>?[\]:|*']+$/
 
         if (!userNameRegExp.test(this.userName)) {
             this.errors.UserNameError = true
@@ -250,26 +257,46 @@ export default class RegistrationForm extends Vue {
         if (!userNameRegExp.test(this.userPatronymic)) {
             this.errors.UserPatronymicNameError = true
         }
+        if (!OrganizationNameRegExpg.test(this.organizationName)) {
+            this.errors.OrganizationNameError = true
+        }
         this.errors.UserPhoneError = !userPhoneRegExp.test(this.regForm.phone)
         this.$forceUpdate()
     }
 
-    onSubmit(e: Event) {
-        this.loadingForm = true
-        this.auth
-            .registration(this.regForm)
-            .then(res => {
-                this.loadingForm = false
-                store.dispatch('auth/login')
-                store.dispatch('display/toggleRegistration')
-            })
-            .catch(err => {
-                this.loadingForm = false
-                const errorMessages = (((err || []).response || []).data || []) as string
-                const errorMessagesArr = errorMessages.split(' ')
+    fieldValidity() {
+        const errors = this.errors
 
-                this.handleError(errorMessagesArr)
-            })
+        for (const key in errors) {
+            if (errors.hasOwnProperty(key)) {
+                if (errors[key] === true) {
+                    return false
+                }
+            }
+        }
+
+        return true
+    }
+
+    onSubmit(e: Event) {
+        this.handleError()
+        if (this.fieldValidity()) {
+            this.loadingForm = true
+            this.auth
+                .registration(this.regForm)
+                .then(res => {
+                    this.loadingForm = false
+                    store.dispatch('auth/login')
+                    store.dispatch('display/toggleRegistration')
+                })
+                .catch(err => {
+                    this.loadingForm = false
+                    const errorMessages = (((err || []).response || []).data || []) as string
+                    const errorMessagesArr = errorMessages.split(' ')
+
+                    this.handleError(errorMessagesArr)
+                })
+        }
     }
 }
 </script>

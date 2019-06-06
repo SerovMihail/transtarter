@@ -7024,12 +7024,12 @@ var registrationvue_type_template_id_774dd89a_shadow_staticRenderFns = [function
 // EXTERNAL MODULE: ./node_modules/vue-carousel/dist/vue-carousel.min.js
 var vue_carousel_min = __webpack_require__("0a63");
 
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"17a5199b-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/authorization/registration/registration-form/registration-form.vue?vue&type=template&id=60e5cacd&
-var registration_formvue_type_template_id_60e5cacd_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"registration-container"},[(_vm.loadingForm)?_c('div',{staticClass:"loading-wrapper"}):_vm._e(),_c('div',{staticClass:"registration-text"},[_vm._v("\n        Регистрация\n    ")]),_c('form',{staticClass:"registration-form",on:{"submit":function($event){$event.preventDefault();return _vm.onSubmit($event)}}},[(_vm.loadingForm)?_c('spinner',{staticClass:"spinner"}):_vm._e(),_c('div',{staticClass:"form-group"},[_c('label',{staticClass:"label"},[_vm._v("Введите email")]),_c('input',{directives:[{name:"model",rawName:"v-model.trim",value:(_vm.email),expression:"email",modifiers:{"trim":true}}],staticClass:"form-control email-input",class:{ 'invalid-input': _vm.errors.UserEmailError },attrs:{"placeholder":"Почта","type":"email","autocomplete":"new-email","required":""},domProps:{"value":(_vm.email)},on:{"input":function($event){if($event.target.composing){ return; }_vm.email=$event.target.value.trim()},"blur":function($event){_vm.$forceUpdate()}}}),(_vm.errors.DuplicateUserName)?_c('div',{staticClass:"invalid-text"},[_vm._v("\n                Данный email уже зарегистрирован\n            ")]):_vm._e(),(_vm.errors.InvalidEmail)?_c('div',[_vm._v("\n                Неправильно введён email\n            ")]):_vm._e()]),_c('div',{staticClass:"form-group"},[_c('label',{staticClass:"label"},[_vm._v("Введите пароль")]),_c('input',{directives:[{name:"model",rawName:"v-model.trim",value:(_vm.password),expression:"password",modifiers:{"trim":true}}],staticClass:"form-control password-input",class:{ 'invalid-input': _vm.errors.PasswordError },attrs:{"placeholder":"Пароль","type":"password","required":"","utocomplete":"new-password"},domProps:{"value":(_vm.password)},on:{"input":function($event){if($event.target.composing){ return; }_vm.password=$event.target.value.trim()},"blur":function($event){_vm.$forceUpdate()}}}),(_vm.errors.PasswordError)?_c('div',{staticClass:"invalid-text"},[_vm._v("\n                Пароль\n                "),(_vm.errors.PasswordTooShort)?_c('span',[_vm._v("должен быть как минимум 6 символов.")]):_vm._e(),(_vm.errors.PasswordRequiresNonAlphanumeric)?_c('span',[_vm._v("\n                    должен содержать как минимум один спецсимвол.\n                ")]):_vm._e(),(_vm.errors.PasswordRequiresUpper)?_c('span',[_vm._v("\n                    должны встречаться символы в верхнем регистре.\n                ")]):_vm._e(),(_vm.errors.PasswordRequiresLower)?_c('span',[_vm._v("\n                    должны встречаться символы в нижнем регистре.\n                ")]):_vm._e()]):_vm._e()]),_c('div',{staticClass:"form-group"},[_c('label',{staticClass:"label"},[_vm._v("Введите имя контактного лица")]),_c('input',{directives:[{name:"model",rawName:"v-model.trim",value:(_vm.userName),expression:"userName",modifiers:{"trim":true}}],staticClass:"form-control name-input",class:{ 'invalid-input': _vm.errors.UserNameError },attrs:{"placeholder":"Имя","type":"text","required":""},domProps:{"value":(_vm.userName)},on:{"input":function($event){if($event.target.composing){ return; }_vm.userName=$event.target.value.trim()},"blur":function($event){_vm.$forceUpdate()}}}),(_vm.errors.UserNameError)?_c('div',{staticClass:"invalid-text"},[_vm._v("\n                В имени пользователя нельзя использовать пробелы и специальные символы ($#!).\n            ")]):_vm._e()]),_c('div',{staticClass:"form-group"},[_c('label',{staticClass:"label"},[_vm._v("Введите фамилию контактного лица")]),_c('input',{directives:[{name:"model",rawName:"v-model.trim",value:(_vm.userLastName),expression:"userLastName",modifiers:{"trim":true}}],staticClass:"form-control name-input",class:{ 'invalid-input': _vm.errors.UserLastNameError },attrs:{"placeholder":"Фамилия","type":"text","required":""},domProps:{"value":(_vm.userLastName)},on:{"input":function($event){if($event.target.composing){ return; }_vm.userLastName=$event.target.value.trim()},"blur":function($event){_vm.$forceUpdate()}}}),(_vm.errors.UserLastNameError)?_c('div',{staticClass:"invalid-text"},[_vm._v("\n                В фамилии пользователя нельзя использовать пробелы и специальные символы ($#!).\n            ")]):_vm._e()]),_c('div',{staticClass:"form-group"},[_c('label',{staticClass:"label"},[_vm._v("Введите отчество контактного лица")]),_c('input',{directives:[{name:"model",rawName:"v-model.trim",value:(_vm.userPatronymic),expression:"userPatronymic",modifiers:{"trim":true}}],staticClass:"form-control name-input",class:{ 'invalid-input': _vm.errors.UserPatronymicNameError },attrs:{"placeholder":"Отчество","type":"text","required":""},domProps:{"value":(_vm.userPatronymic)},on:{"input":function($event){if($event.target.composing){ return; }_vm.userPatronymic=$event.target.value.trim()},"blur":function($event){_vm.$forceUpdate()}}}),(_vm.errors.UserPatronymicNameError)?_c('div',{staticClass:"invalid-text"},[_vm._v("\n                В отчестве пользователя нельзя использовать пробелы, цифры и специальные символы\n                ($#!).\n            ")]):_vm._e()]),_c('div',{staticClass:"form-group"},[_c('label',{staticClass:"label"},[_vm._v("Введите телефон")]),_c('input',{directives:[{name:"model",rawName:"v-model.trim",value:(_vm.phone),expression:"phone",modifiers:{"trim":true}},{name:"mask",rawName:"v-mask",value:('+# (###) ###-##-##'),expression:"'+# (###) ###-##-##'"}],staticClass:"form-control phone-input",class:{ 'invalid-input': _vm.errors.UserPhoneError },attrs:{"placeholder":"+7 (___) ___-__-__","type":"tel","autocomplete":"new-tel","required":""},domProps:{"value":(_vm.phone)},on:{"input":function($event){if($event.target.composing){ return; }_vm.phone=$event.target.value.trim()},"blur":function($event){_vm.$forceUpdate()}}}),(_vm.errors.UserPhoneError)?_c('div',{staticClass:"invalid-text"},[_vm._v("\n                Неправильно введён номер.\n            ")]):_vm._e()]),_c('div',{staticClass:"form-group"},[_c('label',{staticClass:"label"},[_vm._v("Введите наименование организации")]),_c('div',{staticClass:"two-selectors"},[_c('app-select',{staticClass:"first-selector",staticStyle:{"display":"block"},attrs:{"options":_vm.organizationTypes,"selected":_vm.organizationType},on:{"updateOption":_vm.changeOption}}),_c('input',{directives:[{name:"model",rawName:"v-model.trim",value:(_vm.organizationName),expression:"organizationName",modifiers:{"trim":true}}],staticClass:"form-control second-selector",attrs:{"placeholder":"Название огранизации","type":"text","required":""},domProps:{"value":(_vm.organizationName)},on:{"input":function($event){if($event.target.composing){ return; }_vm.organizationName=$event.target.value.trim()},"blur":function($event){_vm.$forceUpdate()}}})],1)]),_c('button',{staticClass:"btn btn-yellow btn-reg",attrs:{"type":"submit"}},[_vm._v("Зарегистрироваться")]),_vm._m(0)],1),_c('div',{staticClass:"already-have-account text-center"},[_c('p',[_vm._v("Уже зарегистрированы?")]),_c('span',{staticClass:"go-log-in border-green",attrs:{"href":"#"},on:{"click":function($event){_vm.logIn()}}},[_vm._v("Войти")])])])}
-var registration_formvue_type_template_id_60e5cacd_staticRenderFns = [function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"accept-policy"},[_vm._v("\n            Нажимая на кнопку, вы даете согласие на обработку\n            "),_c('br'),_vm._v("\n            своих персональных данных и соглашаетесь\n            "),_c('br'),_vm._v("\n            с\n            "),_c('a',{staticClass:"policy-link solid-border-grey",attrs:{"href":"/politika"}},[_vm._v("\n                Политикой конфиденциальности\n            ")])])}]
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"17a5199b-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/authorization/registration/registration-form/registration-form.vue?vue&type=template&id=48b83170&
+var registration_formvue_type_template_id_48b83170_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"registration-container"},[(_vm.loadingForm)?_c('div',{staticClass:"loading-wrapper"}):_vm._e(),_c('div',{staticClass:"registration-text"},[_vm._v("\n        Регистрация\n    ")]),_c('form',{staticClass:"registration-form",on:{"submit":function($event){$event.preventDefault();return _vm.onSubmit($event)}}},[(_vm.loadingForm)?_c('spinner',{staticClass:"spinner"}):_vm._e(),_c('div',{staticClass:"form-group"},[_c('label',{staticClass:"label"},[_vm._v("Введите email")]),_c('input',{directives:[{name:"model",rawName:"v-model.trim",value:(_vm.email),expression:"email",modifiers:{"trim":true}}],staticClass:"form-control email-input",class:{ 'invalid-input': _vm.errors.UserEmailError },attrs:{"placeholder":"Почта","type":"email","autocomplete":"new-email","required":""},domProps:{"value":(_vm.email)},on:{"input":function($event){if($event.target.composing){ return; }_vm.email=$event.target.value.trim()},"blur":function($event){_vm.$forceUpdate()}}}),(_vm.errors.DuplicateUserName)?_c('div',{staticClass:"invalid-text"},[_vm._v("\n                Данный email уже зарегистрирован\n            ")]):_vm._e(),(_vm.errors.InvalidEmail)?_c('div',[_vm._v("\n                Неправильно введён email\n            ")]):_vm._e()]),_c('div',{staticClass:"form-group"},[_c('label',{staticClass:"label"},[_vm._v("Введите пароль")]),_c('input',{directives:[{name:"model",rawName:"v-model.trim",value:(_vm.password),expression:"password",modifiers:{"trim":true}}],staticClass:"form-control password-input",class:{ 'invalid-input': _vm.errors.PasswordError },attrs:{"placeholder":"Пароль","type":"password","required":"","utocomplete":"new-password"},domProps:{"value":(_vm.password)},on:{"input":function($event){if($event.target.composing){ return; }_vm.password=$event.target.value.trim()},"blur":function($event){_vm.$forceUpdate()}}}),(_vm.errors.PasswordError)?_c('div',{staticClass:"invalid-text"},[_vm._v("\n                Пароль\n                "),(_vm.errors.PasswordTooShort)?_c('span',[_vm._v("должен быть как минимум 6 символов.")]):_vm._e(),(_vm.errors.PasswordRequiresNonAlphanumeric)?_c('span',[_vm._v("\n                    должен содержать как минимум один спецсимвол.\n                ")]):_vm._e(),(_vm.errors.PasswordRequiresUpper)?_c('span',[_vm._v("\n                    должны встречаться символы в верхнем регистре.\n                ")]):_vm._e(),(_vm.errors.PasswordRequiresLower)?_c('span',[_vm._v("\n                    должны встречаться символы в нижнем регистре.\n                ")]):_vm._e()]):_vm._e()]),_c('div',{staticClass:"form-group"},[_c('label',{staticClass:"label"},[_vm._v("Введите имя контактного лица")]),_c('input',{directives:[{name:"model",rawName:"v-model.trim",value:(_vm.userName),expression:"userName",modifiers:{"trim":true}}],staticClass:"form-control name-input",class:{ 'invalid-input': _vm.errors.UserNameError },attrs:{"placeholder":"Имя","type":"text","required":""},domProps:{"value":(_vm.userName)},on:{"input":function($event){if($event.target.composing){ return; }_vm.userName=$event.target.value.trim()},"blur":function($event){_vm.$forceUpdate()}}}),(_vm.errors.UserNameError)?_c('div',{staticClass:"invalid-text"},[_vm._v("\n                В имени пользователя нельзя использовать пробелы и специальные символы ($#!).\n            ")]):_vm._e()]),_c('div',{staticClass:"form-group"},[_c('label',{staticClass:"label"},[_vm._v("Введите фамилию контактного лица")]),_c('input',{directives:[{name:"model",rawName:"v-model.trim",value:(_vm.userLastName),expression:"userLastName",modifiers:{"trim":true}}],staticClass:"form-control name-input",class:{ 'invalid-input': _vm.errors.UserLastNameError },attrs:{"placeholder":"Фамилия","type":"text","required":""},domProps:{"value":(_vm.userLastName)},on:{"input":function($event){if($event.target.composing){ return; }_vm.userLastName=$event.target.value.trim()},"blur":function($event){_vm.$forceUpdate()}}}),(_vm.errors.UserLastNameError)?_c('div',{staticClass:"invalid-text"},[_vm._v("\n                В фамилии пользователя нельзя использовать пробелы и специальные символы ($#!).\n            ")]):_vm._e()]),_c('div',{staticClass:"form-group"},[_c('label',{staticClass:"label"},[_vm._v("Введите отчество контактного лица")]),_c('input',{directives:[{name:"model",rawName:"v-model.trim",value:(_vm.userPatronymic),expression:"userPatronymic",modifiers:{"trim":true}}],staticClass:"form-control name-input",class:{ 'invalid-input': _vm.errors.UserPatronymicNameError },attrs:{"placeholder":"Отчество","type":"text","required":""},domProps:{"value":(_vm.userPatronymic)},on:{"input":function($event){if($event.target.composing){ return; }_vm.userPatronymic=$event.target.value.trim()},"blur":function($event){_vm.$forceUpdate()}}}),(_vm.errors.UserPatronymicNameError)?_c('div',{staticClass:"invalid-text"},[_vm._v("\n                В отчестве пользователя нельзя использовать пробелы, цифры и специальные символы\n                ($#!).\n            ")]):_vm._e()]),_c('div',{staticClass:"form-group"},[_c('label',{staticClass:"label"},[_vm._v("Введите телефон")]),_c('input',{directives:[{name:"model",rawName:"v-model.trim",value:(_vm.phone),expression:"phone",modifiers:{"trim":true}},{name:"mask",rawName:"v-mask",value:('+# (###) ###-##-##'),expression:"'+# (###) ###-##-##'"}],staticClass:"form-control phone-input",class:{ 'invalid-input': _vm.errors.UserPhoneError },attrs:{"placeholder":"+7 (___) ___-__-__","type":"tel","autocomplete":"new-tel","required":""},domProps:{"value":(_vm.phone)},on:{"input":function($event){if($event.target.composing){ return; }_vm.phone=$event.target.value.trim()},"blur":function($event){_vm.$forceUpdate()}}}),(_vm.errors.UserPhoneError)?_c('div',{staticClass:"invalid-text"},[_vm._v("\n                Неправильно введён номер.\n            ")]):_vm._e()]),_c('div',{staticClass:"form-group"},[_c('label',{staticClass:"label"},[_vm._v("Введите наименование организации")]),_c('div',{staticClass:"two-selectors"},[_c('app-select',{staticClass:"first-selector",staticStyle:{"display":"block"},attrs:{"options":_vm.organizationTypes,"selected":_vm.organizationType},on:{"updateOption":_vm.changeOption}}),_c('input',{directives:[{name:"model",rawName:"v-model.trim",value:(_vm.organizationName),expression:"organizationName",modifiers:{"trim":true}}],staticClass:"form-control second-selector",attrs:{"placeholder":"Название огранизации","type":"text","required":""},domProps:{"value":(_vm.organizationName)},on:{"input":function($event){if($event.target.composing){ return; }_vm.organizationName=$event.target.value.trim()},"blur":function($event){_vm.$forceUpdate()}}})],1)]),_c('button',{staticClass:"btn btn-yellow btn-reg",attrs:{"type":"submit"}},[_vm._v("Зарегистрироваться")]),_vm._m(0)],1),_c('div',{staticClass:"already-have-account text-center"},[_c('p',[_vm._v("Уже зарегистрированы?")]),_c('span',{staticClass:"go-log-in border-green",attrs:{"href":"#"},on:{"click":function($event){_vm.logIn()}}},[_vm._v("Войти")])])])}
+var registration_formvue_type_template_id_48b83170_staticRenderFns = [function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"accept-policy"},[_vm._v("\n            Нажимая на кнопку, вы даете согласие на обработку\n            "),_c('br'),_vm._v("\n            своих персональных данных и соглашаетесь\n            "),_c('br'),_vm._v("\n            с\n            "),_c('a',{staticClass:"policy-link solid-border-grey",attrs:{"href":"/politika"}},[_vm._v("\n                Политикой конфиденциальности\n            ")])])}]
 
 
-// CONCATENATED MODULE: ./src/components/authorization/registration/registration-form/registration-form.vue?vue&type=template&id=60e5cacd&
+// CONCATENATED MODULE: ./src/components/authorization/registration/registration-form/registration-form.vue?vue&type=template&id=48b83170&
 
 // EXTERNAL MODULE: ./node_modules/core-js/modules/es6.regexp.split.js
 var es6_regexp_split = __webpack_require__("28a5");
@@ -7428,19 +7428,27 @@ var registration_formvue_type_script_lang_ts_RegistrationForm = class Registrati
       this.errors[key] = false;
     }
 
-    errorMessages.forEach(errorMsg => {
-      this.errors[errorMsg] = true;
+    if (errorMessages) {
+      errorMessages.forEach(errorMsg => {
+        this.errors[errorMsg] = true;
 
-      if (errorMsg.includes('Password')) {
-        this.errors.PasswordError = true;
-      }
+        if (errorMsg.includes('Password')) {
+          this.errors.PasswordError = true;
+        } else {
+          this.errors.PasswordError = false;
+        }
 
-      if (errorMsg.includes('UserName')) {
-        this.errors.UserEmailError = true;
-      }
-    });
+        if (errorMsg.includes('UserName')) {
+          this.errors.UserEmailError = true;
+        } else {
+          this.errors.UserEmailError = false;
+        }
+      });
+    }
+
     var userNameRegExp = /^[a-zA-Zа-яА-я]+$/;
     var userPhoneRegExp = /^\d{11}$/;
+    var OrganizationNameRegExpg = /^[^<>?[\]:|*']+$/;
 
     if (!userNameRegExp.test(this.userName)) {
       this.errors.UserNameError = true;
@@ -7454,22 +7462,44 @@ var registration_formvue_type_script_lang_ts_RegistrationForm = class Registrati
       this.errors.UserPatronymicNameError = true;
     }
 
+    if (!OrganizationNameRegExpg.test(this.organizationName)) {
+      this.errors.OrganizationNameError = true;
+    }
+
     this.errors.UserPhoneError = !userPhoneRegExp.test(this.regForm.phone);
     this.$forceUpdate();
   }
 
+  fieldValidity() {
+    var errors = this.errors;
+
+    for (var key in errors) {
+      if (errors.hasOwnProperty(key)) {
+        if (errors[key] === true) {
+          return false;
+        }
+      }
+    }
+
+    return true;
+  }
+
   onSubmit(e) {
-    this.loadingForm = true;
-    this.auth.registration(this.regForm).then(res => {
-      this.loadingForm = false;
-      store.dispatch('auth/login');
-      store.dispatch('display/toggleRegistration');
-    }).catch(err => {
-      this.loadingForm = false;
-      var errorMessages = ((err || []).response || []).data || [];
-      var errorMessagesArr = errorMessages.split(' ');
-      this.handleError(errorMessagesArr);
-    });
+    this.handleError();
+
+    if (this.fieldValidity()) {
+      this.loadingForm = true;
+      this.auth.registration(this.regForm).then(res => {
+        this.loadingForm = false;
+        store.dispatch('auth/login');
+        store.dispatch('display/toggleRegistration');
+      }).catch(err => {
+        this.loadingForm = false;
+        var errorMessages = ((err || []).response || []).data || [];
+        var errorMessagesArr = errorMessages.split(' ');
+        this.handleError(errorMessagesArr);
+      });
+    }
   }
 
 };
@@ -7497,8 +7527,8 @@ if (style0.__inject__) style0.__inject__(context)
 
 var registration_form_component = normalizeComponent(
   registration_form_registration_formvue_type_script_lang_ts_,
-  registration_formvue_type_template_id_60e5cacd_render,
-  registration_formvue_type_template_id_60e5cacd_staticRenderFns,
+  registration_formvue_type_template_id_48b83170_render,
+  registration_formvue_type_template_id_48b83170_staticRenderFns,
   false,
   registration_form_injectStyles,
   null,
@@ -8057,12 +8087,12 @@ var mobile_menu_component = normalizeComponent(
 
 mobile_menu_component.options.__file = "mobile-menu.vue"
 /* harmony default export */ var mobile_menu = (mobile_menu_component.exports);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"17a5199b-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/shared/header/user-account/user-account-desktop.vue?vue&type=template&id=a858791c&
-var user_account_desktopvue_type_template_id_a858791c_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('ul',{staticClass:"desktop-header__login"},[_vm._m(0),(!_vm.loggedIn)?_c('li',{staticClass:"desktop-header__login-item",on:{"click":function($event){_vm.logIn()}}},[_c('a',{staticClass:"border"},[_vm._v("Вход")])]):_vm._e(),(!_vm.loggedIn)?_c('li',{staticClass:"desktop-header__login-item",on:{"click":function($event){_vm.toggleRegistrationPopup()}}},[_c('a',{staticClass:"border register"},[_vm._v("Регистрация")])]):_vm._e(),(_vm.loggedIn && !_vm.singleContrAgent)?_c('div',{staticClass:"desktop-header__login-item",on:{"click":_vm.toggleContrAgent}},[_vm._v("\n        "+_vm._s(_vm.contrAgent)+"\n    ")]):_vm._e(),(_vm.loggedIn)?_c('div',{staticClass:"user-info",on:{"click":function($event){_vm.toggleUserMenu()}}},[_c('div',{staticClass:"user-avatar"}),_c('div',{staticClass:"user-name border-white"},[_vm._v(_vm._s(_vm.userName))])]):_vm._e()])}
-var user_account_desktopvue_type_template_id_a858791c_staticRenderFns = [function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('li',{staticClass:"desktop-header__login-item desktop-header__login-item_icon-cart"},[_c('span',{staticClass:"icon-shopping-cart desktop-header__icon-cart"},[_c('i',[_vm._v("9")])]),_c('div',{staticClass:"shopping-cart"})])}]
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"17a5199b-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/shared/header/user-account/user-account-desktop.vue?vue&type=template&id=4a541252&
+var user_account_desktopvue_type_template_id_4a541252_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('ul',{staticClass:"desktop-header__login"},[_vm._m(0),(!_vm.loggedIn)?_c('li',{staticClass:"desktop-header__login-item",on:{"click":function($event){_vm.logIn()}}},[_c('a',{staticClass:"border"},[_vm._v("Вход")])]):_vm._e(),(!_vm.loggedIn)?_c('li',{staticClass:"desktop-header__login-item",on:{"click":function($event){_vm.toggleRegistrationPopup()}}},[_c('a',{staticClass:"border register"},[_vm._v("Регистрация")])]):_vm._e(),(_vm.loggedIn && !_vm.singleContrAgent)?_c('div',{staticClass:"desktop-header__login-item",on:{"click":_vm.toggleContrAgent}},[_vm._v("\n        "+_vm._s(_vm.contrAgent)+"\n    ")]):_vm._e(),(_vm.loggedIn)?_c('div',{staticClass:"user-info",on:{"click":function($event){_vm.toggleUserMenu()}}},[_c('div',{staticClass:"user-avatar"}),_c('div',{staticClass:"user-name border-white"},[_vm._v(_vm._s(_vm.userName))])]):_vm._e()])}
+var user_account_desktopvue_type_template_id_4a541252_staticRenderFns = [function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('li',{staticClass:"desktop-header__login-item desktop-header__login-item_icon-cart"},[_c('span',{staticClass:"icon-shopping-cart desktop-header__icon-cart"},[_c('i',[_vm._v("9")])]),_c('div',{staticClass:"shopping-cart"})])}]
 
 
-// CONCATENATED MODULE: ./src/components/shared/header/user-account/user-account-desktop.vue?vue&type=template&id=a858791c&
+// CONCATENATED MODULE: ./src/components/shared/header/user-account/user-account-desktop.vue?vue&type=template&id=4a541252&
 
 // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--14-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/ts-loader??ref--14-3!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/shared/header/user-account/user-account-desktop.vue?vue&type=script&lang=ts&
 
@@ -8080,7 +8110,7 @@ var user_account_desktopvue_type_script_lang_ts_UserAccountDesktop = class UserA
 
   get contrAgent() {
     // @ts-ignore
-    return AuthModule.contragent.name;
+    return AuthModule.contragent.name || '';
   }
 
   get singleContrAgent() {
@@ -8125,8 +8155,8 @@ if (style0.__inject__) style0.__inject__(context)
 
 var user_account_desktop_component = normalizeComponent(
   user_account_user_account_desktopvue_type_script_lang_ts_,
-  user_account_desktopvue_type_template_id_a858791c_render,
-  user_account_desktopvue_type_template_id_a858791c_staticRenderFns,
+  user_account_desktopvue_type_template_id_4a541252_render,
+  user_account_desktopvue_type_template_id_4a541252_staticRenderFns,
   false,
   user_account_desktop_injectStyles,
   null,
@@ -10571,12 +10601,12 @@ var user_sidebarshadow_component = normalizeComponent(
 
 user_sidebarshadow_component.options.__file = "user-sidebar.vue"
 /* harmony default export */ var user_sidebarshadow = (user_sidebarshadow_component.exports);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"17a5199b-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/authorization/registration/registration-form/registration-form.vue?vue&type=template&id=735b2bac&shadow
-var registration_formvue_type_template_id_735b2bac_shadow_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"registration-container"},[(_vm.loadingForm)?_c('div',{staticClass:"loading-wrapper"}):_vm._e(),_c('div',{staticClass:"registration-text"},[_vm._v("\n        Регистрация\n    ")]),_c('form',{staticClass:"registration-form",on:{"submit":function($event){$event.preventDefault();return _vm.onSubmit($event)}}},[(_vm.loadingForm)?_c('spinner',{staticClass:"spinner"}):_vm._e(),_c('div',{staticClass:"form-group"},[_c('label',{staticClass:"label"},[_vm._v("Введите email")]),_c('input',{directives:[{name:"model",rawName:"v-model.trim",value:(_vm.email),expression:"email",modifiers:{"trim":true}}],staticClass:"form-control email-input",class:{ 'invalid-input': _vm.errors.UserEmailError },attrs:{"placeholder":"Почта","type":"email","autocomplete":"new-email","required":""},domProps:{"value":(_vm.email)},on:{"input":function($event){if($event.target.composing){ return; }_vm.email=$event.target.value.trim()},"blur":function($event){_vm.$forceUpdate()}}}),(_vm.errors.DuplicateUserName)?_c('div',{staticClass:"invalid-text"},[_vm._v("\n                Данный email уже зарегистрирован\n            ")]):_vm._e(),(_vm.errors.InvalidEmail)?_c('div',[_vm._v("\n                Неправильно введён email\n            ")]):_vm._e()]),_c('div',{staticClass:"form-group"},[_c('label',{staticClass:"label"},[_vm._v("Введите пароль")]),_c('input',{directives:[{name:"model",rawName:"v-model.trim",value:(_vm.password),expression:"password",modifiers:{"trim":true}}],staticClass:"form-control password-input",class:{ 'invalid-input': _vm.errors.PasswordError },attrs:{"placeholder":"Пароль","type":"password","required":"","utocomplete":"new-password"},domProps:{"value":(_vm.password)},on:{"input":function($event){if($event.target.composing){ return; }_vm.password=$event.target.value.trim()},"blur":function($event){_vm.$forceUpdate()}}}),(_vm.errors.PasswordError)?_c('div',{staticClass:"invalid-text"},[_vm._v("\n                Пароль\n                "),(_vm.errors.PasswordTooShort)?_c('span',[_vm._v("должен быть как минимум 6 символов.")]):_vm._e(),(_vm.errors.PasswordRequiresNonAlphanumeric)?_c('span',[_vm._v("\n                    должен содержать как минимум один спецсимвол.\n                ")]):_vm._e(),(_vm.errors.PasswordRequiresUpper)?_c('span',[_vm._v("\n                    должны встречаться символы в верхнем регистре.\n                ")]):_vm._e(),(_vm.errors.PasswordRequiresLower)?_c('span',[_vm._v("\n                    должны встречаться символы в нижнем регистре.\n                ")]):_vm._e()]):_vm._e()]),_c('div',{staticClass:"form-group"},[_c('label',{staticClass:"label"},[_vm._v("Введите имя контактного лица")]),_c('input',{directives:[{name:"model",rawName:"v-model.trim",value:(_vm.userName),expression:"userName",modifiers:{"trim":true}}],staticClass:"form-control name-input",class:{ 'invalid-input': _vm.errors.UserNameError },attrs:{"placeholder":"Имя","type":"text","required":""},domProps:{"value":(_vm.userName)},on:{"input":function($event){if($event.target.composing){ return; }_vm.userName=$event.target.value.trim()},"blur":function($event){_vm.$forceUpdate()}}}),(_vm.errors.UserNameError)?_c('div',{staticClass:"invalid-text"},[_vm._v("\n                В имени пользователя нельзя использовать пробелы и специальные символы ($#!).\n            ")]):_vm._e()]),_c('div',{staticClass:"form-group"},[_c('label',{staticClass:"label"},[_vm._v("Введите фамилию контактного лица")]),_c('input',{directives:[{name:"model",rawName:"v-model.trim",value:(_vm.userLastName),expression:"userLastName",modifiers:{"trim":true}}],staticClass:"form-control name-input",class:{ 'invalid-input': _vm.errors.UserLastNameError },attrs:{"placeholder":"Фамилия","type":"text","required":""},domProps:{"value":(_vm.userLastName)},on:{"input":function($event){if($event.target.composing){ return; }_vm.userLastName=$event.target.value.trim()},"blur":function($event){_vm.$forceUpdate()}}}),(_vm.errors.UserLastNameError)?_c('div',{staticClass:"invalid-text"},[_vm._v("\n                В фамилии пользователя нельзя использовать пробелы и специальные символы ($#!).\n            ")]):_vm._e()]),_c('div',{staticClass:"form-group"},[_c('label',{staticClass:"label"},[_vm._v("Введите отчество контактного лица")]),_c('input',{directives:[{name:"model",rawName:"v-model.trim",value:(_vm.userPatronymic),expression:"userPatronymic",modifiers:{"trim":true}}],staticClass:"form-control name-input",class:{ 'invalid-input': _vm.errors.UserPatronymicNameError },attrs:{"placeholder":"Отчество","type":"text","required":""},domProps:{"value":(_vm.userPatronymic)},on:{"input":function($event){if($event.target.composing){ return; }_vm.userPatronymic=$event.target.value.trim()},"blur":function($event){_vm.$forceUpdate()}}}),(_vm.errors.UserPatronymicNameError)?_c('div',{staticClass:"invalid-text"},[_vm._v("\n                В отчестве пользователя нельзя использовать пробелы, цифры и специальные символы\n                ($#!).\n            ")]):_vm._e()]),_c('div',{staticClass:"form-group"},[_c('label',{staticClass:"label"},[_vm._v("Введите телефон")]),_c('input',{directives:[{name:"model",rawName:"v-model.trim",value:(_vm.phone),expression:"phone",modifiers:{"trim":true}},{name:"mask",rawName:"v-mask",value:('+# (###) ###-##-##'),expression:"'+# (###) ###-##-##'"}],staticClass:"form-control phone-input",class:{ 'invalid-input': _vm.errors.UserPhoneError },attrs:{"placeholder":"+7 (___) ___-__-__","type":"tel","autocomplete":"new-tel","required":""},domProps:{"value":(_vm.phone)},on:{"input":function($event){if($event.target.composing){ return; }_vm.phone=$event.target.value.trim()},"blur":function($event){_vm.$forceUpdate()}}}),(_vm.errors.UserPhoneError)?_c('div',{staticClass:"invalid-text"},[_vm._v("\n                Неправильно введён номер.\n            ")]):_vm._e()]),_c('div',{staticClass:"form-group"},[_c('label',{staticClass:"label"},[_vm._v("Введите наименование организации")]),_c('div',{staticClass:"two-selectors"},[_c('app-select',{staticClass:"first-selector",staticStyle:{"display":"block"},attrs:{"options":_vm.organizationTypes,"selected":_vm.organizationType},on:{"updateOption":_vm.changeOption}}),_c('input',{directives:[{name:"model",rawName:"v-model.trim",value:(_vm.organizationName),expression:"organizationName",modifiers:{"trim":true}}],staticClass:"form-control second-selector",attrs:{"placeholder":"Название огранизации","type":"text","required":""},domProps:{"value":(_vm.organizationName)},on:{"input":function($event){if($event.target.composing){ return; }_vm.organizationName=$event.target.value.trim()},"blur":function($event){_vm.$forceUpdate()}}})],1)]),_c('button',{staticClass:"btn btn-yellow btn-reg",attrs:{"type":"submit"}},[_vm._v("Зарегистрироваться")]),_vm._m(0)],1),_c('div',{staticClass:"already-have-account text-center"},[_c('p',[_vm._v("Уже зарегистрированы?")]),_c('span',{staticClass:"go-log-in border-green",attrs:{"href":"#"},on:{"click":function($event){_vm.logIn()}}},[_vm._v("Войти")])])])}
-var registration_formvue_type_template_id_735b2bac_shadow_staticRenderFns = [function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"accept-policy"},[_vm._v("\n            Нажимая на кнопку, вы даете согласие на обработку\n            "),_c('br'),_vm._v("\n            своих персональных данных и соглашаетесь\n            "),_c('br'),_vm._v("\n            с\n            "),_c('a',{staticClass:"policy-link solid-border-grey",attrs:{"href":"/politika"}},[_vm._v("\n                Политикой конфиденциальности\n            ")])])}]
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"17a5199b-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/authorization/registration/registration-form/registration-form.vue?vue&type=template&id=4305d2b3&shadow
+var registration_formvue_type_template_id_4305d2b3_shadow_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"registration-container"},[(_vm.loadingForm)?_c('div',{staticClass:"loading-wrapper"}):_vm._e(),_c('div',{staticClass:"registration-text"},[_vm._v("\n        Регистрация\n    ")]),_c('form',{staticClass:"registration-form",on:{"submit":function($event){$event.preventDefault();return _vm.onSubmit($event)}}},[(_vm.loadingForm)?_c('spinner',{staticClass:"spinner"}):_vm._e(),_c('div',{staticClass:"form-group"},[_c('label',{staticClass:"label"},[_vm._v("Введите email")]),_c('input',{directives:[{name:"model",rawName:"v-model.trim",value:(_vm.email),expression:"email",modifiers:{"trim":true}}],staticClass:"form-control email-input",class:{ 'invalid-input': _vm.errors.UserEmailError },attrs:{"placeholder":"Почта","type":"email","autocomplete":"new-email","required":""},domProps:{"value":(_vm.email)},on:{"input":function($event){if($event.target.composing){ return; }_vm.email=$event.target.value.trim()},"blur":function($event){_vm.$forceUpdate()}}}),(_vm.errors.DuplicateUserName)?_c('div',{staticClass:"invalid-text"},[_vm._v("\n                Данный email уже зарегистрирован\n            ")]):_vm._e(),(_vm.errors.InvalidEmail)?_c('div',[_vm._v("\n                Неправильно введён email\n            ")]):_vm._e()]),_c('div',{staticClass:"form-group"},[_c('label',{staticClass:"label"},[_vm._v("Введите пароль")]),_c('input',{directives:[{name:"model",rawName:"v-model.trim",value:(_vm.password),expression:"password",modifiers:{"trim":true}}],staticClass:"form-control password-input",class:{ 'invalid-input': _vm.errors.PasswordError },attrs:{"placeholder":"Пароль","type":"password","required":"","utocomplete":"new-password"},domProps:{"value":(_vm.password)},on:{"input":function($event){if($event.target.composing){ return; }_vm.password=$event.target.value.trim()},"blur":function($event){_vm.$forceUpdate()}}}),(_vm.errors.PasswordError)?_c('div',{staticClass:"invalid-text"},[_vm._v("\n                Пароль\n                "),(_vm.errors.PasswordTooShort)?_c('span',[_vm._v("должен быть как минимум 6 символов.")]):_vm._e(),(_vm.errors.PasswordRequiresNonAlphanumeric)?_c('span',[_vm._v("\n                    должен содержать как минимум один спецсимвол.\n                ")]):_vm._e(),(_vm.errors.PasswordRequiresUpper)?_c('span',[_vm._v("\n                    должны встречаться символы в верхнем регистре.\n                ")]):_vm._e(),(_vm.errors.PasswordRequiresLower)?_c('span',[_vm._v("\n                    должны встречаться символы в нижнем регистре.\n                ")]):_vm._e()]):_vm._e()]),_c('div',{staticClass:"form-group"},[_c('label',{staticClass:"label"},[_vm._v("Введите имя контактного лица")]),_c('input',{directives:[{name:"model",rawName:"v-model.trim",value:(_vm.userName),expression:"userName",modifiers:{"trim":true}}],staticClass:"form-control name-input",class:{ 'invalid-input': _vm.errors.UserNameError },attrs:{"placeholder":"Имя","type":"text","required":""},domProps:{"value":(_vm.userName)},on:{"input":function($event){if($event.target.composing){ return; }_vm.userName=$event.target.value.trim()},"blur":function($event){_vm.$forceUpdate()}}}),(_vm.errors.UserNameError)?_c('div',{staticClass:"invalid-text"},[_vm._v("\n                В имени пользователя нельзя использовать пробелы и специальные символы ($#!).\n            ")]):_vm._e()]),_c('div',{staticClass:"form-group"},[_c('label',{staticClass:"label"},[_vm._v("Введите фамилию контактного лица")]),_c('input',{directives:[{name:"model",rawName:"v-model.trim",value:(_vm.userLastName),expression:"userLastName",modifiers:{"trim":true}}],staticClass:"form-control name-input",class:{ 'invalid-input': _vm.errors.UserLastNameError },attrs:{"placeholder":"Фамилия","type":"text","required":""},domProps:{"value":(_vm.userLastName)},on:{"input":function($event){if($event.target.composing){ return; }_vm.userLastName=$event.target.value.trim()},"blur":function($event){_vm.$forceUpdate()}}}),(_vm.errors.UserLastNameError)?_c('div',{staticClass:"invalid-text"},[_vm._v("\n                В фамилии пользователя нельзя использовать пробелы и специальные символы ($#!).\n            ")]):_vm._e()]),_c('div',{staticClass:"form-group"},[_c('label',{staticClass:"label"},[_vm._v("Введите отчество контактного лица")]),_c('input',{directives:[{name:"model",rawName:"v-model.trim",value:(_vm.userPatronymic),expression:"userPatronymic",modifiers:{"trim":true}}],staticClass:"form-control name-input",class:{ 'invalid-input': _vm.errors.UserPatronymicNameError },attrs:{"placeholder":"Отчество","type":"text","required":""},domProps:{"value":(_vm.userPatronymic)},on:{"input":function($event){if($event.target.composing){ return; }_vm.userPatronymic=$event.target.value.trim()},"blur":function($event){_vm.$forceUpdate()}}}),(_vm.errors.UserPatronymicNameError)?_c('div',{staticClass:"invalid-text"},[_vm._v("\n                В отчестве пользователя нельзя использовать пробелы, цифры и специальные символы\n                ($#!).\n            ")]):_vm._e()]),_c('div',{staticClass:"form-group"},[_c('label',{staticClass:"label"},[_vm._v("Введите телефон")]),_c('input',{directives:[{name:"model",rawName:"v-model.trim",value:(_vm.phone),expression:"phone",modifiers:{"trim":true}},{name:"mask",rawName:"v-mask",value:('+# (###) ###-##-##'),expression:"'+# (###) ###-##-##'"}],staticClass:"form-control phone-input",class:{ 'invalid-input': _vm.errors.UserPhoneError },attrs:{"placeholder":"+7 (___) ___-__-__","type":"tel","autocomplete":"new-tel","required":""},domProps:{"value":(_vm.phone)},on:{"input":function($event){if($event.target.composing){ return; }_vm.phone=$event.target.value.trim()},"blur":function($event){_vm.$forceUpdate()}}}),(_vm.errors.UserPhoneError)?_c('div',{staticClass:"invalid-text"},[_vm._v("\n                Неправильно введён номер.\n            ")]):_vm._e()]),_c('div',{staticClass:"form-group"},[_c('label',{staticClass:"label"},[_vm._v("Введите наименование организации")]),_c('div',{staticClass:"two-selectors"},[_c('app-select',{staticClass:"first-selector",staticStyle:{"display":"block"},attrs:{"options":_vm.organizationTypes,"selected":_vm.organizationType},on:{"updateOption":_vm.changeOption}}),_c('input',{directives:[{name:"model",rawName:"v-model.trim",value:(_vm.organizationName),expression:"organizationName",modifiers:{"trim":true}}],staticClass:"form-control second-selector",attrs:{"placeholder":"Название огранизации","type":"text","required":""},domProps:{"value":(_vm.organizationName)},on:{"input":function($event){if($event.target.composing){ return; }_vm.organizationName=$event.target.value.trim()},"blur":function($event){_vm.$forceUpdate()}}})],1)]),_c('button',{staticClass:"btn btn-yellow btn-reg",attrs:{"type":"submit"}},[_vm._v("Зарегистрироваться")]),_vm._m(0)],1),_c('div',{staticClass:"already-have-account text-center"},[_c('p',[_vm._v("Уже зарегистрированы?")]),_c('span',{staticClass:"go-log-in border-green",attrs:{"href":"#"},on:{"click":function($event){_vm.logIn()}}},[_vm._v("Войти")])])])}
+var registration_formvue_type_template_id_4305d2b3_shadow_staticRenderFns = [function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"accept-policy"},[_vm._v("\n            Нажимая на кнопку, вы даете согласие на обработку\n            "),_c('br'),_vm._v("\n            своих персональных данных и соглашаетесь\n            "),_c('br'),_vm._v("\n            с\n            "),_c('a',{staticClass:"policy-link solid-border-grey",attrs:{"href":"/politika"}},[_vm._v("\n                Политикой конфиденциальности\n            ")])])}]
 
 
-// CONCATENATED MODULE: ./src/components/authorization/registration/registration-form/registration-form.vue?vue&type=template&id=735b2bac&shadow
+// CONCATENATED MODULE: ./src/components/authorization/registration/registration-form/registration-form.vue?vue&type=template&id=4305d2b3&shadow
 
 // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--14-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/ts-loader??ref--14-3!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/authorization/registration/registration-form/registration-form.vue?vue&type=script&lang=ts&shadow
 
@@ -10653,19 +10683,27 @@ var registration_formvue_type_script_lang_ts_shadow_RegistrationForm = class Reg
       this.errors[key] = false;
     }
 
-    errorMessages.forEach(errorMsg => {
-      this.errors[errorMsg] = true;
+    if (errorMessages) {
+      errorMessages.forEach(errorMsg => {
+        this.errors[errorMsg] = true;
 
-      if (errorMsg.includes('Password')) {
-        this.errors.PasswordError = true;
-      }
+        if (errorMsg.includes('Password')) {
+          this.errors.PasswordError = true;
+        } else {
+          this.errors.PasswordError = false;
+        }
 
-      if (errorMsg.includes('UserName')) {
-        this.errors.UserEmailError = true;
-      }
-    });
+        if (errorMsg.includes('UserName')) {
+          this.errors.UserEmailError = true;
+        } else {
+          this.errors.UserEmailError = false;
+        }
+      });
+    }
+
     var userNameRegExp = /^[a-zA-Zа-яА-я]+$/;
     var userPhoneRegExp = /^\d{11}$/;
+    var OrganizationNameRegExpg = /^[^<>?[\]:|*']+$/;
 
     if (!userNameRegExp.test(this.userName)) {
       this.errors.UserNameError = true;
@@ -10679,22 +10717,44 @@ var registration_formvue_type_script_lang_ts_shadow_RegistrationForm = class Reg
       this.errors.UserPatronymicNameError = true;
     }
 
+    if (!OrganizationNameRegExpg.test(this.organizationName)) {
+      this.errors.OrganizationNameError = true;
+    }
+
     this.errors.UserPhoneError = !userPhoneRegExp.test(this.regForm.phone);
     this.$forceUpdate();
   }
 
+  fieldValidity() {
+    var errors = this.errors;
+
+    for (var key in errors) {
+      if (errors.hasOwnProperty(key)) {
+        if (errors[key] === true) {
+          return false;
+        }
+      }
+    }
+
+    return true;
+  }
+
   onSubmit(e) {
-    this.loadingForm = true;
-    this.auth.registration(this.regForm).then(res => {
-      this.loadingForm = false;
-      store.dispatch('auth/login');
-      store.dispatch('display/toggleRegistration');
-    }).catch(err => {
-      this.loadingForm = false;
-      var errorMessages = ((err || []).response || []).data || [];
-      var errorMessagesArr = errorMessages.split(' ');
-      this.handleError(errorMessagesArr);
-    });
+    this.handleError();
+
+    if (this.fieldValidity()) {
+      this.loadingForm = true;
+      this.auth.registration(this.regForm).then(res => {
+        this.loadingForm = false;
+        store.dispatch('auth/login');
+        store.dispatch('display/toggleRegistration');
+      }).catch(err => {
+        this.loadingForm = false;
+        var errorMessages = ((err || []).response || []).data || [];
+        var errorMessagesArr = errorMessages.split(' ');
+        this.handleError(errorMessagesArr);
+      });
+    }
   }
 
 };
@@ -10722,8 +10782,8 @@ if (style0.__inject__) style0.__inject__(context)
 
 var registration_formshadow_component = normalizeComponent(
   registration_form_registration_formvue_type_script_lang_ts_shadow,
-  registration_formvue_type_template_id_735b2bac_shadow_render,
-  registration_formvue_type_template_id_735b2bac_shadow_staticRenderFns,
+  registration_formvue_type_template_id_4305d2b3_shadow_render,
+  registration_formvue_type_template_id_4305d2b3_shadow_staticRenderFns,
   false,
   registration_formshadow_injectStyles,
   null,
@@ -11409,12 +11469,12 @@ var search_results_by_vinshadow_component = normalizeComponent(
 
 search_results_by_vinshadow_component.options.__file = "search-results-by-vin.vue"
 /* harmony default export */ var search_results_by_vinshadow = (search_results_by_vinshadow_component.exports);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"17a5199b-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/shared/header/user-account/user-account-desktop.vue?vue&type=template&id=0827667f&shadow
-var user_account_desktopvue_type_template_id_0827667f_shadow_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('ul',{staticClass:"desktop-header__login"},[_vm._m(0),(!_vm.loggedIn)?_c('li',{staticClass:"desktop-header__login-item",on:{"click":function($event){_vm.logIn()}}},[_c('a',{staticClass:"border"},[_vm._v("Вход")])]):_vm._e(),(!_vm.loggedIn)?_c('li',{staticClass:"desktop-header__login-item",on:{"click":function($event){_vm.toggleRegistrationPopup()}}},[_c('a',{staticClass:"border register"},[_vm._v("Регистрация")])]):_vm._e(),(_vm.loggedIn && !_vm.singleContrAgent)?_c('div',{staticClass:"desktop-header__login-item",on:{"click":_vm.toggleContrAgent}},[_vm._v("\n        "+_vm._s(_vm.contrAgent)+"\n    ")]):_vm._e(),(_vm.loggedIn)?_c('div',{staticClass:"user-info",on:{"click":function($event){_vm.toggleUserMenu()}}},[_c('div',{staticClass:"user-avatar"}),_c('div',{staticClass:"user-name border-white"},[_vm._v(_vm._s(_vm.userName))])]):_vm._e()])}
-var user_account_desktopvue_type_template_id_0827667f_shadow_staticRenderFns = [function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('li',{staticClass:"desktop-header__login-item desktop-header__login-item_icon-cart"},[_c('span',{staticClass:"icon-shopping-cart desktop-header__icon-cart"},[_c('i',[_vm._v("9")])]),_c('div',{staticClass:"shopping-cart"})])}]
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"17a5199b-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/shared/header/user-account/user-account-desktop.vue?vue&type=template&id=23d2779f&shadow
+var user_account_desktopvue_type_template_id_23d2779f_shadow_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('ul',{staticClass:"desktop-header__login"},[_vm._m(0),(!_vm.loggedIn)?_c('li',{staticClass:"desktop-header__login-item",on:{"click":function($event){_vm.logIn()}}},[_c('a',{staticClass:"border"},[_vm._v("Вход")])]):_vm._e(),(!_vm.loggedIn)?_c('li',{staticClass:"desktop-header__login-item",on:{"click":function($event){_vm.toggleRegistrationPopup()}}},[_c('a',{staticClass:"border register"},[_vm._v("Регистрация")])]):_vm._e(),(_vm.loggedIn && !_vm.singleContrAgent)?_c('div',{staticClass:"desktop-header__login-item",on:{"click":_vm.toggleContrAgent}},[_vm._v("\n        "+_vm._s(_vm.contrAgent)+"\n    ")]):_vm._e(),(_vm.loggedIn)?_c('div',{staticClass:"user-info",on:{"click":function($event){_vm.toggleUserMenu()}}},[_c('div',{staticClass:"user-avatar"}),_c('div',{staticClass:"user-name border-white"},[_vm._v(_vm._s(_vm.userName))])]):_vm._e()])}
+var user_account_desktopvue_type_template_id_23d2779f_shadow_staticRenderFns = [function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('li',{staticClass:"desktop-header__login-item desktop-header__login-item_icon-cart"},[_c('span',{staticClass:"icon-shopping-cart desktop-header__icon-cart"},[_c('i',[_vm._v("9")])]),_c('div',{staticClass:"shopping-cart"})])}]
 
 
-// CONCATENATED MODULE: ./src/components/shared/header/user-account/user-account-desktop.vue?vue&type=template&id=0827667f&shadow
+// CONCATENATED MODULE: ./src/components/shared/header/user-account/user-account-desktop.vue?vue&type=template&id=23d2779f&shadow
 
 // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--14-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/ts-loader??ref--14-3!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/shared/header/user-account/user-account-desktop.vue?vue&type=script&lang=ts&shadow
 
@@ -11432,7 +11492,7 @@ var user_account_desktopvue_type_script_lang_ts_shadow_UserAccountDesktop = clas
 
   get contrAgent() {
     // @ts-ignore
-    return AuthModule.contragent.name;
+    return AuthModule.contragent.name || '';
   }
 
   get singleContrAgent() {
@@ -11477,8 +11537,8 @@ if (style0.__inject__) style0.__inject__(context)
 
 var user_account_desktopshadow_component = normalizeComponent(
   user_account_user_account_desktopvue_type_script_lang_ts_shadow,
-  user_account_desktopvue_type_template_id_0827667f_shadow_render,
-  user_account_desktopvue_type_template_id_0827667f_shadow_staticRenderFns,
+  user_account_desktopvue_type_template_id_23d2779f_shadow_render,
+  user_account_desktopvue_type_template_id_23d2779f_shadow_staticRenderFns,
   false,
   user_account_desktopshadow_injectStyles,
   null,
