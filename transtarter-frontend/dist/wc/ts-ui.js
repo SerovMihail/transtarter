@@ -6093,11 +6093,11 @@ var oidc_client_min = __webpack_require__("dd17");
 
 class auth_service_AuthService {
   constructor() {
-    this.identityServer = Object({"NODE_ENV":"production","BASE_URL":"/"}).VUE_APP_IDENTITY_SERVER;
-    this.identityServerApi = Object({"NODE_ENV":"production","BASE_URL":"/"}).VUE_APP_IDENTITY_SERVER_API;
-    this.webAddress = Object({"NODE_ENV":"production","BASE_URL":"/"}).VUE_APP_WEB_APP;
+    this.identityServer = "https://identity-test.tstarter.ru";
+    this.identityServerApi = "https://identity-api-test.tstarter.ru";
+    this.webAddress = "https://new1.tstarter.ru/new";
     this.oldCatalogCookieStorageKey = 'ts-user';
-    console.log(Object({"NODE_ENV":"production","BASE_URL":"/"}).VUE_APP_IDENTITY_SERVER);
+    console.log("https://identity-test.tstarter.ru");
     var AUTH0_DOMAIN = this.identityServer;
     var MY_HOST = window.location.origin;
     var settings = {
@@ -6417,7 +6417,7 @@ component.options.__file = "app-btn.vue"
 var contragent_modalvue_type_script_lang_ts_shadow_ContragentModal = class ContragentModal extends external_Vue_default.a {
   constructor() {
     super(...arguments);
-    this.identityApi = Object({"NODE_ENV":"production","BASE_URL":"/"}).VUE_APP_IDENTITY_SERVER_API || '';
+    this.identityApi = "https://identity-api-test.tstarter.ru" || false;
   }
 
   get contragentOpen() {
@@ -7940,7 +7940,7 @@ var clickOutside = {
 var account_infovue_type_script_lang_ts_AccountInfoMobile = class AccountInfoMobile extends external_Vue_default.a {
   constructor() {
     super(...arguments);
-    this.webAppHost = Object({"NODE_ENV":"production","BASE_URL":"/"}).VUE_APP_WEB_APP;
+    this.webAppHost = "https://new1.tstarter.ru/new";
   }
 
   get contrAgent() {
@@ -10032,8 +10032,8 @@ var registration_data_tabvue_type_template_id_e2951282_staticRenderFns = [functi
 
 class profile_service_ProfileService {
   constructor() {
-    this.webAppHost = Object({"NODE_ENV":"production","BASE_URL":"/"}).VUE_APP_WEB_APP;
-    this.identityServerHost = Object({"NODE_ENV":"production","BASE_URL":"/"}).VUE_APP_IDENTITY_SERVER;
+    this.webAppHost = "https://new1.tstarter.ru/new";
+    this.identityServerHost = "https://identity-test.tstarter.ru";
     this.userKey = 'user';
     this.identityUserKey = `${this.userKey}:${this.identityServerHost}:kl`;
   }
@@ -10750,7 +10750,7 @@ var account_infovue_type_template_id_b315637c_shadow_staticRenderFns = [function
 var account_infovue_type_script_lang_ts_shadow_AccountInfoMobile = class AccountInfoMobile extends external_Vue_default.a {
   constructor() {
     super(...arguments);
-    this.webAppHost = Object({"NODE_ENV":"production","BASE_URL":"/"}).VUE_APP_WEB_APP;
+    this.webAppHost = "https://new1.tstarter.ru/new";
   }
 
   get contrAgent() {
