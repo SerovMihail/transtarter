@@ -140,6 +140,10 @@
                         required
                     />
                 </div>
+                <div v-if="errors.OrganizationNameError" class="invalid-text">
+                    В наименовании организации нельзя использовать специальные символы. ( &lt; &gt;
+                    ? [ ] : | * ).
+                </div>
             </div>
 
             <button type="submit" class="btn btn-yellow btn-reg">Зарегистрироваться</button>
