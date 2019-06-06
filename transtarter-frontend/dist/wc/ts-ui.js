@@ -6093,11 +6093,11 @@ var oidc_client_min = __webpack_require__("dd17");
 
 class auth_service_AuthService {
   constructor() {
-    this.identityServer = "https://identity-test.tstarter.ru";
-    this.identityServerApi = "https://identity-api-test.tstarter.ru";
-    this.webAddress = "https://new1.tstarter.ru/new";
+    this.identityServer = Object({"NODE_ENV":"production","BASE_URL":"/"}).VUE_APP_IDENTITY_SERVER;
+    this.identityServerApi = Object({"NODE_ENV":"production","BASE_URL":"/"}).VUE_APP_IDENTITY_SERVER_API;
+    this.webAddress = Object({"NODE_ENV":"production","BASE_URL":"/"}).VUE_APP_WEB_APP;
     this.oldCatalogCookieStorageKey = 'ts-user';
-    console.log("https://identity-test.tstarter.ru");
+    console.log(Object({"NODE_ENV":"production","BASE_URL":"/"}).VUE_APP_IDENTITY_SERVER);
     var AUTH0_DOMAIN = this.identityServer;
     var MY_HOST = window.location.origin;
     var settings = {
@@ -6417,7 +6417,7 @@ component.options.__file = "app-btn.vue"
 var contragent_modalvue_type_script_lang_ts_shadow_ContragentModal = class ContragentModal extends external_Vue_default.a {
   constructor() {
     super(...arguments);
-    this.identityApi = "https://identity-api-test.tstarter.ru" || false;
+    this.identityApi = Object({"NODE_ENV":"production","BASE_URL":"/"}).VUE_APP_IDENTITY_SERVER_API || '';
   }
 
   get contragentOpen() {
@@ -7883,12 +7883,12 @@ var actualize_user_component = normalizeComponent(
 
 actualize_user_component.options.__file = "actualize-user.vue"
 /* harmony default export */ var actualize_user = (actualize_user_component.exports);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"17a5199b-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/shared/header/menu-popups/account-info.vue?vue&type=template&id=4474d3e9&
-var account_infovue_type_template_id_4474d3e9_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return (_vm.showBlocksShowUser && _vm.loggedIn)?_c('div',{directives:[{name:"click-outside",rawName:"v-click-outside",value:(_vm.closeUserMenu),expression:"closeUserMenu"}],staticClass:"menu-popup"},[_c('div',{staticClass:"user-fullname"},[_vm._v("\n        "+_vm._s(_vm.userName)+"\n    ")]),_c('div',{staticClass:"agreement"},[_vm._v("\n        Договор № 123765\n    ")]),_c('div',{staticClass:"price-info"},[_vm._v("\n        Оптовые цены (активны)\n    ")]),(!_vm.singleContrAgent)?_c('div',{staticClass:"contragent"},[_vm._v("Контрагент: "+_vm._s(_vm.contrAgent.name))]):_vm._e(),_vm._m(0),_c('ul',{staticClass:"menu-popup_list"},[_c('li',{staticClass:"menu-popup_list-item"},[_c('nuxt-link',{attrs:{"to":"/account"}},[_vm._v("Личный кабинет")])],1),_c('li',{staticClass:"menu-popup_list-item"},[_c('nuxt-link',{attrs:{"to":"/account/settings"}},[_vm._v("Профиль и настройки")])],1),_c('li',{staticClass:"menu-popup_list-item menu-popup_list-item-active"},[_c('nuxt-link',{attrs:{"to":"/account/cart"}},[_vm._v("Корзина")]),_c('span',{staticClass:"menu-popup_list-item-notify"},[_vm._v("3")])],1),_c('li',{staticClass:"menu-popup_list-item"},[_vm._v("\n            Заказы и оплаты\n        ")]),(!_vm.singleContrAgent)?_c('li',{staticClass:"menu-popup_list-item",on:{"click":_vm.toggleContrAgent}},[_vm._v("\n            Смена контрагента\n        ")]):_vm._e(),_c('li',{staticClass:"menu-popup_list-item",on:{"click":_vm.logout}},[_vm._v("\n            Выйти\n        ")])])]):_vm._e()}
-var account_infovue_type_template_id_4474d3e9_staticRenderFns = [function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"wallet"},[_c('div',{staticClass:"wallet-with-icon"},[_c('span',{staticClass:"icon"}),_c('div',{staticClass:"wallet-balance"},[_vm._v("\n                15 000 ₽\n            ")])])])}]
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"17a5199b-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/shared/header/menu-popups/account-info.vue?vue&type=template&id=508e3961&
+var account_infovue_type_template_id_508e3961_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return (_vm.showBlocksShowUser && _vm.loggedIn)?_c('div',{directives:[{name:"click-outside",rawName:"v-click-outside",value:(_vm.closeUserMenu),expression:"closeUserMenu"}],staticClass:"menu-popup"},[_c('div',{staticClass:"user-fullname"},[_vm._v("\n        "+_vm._s(_vm.userName)+"\n    ")]),_c('div',{staticClass:"agreement"},[_vm._v("\n        Договор № 123765\n    ")]),_c('div',{staticClass:"price-info"},[_vm._v("\n        Оптовые цены (активны)\n    ")]),(!_vm.singleContrAgent)?_c('div',{staticClass:"contragent"},[_vm._v("Контрагент: "+_vm._s(_vm.contrAgent.name))]):_vm._e(),_vm._m(0),_c('ul',{staticClass:"menu-popup_list"},[_c('li',{staticClass:"menu-popup_list-item"},[_c('a',{attrs:{"href":(_vm.webAppHost + "/account/settings")}},[_vm._v("Профиль и настройки")])]),(!_vm.singleContrAgent)?_c('li',{staticClass:"menu-popup_list-item",on:{"click":_vm.toggleContrAgent}},[_vm._v("\n            Смена контрагента\n        ")]):_vm._e(),_c('li',{staticClass:"menu-popup_list-item",on:{"click":_vm.logout}},[_vm._v("\n            Выйти\n        ")])])]):_vm._e()}
+var account_infovue_type_template_id_508e3961_staticRenderFns = [function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"wallet"},[_c('div',{staticClass:"wallet-with-icon"},[_c('span',{staticClass:"icon"}),_c('div',{staticClass:"wallet-balance"},[_vm._v("\n                15 000 ₽\n            ")])])])}]
 
 
-// CONCATENATED MODULE: ./src/components/shared/header/menu-popups/account-info.vue?vue&type=template&id=4474d3e9&
+// CONCATENATED MODULE: ./src/components/shared/header/menu-popups/account-info.vue?vue&type=template&id=508e3961&
 
 // CONCATENATED MODULE: ./src/directives/v-click-outside/index.ts
 var clickOutside = {
@@ -7938,6 +7938,11 @@ var clickOutside = {
 
 
 var account_infovue_type_script_lang_ts_AccountInfoMobile = class AccountInfoMobile extends external_Vue_default.a {
+  constructor() {
+    super(...arguments);
+    this.webAppHost = Object({"NODE_ENV":"production","BASE_URL":"/"}).VUE_APP_WEB_APP;
+  }
+
   get contrAgent() {
     return AuthModule.contragent;
   }
@@ -7997,8 +8002,8 @@ account_infovue_type_script_lang_ts_AccountInfoMobile = __decorate([vue_class_co
 
 var account_info_component = normalizeComponent(
   menu_popups_account_infovue_type_script_lang_ts_,
-  account_infovue_type_template_id_4474d3e9_render,
-  account_infovue_type_template_id_4474d3e9_staticRenderFns,
+  account_infovue_type_template_id_508e3961_render,
+  account_infovue_type_template_id_508e3961_staticRenderFns,
   false,
   null,
   null,
@@ -10027,8 +10032,8 @@ var registration_data_tabvue_type_template_id_e2951282_staticRenderFns = [functi
 
 class profile_service_ProfileService {
   constructor() {
-    this.webAppHost = "https://new1.tstarter.ru/new";
-    this.identityServerHost = "https://identity-test.tstarter.ru";
+    this.webAppHost = Object({"NODE_ENV":"production","BASE_URL":"/"}).VUE_APP_WEB_APP;
+    this.identityServerHost = Object({"NODE_ENV":"production","BASE_URL":"/"}).VUE_APP_IDENTITY_SERVER;
     this.userKey = 'user';
     this.identityUserKey = `${this.userKey}:${this.identityServerHost}:kl`;
   }
@@ -10728,12 +10733,12 @@ var registration_formshadow_component = normalizeComponent(
 
 registration_formshadow_component.options.__file = "registration-form.vue"
 /* harmony default export */ var registration_formshadow = (registration_formshadow_component.exports);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"17a5199b-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/shared/header/menu-popups/account-info.vue?vue&type=template&id=474ae028&shadow
-var account_infovue_type_template_id_474ae028_shadow_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return (_vm.showBlocksShowUser && _vm.loggedIn)?_c('div',{directives:[{name:"click-outside",rawName:"v-click-outside",value:(_vm.closeUserMenu),expression:"closeUserMenu"}],staticClass:"menu-popup"},[_c('div',{staticClass:"user-fullname"},[_vm._v("\n        "+_vm._s(_vm.userName)+"\n    ")]),_c('div',{staticClass:"agreement"},[_vm._v("\n        Договор № 123765\n    ")]),_c('div',{staticClass:"price-info"},[_vm._v("\n        Оптовые цены (активны)\n    ")]),(!_vm.singleContrAgent)?_c('div',{staticClass:"contragent"},[_vm._v("Контрагент: "+_vm._s(_vm.contrAgent.name))]):_vm._e(),_vm._m(0),_c('ul',{staticClass:"menu-popup_list"},[_c('li',{staticClass:"menu-popup_list-item"},[_c('nuxt-link',{attrs:{"to":"/account"}},[_vm._v("Личный кабинет")])],1),_c('li',{staticClass:"menu-popup_list-item"},[_c('nuxt-link',{attrs:{"to":"/account/settings"}},[_vm._v("Профиль и настройки")])],1),_c('li',{staticClass:"menu-popup_list-item menu-popup_list-item-active"},[_c('nuxt-link',{attrs:{"to":"/account/cart"}},[_vm._v("Корзина")]),_c('span',{staticClass:"menu-popup_list-item-notify"},[_vm._v("3")])],1),_c('li',{staticClass:"menu-popup_list-item"},[_vm._v("\n            Заказы и оплаты\n        ")]),(!_vm.singleContrAgent)?_c('li',{staticClass:"menu-popup_list-item",on:{"click":_vm.toggleContrAgent}},[_vm._v("\n            Смена контрагента\n        ")]):_vm._e(),_c('li',{staticClass:"menu-popup_list-item",on:{"click":_vm.logout}},[_vm._v("\n            Выйти\n        ")])])]):_vm._e()}
-var account_infovue_type_template_id_474ae028_shadow_staticRenderFns = [function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"wallet"},[_c('div',{staticClass:"wallet-with-icon"},[_c('span',{staticClass:"icon"}),_c('div',{staticClass:"wallet-balance"},[_vm._v("\n                15 000 ₽\n            ")])])])}]
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"17a5199b-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/shared/header/menu-popups/account-info.vue?vue&type=template&id=b315637c&shadow
+var account_infovue_type_template_id_b315637c_shadow_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return (_vm.showBlocksShowUser && _vm.loggedIn)?_c('div',{directives:[{name:"click-outside",rawName:"v-click-outside",value:(_vm.closeUserMenu),expression:"closeUserMenu"}],staticClass:"menu-popup"},[_c('div',{staticClass:"user-fullname"},[_vm._v("\n        "+_vm._s(_vm.userName)+"\n    ")]),_c('div',{staticClass:"agreement"},[_vm._v("\n        Договор № 123765\n    ")]),_c('div',{staticClass:"price-info"},[_vm._v("\n        Оптовые цены (активны)\n    ")]),(!_vm.singleContrAgent)?_c('div',{staticClass:"contragent"},[_vm._v("Контрагент: "+_vm._s(_vm.contrAgent.name))]):_vm._e(),_vm._m(0),_c('ul',{staticClass:"menu-popup_list"},[_c('li',{staticClass:"menu-popup_list-item"},[_c('a',{attrs:{"href":(_vm.webAppHost + "/account/settings")}},[_vm._v("Профиль и настройки")])]),(!_vm.singleContrAgent)?_c('li',{staticClass:"menu-popup_list-item",on:{"click":_vm.toggleContrAgent}},[_vm._v("\n            Смена контрагента\n        ")]):_vm._e(),_c('li',{staticClass:"menu-popup_list-item",on:{"click":_vm.logout}},[_vm._v("\n            Выйти\n        ")])])]):_vm._e()}
+var account_infovue_type_template_id_b315637c_shadow_staticRenderFns = [function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"wallet"},[_c('div',{staticClass:"wallet-with-icon"},[_c('span',{staticClass:"icon"}),_c('div',{staticClass:"wallet-balance"},[_vm._v("\n                15 000 ₽\n            ")])])])}]
 
 
-// CONCATENATED MODULE: ./src/components/shared/header/menu-popups/account-info.vue?vue&type=template&id=474ae028&shadow
+// CONCATENATED MODULE: ./src/components/shared/header/menu-popups/account-info.vue?vue&type=template&id=b315637c&shadow
 
 // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--14-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/ts-loader??ref--14-3!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/shared/header/menu-popups/account-info.vue?vue&type=script&lang=ts&shadow
 
@@ -10743,6 +10748,11 @@ var account_infovue_type_template_id_474ae028_shadow_staticRenderFns = [function
 
 
 var account_infovue_type_script_lang_ts_shadow_AccountInfoMobile = class AccountInfoMobile extends external_Vue_default.a {
+  constructor() {
+    super(...arguments);
+    this.webAppHost = Object({"NODE_ENV":"production","BASE_URL":"/"}).VUE_APP_WEB_APP;
+  }
+
   get contrAgent() {
     return AuthModule.contragent;
   }
@@ -10802,8 +10812,8 @@ account_infovue_type_script_lang_ts_shadow_AccountInfoMobile = __decorate([vue_c
 
 var account_infoshadow_component = normalizeComponent(
   menu_popups_account_infovue_type_script_lang_ts_shadow,
-  account_infovue_type_template_id_474ae028_shadow_render,
-  account_infovue_type_template_id_474ae028_shadow_staticRenderFns,
+  account_infovue_type_template_id_b315637c_shadow_render,
+  account_infovue_type_template_id_b315637c_shadow_staticRenderFns,
   false,
   null,
   null,
