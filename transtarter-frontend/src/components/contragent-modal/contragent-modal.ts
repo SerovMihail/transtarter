@@ -43,7 +43,6 @@ class ContragentModal extends Vue {
         }
         store.dispatch('auth/updateContrAgent', contrAgent)
         store.dispatch('display/toggleContrAgentModal')
-        debugger
         cookieStorage.setItem('selected-contragent', JSON.stringify(contrAgent))
         this.$emit('contragentWasChosen', contrAgent.id)
     }

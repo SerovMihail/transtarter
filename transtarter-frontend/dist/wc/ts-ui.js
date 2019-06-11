@@ -6083,6 +6083,51 @@ display_module_Display = __decorate([esm_Module({
 })], display_module_Display);
 
 var DisplayModule = getModule(display_module_Display, store);
+// EXTERNAL MODULE: ./node_modules/@babel/runtime-corejs2/core-js/promise.js
+var promise = __webpack_require__("795b");
+var promise_default = /*#__PURE__*/__webpack_require__.n(promise);
+
+// EXTERNAL MODULE: ./node_modules/regenerator-runtime/runtime.js
+var runtime = __webpack_require__("96cf");
+
+// CONCATENATED MODULE: ./node_modules/@babel/runtime-corejs2/helpers/esm/asyncToGenerator.js
+
+
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) {
+  try {
+    var info = gen[key](arg);
+    var value = info.value;
+  } catch (error) {
+    reject(error);
+    return;
+  }
+
+  if (info.done) {
+    resolve(value);
+  } else {
+    promise_default.a.resolve(value).then(_next, _throw);
+  }
+}
+
+function _asyncToGenerator(fn) {
+  return function () {
+    var self = this,
+        args = arguments;
+    return new promise_default.a(function (resolve, reject) {
+      var gen = fn.apply(self, args);
+
+      function _next(value) {
+        asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value);
+      }
+
+      function _throw(err) {
+        asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err);
+      }
+
+      _next(undefined);
+    });
+  };
+}
 // EXTERNAL MODULE: ./node_modules/oidc-client/lib/oidc-client.min.js
 var oidc_client_min = __webpack_require__("dd17");
 
@@ -6097,7 +6142,6 @@ class auth_service_AuthService {
     this.identityServerApi = "https://identity-api-test.tstarter.ru";
     this.webAddress = "https://new1.tstarter.ru/new";
     this.oldCatalogCookieStorageKey = 'ts-user';
-    console.log("https://identity-test.tstarter.ru");
     var AUTH0_DOMAIN = this.identityServer;
     var MY_HOST = window.location.origin;
     var settings = {
@@ -6166,11 +6210,65 @@ var COOKIE_OLD_CATALOG_TS_USER_KEY = 'ts-user';
 var COOKIE_STORAGE_KEY = 'user';
 // CONCATENATED MODULE: ./src/constants/index.ts
 
+// CONCATENATED MODULE: ./src/services/profile.service.ts
+
+
+
+
+class profile_service_ProfileService {
+  constructor() {
+    this.webAppHost = "https://new1.tstarter.ru/new";
+    this.webAppHostStaging = "https://new1.tstarter.ru/new";
+    this.identityServerHost = "https://identity-test.tstarter.ru";
+    this.userKey = 'user';
+    this.identityUserKey = `${this.userKey}:${this.identityServerHost}:kl`;
+  }
+
+  getProfileInfoByUserId(login) {
+    return axios_default.a.get(`${this.webAppHost}/api/profile/${login}`).then(x => x);
+  }
+
+  getProfileAvatarStatusByUserId(login) {
+    var avatar = axios_default.a.get(`${this.webAppHostStaging}/api/profiles/${login}/avatar`);
+    return avatar;
+  }
+
+  updateProfileInfo(updatedUserProfile) {
+    return axios_default.a.put(`${this.webAppHost}/api/profile`, updatedUserProfile).then(x => {
+      this.updateUserName(updatedUserProfile.name);
+      return x;
+    });
+  }
+
+  updateUserName(newUserName) {
+    var key = this.identityUserKey;
+    var user = lib_default.a.getItem(this.userKey);
+
+    if (!user) {
+      return;
+    }
+
+    var userObject = JSON.parse(user);
+    userObject.profile.name = newUserName;
+    userObject.profile.preferred_username = newUserName;
+    lib_default.a.setItem(this.userKey, stringify_default()(userObject));
+    store.dispatch('auth/updateUser', {
+      key,
+      userObject
+    });
+  }
+
+}
 // CONCATENATED MODULE: ./src/store/modules/authentication.module.ts
 
 
 
-var authentication_module_a, authentication_module_b, _c;
+
+
+
+var authentication_module_a, authentication_module_b;
+
+
 
 
 
@@ -6180,9 +6278,9 @@ var authentication_module_a, authentication_module_b, _c;
 
 
 var userContragentsString = lib_default.a.getItem('ts-user-contragent');
-debugger;
 var contragentString = lib_default.a.getItem('selected-contragent');
 var authentication_module_contragent = contragentString ? JSON.parse(contragentString) : null;
+var profileService = new profile_service_ProfileService();
 var userContragents = userContragentsString ? JSON.parse(userContragentsString) : null;
 var authentication_module_Authentication = class Authentication extends VuexModule {
   constructor() {
@@ -6196,6 +6294,7 @@ var authentication_module_Authentication = class Authentication extends VuexModu
     this.roles = [];
     this.contragent = null;
     this.userContragents = [];
+    this.profile = null;
     this.status = {
       loggingIn: false,
       loggedIn: this.user !== null && !(this.user || false).expired
@@ -6217,7 +6316,9 @@ var authentication_module_Authentication = class Authentication extends VuexModu
     this.status.loggingIn = false;
   }
 
-  SUCCESS_LOGIN(user) {
+  SUCCESS_LOGIN(_ref) {
+    var user = _ref.user,
+        userProfile = _ref.userProfile;
     this.name = user.profile.name;
     this.token = user.id_token;
     this.accessTokenExpired = user.expired;
@@ -6225,6 +6326,7 @@ var authentication_module_Authentication = class Authentication extends VuexModu
     this.status.loggingIn = false;
     this.contragent = authentication_module_contragent;
     this.userContragents = userContragents;
+    this.profile = userProfile;
   }
 
   ERROR_LOGIN(user) {
@@ -6248,14 +6350,88 @@ var authentication_module_Authentication = class Authentication extends VuexModu
   }
 
   actualizeUser() {
-    this.auth.getUser().then(user => {
-      if (user) {
-        this.auth.saveUserInfo(COOKIE_STORAGE_KEY, user);
-        this.context.commit('SUCCESS_LOGIN', user);
-      } else {
-        this.context.commit('ERROR_LOGIN');
-      }
-    });
+    var _this = this;
+
+    return _asyncToGenerator(
+    /*#__PURE__*/
+    regeneratorRuntime.mark(function _callee() {
+      var user, userProfile, userProfileResponse, hasAvatarResponse;
+      return regeneratorRuntime.wrap(function _callee$(_context) {
+        while (1) {
+          switch (_context.prev = _context.next) {
+            case 0:
+              _context.next = 2;
+              return _this.auth.getUser();
+
+            case 2:
+              user = _context.sent;
+              userProfile = null;
+
+              if (!user) {
+                _context.next = 15;
+                break;
+              }
+
+              _context.prev = 5;
+              _context.next = 8;
+              return axios_default.a.get(`https://new1.tstarter.ru/new/api/Profiles/${user.profile.name}`);
+
+            case 8:
+              userProfileResponse = _context.sent;
+              userProfile = userProfileResponse.data;
+              _context.next = 15;
+              break;
+
+            case 12:
+              _context.prev = 12;
+              _context.t0 = _context["catch"](5);
+              console.log(_context.t0);
+
+            case 15:
+              if (!(user && userProfile)) {
+                _context.next = 29;
+                break;
+              }
+
+              _context.prev = 16;
+              _context.next = 19;
+              return profileService.getProfileAvatarStatusByUserId(userProfile.id);
+
+            case 19:
+              hasAvatarResponse = _context.sent;
+
+              if (hasAvatarResponse.status === 200) {
+                userProfile.avatarTimestamp = new Date().getTime();
+              }
+
+              _context.next = 25;
+              break;
+
+            case 23:
+              _context.prev = 23;
+              _context.t1 = _context["catch"](16);
+
+            case 25:
+              _this.auth.saveUserInfo(COOKIE_STORAGE_KEY, user);
+
+              _this.context.commit('SUCCESS_LOGIN', {
+                user,
+                userProfile
+              });
+
+              _context.next = 30;
+              break;
+
+            case 29:
+              _this.context.commit('ERROR_LOGIN');
+
+            case 30:
+            case "end":
+              return _context.stop();
+          }
+        }
+      }, _callee, this, [[5, 12], [16, 23]]);
+    }))();
   }
 
   logout() {
@@ -6277,9 +6453,9 @@ var authentication_module_Authentication = class Authentication extends VuexModu
     this.name = newUserName;
   }
 
-  updateUser(_ref) {
-    var key = _ref.key,
-        userObject = _ref.userObject;
+  updateUser(_ref2) {
+    var key = _ref2.key,
+        userObject = _ref2.userObject;
     this.auth.updateUserStorage(key, userObject);
     this.context.commit('UPDATE_USER_NAME', userObject.profile.name);
   }
@@ -6307,9 +6483,9 @@ __decorate([Mutation, __metadata("design:type", Function), __metadata("design:pa
 
 __decorate([Mutation, __metadata("design:type", Function), __metadata("design:paramtypes", []), __metadata("design:returntype", void 0)], authentication_module_Authentication.prototype, "LOGOUT", null);
 
-__decorate([Mutation, __metadata("design:type", Function), __metadata("design:paramtypes", [typeof (authentication_module_a = typeof oidc_client_min["User"] !== "undefined" && oidc_client_min["User"]) === "function" ? authentication_module_a : Object]), __metadata("design:returntype", void 0)], authentication_module_Authentication.prototype, "SUCCESS_LOGIN", null);
+__decorate([Mutation, __metadata("design:type", Function), __metadata("design:paramtypes", [Object]), __metadata("design:returntype", void 0)], authentication_module_Authentication.prototype, "SUCCESS_LOGIN", null);
 
-__decorate([Mutation, __metadata("design:type", Function), __metadata("design:paramtypes", [typeof (authentication_module_b = typeof oidc_client_min["User"] !== "undefined" && oidc_client_min["User"]) === "function" ? authentication_module_b : Object]), __metadata("design:returntype", void 0)], authentication_module_Authentication.prototype, "ERROR_LOGIN", null);
+__decorate([Mutation, __metadata("design:type", Function), __metadata("design:paramtypes", [typeof (authentication_module_a = typeof oidc_client_min["User"] !== "undefined" && oidc_client_min["User"]) === "function" ? authentication_module_a : Object]), __metadata("design:returntype", void 0)], authentication_module_Authentication.prototype, "ERROR_LOGIN", null);
 
 __decorate([Mutation, __metadata("design:type", Function), __metadata("design:paramtypes", []), __metadata("design:returntype", void 0)], authentication_module_Authentication.prototype, "MOCK_LOGIN", null);
 
@@ -6317,7 +6493,7 @@ __decorate([Mutation, __metadata("design:type", Function), __metadata("design:pa
 
 __decorate([Action, __metadata("design:type", Function), __metadata("design:paramtypes", []), __metadata("design:returntype", void 0)], authentication_module_Authentication.prototype, "login", null);
 
-__decorate([Action, __metadata("design:type", Function), __metadata("design:paramtypes", []), __metadata("design:returntype", void 0)], authentication_module_Authentication.prototype, "actualizeUser", null);
+__decorate([Action, __metadata("design:type", Function), __metadata("design:paramtypes", []), __metadata("design:returntype", promise_default.a)], authentication_module_Authentication.prototype, "actualizeUser", null);
 
 __decorate([Action, __metadata("design:type", Function), __metadata("design:paramtypes", []), __metadata("design:returntype", void 0)], authentication_module_Authentication.prototype, "logout", null);
 
@@ -6327,7 +6503,7 @@ __decorate([Action, __metadata("design:type", Function), __metadata("design:para
 
 __decorate([Mutation, __metadata("design:type", Function), __metadata("design:paramtypes", [String]), __metadata("design:returntype", void 0)], authentication_module_Authentication.prototype, "UPDATE_USER_NAME", null);
 
-__decorate([Action, __metadata("design:type", Function), __metadata("design:paramtypes", [typeof (_c = typeof models["IKeyUserObject"] !== "undefined" && models["IKeyUserObject"]) === "function" ? _c : Object]), __metadata("design:returntype", void 0)], authentication_module_Authentication.prototype, "updateUser", null);
+__decorate([Action, __metadata("design:type", Function), __metadata("design:paramtypes", [typeof (authentication_module_b = typeof models["IKeyUserObject"] !== "undefined" && models["IKeyUserObject"]) === "function" ? authentication_module_b : Object]), __metadata("design:returntype", void 0)], authentication_module_Authentication.prototype, "updateUser", null);
 
 __decorate([Mutation, __metadata("design:type", Function), __metadata("design:paramtypes", [Object]), __metadata("design:returntype", void 0)], authentication_module_Authentication.prototype, "UPDATE_CONTR_AGENT", null);
 
@@ -6459,7 +6635,6 @@ var contragent_modalvue_type_script_lang_ts_shadow_ContragentModal = class Contr
 
     store.dispatch('auth/updateContrAgent', contrAgent);
     store.dispatch('display/toggleContrAgentModal');
-    debugger;
     lib_default.a.setItem('selected-contragent', stringify_default()(contrAgent));
     this.$emit('contragentWasChosen', contrAgent.id);
   }
@@ -8087,12 +8262,12 @@ var mobile_menu_component = normalizeComponent(
 
 mobile_menu_component.options.__file = "mobile-menu.vue"
 /* harmony default export */ var mobile_menu = (mobile_menu_component.exports);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"17a5199b-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/shared/header/user-account/user-account-desktop.vue?vue&type=template&id=4a541252&
-var user_account_desktopvue_type_template_id_4a541252_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('ul',{staticClass:"desktop-header__login"},[_vm._m(0),(!_vm.loggedIn)?_c('li',{staticClass:"desktop-header__login-item",on:{"click":function($event){_vm.logIn()}}},[_c('a',{staticClass:"border"},[_vm._v("Вход")])]):_vm._e(),(!_vm.loggedIn)?_c('li',{staticClass:"desktop-header__login-item",on:{"click":function($event){_vm.toggleRegistrationPopup()}}},[_c('a',{staticClass:"border register"},[_vm._v("Регистрация")])]):_vm._e(),(_vm.loggedIn && !_vm.singleContrAgent)?_c('div',{staticClass:"desktop-header__login-item",on:{"click":_vm.toggleContrAgent}},[_vm._v("\n        "+_vm._s(_vm.contrAgent)+"\n    ")]):_vm._e(),(_vm.loggedIn)?_c('div',{staticClass:"user-info",on:{"click":function($event){_vm.toggleUserMenu()}}},[_c('div',{staticClass:"user-avatar"}),_c('div',{staticClass:"user-name border-white"},[_vm._v(_vm._s(_vm.userName))])]):_vm._e()])}
-var user_account_desktopvue_type_template_id_4a541252_staticRenderFns = [function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('li',{staticClass:"desktop-header__login-item desktop-header__login-item_icon-cart"},[_c('span',{staticClass:"icon-shopping-cart desktop-header__icon-cart"},[_c('i',[_vm._v("9")])]),_c('div',{staticClass:"shopping-cart"})])}]
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"17a5199b-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/shared/header/user-account/user-account-desktop.vue?vue&type=template&id=41e4a00d&
+var user_account_desktopvue_type_template_id_41e4a00d_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('ul',{staticClass:"desktop-header__login"},[_vm._m(0),(!_vm.loggedIn)?_c('li',{staticClass:"desktop-header__login-item",on:{"click":function($event){_vm.logIn()}}},[_c('a',{staticClass:"border"},[_vm._v("Вход")])]):_vm._e(),(!_vm.loggedIn)?_c('li',{staticClass:"desktop-header__login-item",on:{"click":function($event){_vm.toggleRegistrationPopup()}}},[_c('a',{staticClass:"border register"},[_vm._v("Регистрация")])]):_vm._e(),(_vm.loggedIn && !_vm.singleContrAgent)?_c('div',{staticClass:"desktop-header__login-item",on:{"click":_vm.toggleContrAgent}},[_vm._v("\n        "+_vm._s(_vm.contrAgent)+"\n    ")]):_vm._e(),(_vm.loggedIn)?_c('div',{staticClass:"user-info",on:{"click":function($event){_vm.toggleUserMenu()}}},[(!_vm.avatarTimestamp)?_c('div',{staticClass:"user-avatar"}):_c('div',{staticClass:"user-avatar",style:(("background-image: url('" + _vm.imageUrl + "')"))}),_c('div',{staticClass:"user-name border-white"},[_vm._v(_vm._s(_vm.userName))])]):_vm._e()])}
+var user_account_desktopvue_type_template_id_41e4a00d_staticRenderFns = [function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('li',{staticClass:"desktop-header__login-item desktop-header__login-item_icon-cart"},[_c('span',{staticClass:"icon-shopping-cart desktop-header__icon-cart"},[_c('i',[_vm._v("9")])]),_c('div',{staticClass:"shopping-cart"})])}]
 
 
-// CONCATENATED MODULE: ./src/components/shared/header/user-account/user-account-desktop.vue?vue&type=template&id=4a541252&
+// CONCATENATED MODULE: ./src/components/shared/header/user-account/user-account-desktop.vue?vue&type=template&id=41e4a00d&
 
 // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--14-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/ts-loader??ref--14-3!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/shared/header/user-account/user-account-desktop.vue?vue&type=script&lang=ts&
 
@@ -8100,8 +8275,27 @@ var user_account_desktopvue_type_template_id_4a541252_staticRenderFns = [functio
 
 
 var user_account_desktopvue_type_script_lang_ts_UserAccountDesktop = class UserAccountDesktop extends external_Vue_default.a {
+  constructor() {
+    super(...arguments);
+    this.webAppHostStaging = "https://new1.tstarter.ru/new";
+  }
+
   get loggedIn() {
     return AuthModule.logged;
+  }
+
+  get avatarTimestamp() {
+    if (AuthModule.profile) {
+      // @ts-ignore
+      return AuthModule.profile.avatarTimestamp;
+    }
+  }
+
+  get userId() {
+    if (AuthModule.profile) {
+      // @ts-ignore
+      return AuthModule.profile.id;
+    }
   }
 
   get userName() {
@@ -8109,8 +8303,12 @@ var user_account_desktopvue_type_script_lang_ts_UserAccountDesktop = class UserA
   }
 
   get contrAgent() {
-    // @ts-ignore
-    return AuthModule.contragent.name || '';
+    if (AuthModule.contragent) {
+      // @ts-ignore
+      return AuthModule.contragent.name || '';
+    } else {
+      return '';
+    }
   }
 
   get singleContrAgent() {
@@ -8123,6 +8321,10 @@ var user_account_desktopvue_type_script_lang_ts_UserAccountDesktop = class UserA
 
   logIn() {
     store.dispatch('auth/login');
+  }
+
+  get imageUrl() {
+    return `${this.webAppHostStaging}/api/profiles/${this.userId}/avatar?t=${this.avatarTimestamp}`;
   }
 
   toggleRegistrationPopup() {
@@ -8155,8 +8357,8 @@ if (style0.__inject__) style0.__inject__(context)
 
 var user_account_desktop_component = normalizeComponent(
   user_account_user_account_desktopvue_type_script_lang_ts_,
-  user_account_desktopvue_type_template_id_4a541252_render,
-  user_account_desktopvue_type_template_id_4a541252_staticRenderFns,
+  user_account_desktopvue_type_template_id_41e4a00d_render,
+  user_account_desktopvue_type_template_id_41e4a00d_staticRenderFns,
   false,
   user_account_desktop_injectStyles,
   null,
@@ -10055,49 +10257,6 @@ var registration_data_tabvue_type_template_id_e2951282_staticRenderFns = [functi
 
 // CONCATENATED MODULE: ./src/components/user-profile/profile-settings/registration-data-tab/registration-data-tab.vue?vue&type=template&id=e2951282&
 
-// CONCATENATED MODULE: ./src/services/profile.service.ts
-
-
-
-
-class profile_service_ProfileService {
-  constructor() {
-    this.webAppHost = "https://new1.tstarter.ru/new";
-    this.identityServerHost = "https://identity-test.tstarter.ru";
-    this.userKey = 'user';
-    this.identityUserKey = `${this.userKey}:${this.identityServerHost}:kl`;
-  }
-
-  getProfileInfoByUserId(login) {
-    return axios_default.a.get(`${this.webAppHost}/api/profile/${login}`).then(x => x);
-  }
-
-  updateProfileInfo(updatedUserProfile) {
-    return axios_default.a.put(`${this.webAppHost}/api/profile`, updatedUserProfile).then(x => {
-      this.updateUserName(updatedUserProfile.name);
-      return x;
-    });
-  }
-
-  updateUserName(newUserName) {
-    var key = this.identityUserKey;
-    var user = lib_default.a.getItem(this.userKey);
-
-    if (!user) {
-      return;
-    }
-
-    var userObject = JSON.parse(user);
-    userObject.profile.name = newUserName;
-    userObject.profile.preferred_username = newUserName;
-    lib_default.a.setItem(this.userKey, stringify_default()(userObject));
-    store.dispatch('auth/updateUser', {
-      key,
-      userObject
-    });
-  }
-
-}
 // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--14-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/ts-loader??ref--14-3!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/user-profile/profile-settings/registration-data-tab/registration-data-tab.vue?vue&type=script&lang=ts&
 
 
@@ -11087,51 +11246,6 @@ var search_form_desktop_oldvue_type_template_id_70ab4522_shadow_staticRenderFns 
 
 // CONCATENATED MODULE: ./src/components/shared/header/search-form/search-form-desktop-old.vue?vue&type=template&id=70ab4522&shadow
 
-// EXTERNAL MODULE: ./node_modules/regenerator-runtime/runtime.js
-var runtime = __webpack_require__("96cf");
-
-// EXTERNAL MODULE: ./node_modules/@babel/runtime-corejs2/core-js/promise.js
-var promise = __webpack_require__("795b");
-var promise_default = /*#__PURE__*/__webpack_require__.n(promise);
-
-// CONCATENATED MODULE: ./node_modules/@babel/runtime-corejs2/helpers/esm/asyncToGenerator.js
-
-
-function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) {
-  try {
-    var info = gen[key](arg);
-    var value = info.value;
-  } catch (error) {
-    reject(error);
-    return;
-  }
-
-  if (info.done) {
-    resolve(value);
-  } else {
-    promise_default.a.resolve(value).then(_next, _throw);
-  }
-}
-
-function _asyncToGenerator(fn) {
-  return function () {
-    var self = this,
-        args = arguments;
-    return new promise_default.a(function (resolve, reject) {
-      var gen = fn.apply(self, args);
-
-      function _next(value) {
-        asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value);
-      }
-
-      function _throw(err) {
-        asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err);
-      }
-
-      _next(undefined);
-    });
-  };
-}
 // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--14-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/ts-loader??ref--14-3!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/shared/header/search-form/search-form-desktop-old.vue?vue&type=script&lang=ts&shadow
 
 
@@ -11469,12 +11583,12 @@ var search_results_by_vinshadow_component = normalizeComponent(
 
 search_results_by_vinshadow_component.options.__file = "search-results-by-vin.vue"
 /* harmony default export */ var search_results_by_vinshadow = (search_results_by_vinshadow_component.exports);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"17a5199b-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/shared/header/user-account/user-account-desktop.vue?vue&type=template&id=23d2779f&shadow
-var user_account_desktopvue_type_template_id_23d2779f_shadow_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('ul',{staticClass:"desktop-header__login"},[_vm._m(0),(!_vm.loggedIn)?_c('li',{staticClass:"desktop-header__login-item",on:{"click":function($event){_vm.logIn()}}},[_c('a',{staticClass:"border"},[_vm._v("Вход")])]):_vm._e(),(!_vm.loggedIn)?_c('li',{staticClass:"desktop-header__login-item",on:{"click":function($event){_vm.toggleRegistrationPopup()}}},[_c('a',{staticClass:"border register"},[_vm._v("Регистрация")])]):_vm._e(),(_vm.loggedIn && !_vm.singleContrAgent)?_c('div',{staticClass:"desktop-header__login-item",on:{"click":_vm.toggleContrAgent}},[_vm._v("\n        "+_vm._s(_vm.contrAgent)+"\n    ")]):_vm._e(),(_vm.loggedIn)?_c('div',{staticClass:"user-info",on:{"click":function($event){_vm.toggleUserMenu()}}},[_c('div',{staticClass:"user-avatar"}),_c('div',{staticClass:"user-name border-white"},[_vm._v(_vm._s(_vm.userName))])]):_vm._e()])}
-var user_account_desktopvue_type_template_id_23d2779f_shadow_staticRenderFns = [function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('li',{staticClass:"desktop-header__login-item desktop-header__login-item_icon-cart"},[_c('span',{staticClass:"icon-shopping-cart desktop-header__icon-cart"},[_c('i',[_vm._v("9")])]),_c('div',{staticClass:"shopping-cart"})])}]
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"17a5199b-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/shared/header/user-account/user-account-desktop.vue?vue&type=template&id=37bb47da&shadow
+var user_account_desktopvue_type_template_id_37bb47da_shadow_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('ul',{staticClass:"desktop-header__login"},[_vm._m(0),(!_vm.loggedIn)?_c('li',{staticClass:"desktop-header__login-item",on:{"click":function($event){_vm.logIn()}}},[_c('a',{staticClass:"border"},[_vm._v("Вход")])]):_vm._e(),(!_vm.loggedIn)?_c('li',{staticClass:"desktop-header__login-item",on:{"click":function($event){_vm.toggleRegistrationPopup()}}},[_c('a',{staticClass:"border register"},[_vm._v("Регистрация")])]):_vm._e(),(_vm.loggedIn && !_vm.singleContrAgent)?_c('div',{staticClass:"desktop-header__login-item",on:{"click":_vm.toggleContrAgent}},[_vm._v("\n        "+_vm._s(_vm.contrAgent)+"\n    ")]):_vm._e(),(_vm.loggedIn)?_c('div',{staticClass:"user-info",on:{"click":function($event){_vm.toggleUserMenu()}}},[(!_vm.avatarTimestamp)?_c('div',{staticClass:"user-avatar"}):_c('div',{staticClass:"user-avatar",style:(("background-image: url('" + _vm.imageUrl + "')"))}),_c('div',{staticClass:"user-name border-white"},[_vm._v(_vm._s(_vm.userName))])]):_vm._e()])}
+var user_account_desktopvue_type_template_id_37bb47da_shadow_staticRenderFns = [function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('li',{staticClass:"desktop-header__login-item desktop-header__login-item_icon-cart"},[_c('span',{staticClass:"icon-shopping-cart desktop-header__icon-cart"},[_c('i',[_vm._v("9")])]),_c('div',{staticClass:"shopping-cart"})])}]
 
 
-// CONCATENATED MODULE: ./src/components/shared/header/user-account/user-account-desktop.vue?vue&type=template&id=23d2779f&shadow
+// CONCATENATED MODULE: ./src/components/shared/header/user-account/user-account-desktop.vue?vue&type=template&id=37bb47da&shadow
 
 // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--14-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/ts-loader??ref--14-3!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/shared/header/user-account/user-account-desktop.vue?vue&type=script&lang=ts&shadow
 
@@ -11482,8 +11596,27 @@ var user_account_desktopvue_type_template_id_23d2779f_shadow_staticRenderFns = [
 
 
 var user_account_desktopvue_type_script_lang_ts_shadow_UserAccountDesktop = class UserAccountDesktop extends external_Vue_default.a {
+  constructor() {
+    super(...arguments);
+    this.webAppHostStaging = "https://new1.tstarter.ru/new";
+  }
+
   get loggedIn() {
     return AuthModule.logged;
+  }
+
+  get avatarTimestamp() {
+    if (AuthModule.profile) {
+      // @ts-ignore
+      return AuthModule.profile.avatarTimestamp;
+    }
+  }
+
+  get userId() {
+    if (AuthModule.profile) {
+      // @ts-ignore
+      return AuthModule.profile.id;
+    }
   }
 
   get userName() {
@@ -11491,8 +11624,12 @@ var user_account_desktopvue_type_script_lang_ts_shadow_UserAccountDesktop = clas
   }
 
   get contrAgent() {
-    // @ts-ignore
-    return AuthModule.contragent.name || '';
+    if (AuthModule.contragent) {
+      // @ts-ignore
+      return AuthModule.contragent.name || '';
+    } else {
+      return '';
+    }
   }
 
   get singleContrAgent() {
@@ -11505,6 +11642,10 @@ var user_account_desktopvue_type_script_lang_ts_shadow_UserAccountDesktop = clas
 
   logIn() {
     store.dispatch('auth/login');
+  }
+
+  get imageUrl() {
+    return `${this.webAppHostStaging}/api/profiles/${this.userId}/avatar?t=${this.avatarTimestamp}`;
   }
 
   toggleRegistrationPopup() {
@@ -11537,8 +11678,8 @@ if (style0.__inject__) style0.__inject__(context)
 
 var user_account_desktopshadow_component = normalizeComponent(
   user_account_user_account_desktopvue_type_script_lang_ts_shadow,
-  user_account_desktopvue_type_template_id_23d2779f_shadow_render,
-  user_account_desktopvue_type_template_id_23d2779f_shadow_staticRenderFns,
+  user_account_desktopvue_type_template_id_37bb47da_shadow_render,
+  user_account_desktopvue_type_template_id_37bb47da_shadow_staticRenderFns,
   false,
   user_account_desktopshadow_injectStyles,
   null,

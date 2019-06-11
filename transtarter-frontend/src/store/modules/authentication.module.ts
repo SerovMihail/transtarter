@@ -7,11 +7,12 @@ import { IKeyUserObject } from '@/models/index'
 import CookieStorage from 'cookie-storage-domain'
 import Axios from 'axios'
 import { COOKIE_AUTH_BEFORE_REDIRECT_LOCATION_KEY, COOKIE_STORAGE_KEY } from '@/constants'
+import { ProfileService } from '@/services/profile.service'
 
 const userContragentsString = <string>CookieStorage.getItem('ts-user-contragent')
-debugger
 const contragentString = <string>CookieStorage.getItem('selected-contragent')
 const contragent: any = contragentString ? JSON.parse(contragentString) : null
+const profileService = new ProfileService()
 
 const userContragents = userContragentsString ? JSON.parse(userContragentsString) : null
 
@@ -22,6 +23,7 @@ export interface IAuthState {
     email: string
     password: string
     token: string
+    profile: any
     avatar: string
     roles: string[]
     contragent: any
@@ -44,6 +46,7 @@ export class Authentication extends VuexModule implements IAuthState {
     public roles = []
     public contragent = null
     public userContragents = []
+    public profile = null
     public status = {
         loggingIn: false,
         loggedIn: this.user !== null && !(this.user || false).expired, // we should get user info and expired have to be false
@@ -70,7 +73,7 @@ export class Authentication extends VuexModule implements IAuthState {
     }
 
     @Mutation
-    SUCCESS_LOGIN(user: User) {
+    SUCCESS_LOGIN({ user, userProfile }) {
         this.name = user.profile.name
         this.token = user.id_token
         this.accessTokenExpired = user.expired
@@ -78,6 +81,7 @@ export class Authentication extends VuexModule implements IAuthState {
         this.status.loggingIn = false
         this.contragent = contragent
         this.userContragents = userContragents
+        this.profile = userProfile
     }
 
     @Mutation
@@ -109,15 +113,33 @@ export class Authentication extends VuexModule implements IAuthState {
     }
 
     @Action
-    public actualizeUser() {
-        this.auth.getUser().then(user => {
-            if (user) {
-                this.auth.saveUserInfo(COOKIE_STORAGE_KEY, user)
-                this.context.commit('SUCCESS_LOGIN', user)
-            } else {
-                this.context.commit('ERROR_LOGIN')
+    public async actualizeUser() {
+        const user = await this.auth.getUser()
+        let userProfile: any = null
+        if (user) {
+            try {
+                const userProfileResponse = await Axios.get(
+                    `https://new1.tstarter.ru/new/api/Profiles/${user.profile.name}`
+                )
+                userProfile = userProfileResponse.data
+            } catch (err) {
+                console.log(err)
             }
-        })
+        }
+        if (user && userProfile) {
+            try {
+                const hasAvatarResponse = await profileService.getProfileAvatarStatusByUserId(
+                    userProfile.id
+                )
+                if (hasAvatarResponse.status === 200) {
+                    userProfile.avatarTimestamp = new Date().getTime()
+                }
+            } catch (e) {}
+            this.auth.saveUserInfo(COOKIE_STORAGE_KEY, user)
+            this.context.commit('SUCCESS_LOGIN', { user, userProfile })
+        } else {
+            this.context.commit('ERROR_LOGIN')
+        }
     }
 
     @Action

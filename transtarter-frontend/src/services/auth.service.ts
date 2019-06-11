@@ -16,7 +16,6 @@ export class AuthService {
     private oldCatalogCookieStorageKey = 'ts-user'
 
     constructor() {
-        console.log(process.env.VUE_APP_IDENTITY_SERVER)
         const AUTH0_DOMAIN = this.identityServer
         const MY_HOST: string = window.location.origin
 

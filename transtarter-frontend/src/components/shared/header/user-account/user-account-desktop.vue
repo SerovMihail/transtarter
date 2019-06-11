@@ -23,7 +23,8 @@
             {{ contrAgent }}
         </div>
         <div class="user-info" v-if="loggedIn" @click="toggleUserMenu()">
-            <div class="user-avatar"></div>
+            <div v-if="!avatarTimestamp" class="user-avatar"></div>
+            <div v-else class="user-avatar" :style="`background-image: url('${imageUrl}')`"></div>
             <div class="user-name border-white">{{ userName }}</div>
         </div>
         <!-- end block for users -->
@@ -37,8 +38,22 @@ import { store } from '@/store/index'
 
 @Component
 export default class UserAccountDesktop extends Vue {
+    private webAppHostStaging = process.env.VUE_APP_WEB_APP_STAGING
     get loggedIn() {
         return AuthModule.logged
+    }
+    get avatarTimestamp() {
+        if (AuthModule.profile) {
+            // @ts-ignore
+            return AuthModule.profile.avatarTimestamp
+        }
+    }
+
+    get userId() {
+        if (AuthModule.profile) {
+            // @ts-ignore
+            return AuthModule.profile.id
+        }
     }
 
     get userName() {
@@ -48,8 +63,12 @@ export default class UserAccountDesktop extends Vue {
     }
 
     get contrAgent() {
-        // @ts-ignore
-        return AuthModule.contragent.name || ''
+        if (AuthModule.contragent) {
+            // @ts-ignore
+            return AuthModule.contragent.name || ''
+        } else {
+            return ''
+        }
     }
     get singleContrAgent() {
         return AuthModule.userContragents.length === 1
@@ -61,7 +80,11 @@ export default class UserAccountDesktop extends Vue {
     logIn() {
         store.dispatch('auth/login')
     }
-
+    get imageUrl() {
+        return `${this.webAppHostStaging}/api/profiles/${this.userId}/avatar?t=${
+            this.avatarTimestamp
+        }`
+    }
     toggleRegistrationPopup() {
         store.dispatch('display/toggleRegistration')
     }

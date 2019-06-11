@@ -6,6 +6,8 @@ import CookieStorage from 'cookie-storage-domain'
 
 export class ProfileService {
     private webAppHost = process.env.VUE_APP_WEB_APP
+    private webAppHostStaging = process.env.VUE_APP_WEB_APP_STAGING
+
     private identityServerHost = process.env.VUE_APP_IDENTITY_SERVER
     private userKey = 'user'
     private identityUserKey = `${this.userKey}:${this.identityServerHost}:kl`
@@ -13,7 +15,12 @@ export class ProfileService {
     public getProfileInfoByUserId(login: string) {
         return axios.get<IUserProfile>(`${this.webAppHost}/api/profile/${login}`).then(x => x)
     }
-
+    public getProfileAvatarStatusByUserId(login: string) {
+        const avatar = axios.get<IUserProfile>(
+            `${this.webAppHostStaging}/api/profiles/${login}/avatar`
+        )
+        return avatar
+    }
     public updateProfileInfo(updatedUserProfile: IUserProfile) {
         return axios.put<boolean>(`${this.webAppHost}/api/profile`, updatedUserProfile).then(x => {
             this.updateUserName(updatedUserProfile.name)
