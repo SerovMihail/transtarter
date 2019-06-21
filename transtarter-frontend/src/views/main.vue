@@ -9,7 +9,6 @@
       <div style="padding: 10px; font-size: 24px;">Найдите запчасть или агрегат</div>
 <ts-ui-find-detail></ts-ui-find-detail>
     </div> -->
-        <user-profile-wrapper></user-profile-wrapper>
         <layout-footer></layout-footer>
         <!-- end main sections -->
 
@@ -34,12 +33,8 @@ import { Component, Vue } from 'vue-property-decorator'
 // components
 import LayoutHeader from '@/components/shared/header/header.vue'
 import LayoutFooter from '@/components/shared/footer/footer.vue'
-import UserProfileWrapper from '@/components/user-profile/user-profile-wrapper/user-profile-wrapper.vue'
 import SelectCity from '@/components/shared/select-city/select-city.vue'
 import YourCity from '@/components/shared/your-city/your-city.vue'
-// import UserSidebar from '@/components/user-profile/user-sidebar/user-sidebar.vue'
-// import PersonalManager from '@/components/user-profile/personal-manager/personal-manager.vue'
-// import ProfileSettings from '@/components/user-profile/profile-settings/profile-settings.vue'
 // popups
 import Registration from '@/components/authorization/registration/registration.vue'
 // import LogIn from '@/components/authorization/log-in/log-in.vue'
@@ -56,10 +51,6 @@ import FindDetail from '@/components/find-detail/find-detail.vue'
     components: {
         LayoutHeader,
         LayoutFooter,
-        UserProfileWrapper,
-        // userSidebar,
-        // personalManager,
-        // profileSettings,
         YourCity,
         SelectCity,
         // popups

@@ -1,6 +1,10 @@
 <template>
     <ul class="desktop-header__login">
-        <li class="desktop-header__login-item desktop-header__login-item_icon-cart" v-if="loggedIn">
+        <li
+            class="desktop-header__login-item desktop-header__login-item_icon-cart"
+            v-if="loggedIn"
+            @click="goToCart()"
+        >
             <span class="icon-shopping-cart desktop-header__icon-cart">
                 <i>{{ cartInfo.itemAggregatesCount }}</i>
             </span>
@@ -42,10 +46,7 @@ import { ICartInfo } from '@/models'
 export default class UserAccountDesktop extends Vue {
     private webAppHost = process.env.VUE_APP_WEB_APP
 
-    cartInfo: ICartInfo = {
-        itemAggregatesCount: 0,
-        total: 0,
-    }
+    cartInfo: ICartInfo = {}
 
     get loggedIn() {
         return AuthModule.logged
@@ -95,6 +96,10 @@ export default class UserAccountDesktop extends Vue {
     async initCartInfo() {
         const { data } = await axios.get<ICartInfo>(`${this.webAppHost}api/ts/carts/info`)
         this.cartInfo = data
+    }
+
+    goToCart() {
+        window.location.href = `${this.webAppHost}/account/cart`
     }
 
     toggleContrAgent() {

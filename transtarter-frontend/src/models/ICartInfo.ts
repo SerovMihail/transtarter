@@ -1,4 +1,4 @@
 export interface ICartInfo {
-    itemAggregatesCount: number
-    total: number
+    itemAggregatesCount?: number
+    total?: number
 }

@@ -65,8 +65,5 @@ export default class SearchFormDesktop extends Vue {
             return '/vin-number/' + this.searchText
         }
     }
-    goToResults() {
-        this.$router.push({ path: this.searchLink })
-    }
 }
 </script>
