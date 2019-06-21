@@ -84,7 +84,7 @@ export default class UserAccountDesktop extends Vue {
     }
 
     get imageUrl() {
-        return `${this.webAppHost}api/profiles/${this.userId}/avatar?t=${this.avatarTimestamp}`
+        return `${this.webAppHost}/api/profiles/${this.userId}/avatar?t=${this.avatarTimestamp}`
     }
 
     async mounted() {
@@ -94,7 +94,7 @@ export default class UserAccountDesktop extends Vue {
     }
 
     async initCartInfo() {
-        const { data } = await axios.get<ICartInfo>(`${this.webAppHost}api/ts/carts/info`)
+        const { data } = await axios.get<ICartInfo>(`${this.webAppHost}/api/ts/carts/info`)
         this.cartInfo = data
     }
 
