@@ -1,8 +1,8 @@
 <template>
     <ul class="desktop-header__login">
-        <li class="desktop-header__login-item desktop-header__login-item_icon-cart">
+        <li class="desktop-header__login-item desktop-header__login-item_icon-cart" v-if="loggedIn">
             <span class="icon-shopping-cart desktop-header__icon-cart">
-                <i>9</i>
+                <i>{{ cartInfo.itemAggregatesCount }}</i>
             </span>
             <div class="shopping-cart"></div>
         </li>
@@ -35,10 +35,18 @@
 import { Component, Vue, Watch } from 'vue-property-decorator'
 import { AuthModule } from '@/store/modules/authentication.module'
 import { store } from '@/store/index'
+import axios from 'axios'
+import { ICartInfo } from '@/models'
 
 @Component
 export default class UserAccountDesktop extends Vue {
-    private webAppHostStaging = process.env.VUE_APP_WEB_APP_STAGING
+    private webAppHost = process.env.VUE_APP_WEB_APP
+
+    cartInfo: ICartInfo = {
+        itemAggregatesCount: 0,
+        total: 0,
+    }
+
     get loggedIn() {
         return AuthModule.logged
     }
@@ -73,6 +81,22 @@ export default class UserAccountDesktop extends Vue {
     get singleContrAgent() {
         return AuthModule.userContragents.length === 1
     }
+
+    get imageUrl() {
+        return `${this.webAppHost}api/profiles/${this.userId}/avatar?t=${this.avatarTimestamp}`
+    }
+
+    async mounted() {
+        if (this.loggedIn) {
+            await this.initCartInfo()
+        }
+    }
+
+    async initCartInfo() {
+        const { data } = await axios.get<ICartInfo>(`${this.webAppHost}api/ts/carts/info`)
+        this.cartInfo = data
+    }
+
     toggleContrAgent() {
         store.dispatch('display/toggleContrAgentModal')
     }
@@ -80,11 +104,7 @@ export default class UserAccountDesktop extends Vue {
     logIn() {
         store.dispatch('auth/login')
     }
-    get imageUrl() {
-        return `${this.webAppHostStaging}/api/profiles/${this.userId}/avatar?t=${
-            this.avatarTimestamp
-        }`
-    }
+
     toggleRegistrationPopup() {
         store.dispatch('display/toggleRegistration')
     }
