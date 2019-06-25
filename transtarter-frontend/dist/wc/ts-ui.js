@@ -8091,13 +8091,22 @@ var mobile_menu_component = normalizeComponent(
 
 mobile_menu_component.options.__file = "mobile-menu.vue"
 /* harmony default export */ var mobile_menu = (mobile_menu_component.exports);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules//.cache//vue-loader","cacheIdentifier":"4d75f7ed-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/shared/header/user-account/user-account-desktop.vue?vue&type=template&id=7caa8dbc&
-var user_account_desktopvue_type_template_id_7caa8dbc_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('ul',{staticClass:"desktop-header__login"},[(_vm.loggedIn)?_c('li',{staticClass:"desktop-header__login-item desktop-header__login-item_icon-cart",on:{"click":function($event){_vm.goToCart()}}},[_c('span',{staticClass:"icon-shopping-cart desktop-header__icon-cart"},[_c('i',[_vm._v(_vm._s(_vm.cartInfo.itemAggregatesCount))])]),_c('div',{staticClass:"shopping-cart"})]):_vm._e(),(!_vm.loggedIn)?_c('li',{staticClass:"desktop-header__login-item",on:{"click":function($event){_vm.logIn()}}},[_c('a',{staticClass:"border"},[_vm._v("Вход")])]):_vm._e(),(!_vm.loggedIn)?_c('li',{staticClass:"desktop-header__login-item",on:{"click":function($event){_vm.toggleRegistrationPopup()}}},[_c('a',{staticClass:"border register"},[_vm._v("Регистрация")])]):_vm._e(),(_vm.loggedIn && !_vm.singleContrAgent)?_c('div',{staticClass:"desktop-header__login-item",on:{"click":_vm.toggleContrAgent}},[_vm._v("\n        "+_vm._s(_vm.contrAgent)+"\n    ")]):_vm._e(),(_vm.loggedIn)?_c('div',{staticClass:"user-info",on:{"click":function($event){_vm.toggleUserMenu()}}},[(!_vm.avatarTimestamp)?_c('div',{staticClass:"user-avatar"}):_c('div',{staticClass:"user-avatar",style:(("background-image: url('" + _vm.imageUrl + "')"))}),_c('div',{staticClass:"user-name border-white"},[_vm._v(_vm._s(_vm.userName))])]):_vm._e()])}
-var user_account_desktopvue_type_template_id_7caa8dbc_staticRenderFns = []
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules//.cache//vue-loader","cacheIdentifier":"4d75f7ed-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/shared/header/user-account/user-account-desktop.vue?vue&type=template&id=0373b7fe&
+var user_account_desktopvue_type_template_id_0373b7fe_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('ul',{staticClass:"desktop-header__login"},[(_vm.loggedIn)?_c('li',{staticClass:"desktop-header__login-item desktop-header__login-item_icon-cart",on:{"click":function($event){_vm.goToCart()}}},[_c('span',{staticClass:"icon-shopping-cart desktop-header__icon-cart"},[_c('i',[_vm._v(_vm._s(_vm.cartInfo.itemAggregatesCount))])]),_c('div',{staticClass:"shopping-cart"})]):_vm._e(),(!_vm.loggedIn)?_c('li',{staticClass:"desktop-header__login-item",on:{"click":function($event){_vm.logIn()}}},[_c('a',{staticClass:"border"},[_vm._v("Вход")])]):_vm._e(),(!_vm.loggedIn)?_c('li',{staticClass:"desktop-header__login-item",on:{"click":function($event){_vm.toggleRegistrationPopup()}}},[_c('a',{staticClass:"border register"},[_vm._v("Регистрация")])]):_vm._e(),(_vm.loggedIn && !_vm.singleContrAgent)?_c('div',{staticClass:"desktop-header__login-item",on:{"click":_vm.toggleContrAgent}},[_vm._v("\n        "+_vm._s(_vm.contrAgent)+"\n    ")]):_vm._e(),(_vm.loggedIn)?_c('div',{staticClass:"user-info",on:{"click":function($event){_vm.toggleUserMenu()}}},[(!_vm.avatarTimestamp)?_c('div',{staticClass:"user-avatar"}):_c('div',{staticClass:"user-avatar",style:(("background-image: url('" + _vm.imageUrl + "')"))}),_c('div',{staticClass:"user-name border-white"},[_vm._v(_vm._s(_vm.userName))])]):_vm._e()])}
+var user_account_desktopvue_type_template_id_0373b7fe_staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./src/components/shared/header/user-account/user-account-desktop.vue?vue&type=template&id=7caa8dbc&
+// CONCATENATED MODULE: ./src/components/shared/header/user-account/user-account-desktop.vue?vue&type=template&id=0373b7fe&
 
+// CONCATENATED MODULE: ./src/services/axios.service.ts
+
+var webAppHost = "https://new1.tstarter.ru/new";
+var axiosRequestConfig = {
+  baseURL: webAppHost,
+  withCredentials: true
+};
+var instance = axios_default.a.create(axiosRequestConfig);
+/* harmony default export */ var axios_service = (instance);
 // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--14-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/ts-loader??ref--14-3!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/shared/header/user-account/user-account-desktop.vue?vue&type=script&lang=ts&
 
 
@@ -8192,7 +8201,7 @@ var user_account_desktopvue_type_script_lang_ts_UserAccountDesktop = class UserA
           switch (_context2.prev = _context2.next) {
             case 0:
               _context2.next = 2;
-              return axios_default.a.get(`${_this2.webAppHost}/api/ts/carts/info`);
+              return axios_service.get(`${_this2.webAppHost}/api/ts/carts/info`);
 
             case 2:
               _ref = _context2.sent;
@@ -8250,8 +8259,8 @@ if (style0.__inject__) style0.__inject__(context)
 
 var user_account_desktop_component = normalizeComponent(
   user_account_user_account_desktopvue_type_script_lang_ts_,
-  user_account_desktopvue_type_template_id_7caa8dbc_render,
-  user_account_desktopvue_type_template_id_7caa8dbc_staticRenderFns,
+  user_account_desktopvue_type_template_id_0373b7fe_render,
+  user_account_desktopvue_type_template_id_0373b7fe_staticRenderFns,
   false,
   user_account_desktop_injectStyles,
   null,
@@ -10680,12 +10689,12 @@ var search_results_by_vinshadow_component = normalizeComponent(
 
 search_results_by_vinshadow_component.options.__file = "search-results-by-vin.vue"
 /* harmony default export */ var search_results_by_vinshadow = (search_results_by_vinshadow_component.exports);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules//.cache//vue-loader","cacheIdentifier":"4d75f7ed-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/shared/header/user-account/user-account-desktop.vue?vue&type=template&id=a4e35796&shadow
-var user_account_desktopvue_type_template_id_a4e35796_shadow_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('ul',{staticClass:"desktop-header__login"},[(_vm.loggedIn)?_c('li',{staticClass:"desktop-header__login-item desktop-header__login-item_icon-cart",on:{"click":function($event){_vm.goToCart()}}},[_c('span',{staticClass:"icon-shopping-cart desktop-header__icon-cart"},[_c('i',[_vm._v(_vm._s(_vm.cartInfo.itemAggregatesCount))])]),_c('div',{staticClass:"shopping-cart"})]):_vm._e(),(!_vm.loggedIn)?_c('li',{staticClass:"desktop-header__login-item",on:{"click":function($event){_vm.logIn()}}},[_c('a',{staticClass:"border"},[_vm._v("Вход")])]):_vm._e(),(!_vm.loggedIn)?_c('li',{staticClass:"desktop-header__login-item",on:{"click":function($event){_vm.toggleRegistrationPopup()}}},[_c('a',{staticClass:"border register"},[_vm._v("Регистрация")])]):_vm._e(),(_vm.loggedIn && !_vm.singleContrAgent)?_c('div',{staticClass:"desktop-header__login-item",on:{"click":_vm.toggleContrAgent}},[_vm._v("\n        "+_vm._s(_vm.contrAgent)+"\n    ")]):_vm._e(),(_vm.loggedIn)?_c('div',{staticClass:"user-info",on:{"click":function($event){_vm.toggleUserMenu()}}},[(!_vm.avatarTimestamp)?_c('div',{staticClass:"user-avatar"}):_c('div',{staticClass:"user-avatar",style:(("background-image: url('" + _vm.imageUrl + "')"))}),_c('div',{staticClass:"user-name border-white"},[_vm._v(_vm._s(_vm.userName))])]):_vm._e()])}
-var user_account_desktopvue_type_template_id_a4e35796_shadow_staticRenderFns = []
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules//.cache//vue-loader","cacheIdentifier":"4d75f7ed-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/shared/header/user-account/user-account-desktop.vue?vue&type=template&id=1c8f72d1&shadow
+var user_account_desktopvue_type_template_id_1c8f72d1_shadow_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('ul',{staticClass:"desktop-header__login"},[(_vm.loggedIn)?_c('li',{staticClass:"desktop-header__login-item desktop-header__login-item_icon-cart",on:{"click":function($event){_vm.goToCart()}}},[_c('span',{staticClass:"icon-shopping-cart desktop-header__icon-cart"},[_c('i',[_vm._v(_vm._s(_vm.cartInfo.itemAggregatesCount))])]),_c('div',{staticClass:"shopping-cart"})]):_vm._e(),(!_vm.loggedIn)?_c('li',{staticClass:"desktop-header__login-item",on:{"click":function($event){_vm.logIn()}}},[_c('a',{staticClass:"border"},[_vm._v("Вход")])]):_vm._e(),(!_vm.loggedIn)?_c('li',{staticClass:"desktop-header__login-item",on:{"click":function($event){_vm.toggleRegistrationPopup()}}},[_c('a',{staticClass:"border register"},[_vm._v("Регистрация")])]):_vm._e(),(_vm.loggedIn && !_vm.singleContrAgent)?_c('div',{staticClass:"desktop-header__login-item",on:{"click":_vm.toggleContrAgent}},[_vm._v("\n        "+_vm._s(_vm.contrAgent)+"\n    ")]):_vm._e(),(_vm.loggedIn)?_c('div',{staticClass:"user-info",on:{"click":function($event){_vm.toggleUserMenu()}}},[(!_vm.avatarTimestamp)?_c('div',{staticClass:"user-avatar"}):_c('div',{staticClass:"user-avatar",style:(("background-image: url('" + _vm.imageUrl + "')"))}),_c('div',{staticClass:"user-name border-white"},[_vm._v(_vm._s(_vm.userName))])]):_vm._e()])}
+var user_account_desktopvue_type_template_id_1c8f72d1_shadow_staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./src/components/shared/header/user-account/user-account-desktop.vue?vue&type=template&id=a4e35796&shadow
+// CONCATENATED MODULE: ./src/components/shared/header/user-account/user-account-desktop.vue?vue&type=template&id=1c8f72d1&shadow
 
 // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--14-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/ts-loader??ref--14-3!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/shared/header/user-account/user-account-desktop.vue?vue&type=script&lang=ts&shadow
 
@@ -10781,7 +10790,7 @@ var user_account_desktopvue_type_script_lang_ts_shadow_UserAccountDesktop = clas
           switch (_context2.prev = _context2.next) {
             case 0:
               _context2.next = 2;
-              return axios_default.a.get(`${_this2.webAppHost}/api/ts/carts/info`);
+              return axios_service.get(`${_this2.webAppHost}/api/ts/carts/info`);
 
             case 2:
               _ref = _context2.sent;
@@ -10839,8 +10848,8 @@ if (style0.__inject__) style0.__inject__(context)
 
 var user_account_desktopshadow_component = normalizeComponent(
   user_account_user_account_desktopvue_type_script_lang_ts_shadow,
-  user_account_desktopvue_type_template_id_a4e35796_shadow_render,
-  user_account_desktopvue_type_template_id_a4e35796_shadow_staticRenderFns,
+  user_account_desktopvue_type_template_id_1c8f72d1_shadow_render,
+  user_account_desktopvue_type_template_id_1c8f72d1_shadow_staticRenderFns,
   false,
   user_account_desktopshadow_injectStyles,
   null,

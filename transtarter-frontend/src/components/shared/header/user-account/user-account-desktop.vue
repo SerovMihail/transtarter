@@ -39,7 +39,7 @@
 import { Component, Vue, Watch } from 'vue-property-decorator'
 import { AuthModule } from '@/store/modules/authentication.module'
 import { store } from '@/store/index'
-import axios from 'axios'
+import axios from '@/services/axios.service.ts'
 import { ICartInfo } from '@/models'
 
 @Component
