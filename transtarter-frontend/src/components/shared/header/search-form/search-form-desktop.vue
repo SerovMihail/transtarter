@@ -5,9 +5,7 @@
             <search-by-number @searchText="searchText = $event" />
             <a
                 class="search__btn-search"
-                :href="
-                    `https://www.tstarter.ru/store/?noScroll=true&searchInput=${searchText}&searchType=1`
-                "
+                :href="`${searchBaseUrl}/store/?noScroll=true&searchInput=${this.searchText}&searchType=1`"
             >
                 Найти
             </a>
@@ -48,6 +46,7 @@ import Axios from 'axios'
     },
 })
 export default class SearchFormDesktop extends Vue {
+    searchBaseUrl: string = process.env.VUE_APP_HOST;
     productSearchCriteria: any = {}
     isLoading = false
     loadedInput = 'Номер детали'
