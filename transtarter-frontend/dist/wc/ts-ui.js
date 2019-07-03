@@ -4875,7 +4875,7 @@ __webpack_require__.r(__webpack_exports__);
 // This file is imported into lib/wc client bundles.
 
 if (typeof window !== 'undefined') {
-  if (Object({"NODE_ENV":"production","VUE_APP_HOST":"https://tstarter.ru","VUE_APP_IDENTITY_SERVER":"https://identity.tstarter.ru","VUE_APP_IDENTITY_SERVER_API":"https://identityapi.tstarter.ru","VUE_APP_WEB_APP":"https://catalog.tstarter.ru/new/","BASE_URL":"/"}).NEED_CURRENTSCRIPT_POLYFILL) {
+  if (Object({"NODE_ENV":"production","VUE_APP_HOST":"https://tstarter.ru","VUE_APP_IDENTITY_SERVER":"https://identity.tstarter.ru","VUE_APP_IDENTITY_SERVER_API":"https://identityapi.tstarter.ru","VUE_APP_WEB_APP":"https://catalog.tstarter.ru/new","BASE_URL":"/"}).NEED_CURRENTSCRIPT_POLYFILL) {
     __webpack_require__("f6fd")
   }
 
@@ -6397,7 +6397,7 @@ class auth_service_AuthService {
   constructor() {
     this.identityServer = "https://identity.tstarter.ru";
     this.identityServerApi = "https://identityapi.tstarter.ru";
-    this.webAddress = "https://catalog.tstarter.ru/new/";
+    this.webAddress = "https://catalog.tstarter.ru/new";
     this.oldCatalogCookieStorageKey = 'ts-user';
     var AUTH0_DOMAIN = this.identityServer;
     var MY_HOST = window.location.origin;
@@ -6473,8 +6473,8 @@ var COOKIE_STORAGE_KEY = 'user';
 
 class profile_service_ProfileService {
   constructor() {
-    this.webAppHost = "https://catalog.tstarter.ru/new/";
-    this.webAppHostStaging = Object({"NODE_ENV":"production","VUE_APP_HOST":"https://tstarter.ru","VUE_APP_IDENTITY_SERVER":"https://identity.tstarter.ru","VUE_APP_IDENTITY_SERVER_API":"https://identityapi.tstarter.ru","VUE_APP_WEB_APP":"https://catalog.tstarter.ru/new/","BASE_URL":"/"}).VUE_APP_WEB_APP_STAGING;
+    this.webAppHost = "https://catalog.tstarter.ru/new";
+    this.webAppHostStaging = Object({"NODE_ENV":"production","VUE_APP_HOST":"https://tstarter.ru","VUE_APP_IDENTITY_SERVER":"https://identity.tstarter.ru","VUE_APP_IDENTITY_SERVER_API":"https://identityapi.tstarter.ru","VUE_APP_WEB_APP":"https://catalog.tstarter.ru/new","BASE_URL":"/"}).VUE_APP_WEB_APP_STAGING;
     this.identityServerHost = "https://identity.tstarter.ru";
     this.userKey = 'user';
     this.identityUserKey = `${this.userKey}:${this.identityServerHost}:kl`;
@@ -8373,7 +8373,7 @@ var clickOutside = {
 var account_infovue_type_script_lang_ts_AccountInfoMobile = class AccountInfoMobile extends external_Vue_default.a {
   constructor() {
     super(...arguments);
-    this.webAppHost = "https://catalog.tstarter.ru/new/";
+    this.webAppHost = "https://catalog.tstarter.ru/new";
   }
 
   get contrAgent() {
@@ -8497,7 +8497,7 @@ var user_account_desktopvue_type_template_id_b444a530_staticRenderFns = []
 
 // CONCATENATED MODULE: ./src/services/axios.service.ts
 
-var webAppHost = "https://catalog.tstarter.ru/new/";
+var webAppHost = "https://catalog.tstarter.ru/new";
 var axiosRequestConfig = {
   baseURL: webAppHost,
   withCredentials: true
@@ -8515,7 +8515,7 @@ var instance = axios_default.a.create(axiosRequestConfig);
 var user_account_desktopvue_type_script_lang_ts_UserAccountDesktop = class UserAccountDesktop extends external_Vue_default.a {
   constructor() {
     super(...arguments);
-    this.webAppHost = "https://catalog.tstarter.ru/new/";
+    this.webAppHost = "https://catalog.tstarter.ru/new";
     this.cartInfo = {};
   }
 
@@ -10452,7 +10452,7 @@ var account_infovue_type_template_id_b315637c_shadow_staticRenderFns = [function
 var account_infovue_type_script_lang_ts_shadow_AccountInfoMobile = class AccountInfoMobile extends external_Vue_default.a {
   constructor() {
     super(...arguments);
-    this.webAppHost = "https://catalog.tstarter.ru/new/";
+    this.webAppHost = "https://catalog.tstarter.ru/new";
   }
 
   get contrAgent() {
@@ -11067,7 +11067,7 @@ var user_account_desktopvue_type_template_id_77ae650a_shadow_staticRenderFns = [
 var user_account_desktopvue_type_script_lang_ts_shadow_UserAccountDesktop = class UserAccountDesktop extends external_Vue_default.a {
   constructor() {
     super(...arguments);
-    this.webAppHost = "https://catalog.tstarter.ru/new/";
+    this.webAppHost = "https://catalog.tstarter.ru/new";
     this.cartInfo = {};
   }
 
