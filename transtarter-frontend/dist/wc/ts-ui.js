@@ -4875,7 +4875,7 @@ __webpack_require__.r(__webpack_exports__);
 // This file is imported into lib/wc client bundles.
 
 if (typeof window !== 'undefined') {
-  if (Object({"NODE_ENV":"production","VUE_APP_HOST":"https://tstarter.ru","VUE_APP_IDENTITY_SERVER":"https://identity-test.tstarter.ru","VUE_APP_IDENTITY_SERVER_API":"https://identity-api-test.tstarter.ru","VUE_APP_WEB_APP":"https://new1.tstarter.ru/new","VUE_APP_WEB_APP_STAGING":"https://new1.tstarter.ru/new","BASE_URL":"/"}).NEED_CURRENTSCRIPT_POLYFILL) {
+  if (Object({"NODE_ENV":"production","VUE_APP_HOST":"https://tstarter.ru","VUE_APP_IDENTITY_SERVER":"https://identity.tstarter.ru","VUE_APP_IDENTITY_SERVER_API":"https://identityapi.tstarter.ru","VUE_APP_WEB_APP":"https://catalog.tstarter.ru/new/","BASE_URL":"/"}).NEED_CURRENTSCRIPT_POLYFILL) {
     __webpack_require__("f6fd")
   }
 
@@ -6395,9 +6395,9 @@ var oidc_client_min = __webpack_require__("dd17");
 
 class auth_service_AuthService {
   constructor() {
-    this.identityServer = "https://identity-test.tstarter.ru";
-    this.identityServerApi = "https://identity-api-test.tstarter.ru";
-    this.webAddress = "https://new1.tstarter.ru/new";
+    this.identityServer = "https://identity.tstarter.ru";
+    this.identityServerApi = "https://identityapi.tstarter.ru";
+    this.webAddress = "https://catalog.tstarter.ru/new/";
     this.oldCatalogCookieStorageKey = 'ts-user';
     var AUTH0_DOMAIN = this.identityServer;
     var MY_HOST = window.location.origin;
@@ -6473,9 +6473,9 @@ var COOKIE_STORAGE_KEY = 'user';
 
 class profile_service_ProfileService {
   constructor() {
-    this.webAppHost = "https://new1.tstarter.ru/new";
-    this.webAppHostStaging = "https://new1.tstarter.ru/new";
-    this.identityServerHost = "https://identity-test.tstarter.ru";
+    this.webAppHost = "https://catalog.tstarter.ru/new/";
+    this.webAppHostStaging = Object({"NODE_ENV":"production","VUE_APP_HOST":"https://tstarter.ru","VUE_APP_IDENTITY_SERVER":"https://identity.tstarter.ru","VUE_APP_IDENTITY_SERVER_API":"https://identityapi.tstarter.ru","VUE_APP_WEB_APP":"https://catalog.tstarter.ru/new/","BASE_URL":"/"}).VUE_APP_WEB_APP_STAGING;
+    this.identityServerHost = "https://identity.tstarter.ru";
     this.userKey = 'user';
     this.identityUserKey = `${this.userKey}:${this.identityServerHost}:kl`;
   }
@@ -6846,7 +6846,7 @@ var component = normalizeComponent(
 var contragent_modalvue_type_script_lang_ts_shadow_ContragentModal = class ContragentModal extends external_Vue_default.a {
   constructor() {
     super(...arguments);
-    this.identityApi = "https://identity-api-test.tstarter.ru" || false;
+    this.identityApi = "https://identityapi.tstarter.ru" || false;
   }
 
   get contragentOpen() {
@@ -8373,7 +8373,7 @@ var clickOutside = {
 var account_infovue_type_script_lang_ts_AccountInfoMobile = class AccountInfoMobile extends external_Vue_default.a {
   constructor() {
     super(...arguments);
-    this.webAppHost = "https://new1.tstarter.ru/new";
+    this.webAppHost = "https://catalog.tstarter.ru/new/";
   }
 
   get contrAgent() {
@@ -8497,7 +8497,7 @@ var user_account_desktopvue_type_template_id_b444a530_staticRenderFns = []
 
 // CONCATENATED MODULE: ./src/services/axios.service.ts
 
-var webAppHost = "https://new1.tstarter.ru/new";
+var webAppHost = "https://catalog.tstarter.ru/new/";
 var axiosRequestConfig = {
   baseURL: webAppHost,
   withCredentials: true
@@ -8515,7 +8515,7 @@ var instance = axios_default.a.create(axiosRequestConfig);
 var user_account_desktopvue_type_script_lang_ts_UserAccountDesktop = class UserAccountDesktop extends external_Vue_default.a {
   constructor() {
     super(...arguments);
-    this.webAppHost = "https://new1.tstarter.ru/new";
+    this.webAppHost = "https://catalog.tstarter.ru/new/";
     this.cartInfo = {};
   }
 
@@ -8701,12 +8701,12 @@ var search_location_desktop_component = normalizeComponent(
 )
 
 /* harmony default export */ var search_location_desktop = (search_location_desktop_component.exports);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"08770e40-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/shared/header/search-form/search-form-desktop.vue?vue&type=template&id=b23e7364&
-var search_form_desktopvue_type_template_id_b23e7364_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('form',{staticClass:"container search__form",on:{"submit":function($event){$event.preventDefault();return _vm.goToResults($event)}}},[_c('search-from-select',{on:{"optionWasChanged":function($event){return _vm.optionWasChanged($event)}}}),(_vm.loadedInput === 'Номер детали')?[_c('search-by-number',{on:{"searchText":function($event){_vm.searchText = $event}}}),_c('a',{staticClass:"search__btn-search",attrs:{"href":(_vm.searchBaseUrl + "/store/?noScroll=true&searchInput=" + (this.searchText) + "&searchType=1")}},[_vm._v("\n            Найти\n        ")])]:(_vm.loadedInput === 'Марка')?[_c('search-by-model'),_c('button',{staticClass:"search__btn-search",attrs:{"type":"submit"}},[_vm._v("Найти")])]:(_vm.loadedInput === 'VIN - номер')?[_c('search-by-vin',{on:{"searchText":function($event){_vm.searchText = $event}}}),_c('button',{staticClass:"search__btn-search",attrs:{"type":"button"}},[_vm._v("Найти")])]:_vm._e()],2)}
-var search_form_desktopvue_type_template_id_b23e7364_staticRenderFns = []
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"08770e40-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/shared/header/search-form/search-form-desktop.vue?vue&type=template&id=3b25256b&
+var search_form_desktopvue_type_template_id_3b25256b_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('form',{staticClass:"container search__form",on:{"submit":function($event){$event.preventDefault();return _vm.goToResults($event)}}},[_c('search-from-select',{on:{"optionWasChanged":function($event){return _vm.optionWasChanged($event)}}}),(_vm.loadedInput === 'Номер детали')?[_c('search-by-number',{on:{"searchText":function($event){_vm.searchText = $event}}}),_c('a',{staticClass:"search__btn-search",attrs:{"href":(_vm.searchBaseUrl + "/store/?noScroll=true&searchInput=" + (this.searchText) + "&searchType=1")}},[_vm._v("\n            Найти\n        ")])]:(_vm.loadedInput === 'Марка')?[_c('search-by-model'),_c('button',{staticClass:"search__btn-search",attrs:{"type":"submit"}},[_vm._v("Найти")])]:(_vm.loadedInput === 'VIN - номер')?[_c('search-by-vin',{on:{"searchText":function($event){_vm.searchText = $event}}}),_c('button',{staticClass:"search__btn-search",attrs:{"type":"button"}},[_vm._v("Найти")])]:_vm._e()],2)}
+var search_form_desktopvue_type_template_id_3b25256b_staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./src/components/shared/header/search-form/search-form-desktop.vue?vue&type=template&id=b23e7364&
+// CONCATENATED MODULE: ./src/components/shared/header/search-form/search-form-desktop.vue?vue&type=template&id=3b25256b&
 
 // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"08770e40-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/shared/header/search-results/search-results.vue?vue&type=template&id=04badd10&scoped=true&
 var search_resultsvue_type_template_id_04badd10_scoped_true_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('transition',{attrs:{"name":"opacity"}},[_c('div',{staticClass:"search-results",staticStyle:{"display":"none"}},[_c('div',{staticClass:"search-results__header"},[_c('div',{staticClass:"search-results__header-item"},[_vm._v("Описание")]),_c('div',{staticClass:"search-results__header-item"},[_vm._v("Номер")]),_c('div',{staticClass:"search-results__header-item"},[_vm._v("Производитель")])]),_c('div',{staticClass:"search-results__body",on:{"click":_vm.selected}},_vm._l((_vm.foundItems.slice(0, 5)),function(item,$index){return _c('a',{key:$index,staticClass:"search-results__body-row",attrs:{"href":("https://www.tstarter.ru/store/?noScroll=true&searchInput=" + (item.number) + "&searchType=1")}},[_c('div',{staticClass:"search-results__body-row-item",staticStyle:{"flex-basis":"33%"}},[_vm._v("\n                    "+_vm._s(item.desc)+"\n                ")]),_c('div',{staticClass:"search-results__body-row-item",staticStyle:{"flex-basis":"33%"}},[_vm._v("\n                    "+_vm._s(item.number)+"\n                ")]),_c('div',{staticClass:"search-results__body-row-item",staticStyle:{"flex-basis":"33%"}},[_vm._v("\n                    "+_vm._s(item.manufacturer)+"\n                ")]),(item.alreadyInBucket)?_c('div',{staticClass:"search-results__body-row-item-optional"},[_c('div',{staticClass:"already-in-bucket"},[_c('div',{staticClass:"shopping-bucket-icon"}),_c('div',{staticClass:"items-in-bucket"},[_vm._v(_vm._s(item.alreadyInBucket)+" шт.")])])]):_vm._e()])}),0)])])}
@@ -9611,7 +9611,6 @@ var search_form_desktopvue_type_script_lang_ts_SearchFormDesktop = class SearchF
 
   optionWasChanged(option) {
     this.loadedInput = option;
-    console.log('tst');
     this.searchText = '';
   }
 
@@ -9649,8 +9648,8 @@ search_form_desktopvue_type_script_lang_ts_SearchFormDesktop = __decorate([vue_c
 
 var search_form_desktop_component = normalizeComponent(
   search_form_search_form_desktopvue_type_script_lang_ts_,
-  search_form_desktopvue_type_template_id_b23e7364_render,
-  search_form_desktopvue_type_template_id_b23e7364_staticRenderFns,
+  search_form_desktopvue_type_template_id_3b25256b_render,
+  search_form_desktopvue_type_template_id_3b25256b_staticRenderFns,
   false,
   null,
   null,
@@ -10453,7 +10452,7 @@ var account_infovue_type_template_id_b315637c_shadow_staticRenderFns = [function
 var account_infovue_type_script_lang_ts_shadow_AccountInfoMobile = class AccountInfoMobile extends external_Vue_default.a {
   constructor() {
     super(...arguments);
-    this.webAppHost = "https://new1.tstarter.ru/new";
+    this.webAppHost = "https://catalog.tstarter.ru/new/";
   }
 
   get contrAgent() {
@@ -10809,12 +10808,12 @@ var search_form_desktop_oldshadow_component = normalizeComponent(
 )
 
 /* harmony default export */ var search_form_desktop_oldshadow = (search_form_desktop_oldshadow_component.exports);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"08770e40-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/shared/header/search-form/search-form-desktop.vue?vue&type=template&id=7a7221f9&shadow
-var search_form_desktopvue_type_template_id_7a7221f9_shadow_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('form',{staticClass:"container search__form",on:{"submit":function($event){$event.preventDefault();return _vm.goToResults($event)}}},[_c('search-from-select',{on:{"optionWasChanged":function($event){return _vm.optionWasChanged($event)}}}),(_vm.loadedInput === 'Номер детали')?[_c('search-by-number',{on:{"searchText":function($event){_vm.searchText = $event}}}),_c('a',{staticClass:"search__btn-search",attrs:{"href":(_vm.searchBaseUrl + "/store/?noScroll=true&searchInput=" + (this.searchText) + "&searchType=1")}},[_vm._v("\n            Найти\n        ")])]:(_vm.loadedInput === 'Марка')?[_c('search-by-model'),_c('button',{staticClass:"search__btn-search",attrs:{"type":"submit"}},[_vm._v("Найти")])]:(_vm.loadedInput === 'VIN - номер')?[_c('search-by-vin',{on:{"searchText":function($event){_vm.searchText = $event}}}),_c('button',{staticClass:"search__btn-search",attrs:{"type":"button"}},[_vm._v("Найти")])]:_vm._e()],2)}
-var search_form_desktopvue_type_template_id_7a7221f9_shadow_staticRenderFns = []
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"08770e40-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/shared/header/search-form/search-form-desktop.vue?vue&type=template&id=1d4370a0&shadow
+var search_form_desktopvue_type_template_id_1d4370a0_shadow_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('form',{staticClass:"container search__form",on:{"submit":function($event){$event.preventDefault();return _vm.goToResults($event)}}},[_c('search-from-select',{on:{"optionWasChanged":function($event){return _vm.optionWasChanged($event)}}}),(_vm.loadedInput === 'Номер детали')?[_c('search-by-number',{on:{"searchText":function($event){_vm.searchText = $event}}}),_c('a',{staticClass:"search__btn-search",attrs:{"href":(_vm.searchBaseUrl + "/store/?noScroll=true&searchInput=" + (this.searchText) + "&searchType=1")}},[_vm._v("\n            Найти\n        ")])]:(_vm.loadedInput === 'Марка')?[_c('search-by-model'),_c('button',{staticClass:"search__btn-search",attrs:{"type":"submit"}},[_vm._v("Найти")])]:(_vm.loadedInput === 'VIN - номер')?[_c('search-by-vin',{on:{"searchText":function($event){_vm.searchText = $event}}}),_c('button',{staticClass:"search__btn-search",attrs:{"type":"button"}},[_vm._v("Найти")])]:_vm._e()],2)}
+var search_form_desktopvue_type_template_id_1d4370a0_shadow_staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./src/components/shared/header/search-form/search-form-desktop.vue?vue&type=template&id=7a7221f9&shadow
+// CONCATENATED MODULE: ./src/components/shared/header/search-form/search-form-desktop.vue?vue&type=template&id=1d4370a0&shadow
 
 // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--14-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/ts-loader??ref--14-3!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/shared/header/search-form/search-form-desktop.vue?vue&type=script&lang=ts&shadow
 
@@ -10838,7 +10837,6 @@ var search_form_desktopvue_type_script_lang_ts_shadow_SearchFormDesktop = class 
 
   optionWasChanged(option) {
     this.loadedInput = option;
-    console.log('tst');
     this.searchText = '';
   }
 
@@ -10876,8 +10874,8 @@ search_form_desktopvue_type_script_lang_ts_shadow_SearchFormDesktop = __decorate
 
 var search_form_desktopshadow_component = normalizeComponent(
   search_form_search_form_desktopvue_type_script_lang_ts_shadow,
-  search_form_desktopvue_type_template_id_7a7221f9_shadow_render,
-  search_form_desktopvue_type_template_id_7a7221f9_shadow_staticRenderFns,
+  search_form_desktopvue_type_template_id_1d4370a0_shadow_render,
+  search_form_desktopvue_type_template_id_1d4370a0_shadow_staticRenderFns,
   false,
   null,
   null,
@@ -11069,7 +11067,7 @@ var user_account_desktopvue_type_template_id_77ae650a_shadow_staticRenderFns = [
 var user_account_desktopvue_type_script_lang_ts_shadow_UserAccountDesktop = class UserAccountDesktop extends external_Vue_default.a {
   constructor() {
     super(...arguments);
-    this.webAppHost = "https://new1.tstarter.ru/new";
+    this.webAppHost = "https://catalog.tstarter.ru/new/";
     this.cartInfo = {};
   }
 

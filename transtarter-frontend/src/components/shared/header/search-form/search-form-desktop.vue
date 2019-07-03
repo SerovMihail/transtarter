@@ -54,7 +54,6 @@ export default class SearchFormDesktop extends Vue {
     searchText: string = ''
     optionWasChanged(option: string) {
         this.loadedInput = option
-        console.log('tst')
         this.searchText = ''
     }
     get searchLink() {
