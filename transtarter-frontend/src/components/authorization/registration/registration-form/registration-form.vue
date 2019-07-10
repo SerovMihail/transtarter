@@ -86,7 +86,6 @@
                     placeholder="Отчество"
                     class="form-control name-input"
                     type="text"
-                    required
                     :class="{ 'invalid-input': errors.UserPatronymicNameError }"
                 />
                 <div v-if="errors.UserPatronymicNameError" class="invalid-text">
@@ -258,7 +257,7 @@ export default class RegistrationForm extends Vue {
         if (!userNameRegExp.test(this.userLastName)) {
             this.errors.UserLastNameError = true
         }
-        if (!userNameRegExp.test(this.userPatronymic)) {
+        if (!userNameRegExp.test(this.userPatronymic) && this.userPatronymic !== '') {
             this.errors.UserPatronymicNameError = true
         }
         if (!OrganizationNameRegExpg.test(this.organizationName)) {
