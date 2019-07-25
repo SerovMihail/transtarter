@@ -5,15 +5,18 @@ import { AuthService } from '@/services/auth.service'
 import { User } from 'oidc-client'
 import { IKeyUserObject } from '@/models/index'
 import CookieStorage from 'cookie-storage-domain'
-import Axios from 'axios'
-import { COOKIE_AUTH_BEFORE_REDIRECT_LOCATION_KEY, COOKIE_STORAGE_KEY } from '@/constants'
+import {
+    COOKIE_AUTH_BEFORE_REDIRECT_LOCATION_KEY,
+    COOKIE_STORAGE_KEY,
+    COOKIE_SELECTED_CONTRAGENT,
+    COOKIE_TS_USER_CONTRAGENT,
+} from '@/constants'
 import { ProfileService } from '@/services/profile.service'
 
-const userContragentsString = <string>CookieStorage.getItem('ts-user-contragent')
-const contragentString = <string>CookieStorage.getItem('selected-contragent')
+const userContragentsString = <string>CookieStorage.getItem(COOKIE_TS_USER_CONTRAGENT)
+const contragentString = <string>CookieStorage.getItem(COOKIE_SELECTED_CONTRAGENT)
 const contragent: any = contragentString ? JSON.parse(contragentString) : null
 const profileService = new ProfileService()
-const VUE_APP_WEB_APP = process.env.VUE_APP_WEB_APP
 
 const userContragents = userContragentsString ? JSON.parse(userContragentsString) : null
 
@@ -86,7 +89,7 @@ export class Authentication extends VuexModule implements IAuthState {
     }
 
     @Mutation
-    ERROR_LOGIN(user: User) {
+    ERROR_LOGIN() {
         this.name = ''
         this.accessTokenExpired = false
         this.status.loggedIn = false
@@ -115,13 +118,25 @@ export class Authentication extends VuexModule implements IAuthState {
 
     @Action
     public async actualizeUser() {
-        const user = await this.auth.getUser()
-        let userProfile: any = null
+        let user: User | null = null
+        let userProfile: any | null = null
+
+        try {
+            user = await this.auth.getUser()
+        } catch (err) {
+            console.log(err)
+        }
+
+        if (!user || user.expired) {
+            this.auth.removeAuthCookies()
+            this.context.commit('ERROR_LOGIN')
+            return
+        }
 
         if (user) {
             try {
-                const userProfileResponse = await Axios.get(
-                    `${VUE_APP_WEB_APP}/api/Profiles/${user.profile.name}`
+                const userProfileResponse = await profileService.getProfileInfoByUserId(
+                    user.profile.name
                 )
                 userProfile = userProfileResponse.data
             } catch (err) {
@@ -152,7 +167,7 @@ export class Authentication extends VuexModule implements IAuthState {
         )
 
         this.auth.logout().then(() => {
-            this.auth.removeFromCookieStorageByKey(COOKIE_STORAGE_KEY)
+            this.auth.removeAuthCookies()
         })
     }
 
@@ -187,7 +202,7 @@ export class Authentication extends VuexModule implements IAuthState {
     }
     @Action
     updateContrAgent(contragent: any) {
-        CookieStorage.setItem('selected-contragent', contragent)
+        CookieStorage.setItem(COOKIE_SELECTED_CONTRAGENT, contragent)
         this.context.commit('UPDATE_CONTR_AGENT', contragent)
     }
     @Action

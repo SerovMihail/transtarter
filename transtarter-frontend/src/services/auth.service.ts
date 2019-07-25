@@ -1,6 +1,12 @@
 import { UserManager, WebStorageStateStore, User, UserManagerSettings } from 'oidc-client'
 import axios from 'axios'
 import CookieStorage from 'cookie-storage-domain'
+import {
+    COOKIE_STORAGE_KEY,
+    COOKIE_OLD_CATALOG_TS_USER_KEY,
+    COOKIE_TS_USER_CONTRAGENT,
+    COOKIE_SELECTED_CONTRAGENT,
+} from '@/constants'
 
 type UserRegistration = {
     email: string
@@ -62,9 +68,11 @@ export class AuthService {
         CookieStorage.setItem(key, JSON.stringify(user))
     }
 
-    public removeFromCookieStorageByKey(key: string): void {
-        CookieStorage.removeItem(key)
-        CookieStorage.removeItem(this.oldCatalogCookieStorageKey)
+    public removeAuthCookies(): void {
+        CookieStorage.removeItem(COOKIE_STORAGE_KEY)
+        CookieStorage.removeItem(COOKIE_OLD_CATALOG_TS_USER_KEY)
+        CookieStorage.removeItem(COOKIE_TS_USER_CONTRAGENT)
+        CookieStorage.removeItem(COOKIE_SELECTED_CONTRAGENT)
     }
 
     public updateUserStorage(key: string, userObject: User): void {
