@@ -13,6 +13,7 @@ const userContragentsString = <string>CookieStorage.getItem('ts-user-contragent'
 const contragentString = <string>CookieStorage.getItem('selected-contragent')
 const contragent: any = contragentString ? JSON.parse(contragentString) : null
 const profileService = new ProfileService()
+const VUE_APP_WEB_APP = process.env.VUE_APP_WEB_APP
 
 const userContragents = userContragentsString ? JSON.parse(userContragentsString) : null
 
@@ -116,10 +117,11 @@ export class Authentication extends VuexModule implements IAuthState {
     public async actualizeUser() {
         const user = await this.auth.getUser()
         let userProfile: any = null
+
         if (user) {
             try {
                 const userProfileResponse = await Axios.get(
-                    `https://new1.tstarter.ru/new/api/Profiles/${user.profile.name}`
+                    `${VUE_APP_WEB_APP}/api/Profiles/${user.profile.name}`
                 )
                 userProfile = userProfileResponse.data
             } catch (err) {

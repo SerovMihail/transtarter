@@ -6059,6 +6059,7 @@ var userContragentsString = lib_default.a.getItem('ts-user-contragent');
 var contragentString = lib_default.a.getItem('selected-contragent');
 var authentication_module_contragent = contragentString ? JSON.parse(contragentString) : null;
 var profileService = new profile_service_ProfileService();
+var VUE_APP_WEB_APP = "https://catalog.tstarter.ru/new";
 var userContragents = userContragentsString ? JSON.parse(userContragentsString) : null;
 var authentication_module_Authentication = class Authentication extends VuexModule {
   constructor() {
@@ -6152,7 +6153,7 @@ var authentication_module_Authentication = class Authentication extends VuexModu
 
               _context.prev = 5;
               _context.next = 8;
-              return axios_default.a.get(`https://new1.tstarter.ru/new/api/Profiles/${user.profile.name}`);
+              return axios_default.a.get(`${VUE_APP_WEB_APP}/api/Profiles/${user.profile.name}`);
 
             case 8:
               userProfileResponse = _context.sent;
