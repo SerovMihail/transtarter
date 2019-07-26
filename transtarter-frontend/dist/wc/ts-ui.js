@@ -5977,9 +5977,9 @@ var COOKIE_SELECTED_CONTRAGENT = 'selected-contragent';
 
 class auth_service_AuthService {
   constructor() {
-    this.identityServer = "https://identity-test.tstarter.ru";
-    this.identityServerApi = "https://identity-api-test.tstarter.ru";
-    this.webAddress = "https://new1.tstarter.ru/new";
+    this.identityServer = "https://identity.tstarter.ru";
+    this.identityServerApi = "https://identityapi.tstarter.ru";
+    this.webAddress = "https://catalog.tstarter.ru/new";
     this.oldCatalogCookieStorageKey = 'ts-user';
     var AUTH0_DOMAIN = this.identityServer;
     var MY_HOST = window.location.origin;
@@ -6051,9 +6051,9 @@ var models = __webpack_require__("0d59");
 
 class profile_service_ProfileService {
   constructor() {
-    this.webAppHost = "https://new1.tstarter.ru/new";
+    this.webAppHost = "https://catalog.tstarter.ru/new";
     this.webAppHostStaging = "https://new1.tstarter.ru/new";
-    this.identityServerHost = "https://identity-test.tstarter.ru";
+    this.identityServerHost = "https://identity.tstarter.ru";
     this.userKey = 'user';
     this.identityUserKey = `${this.userKey}:${this.identityServerHost}:kl`;
   }
@@ -6447,7 +6447,7 @@ component.options.__file = "app-btn.vue"
 var contragent_modalvue_type_script_lang_ts_shadow_ContragentModal = class ContragentModal extends external_Vue_default.a {
   constructor() {
     super(...arguments);
-    this.identityApi = "https://identity-api-test.tstarter.ru" || false;
+    this.identityApi = "https://identityapi.tstarter.ru" || false;
   }
 
   get contragentOpen() {
@@ -7999,7 +7999,7 @@ var clickOutside = {
 var account_infovue_type_script_lang_ts_AccountInfoMobile = class AccountInfoMobile extends external_Vue_default.a {
   constructor() {
     super(...arguments);
-    this.webAppHost = "https://new1.tstarter.ru/new";
+    this.webAppHost = "https://catalog.tstarter.ru/new";
   }
 
   get contrAgent() {
@@ -8125,7 +8125,7 @@ var user_account_desktopvue_type_template_id_0373b7fe_staticRenderFns = []
 
 // CONCATENATED MODULE: ./src/services/axios.service.ts
 
-var webAppHost = "https://new1.tstarter.ru/new";
+var webAppHost = "https://catalog.tstarter.ru/new";
 var axiosRequestConfig = {
   baseURL: webAppHost,
   withCredentials: true
@@ -8143,7 +8143,7 @@ var instance = axios_default.a.create(axiosRequestConfig);
 var user_account_desktopvue_type_script_lang_ts_UserAccountDesktop = class UserAccountDesktop extends external_Vue_default.a {
   constructor() {
     super(...arguments);
-    this.webAppHost = "https://new1.tstarter.ru/new";
+    this.webAppHost = "https://catalog.tstarter.ru/new";
     this.cartInfo = {};
   }
 
@@ -9242,7 +9242,7 @@ search_by_number_component.options.__file = "search-by-number.vue"
 var search_form_desktopvue_type_script_lang_ts_SearchFormDesktop = class SearchFormDesktop extends external_Vue_default.a {
   constructor() {
     super(...arguments);
-    this.searchBaseUrl = "https://new.tstarter.ru";
+    this.searchBaseUrl = "https://tstarter.ru";
     this.productSearchCriteria = {};
     this.isLoading = false;
     this.loadedInput = 'Номер детали';
@@ -10106,7 +10106,7 @@ var account_infovue_type_template_id_567fe3aa_shadow_staticRenderFns = [function
 var account_infovue_type_script_lang_ts_shadow_AccountInfoMobile = class AccountInfoMobile extends external_Vue_default.a {
   constructor() {
     super(...arguments);
-    this.webAppHost = "https://new1.tstarter.ru/new";
+    this.webAppHost = "https://catalog.tstarter.ru/new";
   }
 
   get contrAgent() {
@@ -10488,7 +10488,7 @@ var search_form_desktopvue_type_template_id_ad17d7fa_shadow_staticRenderFns = []
 var search_form_desktopvue_type_script_lang_ts_shadow_SearchFormDesktop = class SearchFormDesktop extends external_Vue_default.a {
   constructor() {
     super(...arguments);
-    this.searchBaseUrl = "https://new.tstarter.ru";
+    this.searchBaseUrl = "https://tstarter.ru";
     this.productSearchCriteria = {};
     this.isLoading = false;
     this.loadedInput = 'Номер детали';
@@ -10732,7 +10732,7 @@ var user_account_desktopvue_type_template_id_1c8f72d1_shadow_staticRenderFns = [
 var user_account_desktopvue_type_script_lang_ts_shadow_UserAccountDesktop = class UserAccountDesktop extends external_Vue_default.a {
   constructor() {
     super(...arguments);
-    this.webAppHost = "https://new1.tstarter.ru/new";
+    this.webAppHost = "https://catalog.tstarter.ru/new";
     this.cartInfo = {};
   }
 
