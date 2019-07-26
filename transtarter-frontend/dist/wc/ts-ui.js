@@ -6059,7 +6059,7 @@ class profile_service_ProfileService {
   }
 
   getProfileInfoByUserId(login) {
-    return axios_default.a.get(`${this.webAppHost}/api/profile/${login}`).then(x => x);
+    return axios_default.a.get(`${this.webAppHost}/api/profiles/${login}`).then(x => x);
   }
 
   getProfileAvatarStatusByUserId(login) {
@@ -6068,7 +6068,7 @@ class profile_service_ProfileService {
   }
 
   updateProfileInfo(updatedUserProfile) {
-    return axios_default.a.put(`${this.webAppHost}/api/profile`, updatedUserProfile).then(x => {
+    return axios_default.a.put(`${this.webAppHost}/api/profiles`, updatedUserProfile).then(x => {
       this.updateUserName(updatedUserProfile.name);
       return x;
     });
