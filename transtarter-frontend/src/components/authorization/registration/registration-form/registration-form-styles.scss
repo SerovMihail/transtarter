@@ -16,6 +16,15 @@
 .registration-form {
     padding-right: 20%;
     position: relative;
+    &__required-field {
+        &::after {
+            content: ' *';
+            color: $punch-approx;
+            display: inline;
+            font-size: 1.2em;
+            font-family: 'Exo 2';
+        }
+    }
 }
 .registration-container {
     position: relative;

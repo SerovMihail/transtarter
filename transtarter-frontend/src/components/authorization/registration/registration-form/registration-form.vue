@@ -7,7 +7,7 @@
         <form class="registration-form" @submit.prevent="onSubmit">
             <spinner v-if="loadingForm" class="spinner" />
             <div class="form-group">
-                <label class="label">Введите email</label>
+                <label class="label label registration-form__required-field">Введите email</label>
                 <input
                     v-model.trim="email"
                     placeholder="Почта"
@@ -27,7 +27,7 @@
             </div>
 
             <div class="form-group">
-                <label class="label">Введите пароль</label>
+                <label class="label  registration-form__required-field">Введите пароль</label>
                 <input
                     v-model.trim="password"
                     placeholder="Пароль"
@@ -52,7 +52,9 @@
                 </div>
             </div>
             <div class="form-group">
-                <label class="label">Введите имя контактного лица</label>
+                <label class="label registration-form__required-field">
+                    Введите имя контактного лица
+                </label>
                 <input
                     v-model.trim="userName"
                     placeholder="Имя"
@@ -66,7 +68,9 @@
                 </div>
             </div>
             <div class="form-group">
-                <label class="label">Введите фамилию контактного лица</label>
+                <label class="label registration-form__required-field">
+                    Введите фамилию контактного лица
+                </label>
                 <input
                     v-model.trim="userLastName"
                     placeholder="Фамилия"
@@ -95,7 +99,7 @@
             </div>
 
             <div class="form-group">
-                <label class="label">Введите телефон</label>
+                <label class="label registration-form__required-field">Введите телефон</label>
                 <input
                     v-model.trim="phone"
                     v-mask="'+# (###) ###-##-##'"
@@ -122,7 +126,9 @@
             </div> -->
 
             <div class="form-group">
-                <label class="label">Введите наименование организации</label>
+                <label class="label registration-form__required-field">
+                    Введите наименование организации
+                </label>
                 <div class="two-selectors">
                     <app-select
                         class="first-selector"
