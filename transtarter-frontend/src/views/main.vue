@@ -3,6 +3,7 @@
         <!-- main sections -->
         <layout-header></layout-header>
 
+        <ts-map />
         <!-- <div style="background-color: #0CB520; color: white; text-align: center
     margin-bottom: 10px; font-family: 'Exo 2'; font-size: 24px;
     ">
@@ -46,6 +47,7 @@ import { AuthModule } from '../store/modules/authentication.module'
 import { DisplayModule } from '../store/modules/display.module'
 
 import FindDetail from '@/components/find-detail/find-detail.vue'
+import TsMap from '@/components/yandex-map/yandex-map.vue'
 
 @Component({
     components: {
@@ -60,6 +62,7 @@ import FindDetail from '@/components/find-detail/find-detail.vue'
         PasswordSuccessRestore,
         RequestCall,
         FindDetail,
+        TsMap,
     },
 })
 export default class Main extends Vue {}

@@ -6,7 +6,7 @@
             @click="goToCart()"
         >
             <span class="icon-shopping-cart desktop-header__icon-cart">
-                <i>{{ cartInfo.itemAggregatesCount }}</i>
+                <i>{{ cartAggregateAmount }}</i>
             </span>
             <div class="shopping-cart"></div>
         </li>
@@ -47,7 +47,9 @@ export default class UserAccountDesktop extends Vue {
     private webAppHost = process.env.VUE_APP_WEB_APP
 
     cartInfo: ICartInfo = {}
-
+    get cartAggregateAmount() {
+        return AuthModule.itemsAmount
+    }
     get loggedIn() {
         return AuthModule.logged
     }
@@ -89,13 +91,8 @@ export default class UserAccountDesktop extends Vue {
 
     async mounted() {
         if (this.loggedIn) {
-            await this.initCartInfo()
+            store.dispatch('auth/setInitialItemsAmount')
         }
-    }
-
-    async initCartInfo() {
-        const { data } = await axios.get<ICartInfo>(`${this.webAppHost}/api/ts/carts/info`)
-        this.cartInfo = data
     }
 
     goToCart() {

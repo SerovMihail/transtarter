@@ -39,12 +39,12 @@ class ContragentModal extends Vue {
         if (!this.forLogin) {
             axios.get(`${this.identityApi}/api/Account/partner/${contrAgent.id}`).then(result => {
                 cookieStorage.setItem('ts-user', JSON.stringify(result.data))
+                store.dispatch('auth/updateContrAgent', contrAgent)
+                store.dispatch('display/toggleContrAgentModal')
+                cookieStorage.setItem('selected-contragent', JSON.stringify(contrAgent))
+                this.$emit('contragentWasChosen', contrAgent.id)
             })
         }
-        store.dispatch('auth/updateContrAgent', contrAgent)
-        store.dispatch('display/toggleContrAgentModal')
-        cookieStorage.setItem('selected-contragent', JSON.stringify(contrAgent))
-        this.$emit('contragentWasChosen', contrAgent.id)
     }
 }
 export default ContragentModal

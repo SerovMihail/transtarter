@@ -12,6 +12,8 @@ import {
     COOKIE_TS_USER_CONTRAGENT,
 } from '@/constants'
 import { ProfileService } from '@/services/profile.service'
+import { CartApiService } from '@/services/cart.api.service'
+const cartApiService = new CartApiService()
 
 const userContragentsString = <string>CookieStorage.getItem(COOKIE_TS_USER_CONTRAGENT)
 const contragentString = <string>CookieStorage.getItem(COOKIE_SELECTED_CONTRAGENT)
@@ -32,6 +34,7 @@ export interface IAuthState {
     roles: string[]
     contragent: any
     userContragents: any
+    itemsAmount?: null | number
     status: {
         loggingIn: boolean
         loggedIn: boolean
@@ -56,6 +59,7 @@ export class Authentication extends VuexModule implements IAuthState {
         loggedIn: this.user !== null && !(this.user || false).expired, // we should get user info and expired have to be false
     }
     public avatar = ''
+    itemsAmount = null
 
     accessTokenExpired: boolean | undefined
 
@@ -200,10 +204,22 @@ export class Authentication extends VuexModule implements IAuthState {
     UPDATE_CONTR_AGENTS(contragents: any) {
         this.userContragents = contragents
     }
+    @Mutation
+    async SET_CART_ITEMS_AMOUNT(amount) {
+        this.itemsAmount = amount
+    }
     @Action
-    updateContrAgent(contragent: any) {
+    async updateContrAgent(contragent: any) {
         CookieStorage.setItem(COOKIE_SELECTED_CONTRAGENT, contragent)
-        this.context.commit('UPDATE_CONTR_AGENT', contragent)
+        await this.context.commit('UPDATE_CONTR_AGENT', contragent)
+        this.context.commit('SET_CART_ITEMS_AMOUNT')
+        const { data: cartData } = await cartApiService.getCart()
+        this.context.commit('SET_CART_ITEMS_AMOUNT', cartData.itemAggregatesCount)
+    }
+    @Action
+    async setInitialItemsAmount() {
+        const { data: cartData } = await cartApiService.getCart()
+        this.context.commit('SET_CART_ITEMS_AMOUNT', cartData.itemAggregatesCount)
     }
     @Action
     updateContrAgents(contragents: any) {
