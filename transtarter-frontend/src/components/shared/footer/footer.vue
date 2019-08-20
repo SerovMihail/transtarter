@@ -57,30 +57,52 @@
                             Задавайте свои вопросы прямо сейчас
 
                             <ul class="cards_group__card_soc-list">
+                                <!-- <li>
+                                    <a href="#!" class="social-link" target="_blank">
+                                        <span class="social-link-icon social-link-viber-icon"></span>
+                                    </a>
+                                </li> -->
+
+                                <!-- <li>
+                                    <a href="https://t.me/tstarter" target="_blank" class="social-link ">
+                                        <span class="social-link-icon social-link-telegram-icon"></span>
+                                    </a>
+                                </li> -->
                                 <li>
-                                    <a href="#!" class="social-link">
-                                        <span
-                                            class="social-link-icon social-link-viber-icon"
-                                        ></span>
+                                    <a
+                                        href="https://vk.com/transstarter777"
+                                        target="_blank"
+                                        class="social-link"
+                                    >
+                                        <span class="social-link-icon social-link-vk-icon"></span>
                                     </a>
                                 </li>
 
                                 <li>
-                                    <a href="#!" class="social-link ">
+                                    <a
+                                        href="https://www.facebook.com/tstarter/"
+                                        class="social-link"
+                                        target="_blank"
+                                    >
                                         <span
-                                            class="social-link-icon social-link-telegram-icon"
+                                            class="social-link-icon social-link-facebook-icon"
                                         ></span>
                                     </a>
                                 </li>
-                                <li>
-                                    <a href="#!" class="social-link">
-                                        <span class="social-link-icon social-link-vk-icon"></span>
+
+                                <!-- <li>
+                                    <a href="#!" class="social-link" target="_blank">
+                                        <span class="social-link-icon social-link-whats-up-icon"></span>
                                     </a>
-                                </li>
+                                </li> -->
                                 <li>
-                                    <a href="#!" class="social-link">
+                                    <a
+                                        href="https://www.instagram.com/transstarter/"
+                                        class="social-link"
+                                        target="_blank"
+                                    >
                                         <span
-                                            class="social-link-icon social-link-whats-up-icon"
+                                            class="social-link-icon social-link-instagram-icon"
                                         ></span>
                                     </a>
                                 </li>
