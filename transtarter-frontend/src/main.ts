@@ -1,5 +1,10 @@
 import Vue from 'vue'
 import App from './App.vue'
+import './filters'
+import './svg-components'
+import './directives'
+import './core-ui'
+import './element-ui'
 import { store } from './store/index'
 import YmapPlugin from 'vue-yandex-maps'
 const yaMapSettings = {
@@ -7,6 +12,7 @@ const yaMapSettings = {
 }
 Vue.use(YmapPlugin, yaMapSettings)
 Vue.config.productionTip = false
+
 export const eventBus = new Vue()
 
 new Vue({

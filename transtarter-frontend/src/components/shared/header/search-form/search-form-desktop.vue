@@ -5,7 +5,11 @@
             <search-by-number @searchText="searchText = $event" />
             <a
                 class="search__btn-search"
-                :href="`${searchBaseUrl}/store/?noScroll=true&searchInput=${this.searchText}&searchType=1`"
+                :href="
+                    `${searchBaseUrl}/store/?noScroll=true&searchInput=${
+                        this.searchText
+                    }&searchType=1`
+                "
             >
                 Найти
             </a>
@@ -30,7 +34,6 @@ import SearchFromSelect from '@/components/shared/header/search-form/search-form
 import SearchByModel from '@/components/shared/header/search-form/search-form-select/search-by-model/search-by-model'
 import SearchByVin from '@/components/shared/header/search-form/search-form-select/search-by-vin/search-by-vin'
 import SearchByNumber from '@/components/shared/header/search-form/search-form-select/search-by-number/search-by-number'
-import { clickOutside } from '@/directives/v-click-outside'
 import Axios from 'axios'
 
 @Component({
@@ -41,12 +44,9 @@ import Axios from 'axios'
         SearchByVin,
         SearchByNumber,
     },
-    directives: {
-        clickOutside,
-    },
 })
 export default class SearchFormDesktop extends Vue {
-    searchBaseUrl: string = process.env.VUE_APP_HOST;
+    searchBaseUrl: string = process.env.VUE_APP_HOST
     productSearchCriteria: any = {}
     isLoading = false
     loadedInput = 'Номер детали'

@@ -1,0 +1,17 @@
+// /* theme color */
+// $--color-primary: teal;
+
+// /* icon font path, required */
+
+$--color-primary:#0CB520;
+$--color-warning:#FFD600;
+$--color-danger:#FF6767;
+$--color-text-primary:#323230;
+$--color-info: #D2D2D2;
+$--font-path:'~element-ui/lib/theme-chalk/fonts';
+$--color-text-placeholder: #A3A3A2;
+$--border-color-hover: #a3a3a2;
+$--input-icon-color: $--color-text-primary;
+$--size-base: 16px;
+
+@import "~element-ui/packages/theme-chalk/src/index";

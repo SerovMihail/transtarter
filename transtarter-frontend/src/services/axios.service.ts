@@ -1,8 +1,8 @@
 import axios, { AxiosRequestConfig } from 'axios'
 
-const webAppHost = process.env.VUE_APP_WEB_APP
+const webApi = process.env.VUE_APP_WEB_APP_API
 const axiosRequestConfig: AxiosRequestConfig = {
-    baseURL: webAppHost,
+    baseURL: webApi,
     withCredentials: true,
 }
 

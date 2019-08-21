@@ -1,15 +1,24 @@
 <template>
     <div class="mobile-header__menu__right">
-        <div class="menu-item">
+        <!-- <div class="menu-item">
             <div class="map-alt"></div>
-        </div>
+        </div> -->
 
-        <div class="menu-item">
+        <div class="menu-item" v-if="loggedIn && !loggingIn" @click="goToCart()">
             <div class="shopping-cart"></div>
-            <span class="notify-counter">9</span>
+            <span v-if="cartAggregateAmount" class="notify-counter">{{ cartAggregateAmount }}</span>
         </div>
-
-        <div class="menu-item">
+        <li class="menu-item" v-if="loggedIn && !loggingIn" @click="goToOrders()">
+            <svg-list class="desktop-header__svg-list" />
+        </li>
+        <div
+            v-if="isParterRestricted && loggedIn && !loggingIn"
+            class="menu-item desktop-header__warning"
+            @click="openRestrictionModal"
+        >
+            <i class="el-icon-warning"></i>
+        </div>
+        <div id="user-menu" class="menu-item">
             <!-- block for guests -->
 
             <div class="new-user" @click="toggleUserMenu()" v-if="!loggedIn"></div>
@@ -29,14 +38,41 @@ import { DisplayModule } from '../../../../store/modules/display.module'
 
 @Component
 export default class UserAccountMobile extends Vue {
+    private webAppHost = process.env.VUE_APP_WEB_APP
+    private webApi = process.env.VUE_APP_WEB_APP_API
+
     get loggedIn() {
         return AuthModule.logged
+    }
+
+    get loggingIn() {
+        return AuthModule.loggingIn
+    }
+
+    get cartAggregateAmount() {
+        return AuthModule.itemsAmount
+    }
+
+    get isParterRestricted() {
+        return Boolean(AuthModule.isOrderingDisabled)
     }
 
     toggleUserMenu() {
         setTimeout(() => {
             store.dispatch('display/toggleBlockShowUser')
         })
+    }
+
+    openRestrictionModal() {
+        store.dispatch('display/setContragentRestrictionModal', true)
+    }
+
+    goToCart() {
+        window.location.href = `${this.webAppHost}/account/cart`
+    }
+
+    goToOrders() {
+        window.location.href = `${this.webAppHost}/account/orders`
     }
 }
 </script>

@@ -1,28 +1,23 @@
-import axios from 'axios'
+import axios from '@/services/axios.service'
 import { IUserProfile } from '@/models/IUserProfile'
 import { User } from 'oidc-client'
 import { store } from '@/store/index'
 import CookieStorage from 'cookie-storage-domain'
 
 export class ProfileService {
-    private webAppHost = process.env.VUE_APP_WEB_APP
-    private webAppHostStaging = process.env.VUE_APP_WEB_APP_STAGING
-
     private identityServerHost = process.env.VUE_APP_IDENTITY_SERVER
     private userKey = 'user'
     private identityUserKey = `${this.userKey}:${this.identityServerHost}:kl`
 
     public getProfileInfoByUserId(login: string) {
-        return axios.get<IUserProfile>(`${this.webAppHost}/api/profiles/${login}`).then(x => x)
+        return axios.get<IUserProfile>(`/api/profiles/${login}`).then(x => x)
     }
     public getProfileAvatarStatusByUserId(login: string) {
-        const avatar = axios.get<IUserProfile>(
-            `${this.webAppHostStaging}/api/profiles/${login}/avatar`
-        )
+        const avatar = axios.get<IUserProfile>(`/api/profiles/${login}/avatar`)
         return avatar
     }
     public updateProfileInfo(updatedUserProfile: IUserProfile) {
-        return axios.put<boolean>(`${this.webAppHost}/api/profiles`, updatedUserProfile).then(x => {
+        return axios.put<boolean>(`/api/profiles`, updatedUserProfile).then(x => {
             this.updateUserName(updatedUserProfile.name)
             return x
         })

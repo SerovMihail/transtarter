@@ -1,9 +1,15 @@
-import { Module, VuexModule, Mutation, Action, getModule } from 'vuex-module-decorators'
+import {
+    Module,
+    VuexModule,
+    Mutation,
+    Action,
+    getModule,
+    MutationAction,
+} from 'vuex-module-decorators'
 import { store } from '../index'
-
 import { AuthService } from '@/services/auth.service'
 import { User } from 'oidc-client'
-import { IKeyUserObject } from '@/models/index'
+import { IKeyUserObject, IPartnerRestrictions } from '@/models/index'
 import CookieStorage from 'cookie-storage-domain'
 import {
     COOKIE_AUTH_BEFORE_REDIRECT_LOCATION_KEY,
@@ -13,12 +19,16 @@ import {
 } from '@/constants'
 import { ProfileService } from '@/services/profile.service'
 import { CartApiService } from '@/services/cart.api.service'
+import { PartnerApiService } from '@/services/partner-api.service'
+
+const authService = new AuthService()
+const profileService = new ProfileService()
+const partnerApiService = new PartnerApiService()
 const cartApiService = new CartApiService()
 
 const userContragentsString = <string>CookieStorage.getItem(COOKIE_TS_USER_CONTRAGENT)
 const contragentString = <string>CookieStorage.getItem(COOKIE_SELECTED_CONTRAGENT)
 const contragent: any = contragentString ? JSON.parse(contragentString) : null
-const profileService = new ProfileService()
 
 const userContragents = userContragentsString ? JSON.parse(userContragentsString) : null
 
@@ -33,6 +43,8 @@ export interface IAuthState {
     avatar: string
     roles: string[]
     contragent: any
+    partnerBalance: number | null
+    partnerRestrictions: IPartnerRestrictions | null
     userContragents: any
     itemsAmount?: null | number
     status: {
@@ -52,6 +64,8 @@ export class Authentication extends VuexModule implements IAuthState {
     public token = (this.user || '').id_token || ''
     public roles = []
     public contragent = null
+    public partnerBalance: number | null = null
+    public partnerRestrictions: IPartnerRestrictions | null = null
     public userContragents = []
     public profile = null
     public status = {
@@ -67,6 +81,19 @@ export class Authentication extends VuexModule implements IAuthState {
 
     get logged() {
         return this.status.loggedIn
+    }
+
+    get loggingIn() {
+        return this.status.loggingIn
+    }
+
+    get isOrderingDisabled() {
+        if (this.partnerRestrictions) {
+            return (
+                this.partnerRestrictions.isCreditOverflow ||
+                this.partnerRestrictions.isDurationOverflow
+            )
+        }
     }
 
     @Mutation
@@ -101,13 +128,31 @@ export class Authentication extends VuexModule implements IAuthState {
     }
 
     @Mutation
-    MOCK_LOGIN() {
-        this.status.loggedIn = true
+    UPDATE_USER_NAME(newUserName: string) {
+        this.name = newUserName
     }
 
     @Mutation
-    MOCK_LOGOUT() {
-        this.status.loggedIn = false
+    UPDATE_CONTR_AGENT(contragent: any) {
+        this.contragent = contragent
+    }
+    @Mutation
+    UPDATE_CONTR_AGENTS(contragents: any) {
+        this.userContragents = contragents
+    }
+    @Mutation
+    SET_CART_ITEMS_AMOUNT(amount) {
+        this.itemsAmount = amount
+    }
+
+    @Mutation
+    UPDATE_PARTNER_BALANCE(balance: number) {
+        this.partnerBalance = balance
+    }
+
+    @Mutation
+    UPDATE_PARTNER_RESTRICTIONS(restrictions: IPartnerRestrictions) {
+        this.partnerRestrictions = restrictions
     }
 
     @Action
@@ -120,7 +165,7 @@ export class Authentication extends VuexModule implements IAuthState {
         this.auth.login()
     }
 
-    @Action
+    @Action({ rawError: true })
     public async actualizeUser() {
         let user: User | null = null
         let userProfile: any | null = null
@@ -158,6 +203,12 @@ export class Authentication extends VuexModule implements IAuthState {
             } catch (e) {}
             this.auth.saveUserInfo(COOKIE_STORAGE_KEY, user)
             this.context.commit('SUCCESS_LOGIN', { user, userProfile })
+
+            const { data: partnerBalance } = await partnerApiService.getPartnerBalance()
+            const { data: partnerRestrictions } = await partnerApiService.getPartnerRestrictions()
+
+            this.context.commit('UPDATE_PARTNER_BALANCE', partnerBalance)
+            this.context.commit('UPDATE_PARTNER_RESTRICTIONS', partnerRestrictions)
         } else {
             this.context.commit('ERROR_LOGIN')
         }
@@ -176,38 +227,11 @@ export class Authentication extends VuexModule implements IAuthState {
     }
 
     @Action
-    mockLogin() {
-        this.context.commit('MOCK_LOGIN')
-    }
-
-    @Action
-    mockLogout() {
-        this.context.commit('MOCK_LOGOUT')
-    }
-
-    @Mutation
-    UPDATE_USER_NAME(newUserName: string) {
-        this.name = newUserName
-    }
-
-    @Action
     updateUser({ key, userObject }: IKeyUserObject) {
         this.auth.updateUserStorage(key, userObject)
         this.context.commit('UPDATE_USER_NAME', userObject.profile.name)
     }
 
-    @Mutation
-    UPDATE_CONTR_AGENT(contragent: any) {
-        this.contragent = contragent
-    }
-    @Mutation
-    UPDATE_CONTR_AGENTS(contragents: any) {
-        this.userContragents = contragents
-    }
-    @Mutation
-    async SET_CART_ITEMS_AMOUNT(amount) {
-        this.itemsAmount = amount
-    }
     @Action
     async updateContrAgent(contragent: any) {
         CookieStorage.setItem(COOKIE_SELECTED_CONTRAGENT, contragent)
@@ -216,11 +240,13 @@ export class Authentication extends VuexModule implements IAuthState {
         const { data: cartData } = await cartApiService.getCart()
         this.context.commit('SET_CART_ITEMS_AMOUNT', cartData.itemAggregatesCount)
     }
+
     @Action
     async setInitialItemsAmount() {
         const { data: cartData } = await cartApiService.getCart()
         this.context.commit('SET_CART_ITEMS_AMOUNT', cartData.itemAggregatesCount)
     }
+
     @Action
     updateContrAgents(contragents: any) {
         this.context.commit('UPDATE_CONTR_AGENTS', contragents)

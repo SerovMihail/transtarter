@@ -44,7 +44,7 @@
                 <ts-ui-search-form-desktop></ts-ui-search-form-desktop>
 
                 <!-- bottom   -->
-                <ts-ui-search-location-desktop></ts-ui-search-location-desktop>
+                <!-- <ts-ui-search-location-desktop></ts-ui-search-location-desktop> -->
             </div>
         </div>
         <!-- end desktop markup -->
@@ -62,7 +62,7 @@
             <!-- popups -->
             <ts-ui-mobile-links></ts-ui-mobile-links>
 
-            <ts-ui-search-location-mobile></ts-ui-search-location-mobile>
+            <!-- <ts-ui-search-location-mobile></ts-ui-search-location-mobile> -->
 
             <ts-ui-auth-mobile></ts-ui-auth-mobile>
 

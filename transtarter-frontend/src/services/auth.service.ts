@@ -17,9 +17,7 @@ export class AuthService {
     private userManager: UserManager
     private identityServer = process.env.VUE_APP_IDENTITY_SERVER
     private identityServerApi = process.env.VUE_APP_IDENTITY_SERVER_API
-    private webAddress = process.env.VUE_APP_WEB_APP
-
-    private oldCatalogCookieStorageKey = 'ts-user'
+    private webAppHost = process.env.VUE_APP_WEB_APP
 
     constructor() {
         const AUTH0_DOMAIN = this.identityServer
@@ -30,8 +28,8 @@ export class AuthService {
             stateStore: new WebStorageStateStore({ store: CookieStorage }),
             authority: AUTH0_DOMAIN,
             client_id: 'kl',
-            redirect_uri: `${this.webAddress}/callback/signin-oidc`,
-            post_logout_redirect_uri: `${this.webAddress}/callback/signout-oidc`,
+            redirect_uri: `${this.webAppHost}/callback/signin-oidc`,
+            post_logout_redirect_uri: `${this.webAppHost}/callback/signout-oidc`,
             response_type: 'id_token token',
             scope: 'openid profile roles',
             filterProtocolClaims: true,

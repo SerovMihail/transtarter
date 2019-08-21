@@ -1,5 +1,4 @@
 import { Vue, Component, Prop, Emit, Watch } from 'vue-property-decorator'
-import { clickOutside } from '@/directives/v-click-outside/index'
 interface ISearchByModelItem {
     isOpened: boolean
     changeActiveOption(option: string): void
@@ -25,11 +24,7 @@ interface Liter {
 interface Fuel {
     [key: string]: {}
 }
-@Component({
-    directives: {
-        clickOutside,
-    },
-})
+@Component({})
 class SearchByModelItem extends Vue implements ISearchByModelItem {
     @Prop(String) readonly type!: string
     @Prop(Object) readonly cars!: ICars

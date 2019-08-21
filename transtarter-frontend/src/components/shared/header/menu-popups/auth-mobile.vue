@@ -15,14 +15,9 @@
 import { Component, Vue, Watch } from 'vue-property-decorator'
 import { AuthModule } from '@/store/modules/authentication.module'
 import { DisplayModule } from '@/store/modules/display.module'
-import { clickOutside } from '@/directives/v-click-outside/index'
 import { store } from '@/store'
 
-@Component({
-    directives: {
-        clickOutside,
-    },
-})
+@Component({})
 export default class AuthMobile extends Vue {
     get loggedIn() {
         return AuthModule.logged
@@ -38,6 +33,7 @@ export default class AuthMobile extends Vue {
 
     closeUserMenu() {
         store.dispatch('display/hideBlockShowUser')
+        console.log('hideBlockShowUser2')
     }
 
     logIn() {

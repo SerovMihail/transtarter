@@ -1,23 +1,18 @@
+/* eslint-disable indent */
 import { Vue, Component, Prop, Emit } from 'vue-property-decorator'
-// import { clickOutside } from '@/directives/v-click-outside/index'
-import { closable } from '@/directives/v-click-outside-alt'
 
 interface ISearchFromSelect {
     isOpen: Boolean
     selectedOption: string
     options: any[]
 }
-@Component({
-    directives: {
-        closable,
-    },
-})
+@Component({})
 class SearchFormSelect extends Vue implements ISearchFromSelect {
     get icon() {
         switch (this.selectedOption) {
-        case 'Номер детали':
+            case 'Номер детали':
                 return '123'
-        case 'VIN - номер':
+            case 'VIN - номер':
                 return 'VIN'
         }
     }

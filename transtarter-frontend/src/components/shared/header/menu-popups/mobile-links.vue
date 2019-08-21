@@ -26,16 +26,11 @@
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator'
 import { DisplayModule } from '@/store/modules/display.module'
-import { clickOutside } from '@/directives/v-click-outside/index'
 import { store } from '@/store/index'
 import { mixins } from 'vue-class-component'
 import { HeaderSearchText } from '@/components/mixins/header-search-text'
 
-@Component({
-    directives: {
-        clickOutside,
-    },
-})
+@Component({})
 export default class MobileLinks extends mixins(HeaderSearchText) {
     get showBlocksShowMenu() {
         return DisplayModule.blocksShow.menu

@@ -9,6 +9,7 @@ export interface IDisplayState {
         successRestore: boolean
         requestCall: boolean
         changeContrAgent: boolean
+        contragentRestrictionModal: boolean
     }
 
     showBlock: {
@@ -35,6 +36,7 @@ export class Display extends VuexModule implements IDisplayState {
         successRestore: false,
         requestCall: false,
         changeContrAgent: false,
+        contragentRestrictionModal: false,
     }
     showBlock = {
         selectCity: false,
@@ -78,6 +80,11 @@ export class Display extends VuexModule implements IDisplayState {
     TOGGLE_YOUR_CITY_AND_OPEN_SELECT_CITY() {
         this.showBlock.yourCity = false
         this.showBlock.selectCity = true
+    }
+
+    @Mutation
+    SET_CONTRAGENT_RESTRICTION_MODAL(payload) {
+        this.showPopup.contragentRestrictionModal = payload
     }
 
     @Action
@@ -200,6 +207,11 @@ export class Display extends VuexModule implements IDisplayState {
     @Action
     toggleContrAgentModal() {
         this.context.commit('TOGGLE_CONTR_AGENT_MODAL')
+    }
+
+    @Action
+    setContragentRestrictionModal(payload) {
+        this.context.commit('SET_CONTRAGENT_RESTRICTION_MODAL', payload)
     }
 }
 

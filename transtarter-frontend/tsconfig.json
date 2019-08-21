@@ -39,7 +39,8 @@
     "tests/**/*.tsx"
   ],
   "exclude": [
-    "node_modules"
+    "node_modules",
+    "node_modules/element-ui/types/*",
   ],
   "typeRoots": [
     "../node_modules/@types",

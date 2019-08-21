@@ -19,6 +19,7 @@
         <registration></registration>
         <password-restore></password-restore>
         <password-success-restore></password-success-restore>
+        <contragent-restriction-modal></contragent-restriction-modal>
         <!-- <UnsupportedBrowser /> -->
         <!-- end popups -->
 
@@ -49,6 +50,8 @@ import { DisplayModule } from '../store/modules/display.module'
 import FindDetail from '@/components/find-detail/find-detail.vue'
 import TsMap from '@/components/yandex-map/yandex-map.vue'
 
+import ContragentRestrictionModal from '@/components/shared/contragent-restriction-modal/contragent-restriction-modal.vue'
+
 @Component({
     components: {
         LayoutHeader,
@@ -63,6 +66,7 @@ import TsMap from '@/components/yandex-map/yandex-map.vue'
         RequestCall,
         FindDetail,
         TsMap,
+        ContragentRestrictionModal,
     },
 })
 export default class Main extends Vue {}

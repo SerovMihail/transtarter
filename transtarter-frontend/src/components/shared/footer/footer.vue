@@ -117,13 +117,13 @@
                         >
                             +7 (495) 748-97-74
                         </a>
-                        <div class="cards_group__card_body">
+                        <!-- <div class="cards_group__card_body">
                             <ts-ui-toggle-register-call-popup></ts-ui-toggle-register-call-popup>
-                        </div>
+                        </div> -->
                     </div>
                 </div>
 
-                <div class="additional-links">
+                <!-- <div class="additional-links">
                     <span class="additional-links-left">
                         <a
                             class="cards_group__card_link bottom-link"
@@ -134,7 +134,7 @@
                             Политика конфиденциальности
                         </a>
                     </span>
-                </div>
+                </div> -->
             </div>
         </div>
     </footer>

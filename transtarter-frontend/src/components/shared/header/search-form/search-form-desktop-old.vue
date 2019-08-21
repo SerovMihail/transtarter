@@ -31,15 +31,11 @@ import { Component, Vue } from 'vue-property-decorator'
 import { mixins } from 'vue-class-component'
 import { HeaderSearchText } from '@/components/mixins/header-search-text.ts'
 import SearchResults from '@/components/shared/header/search-results/search-results.vue'
-import { clickOutside } from '@/directives/v-click-outside'
 import Axios from 'axios'
 
 @Component({
     components: {
         'ts-ui-search-results': SearchResults,
-    },
-    directives: {
-        clickOutside,
     },
 })
 export default class SearchFormDesktop extends mixins(HeaderSearchText) {

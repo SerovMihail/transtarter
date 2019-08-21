@@ -1,10 +1,5 @@
 import { Vue, Component, Prop } from 'vue-property-decorator'
-import { closable } from '@/directives/v-click-outside-alt'
-@Component({
-    directives: {
-        closable,
-    },
-})
+@Component({})
 class AppSelect extends Vue {
     @Prop([Array, Object]) readonly options!: [] | object
     @Prop([Object]) readonly selected!: { name: string }

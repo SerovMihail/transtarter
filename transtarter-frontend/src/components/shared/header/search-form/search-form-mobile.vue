@@ -28,7 +28,6 @@ import { Component } from 'vue-property-decorator'
 import { HeaderSearchText } from '@/components/mixins/header-search-text'
 import { mixins } from 'vue-class-component'
 import SearchResults from '@/components/shared/header/search-results/search-results.vue'
-import { clickOutside } from '@/directives/v-click-outside'
 import SearchFormSelect from '@/components/shared/header/search-form/search-form-select/search-form-select'
 import SearchByModel from '@/components/shared/header/search-form/search-form-select/search-by-model/search-by-model'
 import SearchByVin from '@/components/shared/header/search-form/search-form-select/search-by-vin/search-by-vin'
@@ -41,9 +40,6 @@ import SearchByNumber from '@/components/shared/header/search-form/search-form-s
         SearchByModel,
         SearchByVin,
         SearchByNumber,
-    },
-    directives: {
-        clickOutside,
     },
 })
 export default class SearchFormMobile extends mixins(HeaderSearchText) {
