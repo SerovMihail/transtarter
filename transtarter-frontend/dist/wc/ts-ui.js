@@ -5647,7 +5647,7 @@ __webpack_require__.r(__webpack_exports__);
 // This file is imported into lib/wc client bundles.
 
 if (typeof window !== 'undefined') {
-  if (Object({"NODE_ENV":"production","VUE_APP_HOST":"https://tstarter.ru","VUE_APP_IDENTITY_SERVER":"https://identity.tstarter.ru","VUE_APP_IDENTITY_SERVER_API":"https://identityapi.tstarter.ru","VUE_APP_WEB_APP":"https://catalog.tstarter.ru/new","VUE_APP_WEB_APP_API":"https://catalog.tstarter.ru/new/api","BASE_URL":"/"}).NEED_CURRENTSCRIPT_POLYFILL) {
+  if (Object({"NODE_ENV":"production","VUE_APP_HOST":"https://tstarter.ru","VUE_APP_IDENTITY_SERVER":"https://identity.tstarter.ru","VUE_APP_IDENTITY_SERVER_API":"https://identityapi.tstarter.ru","VUE_APP_WEB_APP":"https://catalog.tstarter.ru","VUE_APP_WEB_APP_API":"https://catalog.tstarter.ru/api","BASE_URL":"/"}).NEED_CURRENTSCRIPT_POLYFILL) {
     __webpack_require__("f6fd")
   }
 
@@ -7192,7 +7192,7 @@ class auth_service_AuthService {
   constructor() {
     this.identityServer = "https://identity.tstarter.ru";
     this.identityServerApi = "https://identityapi.tstarter.ru";
-    this.webAppHost = "https://catalog.tstarter.ru/new";
+    this.webAppHost = "https://catalog.tstarter.ru";
     var AUTH0_DOMAIN = this.identityServer;
     var MY_HOST = window.location.origin;
     var settings = {
@@ -7258,7 +7258,7 @@ var models = __webpack_require__("0d59");
 
 // CONCATENATED MODULE: ./src/services/axios.service.ts
 
-var webApi = "https://catalog.tstarter.ru/new/api";
+var webApi = "https://catalog.tstarter.ru/api";
 var axiosRequestConfig = {
   baseURL: webApi,
   withCredentials: true
@@ -7483,7 +7483,7 @@ function () {
 
 class partner_api_service_PartnerApiService {
   constructor() {
-    this.webApi = "https://catalog.tstarter.ru/new/api";
+    this.webApi = "https://catalog.tstarter.ru/api";
   }
 
   getPartnerBalance() {
@@ -10402,7 +10402,7 @@ var account_infovue_type_template_id_82407580_scoped_true_staticRenderFns = []
 var account_infovue_type_script_lang_ts_AccountInfoMobile = class AccountInfoMobile extends external_Vue_default.a {
   constructor() {
     super(...arguments);
-    this.webAppHost = "https://catalog.tstarter.ru/new";
+    this.webAppHost = "https://catalog.tstarter.ru";
   }
 
   get contrAgent() {
@@ -10593,8 +10593,8 @@ var user_account_desktopvue_type_template_id_ca0260de_staticRenderFns = []
 var user_account_desktopvue_type_script_lang_ts_UserAccountDesktop = class UserAccountDesktop extends external_Vue_default.a {
   constructor() {
     super(...arguments);
-    this.webAppHost = "https://catalog.tstarter.ru/new";
-    this.webApi = "https://catalog.tstarter.ru/new/api";
+    this.webAppHost = "https://catalog.tstarter.ru";
+    this.webApi = "https://catalog.tstarter.ru/api";
     this.cartInfo = {};
   }
 
@@ -11851,8 +11851,8 @@ var user_account_mobilevue_type_template_id_326da1b3_staticRenderFns = []
 var user_account_mobilevue_type_script_lang_ts_UserAccountMobile = class UserAccountMobile extends external_Vue_default.a {
   constructor() {
     super(...arguments);
-    this.webAppHost = "https://catalog.tstarter.ru/new";
-    this.webApi = "https://catalog.tstarter.ru/new/api";
+    this.webAppHost = "https://catalog.tstarter.ru";
+    this.webApi = "https://catalog.tstarter.ru/api";
   }
 
   get loggedIn() {
@@ -12605,7 +12605,7 @@ var account_infovue_type_template_id_69ac0a61_scoped_true_shadow_staticRenderFns
 var account_infovue_type_script_lang_ts_shadow_AccountInfoMobile = class AccountInfoMobile extends external_Vue_default.a {
   constructor() {
     super(...arguments);
-    this.webAppHost = "https://catalog.tstarter.ru/new";
+    this.webAppHost = "https://catalog.tstarter.ru";
   }
 
   get contrAgent() {
@@ -13226,8 +13226,8 @@ var user_account_desktopvue_type_template_id_5d760e9e_shadow_staticRenderFns = [
 var user_account_desktopvue_type_script_lang_ts_shadow_UserAccountDesktop = class UserAccountDesktop extends external_Vue_default.a {
   constructor() {
     super(...arguments);
-    this.webAppHost = "https://catalog.tstarter.ru/new";
-    this.webApi = "https://catalog.tstarter.ru/new/api";
+    this.webAppHost = "https://catalog.tstarter.ru";
+    this.webApi = "https://catalog.tstarter.ru/api";
     this.cartInfo = {};
   }
 
@@ -13380,8 +13380,8 @@ var user_account_mobilevue_type_template_id_0732e882_shadow_staticRenderFns = []
 var user_account_mobilevue_type_script_lang_ts_shadow_UserAccountMobile = class UserAccountMobile extends external_Vue_default.a {
   constructor() {
     super(...arguments);
-    this.webAppHost = "https://catalog.tstarter.ru/new";
-    this.webApi = "https://catalog.tstarter.ru/new/api";
+    this.webAppHost = "https://catalog.tstarter.ru";
+    this.webApi = "https://catalog.tstarter.ru/api";
   }
 
   get loggedIn() {
