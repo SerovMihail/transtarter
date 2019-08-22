@@ -5,6 +5,7 @@ import axios from 'axios'
 // You can declare a mixin as the same style as components.
 @Component
 export class HeaderSearchText extends Vue {
+    private webApi = process.env.VUE_APP_WEB_APP_API
     searchText: string | number = ''
 
     foundItems: ISearchResult[] = []
@@ -16,7 +17,7 @@ export class HeaderSearchText extends Vue {
     private findItems() {
         const result: ISearchResult[] = []
         axios
-            .post(`https://new1.tstarter.ru/new/api/Products/search-by-number`, {
+            .post(`${this.webApi}/api/Products/search-by-number`, {
                 number: this.searchText,
                 skip: 0,
                 take: 4,

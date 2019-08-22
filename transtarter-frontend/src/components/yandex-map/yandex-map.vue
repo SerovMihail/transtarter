@@ -63,13 +63,13 @@
             </div>
         </div>
 
-        <yandex-map
+        <!-- <yandex-map
             @map-was-initialized="yaInit($event)"
             style="width: 100%; height: 624px"
             zoom="7"
             :controls="[]"
             :coords="coords"
-        />
+        /> -->
     </div>
 </template>
 

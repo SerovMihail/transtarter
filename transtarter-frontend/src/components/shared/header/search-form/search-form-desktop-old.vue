@@ -41,6 +41,7 @@ Vue.use(vClickOutside)
     },
 })
 export default class SearchFormDesktop extends mixins(HeaderSearchText) {
+    private webApiHost = process.env.VUE_APP_WEB_APP_API
     private productSearchCriteria = <any>{}
     private isLoading = false
 
@@ -49,7 +50,7 @@ export default class SearchFormDesktop extends mixins(HeaderSearchText) {
     async onSearchClick() {
         this.isLoading = true
         await Axios.post(
-            'https://new1.tstarter.ru/new/api/products/search',
+            `${this.webApiHost}/api/products/search`,
             JSON.stringify({ Number: this.productSearchCriteria.number }),
             {
                 headers: {
