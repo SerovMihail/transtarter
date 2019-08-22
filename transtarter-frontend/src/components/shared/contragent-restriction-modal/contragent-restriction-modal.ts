@@ -2,7 +2,11 @@ import { Vue, Component } from 'vue-property-decorator'
 import { DisplayModule } from '@/store/modules/display.module'
 import { store } from '@/store/index'
 import { AuthModule } from '@/store/modules/authentication.module'
-@Component({})
+import AppModal from '@/components/core-ui/app-modal/app-modal'
+
+@Component({
+    components: { AppModal },
+})
 class contragentRestrictionModal extends Vue {
     get modalStatus() {
         return DisplayModule.showPopup.contragentRestrictionModal

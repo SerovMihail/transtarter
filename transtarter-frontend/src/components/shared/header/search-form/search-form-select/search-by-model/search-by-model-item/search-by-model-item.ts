@@ -1,4 +1,7 @@
 import { Vue, Component, Prop, Emit, Watch } from 'vue-property-decorator'
+import vClickOutside from 'v-click-outside'
+
+Vue.use(vClickOutside)
 interface ISearchByModelItem {
     isOpened: boolean
     changeActiveOption(option: string): void

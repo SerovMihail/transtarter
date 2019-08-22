@@ -1,12 +1,10 @@
-import Vue from 'vue'
-
-Vue.filter('capitalize', function(value: string) {
+export function capitalize(value: string) {
     if (!value) return ''
     value = value.toString()
     return value.charAt(0).toUpperCase() + value.slice(1)
-})
+}
 
-Vue.filter('currencyFormatRu', (value: number) => {
+export function currencyFormatRu(value: number) {
     value = Number(value)
     if (value === 0) {
         return '0 ₽'
@@ -18,4 +16,4 @@ Vue.filter('currencyFormatRu', (value: number) => {
                 .replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1 ') + ' ₽' // use ' ' as separator
         )
     }
-})
+}

@@ -1,4 +1,9 @@
 import { Vue, Component, Prop } from 'vue-property-decorator'
+import { closable } from '@/directives/v-click-outside-exclude'
+import vClickOutside from 'v-click-outside'
+
+Vue.use(vClickOutside)
+Vue.directive('closable', closable)
 @Component({})
 class AppSelect extends Vue {
     @Prop([Array, Object]) readonly options!: [] | object

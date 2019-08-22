@@ -29,7 +29,9 @@ import { DisplayModule } from '@/store/modules/display.module'
 import { store } from '@/store/index'
 import { mixins } from 'vue-class-component'
 import { HeaderSearchText } from '@/components/mixins/header-search-text'
+import vClickOutside from 'v-click-outside'
 
+Vue.use(vClickOutside)
 @Component({})
 export default class MobileLinks extends mixins(HeaderSearchText) {
     get showBlocksShowMenu() {

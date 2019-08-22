@@ -35,8 +35,11 @@ import { Component, Vue } from 'vue-property-decorator'
 import { AuthModule } from '@/store/modules/authentication.module'
 import { store } from '@/store/index'
 import { DisplayModule } from '../../../../store/modules/display.module'
+import SvgList from '@/components/svg/svg-list.vue'
 
-@Component
+@Component({
+    components: { SvgList },
+})
 export default class UserAccountMobile extends Vue {
     private webAppHost = process.env.VUE_APP_WEB_APP
     private webApi = process.env.VUE_APP_WEB_APP_API

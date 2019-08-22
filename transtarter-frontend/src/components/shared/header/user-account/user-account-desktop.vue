@@ -66,8 +66,13 @@ import { AuthModule } from '@/store/modules/authentication.module'
 import { store } from '@/store/index'
 import axios from '@/services/axios.service.ts'
 import { ICartInfo } from '@/models'
+import VueTooltip from 'v-tooltip'
+import SvgList from '@/components/svg/svg-list.vue'
 
-@Component
+Vue.use(VueTooltip)
+@Component({
+    components: { SvgList },
+})
 export default class UserAccountDesktop extends Vue {
     private webAppHost = process.env.VUE_APP_WEB_APP
     private webApi = process.env.VUE_APP_WEB_APP_API

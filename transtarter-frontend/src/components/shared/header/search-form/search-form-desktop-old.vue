@@ -32,7 +32,9 @@ import { mixins } from 'vue-class-component'
 import { HeaderSearchText } from '@/components/mixins/header-search-text.ts'
 import SearchResults from '@/components/shared/header/search-results/search-results.vue'
 import Axios from 'axios'
+import vClickOutside from 'v-click-outside'
 
+Vue.use(vClickOutside)
 @Component({
     components: {
         'ts-ui-search-results': SearchResults,

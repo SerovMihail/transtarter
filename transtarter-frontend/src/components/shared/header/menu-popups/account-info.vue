@@ -57,8 +57,14 @@ import { Component, Vue, Prop } from 'vue-property-decorator'
 import { DisplayModule } from '@/store/modules/display.module'
 import { AuthModule } from '@/store/modules/authentication.module'
 import { store } from '@/store'
+import { currencyFormatRu } from '@/filters'
+import { closable } from '@/directives/v-click-outside-exclude'
+import vClickOutside from 'v-click-outside'
 
-@Component({})
+Vue.filter('currencyFormatRu', currencyFormatRu)
+Vue.use(vClickOutside)
+Vue.directive('closable', closable)
+@Component
 export default class AccountInfoMobile extends Vue {
     private webAppHost = process.env.VUE_APP_WEB_APP
 

@@ -1,11 +1,15 @@
 /* eslint-disable indent */
 import { Vue, Component, Prop, Emit } from 'vue-property-decorator'
+import { closable } from '@/directives/v-click-outside-exclude'
+import vClickOutside from 'v-click-outside'
 
+Vue.use(vClickOutside)
 interface ISearchFromSelect {
     isOpen: Boolean
     selectedOption: string
     options: any[]
 }
+Vue.directive('closable', closable)
 @Component({})
 class SearchFormSelect extends Vue implements ISearchFromSelect {
     get icon() {

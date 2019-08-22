@@ -82,8 +82,12 @@ import { mixins } from 'vue-class-component'
 import { ClosablePopup } from '@/components/mixins/closable-popup'
 import { DisplayModule } from '@/store/modules/display.module'
 import { store } from '@/store/index'
+import { closable } from '@/directives/v-click-outside-exclude'
+import vClickOutside from 'v-click-outside'
 
-@Component
+Vue.use(vClickOutside)
+Vue.directive('closable', closable)
+@Component({})
 export default class RequestCall extends mixins(ClosablePopup) {
     toggleRequestPopup() {
         store.dispatch('display/toggleRequest')

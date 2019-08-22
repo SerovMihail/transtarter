@@ -16,7 +16,9 @@ import { Component, Vue, Watch } from 'vue-property-decorator'
 import { AuthModule } from '@/store/modules/authentication.module'
 import { DisplayModule } from '@/store/modules/display.module'
 import { store } from '@/store'
+import vClickOutside from 'v-click-outside'
 
+Vue.use(vClickOutside)
 @Component({})
 export default class AuthMobile extends Vue {
     get loggedIn() {
