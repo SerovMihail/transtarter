@@ -3,7 +3,7 @@
         <!-- main sections -->
         <layout-header></layout-header>
 
-        <ts-map />
+        <!-- <ts-map /> -->
         <!-- <div style="background-color: #0CB520; color: white; text-align: center
     margin-bottom: 10px; font-family: 'Exo 2'; font-size: 24px;
     ">

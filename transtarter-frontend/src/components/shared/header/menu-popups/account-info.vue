@@ -93,7 +93,6 @@ export default class AccountInfoMobile extends Vue {
         // @ts-ignore
         if (this.$el.offsetWidth > 0 && this.$el.offsetHeight > 0) {
             store.dispatch('display/hideBlockShowUser')
-            console.log('hideBlockShowUser')
         }
     }
     toggleContrAgent() {

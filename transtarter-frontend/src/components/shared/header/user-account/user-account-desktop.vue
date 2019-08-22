@@ -47,7 +47,7 @@
             {{ contrAgent }}
         </div>
         <div
-            class="user-info"
+            class="desktop-header__login-item user-info"
             id="user-menu-desktop"
             v-if="loggedIn && !loggingIn"
             @click="toggleUserMenu()"
@@ -250,7 +250,7 @@ export default class UserAccountDesktop extends Vue {
             background-size: cover;
             width: 32px;
             height: 32px;
-            margin-left: 8px;
+            // margin-left: 8px;
             border-radius: 50%;
             border: 3px solid $white;
             pointer-events: none;
