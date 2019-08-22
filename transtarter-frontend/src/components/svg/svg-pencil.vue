@@ -14,4 +14,4 @@ import { Vue, Component } from 'vue-property-decorator'
 class SvgPencil extends Vue {}
 export default SvgPencil
 </script>
-<style scoped lang="scss"></style>
+<style lang="scss"></style>

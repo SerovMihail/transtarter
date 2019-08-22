@@ -15,4 +15,4 @@ import { Vue, Component } from 'vue-property-decorator'
 class SvgTruck extends Vue {}
 export default SvgTruck
 </script>
-<style scoped lang="scss"></style>
+<style lang="scss"></style>

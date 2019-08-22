@@ -25,4 +25,4 @@ import { Vue, Component } from 'vue-property-decorator'
 class SvgPicture extends Vue {}
 export default SvgPicture
 </script>
-<style scoped lang="scss"></style>
+<style lang="scss"></style>

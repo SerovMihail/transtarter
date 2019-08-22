@@ -31,7 +31,7 @@ class AppBtn extends Vue {
 export default AppBtn
 </script>
 
-<style scoped lang="scss">
+<style lang="scss">
 .btn-icon {
     margin-right: 8px;
 }

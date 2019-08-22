@@ -22,7 +22,7 @@ class Spinner extends Vue {}
 export default Spinner
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 .lds-default {
     display: inline-block;
     position: relative;

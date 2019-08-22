@@ -12,4 +12,4 @@
     </div>
 </template>
 <script src="./app-modal.ts" lang="ts"></script>
-<style src="./app-modal.scss" lang="scss" scoped></style>
+<style src="./app-modal.scss" lang="scss"></style>

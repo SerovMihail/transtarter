@@ -38,6 +38,6 @@ export default class SelectCity extends Vue {
 }
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 @import 'select-city-styles.scss';
 </style>

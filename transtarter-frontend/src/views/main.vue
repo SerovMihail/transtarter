@@ -71,4 +71,4 @@ import ContragentRestrictionModal from '@/components/shared/contragent-restricti
 export default class Main extends Vue {}
 </script>
 
-<style scoped lang="scss"></style>
+<style lang="scss"></style>

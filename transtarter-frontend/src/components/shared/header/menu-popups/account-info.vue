@@ -141,7 +141,7 @@ export default class AccountInfoMobile extends Vue {
     }
 }
 </script>
-<style lang="scss" scoped>
+<style lang="scss">
 .menu-popup {
     &__restriction-message {
         position: relative;

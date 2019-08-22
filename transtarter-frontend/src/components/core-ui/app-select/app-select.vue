@@ -43,4 +43,4 @@
 </template>
 
 <script lang="ts" src="./app-select.ts"></script>
-<style src="./app-select.scss" lang="scss" scoped></style>
+<style src="./app-select.scss" lang="scss"></style>

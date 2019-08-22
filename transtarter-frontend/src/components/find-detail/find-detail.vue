@@ -80,4 +80,4 @@ export default class FindDetail extends Vue {
 }
 </script>
 
-<style lang="scss" src="./find-detail.scss" scoped></style>
+<style lang="scss" src="./find-detail.scss"></style>

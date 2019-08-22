@@ -12,4 +12,4 @@ import { Vue, Component } from 'vue-property-decorator'
 class SvgOrder extends Vue {}
 export default SvgOrder
 </script>
-<style scoped lang="scss"></style>
+<style lang="scss"></style>

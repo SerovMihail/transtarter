@@ -83,7 +83,7 @@ export default class TsMap extends Vue {
     }
 }
 </script>
-<style lang="scss" scoped>
+<style lang="scss">
 .map-info {
     width: 360px;
     -webkit-box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.15);

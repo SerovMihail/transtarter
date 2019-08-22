@@ -38,7 +38,7 @@ import { Vue, Component } from 'vue-property-decorator'
 class SvgInstagram extends Vue {}
 export default SvgInstagram
 </script>
-<style lang="scss" scoped>
+<style lang="scss">
 svg {
     fill: #a6a6a6;
     width: 26px;
