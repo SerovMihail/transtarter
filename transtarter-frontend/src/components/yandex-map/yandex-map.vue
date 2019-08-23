@@ -9,7 +9,7 @@
             <div style="position: absolute">
                 <div class="map-info">
                     <div class="map-info__header">
-                        <div class="map-info__header-text">Выберете свой или ближайший город</div>
+                        <div class="map-info__header-text">Выберите свой или ближайший город</div>
                         <select name="" id="">
                             <option value="">Москва</option>
                             <option value="">Калининград</option>

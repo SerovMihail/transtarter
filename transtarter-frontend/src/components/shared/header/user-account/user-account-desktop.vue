@@ -70,8 +70,10 @@ import VueTooltip from 'v-tooltip'
 import SvgList from '@/components/svg/svg-list.vue'
 
 Vue.use(VueTooltip)
+// Vue.directive(VueTooltip)
 @Component({
     components: { SvgList },
+    directives: { VueTooltip },
 })
 export default class UserAccountDesktop extends Vue {
     private webAppHost = process.env.VUE_APP_WEB_APP

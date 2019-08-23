@@ -38,37 +38,6 @@ export class HeaderSearchText extends Vue {
                 }
             })
     }
-    // mock data
-    // potentialFoundItems2: ISearchResult[] = [
-    //     {
-    //         id: 1,
-    //         desc: "Стартер",
-    //         number: "45888701",
-    //         manufacturer: "CITROEN",
-    //         alreadyInBucket: 0,
-    //     },
-    //     {
-    //         id: 2,
-    //         desc: "Генератор",
-    //         number: "95493099",
-    //         manufacturer: "CITROEN",
-    //         alreadyInBucket: 2,
-    //     },
-    //     {
-    //         id: 3,
-    //         desc: "Бендикс",
-    //         number: "WA54-9309",
-    //         manufacturer: "WAI",
-    //         alreadyInBucket: 0,
-    //     },
-    //     {
-    //         id: 4,
-    //         desc: "Бендикс",
-    //         number: "WA54-9309-1",
-    //         manufacturer: "WAI",
-    //         alreadyInBucket: 0,
-    //     },
-    // ];
 
     closeSearchResult() {
         this.foundItems = []
@@ -84,11 +53,11 @@ export class HeaderSearchText extends Vue {
 
     @Watch('searchText')
     onChildChanged(val: string, oldVal: string) {
-        if (val.length >= 3) {
-            this.findItems()
-        } else if (val.length <= 3 && oldVal.length >= 3) {
-            this.foundItems = []
-        }
+        // if (val.length >= 3) {
+        //     this.findItems()
+        // } else if (val.length <= 3 && oldVal.length >= 3) {
+        //     this.foundItems = []
+        // }
         this.$emit('searchText', this.searchText)
     }
 }

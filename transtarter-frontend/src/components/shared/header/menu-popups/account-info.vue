@@ -28,27 +28,26 @@
             {{ restrictionMessage }}
         </div>
 
-        <ul class="menu-popup_list" @click="closeUserMenu">
-            <li class="menu-popup_list-item">
-                <a :href="`${webAppHost}/account/settings`">Профиль и настройки</a>
-            </li>
-            <li class="menu-popup_list-item">
-                <a :href="`${webAppHost}/account/cart`">Корзина</a>
+        <div class="menu-popup_list" @click="closeUserMenu">
+            <a class="menu-popup_list-item" :href="`${webAppHost}/account/settings`">
+                Профиль и настройки
+            </a>
+            <a class="menu-popup_list-item" :href="`${webAppHost}/account/cart`">
+                Корзина
                 <span v-if="cartAggregateAmount" class="menu-popup_list-item-notify">
                     {{ cartAggregateAmount }}
                 </span>
-            </li>
-            <li class="menu-popup_list-item">
-                <a :href="`${webAppHost}/account/orders`">Заказы и оплаты</a>
-            </li>
-
-            <li v-if="!singleContrAgent" class="menu-popup_list-item" @click="toggleContrAgent">
+            </a>
+            <a class="menu-popup_list-item" :href="`${webAppHost}/account/orders`">
+                Заказы и оплаты
+            </a>
+            <a v-if="!singleContrAgent" class="menu-popup_list-item" @click="toggleContrAgent">
                 Смена контрагента
-            </li>
-            <li class="menu-popup_list-item" @click="logout">
+            </a>
+            <a class="menu-popup_list-item" @click="logout">
                 Выйти
-            </li>
-        </ul>
+            </a>
+        </div>
     </div>
 </template>
 
@@ -62,7 +61,8 @@ import { closable } from '@/directives/v-click-outside-exclude'
 import vClickOutside from 'v-click-outside'
 
 Vue.filter('currencyFormatRu', currencyFormatRu)
-Vue.use(vClickOutside)
+// Vue.use(vClickOutside)
+Vue.directive('vClickOutside', vClickOutside)
 Vue.directive('closable', closable)
 @Component
 export default class AccountInfoMobile extends Vue {
