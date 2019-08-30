@@ -15,7 +15,8 @@
     "wc:prod": "vue-cli-service build --target wc --name ts-ui ./src/components/**/*.vue --mode production --dest ./dist/wc",
     "wc:staging": "vue-cli-service build --target wc --name ts-ui ./src/components/**/*.vue --mode staging --dest ./dist/wc",
     "wc-unix:staging": "vue-cli-service build --target wc --name ts-ui './src/components/**/*.vue' --mode staging --dest ./dist/wc",
-    "wc-unix": "vue-cli-service build --target wc --name ts-ui './src/components/**/*.vue' --mode production --dest ./dist/wc"
+    "wc-unix": "vue-cli-service build --target wc --name ts-ui './src/components/**/*.vue' --mode production --dest ./dist/wc",
+    "wc-unix-mini": "vue-cli-service build --target wc --name ts-ui 'src/components/testClickoutsideComponent/testClickoutsidecomponent.vue' --mode production --dest ./dist/wc"
   },
   "dependencies": {
     "axios": "^0.18.0",

@@ -11394,12 +11394,12 @@ var search_location_mobile_component = normalizeComponent(
 )
 
 /* harmony default export */ var search_location_mobile = (search_location_mobile_component.exports);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"74fc3ce9-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/shared/header/user-account/user-account-mobile.vue?vue&type=template&id=2e1c256a&
-var user_account_mobilevue_type_template_id_2e1c256a_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"mobile-header__menu__right"},[(_vm.loggedIn && !_vm.loggingIn)?_c('div',{staticClass:"menu-item",on:{"click":function($event){return _vm.goToCart()}}},[_c('div',{staticClass:"shopping-cart"}),(_vm.cartAggregateAmount)?_c('span',{staticClass:"notify-counter"},[_vm._v(_vm._s(_vm.cartAggregateAmount))]):_vm._e()]):_vm._e(),(_vm.loggedIn && !_vm.loggingIn)?_c('li',{staticClass:"menu-item",on:{"click":function($event){return _vm.goToOrders()}}},[_c('svg-list',{staticClass:"desktop-header__svg-list"})],1):_vm._e(),(_vm.isParterRestricted && _vm.loggedIn && !_vm.loggingIn)?_c('div',{staticClass:"menu-item desktop-header__warning",on:{"click":_vm.openRestrictionModal}},[_c('i',{staticClass:"el-icon-warning"})]):_vm._e(),_c('div',{staticClass:"menu-item",attrs:{"id":"user-menu"}},[(!_vm.loggedIn)?_c('div',{staticClass:"new-user",on:{"click":function($event){return _vm.toggleUserMenu()}}}):_vm._e(),(_vm.loggedIn)?_c('div',{staticClass:"user-avatar",on:{"click":function($event){return _vm.toggleUserMenu()}}}):_vm._e()])])}
-var user_account_mobilevue_type_template_id_2e1c256a_staticRenderFns = []
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"74fc3ce9-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/shared/header/user-account/user-account-mobile.vue?vue&type=template&id=7e80a89c&
+var user_account_mobilevue_type_template_id_7e80a89c_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"mobile-header__menu__right"},[(_vm.loggedIn && !_vm.loggingIn)?_c('div',{staticClass:"menu-item",on:{"click":function($event){return _vm.goToCart()}}},[_c('div',{staticClass:"shopping-cart"}),(_vm.cartAggregateAmount)?_c('span',{staticClass:"notify-counter"},[_vm._v(_vm._s(_vm.cartAggregateAmount))]):_vm._e()]):_vm._e(),(_vm.loggedIn && !_vm.loggingIn)?_c('li',{staticClass:"menu-item",on:{"click":function($event){return _vm.goToOrders()}}},[_c('svg-list',{staticClass:"desktop-header__svg-list"})],1):_vm._e(),(_vm.isParterRestricted && _vm.loggedIn && !_vm.loggingIn)?_c('div',{staticClass:"menu-item desktop-header__warning",on:{"click":_vm.openRestrictionModal}},[_c('i',{staticClass:"el-icon-warning"})]):_vm._e(),_c('div',{staticClass:"menu-item",attrs:{"id":"user-menu"}},[(!_vm.loggedIn)?_c('div',{staticClass:"new-user",on:{"click":function($event){return _vm.toggleUserMenu()}}}):_vm._e(),(_vm.loggedIn)?_c('div',{staticClass:"user-avatar",on:{"click":function($event){return _vm.toggleUserMenu()}}}):_vm._e()])])}
+var user_account_mobilevue_type_template_id_7e80a89c_staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./src/components/shared/header/user-account/user-account-mobile.vue?vue&type=template&id=2e1c256a&
+// CONCATENATED MODULE: ./src/components/shared/header/user-account/user-account-mobile.vue?vue&type=template&id=7e80a89c&
 
 // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--14-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/ts-loader??ref--14-3!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/shared/header/user-account/user-account-mobile.vue?vue&type=script&lang=ts&
 
@@ -11433,7 +11433,7 @@ var user_account_mobilevue_type_script_lang_ts_UserAccountMobile = class UserAcc
   toggleUserMenu() {
     setTimeout(() => {
       store.dispatch('display/toggleBlockShowUser');
-    });
+    }, 50);
   }
 
   openRestrictionModal() {
@@ -11470,8 +11470,8 @@ function user_account_mobile_injectStyles (context) {
 
 var user_account_mobile_component = normalizeComponent(
   user_account_user_account_mobilevue_type_script_lang_ts_,
-  user_account_mobilevue_type_template_id_2e1c256a_render,
-  user_account_mobilevue_type_template_id_2e1c256a_staticRenderFns,
+  user_account_mobilevue_type_template_id_7e80a89c_render,
+  user_account_mobilevue_type_template_id_7e80a89c_staticRenderFns,
   false,
   user_account_mobile_injectStyles,
   null,
@@ -13008,12 +13008,12 @@ var user_account_desktopshadow_component = normalizeComponent(
 )
 
 /* harmony default export */ var user_account_desktopshadow = (user_account_desktopshadow_component.exports);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"74fc3ce9-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/shared/header/user-account/user-account-mobile.vue?vue&type=template&id=10549cda&shadow
-var user_account_mobilevue_type_template_id_10549cda_shadow_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"mobile-header__menu__right"},[(_vm.loggedIn && !_vm.loggingIn)?_c('div',{staticClass:"menu-item",on:{"click":function($event){return _vm.goToCart()}}},[_c('div',{staticClass:"shopping-cart"}),(_vm.cartAggregateAmount)?_c('span',{staticClass:"notify-counter"},[_vm._v(_vm._s(_vm.cartAggregateAmount))]):_vm._e()]):_vm._e(),(_vm.loggedIn && !_vm.loggingIn)?_c('li',{staticClass:"menu-item",on:{"click":function($event){return _vm.goToOrders()}}},[_c('svg-list',{staticClass:"desktop-header__svg-list"})],1):_vm._e(),(_vm.isParterRestricted && _vm.loggedIn && !_vm.loggingIn)?_c('div',{staticClass:"menu-item desktop-header__warning",on:{"click":_vm.openRestrictionModal}},[_c('i',{staticClass:"el-icon-warning"})]):_vm._e(),_c('div',{staticClass:"menu-item",attrs:{"id":"user-menu"}},[(!_vm.loggedIn)?_c('div',{staticClass:"new-user",on:{"click":function($event){return _vm.toggleUserMenu()}}}):_vm._e(),(_vm.loggedIn)?_c('div',{staticClass:"user-avatar",on:{"click":function($event){return _vm.toggleUserMenu()}}}):_vm._e()])])}
-var user_account_mobilevue_type_template_id_10549cda_shadow_staticRenderFns = []
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"74fc3ce9-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/shared/header/user-account/user-account-mobile.vue?vue&type=template&id=625a0eaa&shadow
+var user_account_mobilevue_type_template_id_625a0eaa_shadow_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"mobile-header__menu__right"},[(_vm.loggedIn && !_vm.loggingIn)?_c('div',{staticClass:"menu-item",on:{"click":function($event){return _vm.goToCart()}}},[_c('div',{staticClass:"shopping-cart"}),(_vm.cartAggregateAmount)?_c('span',{staticClass:"notify-counter"},[_vm._v(_vm._s(_vm.cartAggregateAmount))]):_vm._e()]):_vm._e(),(_vm.loggedIn && !_vm.loggingIn)?_c('li',{staticClass:"menu-item",on:{"click":function($event){return _vm.goToOrders()}}},[_c('svg-list',{staticClass:"desktop-header__svg-list"})],1):_vm._e(),(_vm.isParterRestricted && _vm.loggedIn && !_vm.loggingIn)?_c('div',{staticClass:"menu-item desktop-header__warning",on:{"click":_vm.openRestrictionModal}},[_c('i',{staticClass:"el-icon-warning"})]):_vm._e(),_c('div',{staticClass:"menu-item",attrs:{"id":"user-menu"}},[(!_vm.loggedIn)?_c('div',{staticClass:"new-user",on:{"click":function($event){return _vm.toggleUserMenu()}}}):_vm._e(),(_vm.loggedIn)?_c('div',{staticClass:"user-avatar",on:{"click":function($event){return _vm.toggleUserMenu()}}}):_vm._e()])])}
+var user_account_mobilevue_type_template_id_625a0eaa_shadow_staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./src/components/shared/header/user-account/user-account-mobile.vue?vue&type=template&id=10549cda&shadow
+// CONCATENATED MODULE: ./src/components/shared/header/user-account/user-account-mobile.vue?vue&type=template&id=625a0eaa&shadow
 
 // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--14-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/ts-loader??ref--14-3!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/shared/header/user-account/user-account-mobile.vue?vue&type=script&lang=ts&shadow
 
@@ -13047,7 +13047,7 @@ var user_account_mobilevue_type_script_lang_ts_shadow_UserAccountMobile = class 
   toggleUserMenu() {
     setTimeout(() => {
       store.dispatch('display/toggleBlockShowUser');
-    });
+    }, 50);
   }
 
   openRestrictionModal() {
@@ -13084,8 +13084,8 @@ function user_account_mobileshadow_injectStyles (context) {
 
 var user_account_mobileshadow_component = normalizeComponent(
   user_account_user_account_mobilevue_type_script_lang_ts_shadow,
-  user_account_mobilevue_type_template_id_10549cda_shadow_render,
-  user_account_mobilevue_type_template_id_10549cda_shadow_staticRenderFns,
+  user_account_mobilevue_type_template_id_625a0eaa_shadow_render,
+  user_account_mobilevue_type_template_id_625a0eaa_shadow_staticRenderFns,
   false,
   user_account_mobileshadow_injectStyles,
   null,

@@ -209,7 +209,7 @@ import { DisplayModule } from '../store/modules/display.module'
 
 import FindDetail from '@/components/find-detail/find-detail.vue'
 
-import ContragentRestrictionModal from '@/components/shared/contragent-restriction-modal/contragent-restriction-modal.vue'
+import ContragentRestrictionModal from '@/components/shared/contragent-restriction-modal/contragent-restriction-modal'
 
 @Component({
     components: {

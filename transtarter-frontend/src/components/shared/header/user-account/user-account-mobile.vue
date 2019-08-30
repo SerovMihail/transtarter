@@ -63,7 +63,7 @@ export default class UserAccountMobile extends Vue {
     toggleUserMenu() {
         setTimeout(() => {
             store.dispatch('display/toggleBlockShowUser')
-        })
+        }, 50)
     }
 
     openRestrictionModal() {
