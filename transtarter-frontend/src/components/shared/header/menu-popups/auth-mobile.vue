@@ -1,6 +1,6 @@
 <template>
     <div class="menu-popup" v-if="showBlocksShowUser && !loggedIn">
-        <ul class="menu-popup_list" v-click-outside="closeUserMenu">
+        <ul class="menu-popup_list" v-click-outside="vcoConfig">
             <li class="menu-popup_list-item" @click="logIn()">
                 <a>Вход</a>
             </li>
@@ -40,6 +40,17 @@ export default class AuthMobile extends Vue {
 
     logIn() {
         store.dispatch('auth/login')
+    }
+
+    middleware = (e, el) => {
+        // const excludeId = 'user-menu'
+        // return e.target.parentElement.id === excludeId || e.target.id === excludeId
+        console.log('middleware', e.target)
+        return e.target.className !== 'new-user'
+    }
+    vcoConfig = {
+        handler: this.closeUserMenu,
+        middleware: this.middleware,
     }
 }
 </script>
