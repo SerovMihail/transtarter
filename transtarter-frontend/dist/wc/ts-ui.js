@@ -5262,7 +5262,7 @@ __webpack_require__.r(__webpack_exports__);
 // This file is imported into lib/wc client bundles.
 
 if (typeof window !== 'undefined') {
-  if (Object({"NODE_ENV":"production","VUE_APP_HOST":"https://new.tstarter.ru","VUE_APP_IDENTITY_SERVER":"https://identity-test.tstarter.ru","VUE_APP_IDENTITY_SERVER_API":"https://identity-api-test.tstarter.ru","VUE_APP_WEB_APP":"https://new1.tstarter.ru/new","VUE_APP_WEB_APP_API":"https://new1.tstarter.ru/new/api","VUE_APP_ENV":"https://new1.tstarter.ru/new","BASE_URL":"/"}).NEED_CURRENTSCRIPT_POLYFILL) {
+  if (Object({"NODE_ENV":"production","VUE_APP_HOST":"https://tstarter.ru","VUE_APP_IDENTITY_SERVER":"https://identity.tstarter.ru","VUE_APP_IDENTITY_SERVER_API":"https://identityapi.tstarter.ru","VUE_APP_WEB_APP":"https://catalog.tstarter.ru","VUE_APP_WEB_APP_API":"https://catalog.tstarter.ru","VUE_APP_ENV":"https://new1.tstarter.ru/new","BASE_URL":"/"}).NEED_CURRENTSCRIPT_POLYFILL) {
     __webpack_require__("f6fd")
   }
 
@@ -6805,9 +6805,9 @@ var COOKIE_SELECTED_CONTRAGENT = 'selected-contragent';
 
 class auth_service_AuthService {
   constructor() {
-    this.identityServer = "https://identity-test.tstarter.ru";
-    this.identityServerApi = "https://identity-api-test.tstarter.ru";
-    this.webAppHost = "https://new1.tstarter.ru/new";
+    this.identityServer = "https://identity.tstarter.ru";
+    this.identityServerApi = "https://identityapi.tstarter.ru";
+    this.webAppHost = "https://catalog.tstarter.ru";
     var AUTH0_DOMAIN = this.identityServer;
     var MY_HOST = window.location.origin;
     var settings = {
@@ -6873,7 +6873,7 @@ var models = __webpack_require__("0d59");
 
 // CONCATENATED MODULE: ./src/services/axios.service.ts
 
-var webApi = "https://new1.tstarter.ru/new/api";
+var webApi = "https://catalog.tstarter.ru";
 var axiosRequestConfig = {
   baseURL: webApi,
   withCredentials: true
@@ -6886,7 +6886,7 @@ var instance = axios_default.a.create(axiosRequestConfig);
 
 class profile_service_ProfileService {
   constructor() {
-    this.identityServerHost = "https://identity-test.tstarter.ru";
+    this.identityServerHost = "https://identity.tstarter.ru";
     this.userKey = 'user';
     this.identityUserKey = `${this.userKey}:${this.identityServerHost}:kl`;
   }
@@ -7048,7 +7048,7 @@ class cart_api_service_CartApiService {
 
 class partner_api_service_PartnerApiService {
   constructor() {
-    this.webApi = "https://new1.tstarter.ru/new/api";
+    this.webApi = "https://catalog.tstarter.ru";
   }
 
   getPartnerBalance() {
@@ -7507,7 +7507,7 @@ var component = normalizeComponent(
 var contragent_modalvue_type_script_lang_ts_shadow_ContragentModal = class ContragentModal extends external_Vue_default.a {
   constructor() {
     super(...arguments);
-    this.identityApi = "https://identity-api-test.tstarter.ru" || false;
+    this.identityApi = "https://identityapi.tstarter.ru" || false;
   }
 
   get contragentOpen() {
@@ -9693,12 +9693,12 @@ var contragent_restriction_modalshadow_component = normalizeComponent(
 )
 
 /* harmony default export */ var contragent_restriction_modalshadow = (contragent_restriction_modalshadow_component.exports);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"74fc3ce9-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/shared/footer/footer.vue?vue&type=template&id=4a3bc60e&shadow
-var footervue_type_template_id_4a3bc60e_shadow_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _vm._m(0)}
-var footervue_type_template_id_4a3bc60e_shadow_staticRenderFns = [function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('footer',{staticClass:"footer"},[_c('div',{staticClass:"footer__content"},[_c('div',{staticClass:"container"},[_c('div',{staticClass:"cards_group"},[_c('div',{staticClass:"cards_group__card"},[_c('div',{staticClass:"cards_group__card_header card_header_logo"},[_vm._v("ТРАНС СТАРТЕР")]),_c('div',{staticClass:"cards_group__card_body specialization",staticStyle:{"line-height":"24px"}},[_vm._v("\n                        Продажа стартеров, генераторов\n                        "),_c('br'),_vm._v("\n                        и запчастей с 1995 г.\n                    ")])]),_c('div',{staticClass:"cards_group__card"},[_c('div',{staticClass:"cards_group__card_body"},[_c('ul',{staticClass:"links"},[_c('li',{staticClass:"links-item"},[_c('a',{staticClass:"cards_group__card_link",attrs:{"href":"/special-offers"}},[_vm._v("\n                                    Акции и новинки\n                                ")])]),_c('li',{staticClass:"mb-20 links-item"},[_c('a',{staticClass:"cards_group__card_link ",attrs:{"href":"/delivery"}},[_vm._v("\n                                    Доставка и оплата\n                                ")])]),_c('li',{staticClass:"links-item"},[_c('a',{staticClass:"cards_group__card_link",attrs:{"href":"/about-company"}},[_vm._v("\n                                    О компании\n                                ")])]),_c('li',{staticClass:"links-item"},[_c('a',{staticClass:"cards_group__card_link",attrs:{"href":"/auto-workshops"}},[_vm._v("\n                                    Найти точку ремонта\n                                ")])]),_c('li',{staticClass:"mb-20 links-item"},[_c('a',{staticClass:"cards_group__card_link  ",attrs:{"href":"/contacts"}},[_vm._v("\n                                    Контакты\n                                ")])]),_c('li',{staticClass:"link-item",staticStyle:{"padding-bottom":"0"}},[_c('a',{staticClass:"cards_group__card_link ",attrs:{"href":"#"}},[_vm._v("Блог")])])])])]),_c('div',{staticClass:"cards_group__card"},[_c('div',{staticClass:"cards_group__card_body cards_group__card_soc",staticStyle:{"line-height":"24px"}},[_vm._v("\n                        Задавайте свои вопросы прямо сейчас\n\n                        "),_c('ul',{staticClass:"cards_group__card_soc-list"},[_c('li',[_c('a',{staticClass:"social-link",attrs:{"href":"https://vk.com/transstarter777","target":"_blank"}},[_c('span',{staticClass:"social-link-icon social-link-vk-icon"})])]),_c('li',[_c('a',{staticClass:"social-link",attrs:{"href":"https://www.facebook.com/tstarter/","target":"_blank"}},[_c('span',{staticClass:"social-link-icon social-link-facebook-icon"})])]),_c('li',[_c('a',{staticClass:"social-link",attrs:{"href":"https://www.instagram.com/transstarter/","target":"_blank"}},[_c('span',{staticClass:"social-link-icon social-link-instagram-icon"})])])])])]),_c('div',{staticClass:"cards_group__card call-card"},[_c('a',{staticClass:"cards_group__card_header",staticStyle:{"margin-bottom":"8px"},attrs:{"href":"tel:+7-495-748-97-74"}},[_vm._v("\n                        +7 (495) 748-97-74\n                    ")])])])])])])}]
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"74fc3ce9-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/shared/footer/footer.vue?vue&type=template&id=7c88aa47&shadow
+var footervue_type_template_id_7c88aa47_shadow_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _vm._m(0)}
+var footervue_type_template_id_7c88aa47_shadow_staticRenderFns = [function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('footer',{staticClass:"footer"},[_c('div',{staticClass:"footer__content"},[_c('div',{staticClass:"container"},[_c('div',{staticClass:"cards_group"},[_c('div',{staticClass:"cards_group__card"},[_c('div',{staticClass:"cards_group__card_header card_header_logo"},[_vm._v("ТРАНС СТАРТЕР")]),_c('div',{staticClass:"cards_group__card_body specialization",staticStyle:{"line-height":"24px"}},[_vm._v("\n                        Продажа стартеров, генераторов\n                        "),_c('br'),_vm._v("\n                        и запчастей с 1995 г.\n                    ")])]),_c('div',{staticClass:"cards_group__card"},[_c('div',{staticClass:"cards_group__card_body"},[_c('ul',{staticClass:"links"},[_c('li',{staticClass:"links-item"},[_c('a',{staticClass:"cards_group__card_link",attrs:{"href":"/special-offers"}},[_vm._v("\n                                    Акции и новинки\n                                ")])]),_c('li',{staticClass:"mb-20 links-item"},[_c('a',{staticClass:"cards_group__card_link ",attrs:{"href":"/delivery"}},[_vm._v("\n                                    Доставка и оплата\n                                ")])]),_c('li',{staticClass:"links-item"},[_c('a',{staticClass:"cards_group__card_link",attrs:{"href":"/about-company"}},[_vm._v("\n                                    О компании\n                                ")])]),_c('li',{staticClass:"links-item"},[_c('a',{staticClass:"cards_group__card_link",attrs:{"href":"/auto-workshops"}},[_vm._v("\n                                    Найти точку ремонта\n                                ")])]),_c('li',{staticClass:"mb-20 links-item"},[_c('a',{staticClass:"cards_group__card_link  ",attrs:{"href":"/contacts"}},[_vm._v("\n                                    Контакты\n                                ")])]),_c('li',{staticClass:"link-item",staticStyle:{"padding-bottom":"0"}},[_c('a',{staticClass:"cards_group__card_link",attrs:{"href":"/policy"}},[_vm._v("\n                                    Политика конфиденциальности\n                                ")])])])])]),_c('div',{staticClass:"cards_group__card"},[_c('div',{staticClass:"cards_group__card_body cards_group__card_soc",staticStyle:{"line-height":"24px"}},[_vm._v("\n                        Задавайте свои вопросы прямо сейчас\n\n                        "),_c('ul',{staticClass:"cards_group__card_soc-list"},[_c('li',[_c('a',{staticClass:"social-link",attrs:{"href":"https://vk.com/transstarter777","target":"_blank"}},[_c('span',{staticClass:"social-link-icon social-link-vk-icon"})])]),_c('li',[_c('a',{staticClass:"social-link",attrs:{"href":"https://www.facebook.com/tstarter/","target":"_blank"}},[_c('span',{staticClass:"social-link-icon social-link-facebook-icon"})])]),_c('li',[_c('a',{staticClass:"social-link",attrs:{"href":"https://www.instagram.com/transstarter/","target":"_blank"}},[_c('span',{staticClass:"social-link-icon social-link-instagram-icon"})])])])])]),_c('div',{staticClass:"cards_group__card call-card"},[_c('a',{staticClass:"cards_group__card_header",staticStyle:{"margin-bottom":"8px"},attrs:{"href":"tel:+7-495-748-97-74"}},[_vm._v("\n                        +7 (495) 748-97-74\n                    ")])])])])])])}]
 
 
-// CONCATENATED MODULE: ./src/components/shared/footer/footer.vue?vue&type=template&id=4a3bc60e&shadow
+// CONCATENATED MODULE: ./src/components/shared/footer/footer.vue?vue&type=template&id=7c88aa47&shadow
 
 // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"74fc3ce9-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/shared/footer/toggle-register-call-popup.vue?vue&type=template&id=4e70d77a&
 var toggle_register_call_popupvue_type_template_id_4e70d77a_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('button',{staticClass:"cards_group__card_link",staticStyle:{"font-weight":"bold"},on:{"click":function($event){return _vm.toggleRequestCallPopup()}}},[_vm._v("\n    Заказать звонок\n")])}
@@ -9775,8 +9775,8 @@ if (style0.__inject__) style0.__inject__(context)
 
 var footershadow_component = normalizeComponent(
   footer_footervue_type_script_lang_ts_shadow,
-  footervue_type_template_id_4a3bc60e_shadow_render,
-  footervue_type_template_id_4a3bc60e_shadow_staticRenderFns,
+  footervue_type_template_id_7c88aa47_shadow_render,
+  footervue_type_template_id_7c88aa47_shadow_staticRenderFns,
   false,
   footershadow_injectStyles,
   null,
@@ -9961,7 +9961,7 @@ external_Vue_default.a.directive('closable', closable);
 var account_infovue_type_script_lang_ts_AccountInfoMobile = class AccountInfoMobile extends external_Vue_default.a {
   constructor() {
     super(...arguments);
-    this.webAppHost = "https://new1.tstarter.ru/new";
+    this.webAppHost = "https://catalog.tstarter.ru";
   }
 
   get contrAgent() {
@@ -10174,8 +10174,8 @@ var user_account_desktopvue_type_script_lang_ts_UserAccountDesktop = class UserA
   // Vue.directive(VueTooltip)
   constructor() {
     super(...arguments);
-    this.webAppHost = "https://new1.tstarter.ru/new";
-    this.webApi = "https://new1.tstarter.ru/new/api";
+    this.webAppHost = "https://catalog.tstarter.ru";
+    this.webApi = "https://catalog.tstarter.ru";
     this.cartInfo = {};
   }
 
@@ -11090,7 +11090,7 @@ var header_search_text_HeaderSearchText = class HeaderSearchText extends externa
   // You can declare a mixin as the same style as components.
   constructor() {
     super(...arguments);
-    this.webApi = "https://new1.tstarter.ru/new/api";
+    this.webApi = "https://catalog.tstarter.ru";
     this.searchText = '';
     this.foundItems = [];
   }
@@ -11206,7 +11206,7 @@ var search_by_number_component = normalizeComponent(
 var search_form_desktopvue_type_script_lang_ts_SearchFormDesktop = class SearchFormDesktop extends external_Vue_default.a {
   constructor() {
     super(...arguments);
-    this.searchBaseUrl = "https://new.tstarter.ru";
+    this.searchBaseUrl = "https://tstarter.ru";
     this.productSearchCriteria = {};
     this.isLoading = false;
     this.loadedInput = 'Номер детали';
@@ -11317,8 +11317,8 @@ var user_account_mobilevue_type_template_id_2e1c256a_staticRenderFns = []
 var user_account_mobilevue_type_script_lang_ts_UserAccountMobile = class UserAccountMobile extends external_Vue_default.a {
   constructor() {
     super(...arguments);
-    this.webAppHost = "https://new1.tstarter.ru/new";
-    this.webApi = "https://new1.tstarter.ru/new/api";
+    this.webAppHost = "https://catalog.tstarter.ru";
+    this.webApi = "https://catalog.tstarter.ru";
   }
 
   get loggedIn() {
@@ -12090,7 +12090,7 @@ external_Vue_default.a.directive('closable', closable);
 var account_infovue_type_script_lang_ts_shadow_AccountInfoMobile = class AccountInfoMobile extends external_Vue_default.a {
   constructor() {
     super(...arguments);
-    this.webAppHost = "https://new1.tstarter.ru/new";
+    this.webAppHost = "https://catalog.tstarter.ru";
   }
 
   get contrAgent() {
@@ -12409,7 +12409,7 @@ external_Vue_default.a.use(v_click_outside_min_umd_default.a);
 var search_form_desktop_oldvue_type_script_lang_ts_shadow_SearchFormDesktop = class SearchFormDesktop extends Object(vue_class_component_common["mixins"])(header_search_text_HeaderSearchText) {
   constructor() {
     super(...arguments);
-    this.webApiHost = "https://new1.tstarter.ru/new/api";
+    this.webApiHost = "https://catalog.tstarter.ru";
     this.productSearchCriteria = {};
     this.isLoading = false;
     this.foundItems = [];
@@ -12496,7 +12496,7 @@ var search_form_desktopvue_type_template_id_1d89dfd7_shadow_staticRenderFns = []
 var search_form_desktopvue_type_script_lang_ts_shadow_SearchFormDesktop = class SearchFormDesktop extends external_Vue_default.a {
   constructor() {
     super(...arguments);
-    this.searchBaseUrl = "https://new.tstarter.ru";
+    this.searchBaseUrl = "https://tstarter.ru";
     this.productSearchCriteria = {};
     this.isLoading = false;
     this.loadedInput = 'Номер детали';
@@ -12723,8 +12723,8 @@ var user_account_desktopvue_type_script_lang_ts_shadow_UserAccountDesktop = clas
   // Vue.directive(VueTooltip)
   constructor() {
     super(...arguments);
-    this.webAppHost = "https://new1.tstarter.ru/new";
-    this.webApi = "https://new1.tstarter.ru/new/api";
+    this.webAppHost = "https://catalog.tstarter.ru";
+    this.webApi = "https://catalog.tstarter.ru";
     this.cartInfo = {};
   }
 
@@ -12885,8 +12885,8 @@ var user_account_mobilevue_type_template_id_10549cda_shadow_staticRenderFns = []
 var user_account_mobilevue_type_script_lang_ts_shadow_UserAccountMobile = class UserAccountMobile extends external_Vue_default.a {
   constructor() {
     super(...arguments);
-    this.webAppHost = "https://new1.tstarter.ru/new";
-    this.webApi = "https://new1.tstarter.ru/new/api";
+    this.webAppHost = "https://catalog.tstarter.ru";
+    this.webApi = "https://catalog.tstarter.ru";
   }
 
   get loggedIn() {
