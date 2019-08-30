@@ -53,7 +53,7 @@
             <div class="modal-content mobile-version-content">
                 <div class="close" @click="toggleRegistrationPopup()">✖</div>
 
-                <carousel :perPage="1" class="mobile-version-content-carousel">
+                <!-- <carousel :perPage="1" class="mobile-version-content-carousel">
                     <slide class="mobile-version-content-header">
                         <div class="reg-in-our-shop bold text-center">
                             Зарегистрируйтесь
@@ -66,7 +66,7 @@
                             и доставки, хранить историю заказов
                         </div>
                     </slide>
-                </carousel>
+                </carousel> -->
 
                 <div class="mobile-version-content-main">
                     <ts-ui-registration-form></ts-ui-registration-form>

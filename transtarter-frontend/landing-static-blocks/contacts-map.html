@@ -1,0 +1,923 @@
+<html>
+  <head>
+    <script src="https://api-maps.yandex.ru/2.1/?apikey=64a23fa1-6705-4827-978a-ab84dc6ad5ad&lang=ru_RU" type="text/javascript"></script>
+  </head>
+<body>
+<div class="map-wrap" style="position: relative">
+  <div id="map" style="width: 100%; height: 624px"></div>
+  <select class="mobile-city-select">
+    <option value="default">Выберете город</option>
+    <option value="Moscow">Москва</option>
+    <option value="Kaliningrad">Калининград</option>
+    <option value="Yekaterinburg">Екатеринбург</option>
+    <option value="Berezovski">Березовский</option>
+    <option value="Krasnodar">Краснодар</option>
+    <option value="Almaty">Алматы</option>
+    <option value="Kyiv">Киев</option>
+    <option value="Serov">Серов</option>
+  </select>
+
+  <div style="position: absolute;left:4%; top: 70px; z-index:9999">
+
+    <div style="position: absolute">
+      <div class="map-info">
+        <div class="map-info__header">
+          <div class="map-info__header-text">Выберете свой или ближайший город</div>
+          <select name="" class="desktop-city-select" id="">
+            <option value="default">Выберете город</option>
+            <option value="Moscow">Москва</option>
+            <option value="Kaliningrad">Калининград</option>
+              <option value="Yekaterinburg">Екатеринбург</option>
+            <option value="Berezovski">Березовский</option>
+            <option value="Krasnodar">Краснодар</option>
+            <option value="Almaty">Алматы</option>
+            <option value="Kyiv">Киев</option>
+            <option value="Serov">Серов</option>
+          </select>
+        </div>
+        <div class="map-info__body">
+          <div class="map-info__section">
+            <div class="map-info__body-title">Адрес офиса:</div>
+            <div id="mapAsideAddress" class="map-info__body-content">
+              Московская область г. Дзержинский, ул. Энергетиков 18а
+            </div>
+          </div>
+          <div class="map-info__section">
+            <div class="map-info__body-title">Контакты:</div>
+            <div class="map-info__body-content">
+              <ul id="phone-list" class="map-info__phone-list">
+                <li>8 (495) 748-97-74</li>
+              </ul>
+              <!-- emails -->
+              <!-- <a href="mailto:kc@tstarter.ru">kc@tstarter.ru</a> -->
+            </div>
+          </div>
+          <!-- <div class="map-info__section">
+					<div class="map-info__body-title">Часы работы:</div>
+					<div class="map-info__body-content">
+						Будни 8:00-20:00 <br>
+						Выходные 9:00-18:00
+					</div>
+				</div> -->
+        </div>
+      </div>
+      <!-- <div class="map-leave-info">
+			<div class="map-leave-info__header">
+					Обсудите сотрудничество с представителем «Транс Стартер» в Москве
+			</div>
+			<div class="map-leave-info__body">
+				<div class="map-leave-info__face"></div>
+				<div class="map-leave-info__photo-caption">
+					Константинопольский Константин Константинович
+				</div>
+				<form class="map-leave-info__form">
+					<input type="text" placeholder="Как к вам обращаться?">
+					<input type="text" placeholder="Введите телефон">
+					<input type="email" placeholder="Введите email">
+					<button class="button-yellow" type="button">Обсудить сотрудничество</button>
+				</form>
+				<div class="map-leave-info__agreement">
+					Нажимая на кнопку, вы даете согласие на обработку своих персональных данных и соглашаетесь с Политикой конфиденциальности
+				</div>
+			</div>
+			
+		</div> -->
+    </div>
+
+
+  </div>
+
+
+
+</div>
+
+
+
+<script>
+
+
+  (function () {
+    var myMap;
+    const placemarksData = [
+    [
+        [55.645943569081666,37.67312399999999],
+        'г. Москва Каширское ш. д.41',
+        '8-495-744-37-75',
+    ],
+    [
+        [55.64204706910142,37.82867649999988],
+        'Московская область, г.Дзержинский, ул.Энергетиков 18А',
+        ' 8-495-748-97-74',
+    ],
+    [
+        [54.73466856993723,20.513289999999976],
+        'г. Калининград, ул.Первомайская, д.17',
+        '8-4012-525-400',
+    ],
+    [
+        [56.81833556789966,60.63350600000002],
+        'г. Екатеринбург, ул.Ткачей, 14-А',
+        '8-343-219-88-66',
+    ],
+    [
+        [45.063578574591006,38.972447499999966],
+        'г. Краснодар, ул. Дальняя, 2',
+        '8-861-290-09-19',
+    ],
+    [
+        [43.21356007453611,76.8984115],
+        'г. Алматы пр.Гагарина, 236-Б',
+        '8-727-346-82-08',
+    ],
+    [
+        [50.48895707299117,30.482164499999907],
+        'г. Киев Московский пр. д.15',
+        '+380 44 222 67-85',
+    ],
+    [
+        [59.60026806460948,60.55263950000002],
+        'г. Серов ул. Кирова, 49/10Б',
+        '8 (34385) 9-81-03',
+    ],
+    [
+        [56.898849067774634,60.767417499999965],
+        'г. Березовский, Березовский тракт, 2г',
+        '8 (343) 268-11-90',
+    ],
+] ;
+
+    const mobileResolution = '768px';
+    ymaps.ready(init);
+    function init() {// ymaps.geolocation.get({provider: 'yandex',
+      //     mapStateAutoApply: true}).then(result =>{myMap.geoObjects.add(result.geoObjects);
+      // myMap.geoObjects.remove(result.geoObjects);
+      // console.log(result.geoObjects);});
+      const mapId = document.getElementById("map");
+      myMap = new ymaps.Map(mapId, {
+        center: [54.24801290964209,37.773155011718764],
+        zoom: 4,
+        controls: []
+      });
+      var geolocationLayout = ymaps.templateLayoutFactory.createClass(`
+                <div class="ya-maps__zoom-control">
+                    <svg  class="ya-maps__zoom-svg-icon"  style="left: 46%; width: 33px;"viewBox="0 0 31 34" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M2.81905 15.1705L28.6062 2.4232L20.8704 30.7352L16.0521 19.5546L15.8683 19.1281L15.424 18.9934L2.81905 15.1705Z" stroke="white" stroke-width="2"/>
+                    </svg>
+
+                </div>`
+      );
+      var ZoomLayout = ymaps.templateLayoutFactory.createClass(`
+                    <div>
+                        <div id="zoom-in" class="ya-maps__zoom-control">
+                            <svg  class="ya-maps__zoom-svg-icon" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <rect y="15" width="32" height="2" fill="white"/>
+                            <rect x="17" width="32" height="2" transform="rotate(90 17 0)" fill="white"/>
+                            </svg>
+                        </div>
+                    <div id="zoom-out" class="ya-maps__zoom-control">
+                        <div style="width:32px; height:2px; position: absolute; top: 50%; left: 50%; background: white; transform: translateX(-50%) translateY(-50%);"> </div>
+            
+                    </div>
+                    </div>
+                `, {
+          build: function () {
+            ZoomLayout.superclass.build.call(this);
+            this.zoomInCallback = ymaps.util.bind(this.zoomIn, this);
+            this.zoomOutCallback = ymaps.util.bind(this.zoomOut, this);
+
+            document.getElementById('zoom-in').addEventListener('click', this.zoomInCallback);
+            document.getElementById('zoom-out').addEventListener('click', this.zoomOutCallback);
+          },
+
+          clear: function () { },
+
+          zoomIn: function () {
+            var map = this.getData().control.getMap();
+            map.setZoom(map.getZoom() + 1, { checkZoomRange: true });
+          },
+
+          zoomOut: function () {
+            var map = this.getData().control.getMap();
+            map.setZoom(map.getZoom() - 1, { checkZoomRange: true });
+          }
+        });
+      var zoomControl = new ymaps.control.ZoomControl({ options: { layout: ZoomLayout } });
+      var geolocationControl = new ymaps.control.GeolocationControl({ options: { layout: geolocationLayout } });
+
+      myMap.controls.add(geolocationControl, {
+        position: {
+          top: '50px',
+          right: '30px'
+        }
+      });
+
+      myMap.controls.add(zoomControl, {
+        position: {
+          top: '120px',
+          right: '30px'
+        }
+      });
+
+
+
+
+      myGeoObject = new ymaps.GeoObject({
+        geometry: {
+          type: "Point",
+          coordinates: myMap.getCenter()
+        },
+        properties: { iconColor: '#3b5998', }
+      }, {});
+
+      function Placemark(coords = myMap.getCenter(), address = "", tel = "") {
+        let telTemplate = '';
+        if (Array.isArray(tel)) {
+          let template = '';
+          tel.forEach(singleTel => { template += `<div class="ya-maps__phone"><span class="ya-maps__phone-link" >${singleTel}</span></div>` })
+          telTemplate = template;
+        } else { telTemplate = `<div class="ya-maps__phone"><span class="ya-maps__phone-link" >${tel}</span></div>` } const placemark = new ymaps.Placemark(coords, null, {
+          iconLayout: 'default#image',
+          iconImageHref: 'https://res.cloudinary.com/duz1yo4sl/image/upload/v1553700558/ui/map_pin.png',
+          iconImageSize: [48, 64],
+          iconImageOffset: [-24, -64]
+        });
+        const hintContent = `
+                    <div class="hint-container">
+                        <div class="ya-maps__header">Адрес офиса</div>
+                            ${address}</div>
+                        <!-- <a class="ya-maps__email" href="malito:alice@tstarter.ru">alice@tstarter.ru </a> -->
+                        <!--<div class="ya-maps__person">
+                            <div class="ya-maps__face" style="background-image:url('https://res.cloudinary.com/duz1yo4sl/image/upload/v1553510444/woman_face_1.png');"></div>
+                            <div>
+                                <div class="ya-maps__person-name">Алиса Сидоренко</div>
+                                <div class="ya-maps__person-position">Руководитель головного офиса компании<br> «Транс Стартер» </div>
+                            </div>
+                        </div> -->
+                    </div>
+                `;
+
+        const balloonContentBody = `
+                <div class="baloonContentBody">
+                    <div class="ya-maps">
+                        <div class="ya-maps__header">Адрес офиса</div>
+                        ${address}${telTemplate}<a class="ya-maps__email" href="malito:alice@tstarter.ru">alice@tstarter.ru </a>
+                        <!--<div class="ya-maps__person">
+                            <div class="ya-maps__face" style="background-image:url('https://res.cloudinary.com/duz1yo4sl/image/upload/v1553510444/woman_face_1.png');"></div>
+                            <div>
+                                <div class="ya-maps__person-name">Алиса Сидоренко</div>
+                                <div class="ya-maps__person-position">Руководитель головного офиса компании<br> «Транс Стартер» </div>
+                            </div>
+                        </div> -->
+                    </div>
+                </div>
+                `;
+        placemark.properties.set({ balloonContentBody, hintContent, address, tel });
+
+        function animateMapInfo() {
+          const mapInfoBlock = document.querySelector('.map-info');
+          const animationDurationMilliseconds = 400;
+          mapInfoBlock.style.animationDuration = animationDurationMilliseconds + "ms";
+          mapInfoBlock.style.animationName = "blink";
+          setTimeout(() => { mapInfoBlock.style.animationName = ""; }, animationDurationMilliseconds)
+        } placemark.events.add('click', function (e) {
+          document.getElementsByClassName('map-info__body')[0].style.display = "block";
+          const phoneList = document.getElementById("phone-list");
+          e.stopPropagation();
+          const { address, tel } = placemark.properties.getAll();
+          const mapAsideAddress = document.getElementById('mapAsideAddress');
+          const mobileList = document.getElementById('phone-list');
+          console.log(mobileList);
+          const mobile = window.matchMedia(`(max-width: ${mobileResolution})`).matches;
+          if (!mobile) {
+            placemark.properties.set({ balloonContentBody: null });
+            animateMapInfo();
+          } else { placemark.properties.set({ balloonContentBody }); } mapAsideAddress.textContent = address;
+          if (tel && Array.isArray(tel)) {
+          phoneList.innerHTML = "";
+            tel.forEach((singleTel) => {
+              const li = document.createElement("li");
+              li.textContent = singleTel;
+              phoneList.appendChild(li);
+            });
+          } else if (tel) {
+          phoneList.innerHTML = "";
+            const li = document.createElement("li");
+            li.textContent = tel;
+            phoneList.appendChild(li)
+          }
+        })
+        return placemark;
+      }// myPlacemark = new Placemark('Москва',[55.74954, 37.621587]);
+      placemarksData.forEach(placemarkData => { myMap.geoObjects.add(new Placemark(...placemarkData)); })
+
+      const mapSelector = document.querySelector(".desktop-city-select");
+      const mapSelectorMobile = document.querySelector(".mobile-city-select");
+      mapSelector.addEventListener('change', e => { setMapPosition(e) });
+      mapSelectorMobile.addEventListener('change', e => { setMapPosition(e) });
+
+      function setMapPosition(e) {
+        document.getElementsByClassName('map-info__body')[0].style.display = "none";
+        switch (e.target.value) {
+          case 'default': {
+            myMap.setCenter([58.057765855189736, -2.335747242274284]);
+            myMap.setZoom(3);
+            break;
+          } case 'Kaliningrad': {
+            myMap.setCenter([54.704528907978, 20.473791500000015]);
+            myMap.setZoom(12);
+            break;
+          } case 'Moscow': {
+            myMap.setCenter([55.584222181163646, 37.38552449999999]);
+            myMap.setZoom(9);
+            break;
+          } case 'Astrakhan': {
+            myMap.setCenter([46.34647366903166, 48.03767646826173]);
+            myMap.setZoom(12);
+            break;
+          } case 'Arkhangelsk': {
+            myMap.setCenter([64.56272891354934, 40.55266499999995]);
+            myMap.setZoom(10);
+            break;
+          } case 'Krasnodar': {
+            myMap.setCenter([45.06165537048585, 38.962197500000016]);
+            myMap.setZoom(12);
+            break;
+          } case 'Leningrad': {
+            myMap.setCenter([59.91807704072416, 30.304899499999895]);
+            myMap.setZoom(10);
+            break;
+          } case 'Yekaterinburg': {
+            myMap.setCenter([56.78875104810377, 60.60157099999987]);
+            myMap.setZoom(10);
+            break;
+          } case 'Orenburg': {
+            myMap.setCenter([51.7933427886505, 55.197472000000005]);
+            myMap.setZoom(11);
+            break;
+          } case 'Perm': {
+            myMap.setCenter([58.02283310604378, 56.2294204999999]);
+            myMap.setZoom(11);
+            break;
+          } case 'Almaty': {
+            myMap.setCenter([43.221309640757674, 76.95543649999995]);
+            myMap.setZoom(11);
+            break;
+          } case 'Kyiv': {
+            myMap.setCenter([50.40239488870545, 30.532734499999968]);
+            myMap.setZoom(11);
+            break;
+          } case 'Novosibirsk': {
+            myMap.setCenter([55.000665013597725, 82.95603900000002]);
+            myMap.setZoom(10);
+            break;
+          } case 'Berezovski': {
+            myMap.setCenter([56.90658036621604,60.82641536949153]);
+            myMap.setZoom(13);
+            break;
+          } case 'Serov': {
+            myMap.setCenter([59.60633329588266,60.580495999999975]);
+            myMap.setZoom(12);
+            break;
+          }
+        }
+      }// myMap.geoObjects.add(myPlacemark);
+      myMap.behaviors.disable('scrollZoom');
+    }
+  }())
+
+
+</script>
+<style>
+  .map-info {
+    width: 360px;
+    -webkit-box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.15);
+    box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.15);
+    color: #323230;
+    background: white;
+    margin-bottom: 10px;
+  }
+
+  .map-info__phone-list {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .map-info--narrow {
+    width: 262px;
+  }
+
+  .map-info__header {
+    background-color: #0CB520;
+    padding-top: 19px;
+    padding-left: 16px;
+    padding-right: 16px;
+    padding-bottom: 16px;
+    color: white;
+    text-align: center;
+  }
+
+  .map-info__header select {
+    background-color: white;
+    border: none;
+    width: 100%;
+    padding: 10px 8px 12px;
+    border-radius: 2px;
+  }
+
+  .map-info__header select:focus {
+    outline: none;
+  }
+
+  .map-info__header-text {
+    margin-bottom: 6px;
+    border-radius: 2px;
+    font-size: 16px;
+  }
+
+  .map-info__body {
+    padding: 24px 46px 22px 18px;
+    display: none;
+  }
+
+  .map-info__body-title {
+    font-family: 'Exo 2', sans-serif;
+    font-weight: bold;
+    font-size: 20px;
+    margin-bottom: 14px;
+  }
+
+  .map-info__body-content {
+    line-height: 22px;
+    font-size: 17px;
+  }
+
+  .map-info__body-content a {
+    color: #0CB520;
+  }
+
+  .map-info__section:not(:last-child) {
+    margin-bottom: 18px;
+  }
+
+  .map-info__responding-person {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: start;
+    -ms-flex-pack: start;
+    justify-content: flex-start;
+    -webkit-box-align: start;
+    -ms-flex-align: start;
+    align-items: flex-start;
+  }
+
+  .map-info__responding-person-face {
+    border-radius: 50%;
+    border: 1px solid #0CB520;
+    -ms-flex-preferred-size: 64px;
+    flex-basis: 64px;
+    height: 64px;
+    -ms-flex-negative: 0;
+    flex-shrink: 0;
+    margin-right: 14px;
+    background-repeat: no-repeat;
+    background-position: cneter;
+  }
+
+  .map-info__responding-person-name {
+    color: red;
+    font-size: 17px;
+    font-weight: bold;
+    color: #323230;
+  }
+
+  .map-info__responding-person-position {
+    color: #A3A3A2;
+    font-size: 14px;
+    line-height: 20px;
+  }
+
+  @media (max-width: 768px) {
+    .map-info {
+      display: none;
+    }
+  }
+
+  .map-leave-info {
+    width: 360px;
+    background: white;
+    -webkit-box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.15);
+    box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.15);
+    color: #323230;
+    color: #323230;
+  }
+
+  .map-leave-info--narrow {
+    width: 262px;
+  }
+
+  .map-leave-info--narrow .map-leave-info__header {
+    font-size: 16px;
+    padding: 16px 28px 12px;
+    line-height: 22px;
+  }
+
+  .map-leave-info--narrow .map-leave-info__body {
+    padding: 10px 15px;
+  }
+
+  .map-leave-info--narrow .map-leave-info__form input {
+    margin-bottom: 4px;
+  }
+
+  .map-leave-info--narrow .map-leave-info__agreement {
+    font-size: 12px;
+  }
+
+  .map-leave-info--narrow .button-yellow {
+    padding: 10px 20px;
+    line-height: 22px;
+    margin-top: 8px;
+  }
+
+  .map-leave-info__header {
+    background-color: #FFF1B9;
+    font-family: 'Exo 2', sans-serif;
+    padding: 16px 52px 12px;
+    font-weight: bold;
+    font-size: 20px;
+    line-height: 28px;
+    text-align: center;
+  }
+
+  .map-leave-info__body {
+    background-color: white;
+    padding: 10px 44px;
+  }
+
+  .map-leave-info__face {
+    width: 64px;
+    height: 64px;
+    border: 1px solid #0CB520;
+    border-radius: 50%;
+    background-image: url("https://res.cloudinary.com/duz1yo4sl/image/upload/v1553248980/face.jpg");
+    margin: 0 auto;
+    margin-bottom: 8px;
+    margin-top: 10px;
+  }
+
+  .map-leave-info__photo-caption {
+    font-weight: bold;
+    padding: 0 10px;
+    text-align: center;
+    margin-bottom: 14px;
+  }
+
+  .map-leave-info__form input {
+    font-family: 'PT Sans', sans-serif;
+    color: #A3A3A2;
+    width: 100%;
+    border: 1px solid #D2D2D2;
+    height: 40px;
+    margin-bottom: 10px;
+    border-radius: 4px;
+    padding-left: 14px;
+    font-size: 16px;
+    padding-top: 4px;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+  }
+
+  .map-leave-info__form input:focus {
+    outline: none;
+    border: 1px solid #0CB520;
+  }
+
+  .map-leave-info__agreement {
+    margin-top: 10px;
+    font-size: 14px;
+    line-height: 20px;
+    text-align: center;
+    color: #A3A3A2;
+    font-size: 12px;
+    line-height: 14px;
+    margin-top: 12px;
+    margin-bottom: 6px;
+    padding: 0 10px;
+  }
+
+  .map-leave-info__select-city {
+    background-color: #0CB520;
+    padding-top: 19px;
+    padding-left: 16px;
+    padding-right: 16px;
+    padding-bottom: 16px;
+    color: white;
+    text-align: center;
+  }
+
+  .map-leave-info__select-city select {
+    background-color: white;
+    border-radius: 4px;
+    border: none;
+    width: 100%;
+    padding: 10px 8px 12px;
+  }
+
+  .map-leave-info__select-city-text {
+    margin-bottom: 6px;
+    border-radius: 2px;
+    font-size: 16px;
+  }
+
+  .map-leave-info__form-text {
+    color: #323230;
+    font-size: 14px;
+    text-align: center;
+    margin-bottom: .4em;
+    margin-top: 10px;
+    line-height: 19px;
+  }
+
+  @media (max-width: 768px) {
+    .map-leave-info {
+      display: none;
+    }
+  }
+
+  .map-leave-info--mobile {
+    display: none;
+  }
+
+  @media (max-width: 768px) {
+    .map-leave-info--mobile {
+      display: block;
+      width: 100%;
+    }
+  }
+
+  .button-yellow {
+    cursor: pointer;
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(4.1%, #FFD600), to(#FFC600));
+    background: linear-gradient(180deg, #FFD600 4.1%, #FFC600 100%);
+    -webkit-box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.194378), 0px 1px 0px #E29401;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.194378), 0px 1px 0px #E29401;
+    border-radius: 4px;
+    border: none;
+    width: 100%;
+    padding: 10px 16px;
+    font-size: 16px;
+    text-align: center;
+    font-family: 'Exo 2', sans-serif;
+  }
+
+  .button-yellow:focus {
+    outline: none;
+  }
+
+  .button-yellow:hover,
+  .button-yellow:focus {
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(7.44%, #FFE200), to(#FFCF00));
+    background: linear-gradient(180deg, #FFE200 7.44%, #FFCF00 100%);
+  }
+
+  .button-yellow:active {
+    background: -webkit-gradient(linear, left bottom, left top, color-stop(3.62%, #FFB300), color-stop(95.9%, #FFBC00));
+    background: linear-gradient(0deg, #FFB300 3.62%, #FFBC00 95.9%);
+  }
+
+  .button-semi-bold {
+    font-weight: 600;
+  }
+
+  .baloon-info {
+    background: #FFFFFF;
+    -webkit-box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.30214);
+    box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.30214);
+    max-width: 262px;
+    position: relative;
+  }
+
+  .baloon-info * {
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+  }
+
+  .baloon-info::before {
+    position: absolute;
+    content: '';
+    display: block;
+    width: 12px;
+    height: 12px;
+    -webkit-transform: rotate(45deg) translateX(-70%);
+    transform: rotate(45deg) translateX(-70%);
+    top: 0;
+    background: white;
+    left: 50%;
+    -webkit-box-shadow: 0px 1px 6px rgba(0, 0, 0, 0.32214);
+    box-shadow: 0px 1px 6px rgba(0, 0, 0, 0.32214);
+  }
+
+  .baloon-info__container {
+    background: white;
+    position: relative;
+    padding: 16px;
+    position: relative;
+  }
+
+  .baloon-info__body {
+    padding: 16px;
+  }
+
+  .baloon-info__close-btn {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    width: 12px;
+    height: 12px;
+    cursor: pointer;
+  }
+
+  .baloon-info__close-btn:hover::before,
+  .baloon-info__close-btn:hover::after {
+    background: #323230;
+  }
+
+  .baloon-info__close-btn::before,
+  .baloon-info__close-btn::after {
+    content: '';
+    display: block;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 2px;
+    height: 100%;
+    background: #A3A3A2;
+  }
+
+  .baloon-info__close-btn::before {
+    -webkit-transform: translate(-50%, -50%) rotate(45deg);
+    transform: translate(-50%, -50%) rotate(45deg);
+  }
+
+  .baloon-info__close-btn::after {
+    -webkit-transform: translate(-50%, -50%) rotate(-45deg);
+    transform: translate(-50%, -50%) rotate(-45deg);
+  }
+
+  .ya-maps {
+    max-width: 232px;
+    font-family: 'PT Sans';
+    font-size: 14px;
+  }
+
+  .ya-maps__header {
+    font-family: 'PT Sans';
+    font-weight: bold;
+    font-size: 16px;
+    line-height: 24px;
+    color: #323230;
+  }
+
+  .ya-maps__phone {
+    display: block;
+    font-size: 18px;
+    line-height: 1.2em;
+  }
+
+  .ya-maps__phone:first-child {
+    margin-top: 16px;
+  }
+
+  .ya-maps__phone-link {
+    color: black;
+    text-decoration: none;
+  }
+
+  .ya-maps__email {
+    font-size: 16px;
+    color: #0CB520;
+    line-height: 32px;
+    text-decoration: underline;
+    margin-top: 8px;
+    display: inline-block;
+  }
+
+  .ya-maps__email:hover {
+    color: #0ecd24;
+  }
+
+  .ya-maps__face {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    border: 2px solid #0CB520;
+    -ms-flex-negative: 0;
+    flex-shrink: 0;
+    margin-right: 16px;
+  }
+
+  .ya-maps__person {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    margin-top: 10px;
+  }
+
+  .ya-maps__person-name {
+    font-weight: bold;
+    font-size: 16px;
+    line-height: 24px;
+  }
+
+  .ya-maps__person-position {
+    color: #686868;
+    font-size: 12px;
+    line-height: 18px;
+  }
+
+  .ya-maps__zoom-control {
+    cursor: pointer;
+    position: relative;
+    width: 57px;
+    height: 57px;
+    background: #0CB520;
+    border-radius: 50%;
+  }
+
+  .ya-maps__zoom-control:first-child {
+    margin-bottom: 10px;
+  }
+
+  .ya-maps__zoom-svg-icon {
+    width: 32px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    -webkit-transform: translateX(-50%) translateY(-50%);
+    transform: translateX(-50%) translateY(-50%);
+  }
+
+  #map {
+    width: 100%;
+    height: 400px;
+  }
+
+  @media (max-width: 768px) {
+    #map {
+      height: 632px;
+    }
+  }
+
+  .mobile-city-select {
+    display: block;
+    background: #FFFFFF;
+    -webkit-box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.15);
+    box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.15);
+    border-radius: 4px;
+    width: 288px;
+    height: 40px;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    padding: 10px 8px 12px;
+    position: absolute;
+    left: 50%;
+    top: 24px;
+    z-index: 99;
+    -webkit-transform: translateX(-50%);
+    transform: translateX(-50%);
+  }
+
+  .mobile-city-select:focus,
+  .mobile-city-select:active {
+    outline: none;
+  }
+
+  @media (min-width: 768px) {
+    .mobile-city-select {
+      display: none;
+    }
+  }
+
+  @keyframes blink {
+    from {
+      -webkit-transform: scale3d(1, 1, 1);
+      transform: scale3d(1, 1, 1);
+      opacity: 0;
+    }
+
+    50% {
+      -webkit-transform: scale3d(1.03, 1.03, 1.03);
+      transform: scale3d(1.03, 1.03, 1.03);
+    }
+
+    to {
+      -webkit-transform: scale3d(1, 1, 1);
+      transform: scale3d(1, 1, 1);
+      opacity: 1;
+    }
+  }
+</style>
+  </body>
+</html>
