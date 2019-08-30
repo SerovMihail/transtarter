@@ -44,7 +44,9 @@
                                     </a>
                                 </li>
                                 <li class="link-item" style="padding-bottom: 0;">
-                                    <a class="cards_group__card_link " href="#">Блог</a>
+                                    <a class="cards_group__card_link" href="/policy">
+                                        Политика конфиденциальности
+                                    </a>
                                 </li>
                             </ul>
                         </div>
