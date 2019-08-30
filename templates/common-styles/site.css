@@ -842,7 +842,12 @@ button {
 .typography ol, .typography ul {
   list-style-position: inside;
 }
+.typography ul {
+	list-style-type: disc;
+}
+
 .typography li {
+	font-size: 18px;
   margin-top: 10px;
 }
 .typography li p {
