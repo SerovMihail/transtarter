@@ -813,3 +813,39 @@ button {
     right: -20px;
 }
 
+.typography {
+  color: #323230;
+}
+.typography h1, .typography h2, .typography h3, .typography h4, .typography h5, .typography h6 {
+  font-family: 'Exo 2';
+}
+.typography h1 {
+  font-weight: bold;
+  font-size: 72px;
+  line-height: 80px;
+  color: #323230;
+}
+.typography h2 {
+  font-weight: bold;
+  font-size: 40px;
+  line-height: 48px;
+}
+.typography h3 {
+  font-size: 32px;
+  line-height: 40px;
+}
+.typography p {
+  line-height: 28px;
+  font-size: 19px;
+  font-family: 'PT Sans';
+}
+.typography ol, .typography ul {
+  list-style-position: inside;
+}
+.typography li {
+  margin-top: 10px;
+}
+.typography li p {
+  margin-top: 4px;
+}
+
