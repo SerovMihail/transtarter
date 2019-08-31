@@ -1,7 +1,7 @@
 <template>
     <div class="mobile-header__menu__left">
         <div class="burger-wrapper">
-            <span class="burger-icon" id="burger-menu" @click="toggleMainMenu()"></span>
+            <span class="burger-icon" id="burger-menu" @click="toggleMainMenu($event)"></span>
         </div>
         <div class="logo">
             <a href="/">
@@ -19,7 +19,7 @@ import { store } from '@/store/index'
 
 @Component
 export default class MobileMenu extends Vue {
-    toggleMainMenu() {
+    toggleMainMenu(e) {
         store.dispatch('display/toggleBlockShowMenu')
     }
 }

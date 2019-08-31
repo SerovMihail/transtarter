@@ -1,6 +1,6 @@
 <template>
     <div class="menu-popup" v-if="showBlocksShowMenu">
-        <ul class="menu-popup_list" v-click-outside="closeMainMenu">
+        <ul class="menu-popup_list" v-click-outside="vcoConfig">
             <li>
                 <a class="menu-popup_list-item" href="/special-offers">Акции и новинки</a>
             </li>
@@ -37,9 +37,20 @@ export default class MobileLinks extends mixins(HeaderSearchText) {
     get showBlocksShowMenu() {
         return DisplayModule.blocksShow.menu
     }
-
+    vcoMiddleware(e) {
+        const path = e.composedPath()
+        if (path[0].id === 'burger-menu') {
+            return false
+        } else {
+            return true
+        }
+    }
     closeMainMenu() {
         store.dispatch('display/hideBlockShowMenu')
+    }
+    vcoConfig = {
+        handler: this.closeMainMenu,
+        middleware: this.vcoMiddleware,
     }
 }
 </script>
