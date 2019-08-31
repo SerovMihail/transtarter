@@ -175,10 +175,18 @@ export class Display extends VuexModule implements IDisplayState {
     TOGGLE_BLOCK_SHOW_USER() {
         this.blocksShow.user = !this.blocksShow.user
     }
+    @Mutation
+    SHOW_BLOCK_SHOW_USER() {
+        this.blocksShow.user = true
+    }
 
     @Action
     public toggleBlockShowUser(): void {
         this.context.commit('TOGGLE_BLOCK_SHOW_USER')
+    }
+    @Action
+    public showBlockShowUser(): void {
+        this.context.commit('SHOW_BLOCK_SHOW_USER')
     }
 
     @Mutation

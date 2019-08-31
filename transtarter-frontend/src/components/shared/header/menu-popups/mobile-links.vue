@@ -16,9 +16,9 @@
             <li>
                 <a class="menu-popup_list-item" href="/contacts">Контакты</a>
             </li>
-            <li class="menu-popup_list-item">
+            <!-- <li class="menu-popup_list-item">
                 <a href="#">Блог</a>
-            </li>
+            </li> -->
         </ul>
     </div>
 </template>
