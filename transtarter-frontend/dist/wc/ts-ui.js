@@ -11567,12 +11567,12 @@ var auth_mobile_component = normalizeComponent(
 )
 
 /* harmony default export */ var auth_mobile = (auth_mobile_component.exports);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"74fc3ce9-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/shared/header/menu-popups/mobile-links.vue?vue&type=template&id=09ff0615&
-var mobile_linksvue_type_template_id_09ff0615_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return (_vm.showBlocksShowMenu)?_c('div',{directives:[{name:"click-outside",rawName:"v-click-outside",value:(_vm.vcoConfig),expression:"vcoConfig"}],staticClass:"menu-popup"},[_vm._v("\n    bruh\n    "),_vm._m(0)]):_vm._e()}
-var mobile_linksvue_type_template_id_09ff0615_staticRenderFns = [function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('ul',{staticClass:"menu-popup_list"},[_c('li',[_c('a',{staticClass:"menu-popup_list-item",attrs:{"href":"/special-offers"}},[_vm._v("Акции и новинки")])]),_c('li',[_c('a',{staticClass:"menu-popup_list-item",attrs:{"href":"/delivery"}},[_vm._v("Доставка и оплата")])]),_c('li',[_c('a',{staticClass:"menu-popup_list-item active",attrs:{"href":"/about-company"}},[_vm._v("О компании")])]),_c('li',[_c('a',{staticClass:"menu-popup_list-item",attrs:{"href":"/auto-workshops"}},[_vm._v("Найти точку ремонта")])]),_c('li',[_c('a',{staticClass:"menu-popup_list-item",attrs:{"href":"/contacts"}},[_vm._v("Контакты")])])])}]
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"74fc3ce9-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/shared/header/menu-popups/mobile-links.vue?vue&type=template&id=58583ea6&
+var mobile_linksvue_type_template_id_58583ea6_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return (_vm.showBlocksShowMenu)?_c('div',{directives:[{name:"click-outside",rawName:"v-click-outside",value:(_vm.vcoConfig),expression:"vcoConfig"}],staticClass:"menu-popup"},[_vm._m(0)]):_vm._e()}
+var mobile_linksvue_type_template_id_58583ea6_staticRenderFns = [function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('ul',{staticClass:"menu-popup_list"},[_c('li',[_c('a',{staticClass:"menu-popup_list-item",attrs:{"href":"/special-offers"}},[_vm._v("Акции и новинки")])]),_c('li',[_c('a',{staticClass:"menu-popup_list-item",attrs:{"href":"/delivery"}},[_vm._v("Доставка и оплата")])]),_c('li',[_c('a',{staticClass:"menu-popup_list-item active",attrs:{"href":"/about-company"}},[_vm._v("О компании")])]),_c('li',[_c('a',{staticClass:"menu-popup_list-item",attrs:{"href":"/auto-workshops"}},[_vm._v("Найти точку ремонта")])]),_c('li',[_c('a',{staticClass:"menu-popup_list-item",attrs:{"href":"/contacts"}},[_vm._v("Контакты")])])])}]
 
 
-// CONCATENATED MODULE: ./src/components/shared/header/menu-popups/mobile-links.vue?vue&type=template&id=09ff0615&
+// CONCATENATED MODULE: ./src/components/shared/header/menu-popups/mobile-links.vue?vue&type=template&id=58583ea6&
 
 // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--14-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/ts-loader??ref--14-3!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/shared/header/menu-popups/mobile-links.vue?vue&type=script&lang=ts&
 
@@ -11629,8 +11629,8 @@ mobile_linksvue_type_script_lang_ts_MobileLinks = __decorate([vue_class_componen
 
 var mobile_links_component = normalizeComponent(
   menu_popups_mobile_linksvue_type_script_lang_ts_,
-  mobile_linksvue_type_template_id_09ff0615_render,
-  mobile_linksvue_type_template_id_09ff0615_staticRenderFns,
+  mobile_linksvue_type_template_id_58583ea6_render,
+  mobile_linksvue_type_template_id_58583ea6_staticRenderFns,
   false,
   null,
   null,
@@ -12431,12 +12431,12 @@ var auth_mobileshadow_component = normalizeComponent(
 )
 
 /* harmony default export */ var auth_mobileshadow = (auth_mobileshadow_component.exports);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"74fc3ce9-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/shared/header/menu-popups/mobile-links.vue?vue&type=template&id=fa8c3258&shadow
-var mobile_linksvue_type_template_id_fa8c3258_shadow_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return (_vm.showBlocksShowMenu)?_c('div',{directives:[{name:"click-outside",rawName:"v-click-outside",value:(_vm.vcoConfig),expression:"vcoConfig"}],staticClass:"menu-popup"},[_vm._v("\n    bruh\n    "),_vm._m(0)]):_vm._e()}
-var mobile_linksvue_type_template_id_fa8c3258_shadow_staticRenderFns = [function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('ul',{staticClass:"menu-popup_list"},[_c('li',[_c('a',{staticClass:"menu-popup_list-item",attrs:{"href":"/special-offers"}},[_vm._v("Акции и новинки")])]),_c('li',[_c('a',{staticClass:"menu-popup_list-item",attrs:{"href":"/delivery"}},[_vm._v("Доставка и оплата")])]),_c('li',[_c('a',{staticClass:"menu-popup_list-item active",attrs:{"href":"/about-company"}},[_vm._v("О компании")])]),_c('li',[_c('a',{staticClass:"menu-popup_list-item",attrs:{"href":"/auto-workshops"}},[_vm._v("Найти точку ремонта")])]),_c('li',[_c('a',{staticClass:"menu-popup_list-item",attrs:{"href":"/contacts"}},[_vm._v("Контакты")])])])}]
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"74fc3ce9-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/shared/header/menu-popups/mobile-links.vue?vue&type=template&id=8f37d8f2&shadow
+var mobile_linksvue_type_template_id_8f37d8f2_shadow_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return (_vm.showBlocksShowMenu)?_c('div',{directives:[{name:"click-outside",rawName:"v-click-outside",value:(_vm.vcoConfig),expression:"vcoConfig"}],staticClass:"menu-popup"},[_vm._m(0)]):_vm._e()}
+var mobile_linksvue_type_template_id_8f37d8f2_shadow_staticRenderFns = [function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('ul',{staticClass:"menu-popup_list"},[_c('li',[_c('a',{staticClass:"menu-popup_list-item",attrs:{"href":"/special-offers"}},[_vm._v("Акции и новинки")])]),_c('li',[_c('a',{staticClass:"menu-popup_list-item",attrs:{"href":"/delivery"}},[_vm._v("Доставка и оплата")])]),_c('li',[_c('a',{staticClass:"menu-popup_list-item active",attrs:{"href":"/about-company"}},[_vm._v("О компании")])]),_c('li',[_c('a',{staticClass:"menu-popup_list-item",attrs:{"href":"/auto-workshops"}},[_vm._v("Найти точку ремонта")])]),_c('li',[_c('a',{staticClass:"menu-popup_list-item",attrs:{"href":"/contacts"}},[_vm._v("Контакты")])])])}]
 
 
-// CONCATENATED MODULE: ./src/components/shared/header/menu-popups/mobile-links.vue?vue&type=template&id=fa8c3258&shadow
+// CONCATENATED MODULE: ./src/components/shared/header/menu-popups/mobile-links.vue?vue&type=template&id=8f37d8f2&shadow
 
 // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--14-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/ts-loader??ref--14-3!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/shared/header/menu-popups/mobile-links.vue?vue&type=script&lang=ts&shadow
 
@@ -12493,8 +12493,8 @@ mobile_linksvue_type_script_lang_ts_shadow_MobileLinks = __decorate([vue_class_c
 
 var mobile_linksshadow_component = normalizeComponent(
   menu_popups_mobile_linksvue_type_script_lang_ts_shadow,
-  mobile_linksvue_type_template_id_fa8c3258_shadow_render,
-  mobile_linksvue_type_template_id_fa8c3258_shadow_staticRenderFns,
+  mobile_linksvue_type_template_id_8f37d8f2_shadow_render,
+  mobile_linksvue_type_template_id_8f37d8f2_shadow_staticRenderFns,
   false,
   null,
   null,
