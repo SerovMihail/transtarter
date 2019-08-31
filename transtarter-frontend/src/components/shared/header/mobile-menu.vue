@@ -20,6 +20,7 @@ import { store } from '@/store/index'
 @Component
 export default class MobileMenu extends Vue {
     toggleMainMenu(e) {
+        console.log('toggleMainMenu button')
         store.dispatch('display/toggleBlockShowMenu')
     }
 }
