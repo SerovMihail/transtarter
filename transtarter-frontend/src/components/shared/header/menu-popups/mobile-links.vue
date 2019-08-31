@@ -1,6 +1,5 @@
 <template>
     <div class="menu-popup" v-if="showBlocksShowMenu" v-click-outside="vcoConfig">
-        bruh
         <ul class="menu-popup_list">
             <li>
                 <a class="menu-popup_list-item" href="/special-offers">Акции и новинки</a>
