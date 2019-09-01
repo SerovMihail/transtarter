@@ -42,15 +42,22 @@ export default class AuthMobile extends Vue {
         store.dispatch('auth/login')
     }
 
-    middleware = (e, el) => {
-        // const excludeId = 'user-menu'
-        // return e.target.parentElement.id === excludeId || e.target.id === excludeId
-        console.log('middleware', e.target)
-        return e.target.className !== 'new-user'
+
+    vcoMiddleware(e, el) {
+        const path = e.composedPath()
+        if (path[1].id === 'user-menu' || el.contains(path[0])) {
+            console.log('clicked on burger or link so no handler')
+            return false
+        } else {
+            console.log('not clicked on burger handler starts')
+            console.log(path)
+            return true
+        }
     }
+    // handlrer should toggle user menug
     vcoConfig = {
         handler: this.closeUserMenu,
-        middleware: this.middleware,
+        middleware: this.vcoMiddleware,
     }
 }
 </script>

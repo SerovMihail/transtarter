@@ -61,7 +61,7 @@ export default class UserAccountMobile extends Vue {
     }
 
     toggleUserMenu() {
-        store.dispatch('display/showBlockShowUser')
+        store.dispatch('display/toggleBlockShowUser')
     }
 
     openRestrictionModal() {

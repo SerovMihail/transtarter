@@ -37,9 +37,11 @@ export default class MobileLinks extends mixins(HeaderSearchText) {
     get showBlocksShowMenu() {
         return DisplayModule.blocksShow.menu
     }
-    vcoMiddleware(e) {
+    // example of middleware for webcomponents
+    // (we cannot use e.target so we use e.composedPath[0])
+    vcoMiddleware(e, el) {
         const path = e.composedPath()
-        if (path[0].id === 'burger-menu' || path[0].className.includes('menu-popup_list-item')) {
+        if (path[0].id === 'burger-menu' || el.contains(path[0])) {
             console.log('clicked on burger or link so no handler')
             return false
         } else {
