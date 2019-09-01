@@ -5278,7 +5278,7 @@ __webpack_require__.r(__webpack_exports__);
 // This file is imported into lib/wc client bundles.
 
 if (typeof window !== 'undefined') {
-  if (Object({"NODE_ENV":"production","VUE_APP_HOST":"https://tstarter.ru","VUE_APP_IDENTITY_SERVER":"https://identity.tstarter.ru","VUE_APP_IDENTITY_SERVER_API":"https://identityapi.tstarter.ru","VUE_APP_WEB_APP":"https://catalog.tstarter.ru","VUE_APP_WEB_APP_API":"https://catalog.tstarter.ru","VUE_APP_ENV":"https://new1.tstarter.ru/new","BASE_URL":"/"}).NEED_CURRENTSCRIPT_POLYFILL) {
+  if (Object({"NODE_ENV":"production","VUE_APP_HOST":"https://tstarter.ru","VUE_APP_IDENTITY_SERVER":"https://identity.tstarter.ru","VUE_APP_IDENTITY_SERVER_API":"https://identityapi.tstarter.ru","VUE_APP_WEB_APP":"https://catalog.tstarter.ru","VUE_APP_WEB_APP_API":"https://catalog.tstarter.ru","BASE_URL":"/"}).NEED_CURRENTSCRIPT_POLYFILL) {
     __webpack_require__("f6fd")
   }
 
