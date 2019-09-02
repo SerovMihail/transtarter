@@ -7,7 +7,7 @@
         <form class="registration-form" @submit.prevent="onSubmit">
             <spinner v-if="loadingForm" class="spinner" />
             <div class="form-group">
-                <label class="label label registration-form__required-field">Введите email</label>
+                <label class="label label registration-form__required-field">Email</label>
                 <input
                     v-model.trim="email"
                     placeholder="Почта"
@@ -27,7 +27,7 @@
             </div>
 
             <div class="form-group">
-                <label class="label  registration-form__required-field">Введите пароль</label>
+                <label class="label  registration-form__required-field">Пароль</label>
                 <input
                     v-model.trim="password"
                     placeholder="Пароль"
@@ -53,7 +53,7 @@
             </div>
             <div class="form-group">
                 <label class="label registration-form__required-field">
-                    Введите имя контактного лица
+                    Имя контактного лица
                 </label>
                 <input
                     v-model.trim="userName"
@@ -141,7 +141,7 @@
                     />
                     <input
                         v-model.trim="organizationName"
-                        placeholder="Название огранизации"
+                        placeholder="Название организации"
                         class="form-control second-selector"
                         type="text"
                         required
