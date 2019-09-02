@@ -70,7 +70,7 @@ export class Authentication extends VuexModule implements IAuthState {
     public profile = null
     public status = {
         loggingIn: false,
-        loggedIn: this.user !== null && !(this.user || false).expired, // we should get user info and expired have to be false
+        loggedIn: true,
     }
     public avatar = ''
     itemsAmount = null
@@ -123,7 +123,7 @@ export class Authentication extends VuexModule implements IAuthState {
     ERROR_LOGIN() {
         this.name = ''
         this.accessTokenExpired = false
-        this.status.loggedIn = false
+        // this.status.loggedIn = false
         this.status.loggingIn = false
     }
 

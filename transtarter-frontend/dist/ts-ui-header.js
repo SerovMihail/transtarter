@@ -5343,12 +5343,12 @@ var component = normalizeComponent(
 )
 
 /* harmony default export */ var actualize_user = (component.exports);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"74fc3ce9-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/shared/header/menu-popups/account-info.vue?vue&type=template&id=233f8ac4&
-var account_infovue_type_template_id_233f8ac4_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return (_vm.showBlocksShowUser && _vm.loggedIn)?_c('div',{directives:[{name:"click-outside",rawName:"v-click-outside",value:(_vm.vcoConfig),expression:"vcoConfig"}],staticClass:"menu-popup"},[_vm._v("\n    test\n")]):_vm._e()}
-var account_infovue_type_template_id_233f8ac4_staticRenderFns = []
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"74fc3ce9-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/shared/header/menu-popups/account-info.vue?vue&type=template&id=74fcd9e9&
+var account_infovue_type_template_id_74fcd9e9_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return (_vm.showBlocksShowUser && _vm.loggedIn)?_c('div',{directives:[{name:"click-outside",rawName:"v-click-outside",value:(_vm.vcoConfig),expression:"vcoConfig"}],staticClass:"menu-popup"},[_vm._v("\n    testj\n")]):_vm._e()}
+var account_infovue_type_template_id_74fcd9e9_staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./src/components/shared/header/menu-popups/account-info.vue?vue&type=template&id=233f8ac4&
+// CONCATENATED MODULE: ./src/components/shared/header/menu-popups/account-info.vue?vue&type=template&id=74fcd9e9&
 
 // EXTERNAL MODULE: ./node_modules/core-js/modules/web.dom.iterable.js
 var web_dom_iterable = __webpack_require__("ac6a");
@@ -6468,7 +6468,7 @@ var authentication_module_Authentication = class Authentication extends VuexModu
     this.profile = null;
     this.status = {
       loggingIn: false,
-      loggedIn: this.user !== null && !(this.user || false).expired
+      loggedIn: true
     };
     this.avatar = '';
     this.itemsAmount = null;
@@ -6513,8 +6513,8 @@ var authentication_module_Authentication = class Authentication extends VuexModu
 
   ERROR_LOGIN() {
     this.name = '';
-    this.accessTokenExpired = false;
-    this.status.loggedIn = false;
+    this.accessTokenExpired = false; // this.status.loggedIn = false
+
     this.status.loggingIn = false;
   }
 
@@ -6829,76 +6829,6 @@ function currencyFormatRu(value) {
     ;
   }
 }
-// CONCATENATED MODULE: ./src/directives/v-click-outside-exclude.ts
-
-var handleOutsideClick;
-var closable = {
-  bind(el, binding, vnode) {
-    // Here's the click/touchstart handler
-    // (it is registered below)
-    handleOutsideClick = e => {
-      e.stopPropagation(); // Get the handler method name and the exclude array
-      // from the object used in v-closable
-
-      var _binding$value = binding.value,
-          handler = _binding$value.handler,
-          exclude = _binding$value.exclude,
-          componentName = _binding$value.componentName,
-          excludeIds = _binding$value.excludeIds; // This variable indicates if the clicked element is excluded
-
-      var clickedOnExcludedEl = false;
-
-      if (excludeIds) {
-        excludeIds.forEach(excludeId => {
-          var excludeElById = window.document.getElementById(excludeId);
-
-          if (excludeElById && excludeElById.offsetWidth > 0 && excludeElById.offsetHeight > 0) {
-            clickedOnExcludedEl = excludeElById.contains(e.target);
-          } // if (excludeElById) {
-          //     clickedOnExcludedEl = excludeElById.contains(e.target);
-          // }
-
-        });
-      }
-
-      if (exclude) {
-        exclude.forEach(refName => {
-          // We only run this code if we haven't detected
-          // any excluded element yet
-          if (!clickedOnExcludedEl) {
-            // Get the element using the reference name
-            var excludedEl = vnode.context.$refs[refName]; // See if this excluded element
-            // is the same element the user just clicked on
-
-            clickedOnExcludedEl = excludedEl.contains(e.target);
-          }
-        });
-      } // We check to see if the clicked element is not
-      // the dialog element and not excluded
-
-
-      if (!el.contains(e.target) && !clickedOnExcludedEl && e.target.localName !== componentName) {
-        // If the clicked element is outside the dialog
-        // and not the button, then call the outside-click handler
-        // from the same component this directive is used in
-        // @ts-ignore: Unreachable code error
-        vnode.context[handler]();
-      }
-    }; // Register click/touchstart event listeners on the whole page
-
-
-    document.addEventListener('click', handleOutsideClick);
-    document.addEventListener('touchstart', handleOutsideClick);
-  },
-
-  unbind() {
-    // If the element that has v-closable is removed, then
-    // unbind click/touchstart listeners from the whole page
-    document.removeEventListener('click', handleOutsideClick);
-    document.removeEventListener('touchstart', handleOutsideClick);
-  }
-
-};
 // EXTERNAL MODULE: ./node_modules/v-click-outside/dist/v-click-outside.min.umd.js
 var v_click_outside_min_umd = __webpack_require__("2103");
 var v_click_outside_min_umd_default = /*#__PURE__*/__webpack_require__.n(v_click_outside_min_umd);
@@ -6909,17 +6839,20 @@ var v_click_outside_min_umd_default = /*#__PURE__*/__webpack_require__.n(v_click
 
 
 
-
+ // import { closable } from '@/directives/v-click-outside-exclude'
 
 
 external_Vue_default.a.filter('currencyFormatRu', currencyFormatRu); // Vue.use(vClickOutside)
+// Vue.directive('vClickOutside', vClickOutside)
+// Vue.directive('closable', closable)
 
-external_Vue_default.a.directive('vClickOutside', v_click_outside_min_umd_default.a);
-external_Vue_default.a.directive('closable', closable);
 var account_infovue_type_script_lang_ts_AccountInfoMobile = class AccountInfoMobile extends external_Vue_default.a {
+  // Vue.use(vClickOutside)
+  // Vue.directive('vClickOutside', vClickOutside)
+  // Vue.directive('closable', closable)
   constructor() {
-    // private webAppHost = process.env.VUE_APP_WEB_APP
     super(...arguments);
+    this.webAppHost = "https://catalog.tstarter.ru";
     this.vcoConfig = {
       handler: this.closeUserMenu,
       middleware: this.vcoMiddleware
@@ -6950,7 +6883,8 @@ var account_infovue_type_script_lang_ts_AccountInfoMobile = class AccountInfoMob
 
 
   closeUserMenu() {
-    // @ts-ignore
+    debugger; // @ts-ignore
+
     if (this.$el.offsetWidth > 0 && this.$el.offsetHeight > 0) {
       store.dispatch('display/hideBlockShowUser');
     }
@@ -6991,18 +6925,22 @@ var account_infovue_type_script_lang_ts_AccountInfoMobile = class AccountInfoMob
 
 
   vcoMiddleware(e, el) {
-    debugger;
     var path = e.composedPath();
 
     if (path[0].id === 'user-menu-desktop' || el.contains(path[0])) {
       return false;
     } else {
+      console.log('handler should start');
       return true;
     }
   }
 
 };
-account_infovue_type_script_lang_ts_AccountInfoMobile = __decorate([vue_class_component_common_default.a], account_infovue_type_script_lang_ts_AccountInfoMobile);
+account_infovue_type_script_lang_ts_AccountInfoMobile = __decorate([vue_class_component_common_default()({
+  directives: {
+    vClickOutside: v_click_outside_min_umd_default.a
+  }
+})], account_infovue_type_script_lang_ts_AccountInfoMobile);
 /* harmony default export */ var account_infovue_type_script_lang_ts_ = (account_infovue_type_script_lang_ts_AccountInfoMobile);
 // CONCATENATED MODULE: ./src/components/shared/header/menu-popups/account-info.vue?vue&type=script&lang=ts&
  /* harmony default export */ var menu_popups_account_infovue_type_script_lang_ts_ = (account_infovue_type_script_lang_ts_); 
@@ -7021,8 +6959,8 @@ if (style0.__inject__) style0.__inject__(context)
 
 var account_info_component = normalizeComponent(
   menu_popups_account_infovue_type_script_lang_ts_,
-  account_infovue_type_template_id_233f8ac4_render,
-  account_infovue_type_template_id_233f8ac4_staticRenderFns,
+  account_infovue_type_template_id_74fcd9e9_render,
+  account_infovue_type_template_id_74fcd9e9_staticRenderFns,
   false,
   injectStyles,
   null,
@@ -7382,6 +7320,76 @@ var search_form_selectvue_type_template_id_25797231_staticRenderFns = []
 
 // CONCATENATED MODULE: ./src/components/shared/header/search-form/search-form-select/search-form-select.vue?vue&type=template&id=25797231&
 
+// CONCATENATED MODULE: ./src/directives/v-click-outside-exclude.ts
+
+var handleOutsideClick;
+var closable = {
+  bind(el, binding, vnode) {
+    // Here's the click/touchstart handler
+    // (it is registered below)
+    handleOutsideClick = e => {
+      e.stopPropagation(); // Get the handler method name and the exclude array
+      // from the object used in v-closable
+
+      var _binding$value = binding.value,
+          handler = _binding$value.handler,
+          exclude = _binding$value.exclude,
+          componentName = _binding$value.componentName,
+          excludeIds = _binding$value.excludeIds; // This variable indicates if the clicked element is excluded
+
+      var clickedOnExcludedEl = false;
+
+      if (excludeIds) {
+        excludeIds.forEach(excludeId => {
+          var excludeElById = window.document.getElementById(excludeId);
+
+          if (excludeElById && excludeElById.offsetWidth > 0 && excludeElById.offsetHeight > 0) {
+            clickedOnExcludedEl = excludeElById.contains(e.target);
+          } // if (excludeElById) {
+          //     clickedOnExcludedEl = excludeElById.contains(e.target);
+          // }
+
+        });
+      }
+
+      if (exclude) {
+        exclude.forEach(refName => {
+          // We only run this code if we haven't detected
+          // any excluded element yet
+          if (!clickedOnExcludedEl) {
+            // Get the element using the reference name
+            var excludedEl = vnode.context.$refs[refName]; // See if this excluded element
+            // is the same element the user just clicked on
+
+            clickedOnExcludedEl = excludedEl.contains(e.target);
+          }
+        });
+      } // We check to see if the clicked element is not
+      // the dialog element and not excluded
+
+
+      if (!el.contains(e.target) && !clickedOnExcludedEl && e.target.localName !== componentName) {
+        // If the clicked element is outside the dialog
+        // and not the button, then call the outside-click handler
+        // from the same component this directive is used in
+        // @ts-ignore: Unreachable code error
+        vnode.context[handler]();
+      }
+    }; // Register click/touchstart event listeners on the whole page
+
+
+    document.addEventListener('click', handleOutsideClick);
+    document.addEventListener('touchstart', handleOutsideClick);
+  },
+
+  unbind() {
+    // If the element that has v-closable is removed, then
+    // unbind click/touchstart listeners from the whole page
+    document.removeEventListener('click', handleOutsideClick);
+    document.removeEventListener('touchstart', handleOutsideClick);
+  }
+
+};
 // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--14-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/ts-loader??ref--14-3!./node_modules/eslint-loader??ref--13-0!./src/components/shared/header/search-form/search-form-select/search-form-select.ts?vue&type=script&lang=ts&
 
 /* eslint-disable indent */
@@ -8344,12 +8352,12 @@ var user_account_mobile_component = normalizeComponent(
 )
 
 /* harmony default export */ var user_account_mobile = (user_account_mobile_component.exports);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"74fc3ce9-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/shared/header/menu-popups/auth-mobile.vue?vue&type=template&id=009e8e4e&
-var auth_mobilevue_type_template_id_009e8e4e_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return (_vm.showBlocksShowUser && !_vm.loggedIn)?_c('div',{staticClass:"menu-popup"},[_c('ul',{directives:[{name:"click-outside",rawName:"v-click-outside",value:(_vm.vcoConfig),expression:"vcoConfig"}],staticClass:"menu-popup_list"},[_c('li',{staticClass:"menu-popup_list-item",on:{"click":function($event){return _vm.logIn()}}},[_c('a',[_vm._v("Вход")])]),_c('li',{staticClass:"menu-popup_list-item",on:{"click":function($event){return _vm.toggleRegistrationPopup()}}},[_c('a',{staticClass:"register"},[_vm._v("Регистрация")])])])]):_vm._e()}
-var auth_mobilevue_type_template_id_009e8e4e_staticRenderFns = []
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"74fc3ce9-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/shared/header/menu-popups/auth-mobile.vue?vue&type=template&id=ecde0694&
+var auth_mobilevue_type_template_id_ecde0694_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return (_vm.showBlocksShowUser && !_vm.loggedIn)?_c('div',{staticClass:"menu-popup"},[_c('ul',{directives:[{name:"click-outside",rawName:"v-click-outside",value:(_vm.vcoConfig),expression:"vcoConfig"}],staticClass:"menu-popup_list"},[_c('li',{staticClass:"menu-popup_list-item",on:{"click":function($event){return _vm.logIn()}}},[_c('a',[_vm._v("Вход")])]),_c('li',{staticClass:"menu-popup_list-item",on:{"click":function($event){return _vm.toggleRegistrationPopup()}}},[_c('a',{staticClass:"register"},[_vm._v("Регистрация")])])])]):_vm._e()}
+var auth_mobilevue_type_template_id_ecde0694_staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./src/components/shared/header/menu-popups/auth-mobile.vue?vue&type=template&id=009e8e4e&
+// CONCATENATED MODULE: ./src/components/shared/header/menu-popups/auth-mobile.vue?vue&type=template&id=ecde0694&
 
 // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--14-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/ts-loader??ref--14-3!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/shared/header/menu-popups/auth-mobile.vue?vue&type=script&lang=ts&
 
@@ -8391,10 +8399,9 @@ var auth_mobilevue_type_script_lang_ts_AuthMobile = class AuthMobile extends ext
   }
 
   vcoMiddleware(e, el) {
-    debugger;
     var path = e.composedPath();
 
-    if (path[1].id === 'user-menu' || path[0].id === 'user-menu-desktop' || el.contains(path[0])) {
+    if (path[1].id === 'user-menu' || el.contains(path[0])) {
       console.log('clicked on burger or link so no handler');
       return false;
     } else {
@@ -8419,8 +8426,8 @@ auth_mobilevue_type_script_lang_ts_AuthMobile = __decorate([vue_class_component_
 
 var auth_mobile_component = normalizeComponent(
   menu_popups_auth_mobilevue_type_script_lang_ts_,
-  auth_mobilevue_type_template_id_009e8e4e_render,
-  auth_mobilevue_type_template_id_009e8e4e_staticRenderFns,
+  auth_mobilevue_type_template_id_ecde0694_render,
+  auth_mobilevue_type_template_id_ecde0694_staticRenderFns,
   false,
   null,
   null,
