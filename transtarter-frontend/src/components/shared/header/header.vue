@@ -10,6 +10,21 @@
                         <a href="/">Транс Стартер</a>
                     </div>
                     <ul class="desktop-header__menu-list">
+                        <li class="desktop-header__menu-item">
+                            <a href="/special-offers">Акции и новинки</a>
+                        </li>
+                        <li class="desktop-header__menu-item">
+                            <a href="/delivery">Доставка и оплата</a>
+                        </li>
+                        <li class="desktop-header__menu-item">
+                            <a href="/about-company">О компании</a>
+                        </li>
+                        <li class="desktop-header__menu-item">
+                            <a href="/auto-workshops">Найти точку ремонта</a>
+                        </li>
+                        <li class="desktop-header__menu-item">
+                            <a href="/contacts">Контакты</a>
+                        </li>
                         <li
                             class="desktop-header__menu-item"
                             v-for="(link, idx) of parsedLinks"
@@ -17,9 +32,6 @@
                         >
                             <a :href="link.href">{{ link.name }}</a>
                         </li>
-                        <!-- <li class="desktop-header__menu-item">
-                            <a href="#">Блог</a>
-                        </li> -->
                     </ul>
                 </div>
 
