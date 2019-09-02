@@ -64,7 +64,8 @@
                     :class="{ 'invalid-input': errors.UserNameError }"
                 />
                 <div v-if="errors.UserNameError" class="invalid-text">
-                    В имени пользователя нельзя использовать пробелы и специальные символы ($#!).
+                    В имени пользователя нельзя использовать пробелы, цифры и специальные символы (
+                    $#! ).
                 </div>
             </div>
             <div class="form-group">
@@ -80,7 +81,8 @@
                     :class="{ 'invalid-input': errors.UserLastNameError }"
                 />
                 <div v-if="errors.UserLastNameError" class="invalid-text">
-                    В фамилии пользователя нельзя использовать пробелы и специальные символы ($#!).
+                    В фамилии пользователя нельзя использовать пробелы, цифры и специальные символы
+                    ( $#! ).
                 </div>
             </div>
             <div class="form-group">
