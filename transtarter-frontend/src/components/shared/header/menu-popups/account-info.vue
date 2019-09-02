@@ -1,5 +1,5 @@
 <template>
-    <div v-if="showBlocksShowUser && loggedIn" class="menu-popup" v-click-outside="closeUserMenu">
+    <div v-if="showBlocksShowUser && loggedIn" class="menu-popup" v-click-outside="vcoMiddleware">
         <div class="user-fullname">
             {{ userName }}
         </div>
@@ -135,14 +135,13 @@ export default class AccountInfoMobile extends Vue {
     get isOrderingDisabled() {
         return AuthModule.isOrderingDisabled
     }
-    vcoMiddleware = e => {
-        debugger
-        const excludeId = 'user-menu'
-        const excludeIdDesktop = 'user-menu-desktop'
-        const testMobile = e.target.parentElement.id === excludeId || e.target.id === excludeId
-        const testDesktop =
-            e.target.parentElement.id === excludeIdDesktop || e.target.id === excludeIdDesktop
-        return !(testMobile || testDesktop)
+    vcoMiddleware(e, el) {
+        const path = e.composedPath()
+        if (path[0].id === 'user-menu-desktop' || el.contains(path[0])) {
+            return false
+        } else {
+            return true
+        }
     }
     vcoConfig = {
         handler: this.closeUserMenu,

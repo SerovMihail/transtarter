@@ -5343,12 +5343,12 @@ var component = normalizeComponent(
 )
 
 /* harmony default export */ var actualize_user = (component.exports);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"74fc3ce9-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/shared/header/menu-popups/account-info.vue?vue&type=template&id=20577642&
-var account_infovue_type_template_id_20577642_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return (_vm.showBlocksShowUser && _vm.loggedIn)?_c('div',{directives:[{name:"click-outside",rawName:"v-click-outside",value:(_vm.closeUserMenu),expression:"closeUserMenu"}],staticClass:"menu-popup"},[_c('div',{staticClass:"user-fullname"},[_vm._v("\n        "+_vm._s(_vm.userName)+"\n    ")]),(!_vm.singleContrAgent)?_c('div',{staticClass:"contragent"},[_vm._v("Контрагент: "+_vm._s(_vm.contrAgent.name))]):_vm._e(),_c('div',{staticClass:"wallet"},[_c('div',{staticClass:"wallet-with-icon"},[_c('span',{staticClass:"icon"}),_c('div',{staticClass:"wallet-balance",class:{ 'text-red': _vm.isOrderingDisabled }},[_vm._v("\n                "+_vm._s(_vm._f("currencyFormatRu")(_vm.partnerBalance))+"\n            ")])])]),(_vm.restrictionMessage)?_c('div',{staticClass:"menu-popup__restriction-message"},[_c('i',{staticClass:"el-icon-warning-outline"}),_vm._v("\n        "+_vm._s(_vm.restrictionMessage)+"\n    ")]):_vm._e(),_c('div',{staticClass:"menu-popup_list",on:{"click":_vm.closeUserMenu}},[_c('a',{staticClass:"menu-popup_list-item",attrs:{"href":(_vm.webAppHost + "/account/settings")}},[_vm._v("\n            Профиль и настройки\n        ")]),_c('a',{staticClass:"menu-popup_list-item",attrs:{"href":(_vm.webAppHost + "/account/cart")}},[_vm._v("\n            Корзина\n            "),(_vm.cartAggregateAmount)?_c('span',{staticClass:"menu-popup_list-item-notify"},[_vm._v("\n                "+_vm._s(_vm.cartAggregateAmount)+"\n            ")]):_vm._e()]),_c('a',{staticClass:"menu-popup_list-item",attrs:{"href":(_vm.webAppHost + "/account/orders")}},[_vm._v("\n            Заказы и оплаты\n        ")]),(!_vm.singleContrAgent)?_c('a',{staticClass:"menu-popup_list-item",on:{"click":_vm.toggleContrAgent}},[_vm._v("\n            Смена контрагента\n        ")]):_vm._e(),_c('a',{staticClass:"menu-popup_list-item",on:{"click":_vm.logout}},[_vm._v("\n            Выйти\n        ")])])]):_vm._e()}
-var account_infovue_type_template_id_20577642_staticRenderFns = []
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"74fc3ce9-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/shared/header/menu-popups/account-info.vue?vue&type=template&id=233f8ac4&
+var account_infovue_type_template_id_233f8ac4_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return (_vm.showBlocksShowUser && _vm.loggedIn)?_c('div',{directives:[{name:"click-outside",rawName:"v-click-outside",value:(_vm.vcoConfig),expression:"vcoConfig"}],staticClass:"menu-popup"},[_vm._v("\n    test\n")]):_vm._e()}
+var account_infovue_type_template_id_233f8ac4_staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./src/components/shared/header/menu-popups/account-info.vue?vue&type=template&id=20577642&
+// CONCATENATED MODULE: ./src/components/shared/header/menu-popups/account-info.vue?vue&type=template&id=233f8ac4&
 
 // EXTERNAL MODULE: ./node_modules/core-js/modules/web.dom.iterable.js
 var web_dom_iterable = __webpack_require__("ac6a");
@@ -6918,99 +6918,87 @@ external_Vue_default.a.directive('vClickOutside', v_click_outside_min_umd_defaul
 external_Vue_default.a.directive('closable', closable);
 var account_infovue_type_script_lang_ts_AccountInfoMobile = class AccountInfoMobile extends external_Vue_default.a {
   constructor() {
+    // private webAppHost = process.env.VUE_APP_WEB_APP
     super(...arguments);
-    this.webAppHost = "https://catalog.tstarter.ru";
-
-    this.vcoMiddleware = e => {
-      debugger;
-      var excludeId = 'user-menu';
-      var excludeIdDesktop = 'user-menu-desktop';
-      var testMobile = e.target.parentElement.id === excludeId || e.target.id === excludeId;
-      var testDesktop = e.target.parentElement.id === excludeIdDesktop || e.target.id === excludeIdDesktop;
-      return !(testMobile || testDesktop);
-    };
-
     this.vcoConfig = {
       handler: this.closeUserMenu,
       middleware: this.vcoMiddleware
     };
-  }
+  } // get contrAgent() {
+  //     return AuthModule.contragent
+  // }
+  // get singleContrAgent() {
+  //     return AuthModule.userContragents.length === 1
+  // }
 
-  get contrAgent() {
-    return AuthModule.contragent;
-  }
-
-  get singleContrAgent() {
-    return AuthModule.userContragents.length === 1;
-  }
 
   get loggedIn() {
     return AuthModule.logged;
-  }
+  } // get showBlocksShowMenu() {
+  //     return DisplayModule.blocksShow.menu
+  // }
 
-  get showBlocksShowMenu() {
-    return DisplayModule.blocksShow.menu;
-  }
 
   get showBlocksShowUser() {
     return DisplayModule.blocksShow.user;
-  }
+  } // get showBlocksShowLocation() {
+  //     return DisplayModule.blocksShow.location
+  // }
+  // logout() {
+  //     store.dispatch('auth/logout')
+  // }
 
-  get showBlocksShowLocation() {
-    return DisplayModule.blocksShow.location;
-  }
-
-  logout() {
-    store.dispatch('auth/logout');
-  }
 
   closeUserMenu() {
     // @ts-ignore
     if (this.$el.offsetWidth > 0 && this.$el.offsetHeight > 0) {
       store.dispatch('display/hideBlockShowUser');
     }
-  }
+  } // toggleContrAgent() {
+  //     store.dispatch('display/toggleContrAgentModal')
+  // }
+  // get userName() {
+  //     return AuthModule.name
+  // }
+  // get partnerBalance() {
+  //     return AuthModule.partnerBalance
+  // }
+  // get cartAggregateAmount() {
+  //     return AuthModule.itemsAmount
+  // }
+  // get restrictionMessage() {
+  //     if (this.isCreditOverflow && this.isDurationOverflow) {
+  //         return 'Превышен срок и сумма кредита'
+  //     } else if (this.isCreditOverflow) {
+  //         return 'Превышена сумма кредита'
+  //     } else if (this.isDurationOverflow) {
+  //         return 'Превышен срок кредита'
+  //     }
+  // }
+  // get isCreditOverflow() {
+  //     if (AuthModule.partnerRestrictions) {
+  //         return AuthModule.partnerRestrictions.isCreditOverflow
+  //     }
+  // }
+  // get isDurationOverflow() {
+  //     if (AuthModule.partnerRestrictions) {
+  //         return AuthModule.partnerRestrictions.isDurationOverflow
+  //     }
+  // }
+  // get isOrderingDisabled() {
+  //     return AuthModule.isOrderingDisabled
+  // }
 
-  toggleContrAgent() {
-    store.dispatch('display/toggleContrAgentModal');
-  }
 
-  get userName() {
-    return AuthModule.name;
-  }
+  vcoMiddleware(e, el) {
+    debugger;
+    var path = e.composedPath();
 
-  get partnerBalance() {
-    return AuthModule.partnerBalance;
-  }
-
-  get cartAggregateAmount() {
-    return AuthModule.itemsAmount;
-  }
-
-  get restrictionMessage() {
-    if (this.isCreditOverflow && this.isDurationOverflow) {
-      return 'Превышен срок и сумма кредита';
-    } else if (this.isCreditOverflow) {
-      return 'Превышена сумма кредита';
-    } else if (this.isDurationOverflow) {
-      return 'Превышен срок кредита';
+    if (path[0].id === 'user-menu-desktop' || el.contains(path[0])) {
+      return false;
+    } else {
+      return true;
     }
-  }
-
-  get isCreditOverflow() {
-    if (AuthModule.partnerRestrictions) {
-      return AuthModule.partnerRestrictions.isCreditOverflow;
-    }
-  }
-
-  get isDurationOverflow() {
-    if (AuthModule.partnerRestrictions) {
-      return AuthModule.partnerRestrictions.isDurationOverflow;
-    }
-  }
-
-  get isOrderingDisabled() {
-    return AuthModule.isOrderingDisabled;
   }
 
 };
@@ -7033,8 +7021,8 @@ if (style0.__inject__) style0.__inject__(context)
 
 var account_info_component = normalizeComponent(
   menu_popups_account_infovue_type_script_lang_ts_,
-  account_infovue_type_template_id_20577642_render,
-  account_infovue_type_template_id_20577642_staticRenderFns,
+  account_infovue_type_template_id_233f8ac4_render,
+  account_infovue_type_template_id_233f8ac4_staticRenderFns,
   false,
   injectStyles,
   null,
@@ -8356,12 +8344,12 @@ var user_account_mobile_component = normalizeComponent(
 )
 
 /* harmony default export */ var user_account_mobile = (user_account_mobile_component.exports);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"74fc3ce9-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/shared/header/menu-popups/auth-mobile.vue?vue&type=template&id=445eee6d&
-var auth_mobilevue_type_template_id_445eee6d_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return (_vm.showBlocksShowUser && !_vm.loggedIn)?_c('div',{staticClass:"menu-popup"},[_c('ul',{directives:[{name:"click-outside",rawName:"v-click-outside",value:(_vm.vcoConfig),expression:"vcoConfig"}],staticClass:"menu-popup_list"},[_c('li',{staticClass:"menu-popup_list-item",on:{"click":function($event){return _vm.logIn()}}},[_c('a',[_vm._v("Вход")])]),_c('li',{staticClass:"menu-popup_list-item",on:{"click":function($event){return _vm.toggleRegistrationPopup()}}},[_c('a',{staticClass:"register"},[_vm._v("Регистрация")])])])]):_vm._e()}
-var auth_mobilevue_type_template_id_445eee6d_staticRenderFns = []
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"74fc3ce9-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/shared/header/menu-popups/auth-mobile.vue?vue&type=template&id=009e8e4e&
+var auth_mobilevue_type_template_id_009e8e4e_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return (_vm.showBlocksShowUser && !_vm.loggedIn)?_c('div',{staticClass:"menu-popup"},[_c('ul',{directives:[{name:"click-outside",rawName:"v-click-outside",value:(_vm.vcoConfig),expression:"vcoConfig"}],staticClass:"menu-popup_list"},[_c('li',{staticClass:"menu-popup_list-item",on:{"click":function($event){return _vm.logIn()}}},[_c('a',[_vm._v("Вход")])]),_c('li',{staticClass:"menu-popup_list-item",on:{"click":function($event){return _vm.toggleRegistrationPopup()}}},[_c('a',{staticClass:"register"},[_vm._v("Регистрация")])])])]):_vm._e()}
+var auth_mobilevue_type_template_id_009e8e4e_staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./src/components/shared/header/menu-popups/auth-mobile.vue?vue&type=template&id=445eee6d&
+// CONCATENATED MODULE: ./src/components/shared/header/menu-popups/auth-mobile.vue?vue&type=template&id=009e8e4e&
 
 // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--14-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/ts-loader??ref--14-3!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/shared/header/menu-popups/auth-mobile.vue?vue&type=script&lang=ts&
 
@@ -8403,8 +8391,8 @@ var auth_mobilevue_type_script_lang_ts_AuthMobile = class AuthMobile extends ext
   }
 
   vcoMiddleware(e, el) {
-    var path = e.composedPath();
     debugger;
+    var path = e.composedPath();
 
     if (path[1].id === 'user-menu' || path[0].id === 'user-menu-desktop' || el.contains(path[0])) {
       console.log('clicked on burger or link so no handler');
@@ -8431,8 +8419,8 @@ auth_mobilevue_type_script_lang_ts_AuthMobile = __decorate([vue_class_component_
 
 var auth_mobile_component = normalizeComponent(
   menu_popups_auth_mobilevue_type_script_lang_ts_,
-  auth_mobilevue_type_template_id_445eee6d_render,
-  auth_mobilevue_type_template_id_445eee6d_staticRenderFns,
+  auth_mobilevue_type_template_id_009e8e4e_render,
+  auth_mobilevue_type_template_id_009e8e4e_staticRenderFns,
   false,
   null,
   null,
