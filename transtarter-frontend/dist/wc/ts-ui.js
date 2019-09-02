@@ -7130,7 +7130,7 @@ var authentication_module_Authentication = class Authentication extends VuexModu
     this.profile = null;
     this.status = {
       loggingIn: false,
-      loggedIn: true
+      loggedIn: false
     };
     this.avatar = '';
     this.itemsAmount = null;
@@ -7175,8 +7175,8 @@ var authentication_module_Authentication = class Authentication extends VuexModu
 
   ERROR_LOGIN() {
     this.name = '';
-    this.accessTokenExpired = false; // this.status.loggedIn = false
-
+    this.accessTokenExpired = false;
+    this.status.loggedIn = false;
     this.status.loggingIn = false;
   }
 
