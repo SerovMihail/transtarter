@@ -4955,12 +4955,12 @@ function normalizeComponent (
   }
 }
 
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"74fc3ce9-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/shared/header/header.vue?vue&type=template&id=6771854b&shadow
-var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('header',{staticClass:"header"},[_c('ts-ui-actualize-user'),_c('div',{staticClass:"desktop-header"},[_c('div',{staticClass:"desktop-header__menu"},[_c('div',{staticClass:"desktop-header__left"},[_vm._m(0),_vm._t("default"),_vm._m(1)],2),_c('div',{staticClass:"desktop-header__right"},[_c('ts-ui-user-account-desktop')],1)]),_c('ts-ui-account-info'),_c('div',{staticClass:"desktop-header__search search"},[_c('ts-ui-search-form-desktop')],1)],1),_c('div',{staticClass:"mobile-header"},[_c('div',{staticClass:"mobile-header__menu"},[_c('ts-ui-mobile-menu'),_c('ts-ui-user-account-mobile')],1),_c('ts-ui-mobile-links'),_c('ts-ui-auth-mobile'),_c('ts-ui-account-info'),_c('div',{staticClass:"mobile-header__search"},[_c('ts-ui-search-form-mobile')],1)],1)],1)}
-var staticRenderFns = [function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"desktop-header__logo"},[_c('a',{attrs:{"href":"/"}},[_vm._v("Транс Стартер")])])},function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('ul',{staticClass:"desktop-header__menu-list"},[_c('li',{staticClass:"desktop-header__menu-item"},[_c('a',{attrs:{"href":"/special-offers"}},[_vm._v("Акции и новинки")])]),_c('li',{staticClass:"desktop-header__menu-item"},[_c('a',{attrs:{"href":"/delivery"}},[_vm._v("Доставка и оплата")])]),_c('li',{staticClass:"desktop-header__menu-item"},[_c('a',{attrs:{"href":"/about-company"}},[_vm._v("О компании")])]),_c('li',{staticClass:"desktop-header__menu-item"},[_c('a',{attrs:{"href":"/auto-workshops"}},[_vm._v("Найти точку ремонта")])]),_c('li',{staticClass:"desktop-header__menu-item"},[_c('a',{attrs:{"href":"/contacts"}},[_vm._v("Контакты")])])])}]
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"74fc3ce9-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/shared/header/header.vue?vue&type=template&id=1fdf0518&shadow
+var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('header',{staticClass:"header"},[_c('ts-ui-actualize-user'),_c('div',{staticClass:"desktop-header"},[_c('div',{staticClass:"desktop-header__menu"},[_c('div',{staticClass:"desktop-header__left"},[_vm._m(0),_c('ul',{staticClass:"desktop-header__menu-list"},_vm._l((_vm.parsedLinks),function(link,idx){return _c('li',{key:idx,staticClass:"desktop-header__menu-item"},[_c('a',{attrs:{"href":link.href}},[_vm._v(_vm._s(link.name))])])}),0)]),_c('div',{staticClass:"desktop-header__right"},[_c('ts-ui-user-account-desktop')],1)]),_c('ts-ui-account-info'),_c('div',{staticClass:"desktop-header__search search"},[_c('ts-ui-search-form-desktop')],1)],1),_c('div',{staticClass:"mobile-header"},[_c('div',{staticClass:"mobile-header__menu"},[_c('ts-ui-mobile-menu'),_c('ts-ui-user-account-mobile')],1),_c('ts-ui-mobile-links'),_c('ts-ui-auth-mobile'),_c('ts-ui-account-info'),_c('div',{staticClass:"mobile-header__search"},[_c('ts-ui-search-form-mobile')],1)],1)],1)}
+var staticRenderFns = [function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"desktop-header__logo"},[_c('a',{attrs:{"href":"/"}},[_vm._v("Транс Стартер")])])}]
 
 
-// CONCATENATED MODULE: ./src/components/shared/header/header.vue?vue&type=template&id=6771854b&shadow
+// CONCATENATED MODULE: ./src/components/shared/header/header.vue?vue&type=template&id=1fdf0518&shadow
 
 // CONCATENATED MODULE: ./node_modules/tslib/tslib.es6.js
 /*! *****************************************************************************
@@ -8587,7 +8587,26 @@ var search_form_mobile_component = normalizeComponent(
 
 
 
-var headervue_type_script_lang_ts_shadow_Header = class Header extends external_Vue_default.a {};
+var headervue_type_script_lang_ts_shadow_Header = class Header extends external_Vue_default.a {
+  constructor() {
+    super(...arguments);
+    this.parsedLinks = {};
+  }
+
+  mounted() {
+    if (this.links) {
+      try {
+        this.parsedLinks = JSON.parse(this.links);
+      } catch (e) {
+        console.log('Cannot parse JSON');
+      }
+    }
+  }
+
+};
+
+__decorate([Prop(String), __metadata("design:type", Object)], headervue_type_script_lang_ts_shadow_Header.prototype, "links", void 0);
+
 headervue_type_script_lang_ts_shadow_Header = __decorate([vue_class_component_common_default()({
   components: {
     'ts-ui-user-account-desktop': user_account_desktop,

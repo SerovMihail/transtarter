@@ -9,27 +9,18 @@
                     <div class="desktop-header__logo">
                         <a href="/">Транс Стартер</a>
                     </div>
-                    <slot></slot>
-                    <!-- <ul class="desktop-header__menu-list">
-                        <li class="desktop-header__menu-item">
-                            <a href="/special-offers">Акции и новинки</a>
+                    <ul class="desktop-header__menu-list">
+                        <li
+                            class="desktop-header__menu-item"
+                            v-for="(link, idx) of parsedLinks"
+                            :key="idx"
+                        >
+                            <a :href="link.href">{{ link.name }}</a>
                         </li>
-                        <li class="desktop-header__menu-item">
-                            <a href="/delivery">Доставка и оплата</a>
-                        </li>
-                        <li class="desktop-header__menu-item">
-                            <a href="/about-company">О компании</a>
-                        </li>
-                        <li class="desktop-header__menu-item">
-                            <a href="/auto-workshops">Найти точку ремонта</a>
-                        </li>
-                        <li class="desktop-header__menu-item">
-                            <a href="/contacts">Контакты</a>
-                        </li>
-                        <li class="desktop-header__menu-item">
+                        <!-- <li class="desktop-header__menu-item">
                             <a href="#">Блог</a>
-                        </li>
-                    </ul> -->
+                        </li> -->
+                    </ul>
                 </div>
 
                 <div class="desktop-header__right">
@@ -78,7 +69,7 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator'
+import { Component, Vue, Prop } from 'vue-property-decorator'
 
 import ActualizeUser from '@/components/shared/header/actualize-user.vue'
 import SearchResults from '@/components/shared/header/search-results/search-results.vue'
@@ -110,7 +101,19 @@ import SearchFormMobile from '@/components/shared/header/search-form/search-form
         'ts-ui-actualize-user': ActualizeUser,
     },
 })
-export default class Header extends Vue {}
+export default class Header extends Vue {
+    @Prop(String) readonly links!: string | undefined
+    parsedLinks = {}
+    mounted() {
+        if (this.links) {
+            try {
+                this.parsedLinks = JSON.parse(this.links)
+            } catch (e) {
+                console.log('Cannot parse JSON')
+            }
+        }
+    }
+}
 </script>
 
 <style lang="scss">
