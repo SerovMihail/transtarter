@@ -9,7 +9,8 @@
                     <div class="desktop-header__logo">
                         <a href="/">Транс Стартер</a>
                     </div>
-                    <ul class="desktop-header__menu-list">
+                    <slot></slot>
+                    <!-- <ul class="desktop-header__menu-list">
                         <li class="desktop-header__menu-item">
                             <a href="/special-offers">Акции и новинки</a>
                         </li>
@@ -28,7 +29,7 @@
                         <li class="desktop-header__menu-item">
                             <a href="#">Блог</a>
                         </li>
-                    </ul>
+                    </ul> -->
                 </div>
 
                 <div class="desktop-header__right">
