@@ -42,10 +42,13 @@ export default class AuthMobile extends Vue {
         store.dispatch('auth/login')
     }
 
-
     vcoMiddleware(e, el) {
         const path = e.composedPath()
-        if (path[1].id === 'user-menu' || el.contains(path[0])) {
+        if (
+            path[1].id === 'user-menu' ||
+            path[0].id === 'user-menu-desktop' ||
+            el.contains(path[0])
+        ) {
             console.log('clicked on burger or link so no handler')
             return false
         } else {

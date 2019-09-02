@@ -8356,12 +8356,12 @@ var user_account_mobile_component = normalizeComponent(
 )
 
 /* harmony default export */ var user_account_mobile = (user_account_mobile_component.exports);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"74fc3ce9-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/shared/header/menu-popups/auth-mobile.vue?vue&type=template&id=35668116&
-var auth_mobilevue_type_template_id_35668116_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return (_vm.showBlocksShowUser && !_vm.loggedIn)?_c('div',{staticClass:"menu-popup"},[_c('ul',{directives:[{name:"click-outside",rawName:"v-click-outside",value:(_vm.vcoConfig),expression:"vcoConfig"}],staticClass:"menu-popup_list"},[_c('li',{staticClass:"menu-popup_list-item",on:{"click":function($event){return _vm.logIn()}}},[_c('a',[_vm._v("Вход")])]),_c('li',{staticClass:"menu-popup_list-item",on:{"click":function($event){return _vm.toggleRegistrationPopup()}}},[_c('a',{staticClass:"register"},[_vm._v("Регистрация")])])])]):_vm._e()}
-var auth_mobilevue_type_template_id_35668116_staticRenderFns = []
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"74fc3ce9-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/shared/header/menu-popups/auth-mobile.vue?vue&type=template&id=445eee6d&
+var auth_mobilevue_type_template_id_445eee6d_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return (_vm.showBlocksShowUser && !_vm.loggedIn)?_c('div',{staticClass:"menu-popup"},[_c('ul',{directives:[{name:"click-outside",rawName:"v-click-outside",value:(_vm.vcoConfig),expression:"vcoConfig"}],staticClass:"menu-popup_list"},[_c('li',{staticClass:"menu-popup_list-item",on:{"click":function($event){return _vm.logIn()}}},[_c('a',[_vm._v("Вход")])]),_c('li',{staticClass:"menu-popup_list-item",on:{"click":function($event){return _vm.toggleRegistrationPopup()}}},[_c('a',{staticClass:"register"},[_vm._v("Регистрация")])])])]):_vm._e()}
+var auth_mobilevue_type_template_id_445eee6d_staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./src/components/shared/header/menu-popups/auth-mobile.vue?vue&type=template&id=35668116&
+// CONCATENATED MODULE: ./src/components/shared/header/menu-popups/auth-mobile.vue?vue&type=template&id=445eee6d&
 
 // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--14-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/ts-loader??ref--14-3!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/shared/header/menu-popups/auth-mobile.vue?vue&type=script&lang=ts&
 
@@ -8404,8 +8404,9 @@ var auth_mobilevue_type_script_lang_ts_AuthMobile = class AuthMobile extends ext
 
   vcoMiddleware(e, el) {
     var path = e.composedPath();
+    debugger;
 
-    if (path[1].id === 'user-menu' || el.contains(path[0])) {
+    if (path[1].id === 'user-menu' || path[0].id === 'user-menu-desktop' || el.contains(path[0])) {
       console.log('clicked on burger or link so no handler');
       return false;
     } else {
@@ -8430,8 +8431,8 @@ auth_mobilevue_type_script_lang_ts_AuthMobile = __decorate([vue_class_component_
 
 var auth_mobile_component = normalizeComponent(
   menu_popups_auth_mobilevue_type_script_lang_ts_,
-  auth_mobilevue_type_template_id_35668116_render,
-  auth_mobilevue_type_template_id_35668116_staticRenderFns,
+  auth_mobilevue_type_template_id_445eee6d_render,
+  auth_mobilevue_type_template_id_445eee6d_staticRenderFns,
   false,
   null,
   null,
