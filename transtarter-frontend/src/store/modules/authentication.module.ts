@@ -69,7 +69,7 @@ export class Authentication extends VuexModule implements IAuthState {
     public userContragents = []
     public profile = null
     public status = {
-        loggingIn: false,
+        loggingIn: true,
         loggedIn: false,
     }
     public avatar = ''

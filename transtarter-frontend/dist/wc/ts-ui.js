@@ -7129,7 +7129,7 @@ var authentication_module_Authentication = class Authentication extends VuexModu
     this.userContragents = [];
     this.profile = null;
     this.status = {
-      loggingIn: false,
+      loggingIn: true,
       loggedIn: false
     };
     this.avatar = '';
