@@ -151,11 +151,7 @@ export default class AccountInfoMobile extends Vue {
     }
     vcoMiddleware(e, el) {
         const path = e.composedPath()
-        if (
-            path[0].id === 'user-menu-desktop' ||
-            path[0].className.includes('user-avatar') ||
-            el.contains(path[0])
-        ) {
+        if (path.some(x => x.id === 'user-menu-desktop') || el.contains(path[0])) {
             return false
         } else {
             return true
