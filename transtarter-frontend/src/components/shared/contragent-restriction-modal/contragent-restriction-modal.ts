@@ -24,13 +24,13 @@ class contragentRestrictionModal extends Vue {
         }
     }
     get isCreditOverflow() {
-        if (AuthModule.partnerRestrictions) {
-            return AuthModule.partnerRestrictions.isCreditOverflow
+        if (AuthModule.partnerProfile && AuthModule.partnerProfile.restrictions) {
+            return AuthModule.partnerProfile.restrictions.isCreditOverflow
         }
     }
     get isDurationOverflow() {
-        if (AuthModule.partnerRestrictions) {
-            return AuthModule.partnerRestrictions.isDurationOverflow
+        if (AuthModule.partnerProfile && AuthModule.partnerProfile.restrictions) {
+            return AuthModule.partnerProfile.restrictions.isDurationOverflow
         }
     }
     get isOrderingDisabled() {

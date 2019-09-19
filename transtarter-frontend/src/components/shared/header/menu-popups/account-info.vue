@@ -9,7 +9,9 @@
         <div class="price-info">
             Оптовые цены (активны)
         </div> -->
-        <div v-if="!singleContrAgent" class="contragent">Контрагент: {{ contrAgent.name }}</div>
+        <div v-if="!singleContrAgent && contrAgent" class="contragent">
+            Контрагент: {{ contrAgent.name }}
+        </div>
         <div class="wallet">
             <div class="wallet-with-icon">
                 <span class="icon"></span>
@@ -69,7 +71,7 @@ export default class AccountInfoMobile extends Vue {
     }
 
     get singleContrAgent() {
-        return AuthModule.userContragents.length === 1
+        return AuthModule.contragentIsSingle
     }
     get loggedIn() {
         return AuthModule.logged
@@ -106,7 +108,11 @@ export default class AccountInfoMobile extends Vue {
     }
 
     get partnerBalance() {
-        return AuthModule.partnerBalance
+        if (AuthModule.partnerProfile) {
+            return AuthModule.partnerProfile.balance
+        }
+
+        return undefined
     }
 
     get cartAggregateAmount() {
@@ -123,13 +129,13 @@ export default class AccountInfoMobile extends Vue {
         }
     }
     get isCreditOverflow() {
-        if (AuthModule.partnerRestrictions) {
-            return AuthModule.partnerRestrictions.isCreditOverflow
+        if (AuthModule.partnerProfile && AuthModule.partnerProfile.restrictions) {
+            return AuthModule.partnerProfile.restrictions.isCreditOverflow
         }
     }
     get isDurationOverflow() {
-        if (AuthModule.partnerRestrictions) {
-            return AuthModule.partnerRestrictions.isDurationOverflow
+        if (AuthModule.partnerProfile && AuthModule.partnerProfile.restrictions) {
+            return AuthModule.partnerProfile.restrictions.isDurationOverflow
         }
     }
     get isOrderingDisabled() {

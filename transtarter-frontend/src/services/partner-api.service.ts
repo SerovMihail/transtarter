@@ -1,10 +1,12 @@
 /* eslint-disable import/no-duplicates */
 import axios from '@/services/axios.service'
-import { IPartnerRestrictions } from '@/models'
+import { IPartnerRestrictions, IPartner } from '@/models'
 import { AxiosResponse } from 'axios'
 
 export class PartnerApiService {
-    private webApi = process.env.VUE_APP_WEB_APP_API
+    getPartnerById(id: number): Promise<AxiosResponse<IPartner>> {
+        return axios.get(`/api/Partners/${id}`)
+    }
 
     getPartnerBalance(): Promise<AxiosResponse<number>> {
         return axios.get(`/api/ts/users/current/balance`)

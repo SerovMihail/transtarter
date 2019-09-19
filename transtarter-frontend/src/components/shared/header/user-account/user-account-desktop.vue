@@ -40,7 +40,7 @@
         <!-- end for guests -->
         <!-- block for users -->
         <div
-            v-if="loggedIn && !loggingIn && !singleContrAgent"
+            v-if="loggedIn && !loggingIn && !singleContrAgent && contrAgent"
             class="desktop-header__login-item"
             @click="toggleContrAgent"
         >
@@ -118,7 +118,7 @@ export default class UserAccountDesktop extends Vue {
         }
     }
     get singleContrAgent() {
-        return AuthModule.userContragents.length === 1
+        return AuthModule.contragentIsSingle
     }
 
     get imageUrl() {
