@@ -3,12 +3,15 @@
         <div class="user-fullname">
             {{ userName }}
         </div>
-        <!-- <div class="agreement" style="">
-            Договор № 123765
+        <div
+            v-if="partnerProfile && partnerProfile.defaultAgentContractNumber !== null"
+            class="agreement"
+        >
+            Договор № {{ partnerProfile.defaultAgentContractNumber }}
         </div>
-        <div class="price-info">
-            Оптовые цены (активны)
-        </div> -->
+        <div v-if="partnerProfile && partnerProfile.priceTypeName" class="price-info">
+            Оптовые цены ({{ partnerProfile.priceTypeName }})
+        </div>
         <div v-if="!singleContrAgent && contrAgent" class="contragent">
             Контрагент: {{ contrAgent.name }}
         </div>
@@ -57,6 +60,7 @@ import { store } from '@/store'
 import { currencyFormatRu } from '@/filters'
 import { closable } from '@/directives/v-click-outside-exclude'
 import vClickOutside from 'v-click-outside'
+import { IPartner } from '../../../../models'
 
 Vue.filter('currencyFormatRu', currencyFormatRu)
 // Vue.use(vClickOutside)
@@ -105,6 +109,10 @@ export default class AccountInfoMobile extends Vue {
 
     get userName() {
         return AuthModule.name
+    }
+
+    get partnerProfile(): IPartner | null {
+        return AuthModule.partnerProfile
     }
 
     get partnerBalance() {
