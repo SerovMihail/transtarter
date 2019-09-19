@@ -176,6 +176,9 @@
             padding: 0 17px;
             cursor: pointer;
             transition: .3s;
+            &.old-version-site {
+                font-size: 15px;
+            }
             &:hover {
                 background: $hint-of-green;
             }

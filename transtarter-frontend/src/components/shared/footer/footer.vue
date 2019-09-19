@@ -119,6 +119,17 @@
                         >
                             +7 (495) 748-97-74
                         </a>
+                        <div>
+                            старая версия сайта:
+                            <br />
+                            <a
+                                class="cards_group__card_header"
+                                style="margin-bottom: 8px;"
+                                :href="oldSiteUrl"
+                            >
+                                {{ oldSiteName }}
+                            </a>
+                        </div>
                         <!-- <div class="cards_group__card_body">
                             <ts-ui-toggle-register-call-popup></ts-ui-toggle-register-call-popup>
                         </div> -->
@@ -153,6 +164,8 @@ import ToggleRequestCallPopup from '@/components/shared/footer/toggle-register-c
     },
 })
 export default class Footer extends Vue {
+    oldSiteUrl = process.env.VUE_APP_OLD_SITE
+    oldSiteName = process.env.VUE_APP_OLD_SITE!.replace(/https?:\/\//, '')
     toggleRequestCallPopup() {
         store.dispatch('display/toggleRequest')
     }

@@ -45,6 +45,9 @@
             <a v-if="!singleContrAgent" class="menu-popup_list-item" @click="toggleContrAgent">
                 Смена контрагента
             </a>
+            <li class="menu-popup_list-item old-version-site">
+                <a :href="oldSiteUrl">Перейти к старой версии сайта</a>
+            </li>
             <a class="menu-popup_list-item" @click="logout">
                 Выйти
             </a>
@@ -69,6 +72,11 @@ Vue.directive('closable', closable)
 @Component
 export default class AccountInfoMobile extends Vue {
     private webAppHost = process.env.VUE_APP_WEB_APP
+    oldSiteUrl = process.env.VUE_APP_OLD_SITE
+    vcoConfig = {
+        handler: this.closeUserMenu,
+        middleware: this.vcoMiddleware,
+    }
 
     get contrAgent() {
         return AuthModule.contragent
@@ -156,10 +164,6 @@ export default class AccountInfoMobile extends Vue {
         } else {
             return true
         }
-    }
-    vcoConfig = {
-        handler: this.closeUserMenu,
-        middleware: this.vcoMiddleware,
     }
 }
 </script>
