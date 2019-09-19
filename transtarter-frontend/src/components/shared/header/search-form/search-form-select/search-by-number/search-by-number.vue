@@ -22,12 +22,7 @@
 
         <!-- <nuxt-link tag="button" :to="'/detail-number/' + searchText" class="search__btn-search"> -->
 
-        <a
-            :href="
-                `https://www.tstarter.ru/store/?noScroll=true&searchInput=${searchText}&searchType=1`
-            "
-            class="search__btn-search"
-        >
+        <a :href="`${webAppUrl}/detail-number/${searchText}`" class="search__btn-search">
             <div class="search__icon-lins"></div>
         </a>
         <!-- </nuxt-link> -->

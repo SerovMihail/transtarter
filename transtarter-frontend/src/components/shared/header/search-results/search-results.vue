@@ -8,11 +8,7 @@
             </div>
             <div class="search-results__body" @click="selected">
                 <a
-                    :href="
-                        `https://www.tstarter.ru/store/?noScroll=true&searchInput=${
-                            item.number
-                        }&searchType=1`
-                    "
+                    :href="`${webAppUrl}/detail-number/${item.number}`"
                     v-for="(item, $index) in foundItems.slice(0, 5)"
                     :key="$index"
                     class="search-results__body-row"
@@ -44,6 +40,8 @@ import { ISearchResult } from '@/models/index'
 
 @Component({})
 export default class SearchResults extends Vue {
+    webAppUrl = process.env.VUE_APP_WEB_APP
+
     @Prop({ default: () => [] }) readonly foundItems!: ISearchResult[]
     selected() {
         this.$emit('selected')

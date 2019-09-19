@@ -10,6 +10,8 @@ Vue.use(vClickOutside)
     },
 })
 class SearchByNumber extends Mixins(HeaderSearchText) {
+    webAppUrl = process.env.VUE_APP_WEB_APP
+
     @Prop(String) readonly type!: string
 }
 export default SearchByNumber
