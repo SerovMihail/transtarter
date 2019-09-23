@@ -705,6 +705,7 @@ button {
     box-shadow: 3px 3px 10px 0px rgba(0, 0, 0, 0.3);
     z-index: 999;
     cursor: pointer;
+		right: 15px;
 }
 
 .img-100 {
