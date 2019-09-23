@@ -11,3 +11,34 @@
 {"name": "Контакты", "href": "/contacts" }
 ]'></ts-ui-header>
 
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+<!-- Styles -->
+<link
+    href="https://fonts.googleapis.com/css?family=Exo+2:500,600,700,900|PT+Sans:400,400i,700,700i&subset=cyrillic,cyrillic-ext,latin-ext"
+    rel=stylesheet>
+<link type="text/css" rel="stylesheet"
+    href="https://rawcdn.githack.com/SerovMihail/transtarter/cdf5ca66272a90f037dd817f39e335927fa1e008/templates/common-styles/site.css">
+<!-- End Styles -->
+
+<!--Load Vue, WebComponents, MyComponents -->
+<script src="https://unpkg.com/vue"></script>
+<script defer  src="https://raw.githack.com/SerovMihail/transtarter/master/transtarter-frontend/dist/wc/ts-ui.min.js"></script>
+<!-- End Load Vue, WebComponents, MyComponents -->
+<script type="text/javascript" src="https://code.jquery.com/jquery-1.11.0.min.js"></script>
+<script type="text/javascript" src="https://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+<script type="text/javascript" src="https://unpkg.com/slick-carousel@1.8.1/slick/slick.min.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+$('.certificate-slider ').slick({
+    infinite: true,
+  dots: true
+ });
+
+}, false);
+
+</script>
+

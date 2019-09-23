@@ -52,12 +52,16 @@ export default class SearchFormDesktop extends Vue {
         this.loadedInput = option
         this.searchText = ''
     }
-    get searchLink() {
+    get searchLink(): string {
         if (this.loadedInput === 'Номер детали') {
-            return '/detail-number/' + this.searchText
+            return this.searchBaseUrl + '/detail-number/' + this.searchText
         } else if (this.loadedInput === 'VIN - номер') {
             return '/vin-number/' + this.searchText
         }
+        return ''
+    }
+    goToResults() {
+        window.location.href = this.searchLink
     }
 }
 </script>
