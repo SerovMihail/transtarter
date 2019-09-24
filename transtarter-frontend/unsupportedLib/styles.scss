@@ -1,0 +1,86 @@
+$malachite: #0cb520;
+$background-color: #323230;
+.unsupported-browser {
+		* {
+			margin: 0;
+			padding: 0;
+		}
+		a {
+			&:hover {
+				text-decoration: none;
+			}
+		}
+		.center {
+			text-align: center;
+		}
+    position: relative;
+		background: $background-color;
+		height: 100%;
+		&__container {
+			width: 80%;
+			padding: 30px 0;
+			margin: 0 auto;
+		}
+		&__title {
+			font-family: 'Exo\ 2';
+			font-size: 24px;
+			margin-bottom: 8px;
+		}	
+    &__old-site-version {
+        font-size: 20px;
+        text-align: center;
+        a {
+            color: $malachite;
+        }
+    }
+    &__browsers-container {
+        width: 556px;
+        margin: 0 auto;
+        margin-top: 42px;
+        margin-bottom: 40px;
+        &::after {
+            display: block;
+            content: "";
+            clear: both;
+        }
+    }
+		&__content-container {
+			background: white;
+			padding: 28px;
+		}
+    &__icon {
+        width: 120px;
+        height: 120px;
+        background-size: contain;
+        background-repeat: no-repeat;
+        margin: 0 auto;
+        margin-bottom: 10px;
+        &--chrome {
+            background-image: url("./assets/chrome.png");
+        }
+        &--firefox {
+            background-image: url("./assets/firefox.png");
+        }
+        &--opera {
+            background-image: url("./assets/opera.png");
+        }
+    }
+    &__chrome-text {
+        line-height: 48px;
+        font-size: 24px;
+        color: $malachite;
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+    &__browser-container {
+        text-align: center;
+        float: left;
+        padding: 26px;
+        &:hover {
+            a {
+                text-decoration: underline;
+            }
+        }
+    }
+}
