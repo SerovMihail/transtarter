@@ -45,5 +45,7 @@
 			if (!isValidBrowserVersion || unsupportedEngine){
 				d.body = renderBrowserError;
 				d.body.style.margin = '0px';
+				d.documentElement.style.height = "100%"
+				d.body.style.height = '100%';
 			}}
 			(document, 'https://old.tstarter.ru'))
