@@ -43,9 +43,9 @@
 			}
 			var unsupportedEngine = (clientBrowserEngine === "EdgeHTML" || clientBrowserEngine === "Trident");
 			if (!isValidBrowserVersion || unsupportedEngine){
+				d.body = renderBrowserError;
 				d.body.style.margin = '0px';
 				d.documentElement.style.height = "100%"
 				d.body.style.height = '100%';
-				d.body = renderBrowserError;
 			}}
 			(document, 'https://old.tstarter.ru'))
