@@ -176,6 +176,10 @@ export default class UserAccountDesktop extends Vue {
             background-color: lighten($color, 8%) !important;
         }
     }
+    &__old-site-btn {
+        color: #ffec5a;
+        font-size: 20px;
+    }
     &__login {
         display: flex;
         height: 100%;
