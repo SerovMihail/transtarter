@@ -40,6 +40,7 @@ export interface IAuthState {
     userContragents: any
     itemsAmount?: null | number
     status: {
+        isLoading: boolean
         loggingIn: boolean
         loggedIn: boolean
     }
@@ -60,6 +61,7 @@ export class Authentication extends VuexModule implements IAuthState {
     public userContragents = []
     public profile = null
     public status = {
+        isLoading: true,
         loggingIn: true,
         loggedIn: false,
     }
@@ -93,6 +95,16 @@ export class Authentication extends VuexModule implements IAuthState {
         }
 
         return false
+    }
+
+    @Mutation
+    START_LOADING() {
+        this.status.isLoading = true
+    }
+
+    @Mutation
+    STOP_LOADING() {
+        this.status.isLoading = false
     }
 
     @Mutation
@@ -161,6 +173,8 @@ export class Authentication extends VuexModule implements IAuthState {
 
     @Action({ rawError: true })
     public async actualizeUser() {
+        this.context.commit('START_LOADING')
+
         let user: User | null = null
         let userProfile: any | null = null
 
@@ -173,6 +187,7 @@ export class Authentication extends VuexModule implements IAuthState {
         if (!user || user.expired) {
             this.auth.removeAuthCookies()
             this.context.commit('ERROR_LOGIN')
+            this.context.commit('STOP_LOADING')
             return
         }
 
@@ -203,6 +218,8 @@ export class Authentication extends VuexModule implements IAuthState {
         } else {
             this.context.commit('ERROR_LOGIN')
         }
+
+        this.context.commit('STOP_LOADING')
     }
 
     @Action

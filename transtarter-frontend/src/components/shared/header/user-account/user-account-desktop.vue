@@ -90,7 +90,7 @@ export default class UserAccountDesktop extends Vue {
         return AuthModule.logged
     }
     get loggingIn() {
-        return AuthModule.loggingIn
+        return AuthModule.status.isLoading
     }
     get avatarTimestamp() {
         if (AuthModule.profile) {
