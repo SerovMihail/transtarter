@@ -27,6 +27,9 @@
             <i class="el-icon-warning"></i>
         </div>
         <!-- block for guests -->
+        <li class="desktop-header__login-item" v-if="loggingIn">
+            Загрузка...
+        </li>
         <li class="desktop-header__login-item" @click="logIn()" v-if="!loggedIn && !loggingIn">
             <a class="border">Вход</a>
         </li>
