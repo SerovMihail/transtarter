@@ -1,4 +1,4 @@
-		(function (d,fallbackUrl){
+		(function (w,d,fallbackUrl){
 			var renderBrowserError = d.createElement('body');
 			renderBrowserError.innerHTML = 
 				'<div class="unsupported-browser">' +
@@ -41,6 +41,9 @@
 			if (clientBrowser.is("Chrome")){
 				isValidBrowserVersion = clientBrowser.satisfies({chrome: ">=49.0.2623.75",});
 			}
+			if(clientBrowserEngine === "EdgeHTML") {
+				w.location.href=fallbackUrl;
+			}
 			var unsupportedEngine = (clientBrowserEngine === "EdgeHTML" || clientBrowserEngine === "Trident");
 			if (!isValidBrowserVersion || unsupportedEngine){
 				d.body = renderBrowserError;
@@ -48,4 +51,4 @@
 				d.documentElement.style.height = "100%"
 				d.body.style.height = '100%';
 			}}
-			(document, 'https://old.tstarter.ru'))
+			(window, document, 'https://old.tstarter.ru'))
