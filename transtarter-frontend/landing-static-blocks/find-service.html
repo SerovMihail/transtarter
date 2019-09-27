@@ -194,6 +194,8 @@
 
       function Placemark(coords = myMap.getCenter(), address = "", tel = "") {
         let telTemplate = '';
+        const phonelist = address.phone.map( phone => `<li>${phone}</li>` ).join('');
+
         if (Array.isArray(tel)) {
           let template = '';
           tel.forEach(singleTel => { template += `<div class="ya-maps__phone"><span class="ya-maps__phone-link" >${singleTel}</span></div>` })
@@ -210,8 +212,10 @@
                           ${address.company}
                         </div>
                         <div class="ya-maps__header">Адрес офиса:</div>
-                        ${address.address}<br>
-                        ${address.phone}
+                        ${address.address}
+                        <ul class="ya-maps__phonelist">
+                          ${phonelist}
+                        <ul>
                     </div>
                         <!-- <a class="ya-maps__email" href="malito:alice@tstarter.ru">alice@tstarter.ru </a> -->
                         <!--<div class="ya-maps__person">
@@ -770,6 +774,16 @@
     display: block;
     font-size: 18px;
     line-height: 1.2em;
+  }
+
+  .ya-maps__phonelist {
+    margin: 3px 0;
+    padding: 0;
+  }
+
+  .ya-maps__phonelist li {
+    list-style: none;
+    margin: 2px;
   }
 
   .ya-maps__phone:first-child {

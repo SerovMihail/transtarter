@@ -191,6 +191,8 @@
 
       function Placemark(coords = myMap.getCenter(), address = "", tel = "") {
         let telTemplate = '';
+        const phonelist = address.phone.map( phone => `<li>${phone}</li>` );
+
         if (Array.isArray(tel)) {
           let template = '';
           tel.forEach(singleTel => { template += `<div class="ya-maps__phone"><span class="ya-maps__phone-link" >${singleTel}</span></div>` })
@@ -206,9 +208,11 @@
                         <div class="ya-maps__company">
                           ${address.company}
                         </div>
-                        <div class="ya-maps__header">Адрес офиса:</div>
-                        ${address.address}<br>
-                        ${address.phone}
+                        <div class="ya-maps__header">Адрес офиса: 111</div>
+                        ${address.address}
+                        <ul class="ya-maps__phonelist">
+                          ${phonelist}
+                        <ul>
                     </div>
                         <!-- <a class="ya-maps__email" href="malito:alice@tstarter.ru">alice@tstarter.ru </a> -->
                         <!--<div class="ya-maps__person">
@@ -224,7 +228,7 @@
         const balloonContentBody = `
                 <div class="baloonContentBody">
                     <div class="ya-maps">
-                        <div class="ya-maps__header">Адрес офиса</div>
+                        <div class="ya-maps__header">Адрес офиса 222</div>
                         ${address}${telTemplate}<a class="ya-maps__email" href="malito:alice@tstarter.ru">alice@tstarter.ru </a>
                         <!--<div class="ya-maps__person">
                             <div class="ya-maps__face" style="background-image:url('https://res.cloudinary.com/duz1yo4sl/image/upload/v1553510444/woman_face_1.png');"></div>
@@ -251,12 +255,15 @@
           const { address, tel } = placemark.properties.getAll();
           const mapAsideAddress = document.getElementById('mapAsideAddress');
           const mobileList = document.getElementById('phone-list');
+
           console.log(mobileList);
+
           const mobile = window.matchMedia(`(max-width: ${mobileResolution})`).matches;
           if (!mobile) {
             placemark.properties.set({ balloonContentBody: null });
             animateMapInfo();
-          } else { placemark.properties.set({ balloonContentBody }); } mapAsideAddress.textContent = address;
+          } else { placemark.properties.set({ balloonContentBody }); } mapAsideAddress.textContent = address.address;
+
           if (tel && Array.isArray(tel)) {
           phoneList.innerHTML = "";
             tel.forEach((singleTel) => {
@@ -754,6 +761,16 @@
 
   .ya-maps__phone:first-child {
     margin-top: 16px;
+  }
+
+  .ya-maps__phonelist {
+    margin: 3px 0;
+    padding: 0;
+  }
+
+  .ya-maps__phonelist li {
+    list-style: none;
+    margin: 2px;
   }
 
   .ya-maps__phone-link {
