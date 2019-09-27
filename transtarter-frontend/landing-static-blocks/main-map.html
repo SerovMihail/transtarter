@@ -48,9 +48,11 @@
           <div class="map-info__section">
             <div class="map-info__body-title">Контакты:</div>
             <div class="map-info__body-content">
+
               <ul id="phone-list" class="map-info__phone-list">
                 <li>8 (495) 748-97-74</li>
               </ul>
+
               <!-- emails -->
               <!-- <a href="mailto:kc@tstarter.ru">kc@tstarter.ru</a> -->
             </div>
@@ -255,27 +257,20 @@
           const { address, tel } = placemark.properties.getAll();
           const mapAsideAddress = document.getElementById('mapAsideAddress');
           const mobileList = document.getElementById('phone-list');
-
-          console.log(mobileList);
-
           const mobile = window.matchMedia(`(max-width: ${mobileResolution})`).matches;
+
           if (!mobile) {
             placemark.properties.set({ balloonContentBody: null });
             animateMapInfo();
           } else { placemark.properties.set({ balloonContentBody }); } mapAsideAddress.textContent = address.address;
 
-          if (tel && Array.isArray(tel)) {
+          if (typeof address.phone !== 'undefined' && Array.isArray(address.phone)) {
           phoneList.innerHTML = "";
-            tel.forEach((singleTel) => {
+          address.phone.forEach((singleTel) => {
               const li = document.createElement("li");
               li.textContent = singleTel;
               phoneList.appendChild(li);
             });
-          } else if (tel) {
-          phoneList.innerHTML = "";
-            const li = document.createElement("li");
-            li.textContent = tel;
-            phoneList.appendChild(li)
           }
         })
         return placemark;

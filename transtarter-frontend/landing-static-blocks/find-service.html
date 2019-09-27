@@ -255,27 +255,24 @@
           document.getElementsByClassName('map-info__body')[0].style.display = "block";
           const phoneList = document.getElementById("phone-list");
           e.stopPropagation();
+
           const { address, tel } = placemark.properties.getAll();
           const mapAsideAddress = document.getElementById('mapAsideAddress');
           const mobileList = document.getElementById('phone-list');
-          console.log(mobileList);
           const mobile = window.matchMedia(`(max-width: ${mobileResolution})`).matches;
+
           if (!mobile) {
             placemark.properties.set({ balloonContentBody: null });
             animateMapInfo();
-          } else { placemark.properties.set({ balloonContentBody }); } mapAsideAddress.textContent = address;
-          if (tel && Array.isArray(tel)) {
+          } else { placemark.properties.set({ balloonContentBody }); } mapAsideAddress.textContent = address.address;
+
+          if (typeof address.phone !== 'undefined' && Array.isArray(address.phone)) {
           phoneList.innerHTML = "";
-            tel.forEach((singleTel) => {
+          address.phone.forEach((singleTel) => {
               const li = document.createElement("li");
               li.textContent = singleTel;
               phoneList.appendChild(li);
             });
-          } else if (tel) {
-          phoneList.innerHTML = "";
-            const li = document.createElement("li");
-            li.textContent = tel;
-            phoneList.appendChild(li)
           }
         })
         return placemark;
