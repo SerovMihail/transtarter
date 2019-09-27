@@ -8,7 +8,8 @@ const GLOBAL_FILIALS_DATA = [
     {
       company: 'Транс Стартер МСК &laquo;Каширка&raquo;',
       address: 'г.Москва, Каширское ш. д.41',
-      phone: ['8-495-744-37-75']
+      phones: ['8-495-744-37-75'],
+      website: ''
     }
   ],
   [
@@ -16,7 +17,8 @@ const GLOBAL_FILIALS_DATA = [
     {
       company: '&laquo;Транс Стартер МСК&raquo;',
       address: 'Московская область, г.Дзержинский, ул.Энергетиков 18А',
-      phone: ['8-495-748-97-74 (Многоканальный номер)']
+      phones: ['8-495-748-97-74 (Многоканальный номер)'],
+      website: ''
     }
   ],
   [
@@ -24,7 +26,8 @@ const GLOBAL_FILIALS_DATA = [
     {
       company: '&laquoТранс Стартер КЛД&raquo',
       address: 'г.Калининград, ул.Первомайская, д.17',
-      phone: ['8-4012-525-400']
+      phones: ['8-4012-525-400'],
+      website: ''
     }
   ],
   [
@@ -32,7 +35,8 @@ const GLOBAL_FILIALS_DATA = [
     {
       company: '&laquoТранс Стартер ЕКБ&raquo',
       address: 'г.Екатеринбург, ул.Ткачей, 14-А',
-      phone: ['8-343-219-88-66']
+      phones: ['8-343-219-88-66'],
+      website: ''
     }
   ],
   [
@@ -40,7 +44,8 @@ const GLOBAL_FILIALS_DATA = [
     {
       company: '&laquoТранс Стартер КРД&raquo',
       address: 'г.Краснодар, ул.Дальняя, д.2',
-      phone: ['8-861-290-09-19']
+      phones: ['8-861-290-09-19'],
+      website: ''
     }
   ],
   [
@@ -48,7 +53,8 @@ const GLOBAL_FILIALS_DATA = [
     {
       company: '&laquoТранс Стартер КЗ&raquo',
       address: 'г.Алматы, пр.Гагарина, 236-Б',
-      phone: ['8-727-346-82-08']
+      phones: ['8-727-346-82-08'],
+      website: ''
     }
   ],
   [
@@ -56,7 +62,8 @@ const GLOBAL_FILIALS_DATA = [
     {
       company: '&laquoТранс Стартер UA&laquo',
       address: 'г.Киев, Московский пр., д.15',
-      phone: ['+380 44 222 67-85']
+      phones: ['+380 44 222 67-85'],
+      website: ''
     }
   ],
   [
@@ -64,7 +71,8 @@ const GLOBAL_FILIALS_DATA = [
     {
       company: '&laquoТранс Стартер Серов&raquo',
       address: 'г.Серов, ул.Кирова, 49/10Б',
-      phone: ['8 (34385) 9-81-03']
+      phones: ['8 (34385) 9-81-03'],
+      website: ''
     }
   ],
   [
@@ -72,7 +80,8 @@ const GLOBAL_FILIALS_DATA = [
     {
       company: '&laquoТранс Стартер Березовский&raquo',
       address: 'г.Березовский, Березовский тракт, 2Г',
-      phone: ['8 (343) 268-11-90']
+      phones: ['8 (343) 268-11-90'],
+      website: ''
     }
   ],
 ];
@@ -85,7 +94,8 @@ const GLOBAL_FRANCHISE_DATA = [
       {
         company: '&laquoТранс Стартер Астрахань&raquo',
         address: 'г.Астрахань, ул.Славянская, д.1',
-        phone: ['8-906-456-05-26', '8-937-509-79-82']
+        phones: ['8-906-456-05-26', '8-937-509-79-82'],
+        website: ''
       }
     ],
     [
@@ -93,7 +103,8 @@ const GLOBAL_FRANCHISE_DATA = [
       {
         company: '&laquoТранс Стартер Архангельск&raquo',
         address: 'г.Архангельск, Окружное ш., д.11, стр.2',
-        phone: ['8 (8182) 4-777-51', '8 (8182) 4-777-56', '8 (8182) 4-777-62']
+        phones: ['8 (8182) 4-777-51', '8 (8182) 4-777-56', '8 (8182) 4-777-62'],
+        website: ''
       }
     ],
     [
@@ -101,7 +112,8 @@ const GLOBAL_FRANCHISE_DATA = [
       {
         company: '&laquoТранс Стартер Омск&raquo',
         address: 'г.Омск, Красноярский тракт, 119/1',
-        phone: ['8 (3812) 59-11-99', '8 (908) 116-77-77']
+        phones: ['8 (3812) 59-11-99', '8 (908) 116-77-77'],
+        website: ''
       }
     ],
     [
@@ -109,7 +121,8 @@ const GLOBAL_FRANCHISE_DATA = [
       {
         company: '&laquoТранс Стартер Краснодар&raquo',
         address: 'г.Краснодар, ул.Сормовская д.1',
-        phone: ['8 (961) 853-39-94']
+        phones: ['8 (961) 853-39-94'],
+        website: ''
       }
     ],
     [
@@ -117,7 +130,8 @@ const GLOBAL_FRANCHISE_DATA = [
       {
         company: '&laquoТранс Стартер Саратов&raquo',
         address: 'г.Саратов, Мурманский проезд, д.1А',
-        phone: ['8 (8452) 49-49-26', '8 (953) 634-43-80']
+        phones: ['8 (8452) 49-49-26', '8 (953) 634-43-80'],
+        website: ''
       }
   ],
 ]

@@ -194,7 +194,7 @@
 
       function Placemark(coords = myMap.getCenter(), address = "", tel = "") {
         let telTemplate = '';
-        const phonelist = address.phone.map( phone => `<li>${phone}</li>` ).join('');
+        const phonelist = address.phones.map( phone => `<li>${phone}</li>` ).join('');
 
         if (Array.isArray(tel)) {
           let template = '';
@@ -266,9 +266,9 @@
             animateMapInfo();
           } else { placemark.properties.set({ balloonContentBody }); } mapAsideAddress.textContent = address.address;
 
-          if (typeof address.phone !== 'undefined' && Array.isArray(address.phone)) {
+          if (typeof address.phones !== 'undefined' && Array.isArray(address.phones)) {
           phoneList.innerHTML = "";
-          address.phone.forEach((singleTel) => {
+          address.phones.forEach((singleTel) => {
               const li = document.createElement("li");
               li.textContent = singleTel;
               phoneList.appendChild(li);
