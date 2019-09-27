@@ -50,8 +50,9 @@
               <ul id="phone-list" class="map-info__phone-list">
                 <li>8 (495) 748-97-74</li>
               </ul>
+
               <!-- emails -->
-              <!-- <a href="mailto:kc@tstarter.ru">kc@tstarter.ru</a> -->
+              <div id="company-site"></div>
             </div>
           </div>
           <!-- <div class="map-info__section">
@@ -243,7 +244,9 @@
           mapInfoBlock.style.animationDuration = animationDurationMilliseconds + "ms";
           mapInfoBlock.style.animationName = "blink";
           setTimeout(() => { mapInfoBlock.style.animationName = ""; }, animationDurationMilliseconds)
-        } placemark.events.add('click', function (e) {
+        }
+
+        placemark.events.add('click', function (e) {
           document.getElementsByClassName('map-info__body')[0].style.display = "block";
           const phoneList = document.getElementById("phone-list");
           e.stopPropagation();
@@ -252,6 +255,16 @@
           const mapAsideAddress = document.getElementById('mapAsideAddress');
           const mobileList = document.getElementById('phone-list');
           const mobile = window.matchMedia(`(max-width: ${mobileResolution})`).matches;
+          const companySiteEl = document.getElementById('company-site');
+
+          if(companySiteEl && address.website !== '') {
+            companySiteEl.innerHTML = "";
+            const link = document.createElement("a");
+            link.href = `//${address.website}`;
+            link.innerHTML = address.website;
+            link.target = "_blank";
+            companySiteEl.appendChild(link);
+          }
 
           if (!mobile) {
             placemark.properties.set({ balloonContentBody: null });
@@ -350,7 +363,7 @@
 
   .map-info__phone-list {
     list-style-type: none;
-    margin: 0;
+    margin: 0 0 5px;
     padding: 0;
   }
 

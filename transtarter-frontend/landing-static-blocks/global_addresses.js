@@ -9,7 +9,7 @@ const GLOBAL_FILIALS_DATA = [
       company: 'Транс Стартер МСК &laquo;Каширка&raquo;',
       address: 'г.Москва, Каширское ш. д.41',
       phones: ['8-495-744-37-75'],
-      website: ''
+      website: 'msk.tstarter.ru'
     }
   ],
   [
@@ -18,7 +18,7 @@ const GLOBAL_FILIALS_DATA = [
       company: '&laquo;Транс Стартер МСК&raquo;',
       address: 'Московская область, г.Дзержинский, ул.Энергетиков 18А',
       phones: ['8-495-748-97-74 (Многоканальный номер)'],
-      website: ''
+      website: 'msk.tstarter.ru'
     }
   ],
   [
@@ -27,7 +27,7 @@ const GLOBAL_FILIALS_DATA = [
       company: '&laquoТранс Стартер КЛД&raquo',
       address: 'г.Калининград, ул.Первомайская, д.17',
       phones: ['8-4012-525-400'],
-      website: ''
+      website: 'kld.tstarter.ru'
     }
   ],
   [
@@ -36,7 +36,7 @@ const GLOBAL_FILIALS_DATA = [
       company: '&laquoТранс Стартер ЕКБ&raquo',
       address: 'г.Екатеринбург, ул.Ткачей, 14-А',
       phones: ['8-343-219-88-66'],
-      website: ''
+      website: 'ekb.tstarter.ru'
     }
   ],
   [
@@ -45,7 +45,7 @@ const GLOBAL_FILIALS_DATA = [
       company: '&laquoТранс Стартер КРД&raquo',
       address: 'г.Краснодар, ул.Дальняя, д.2',
       phones: ['8-861-290-09-19'],
-      website: ''
+      website: 'krd.tstarter.ru'
     }
   ],
   [
@@ -54,7 +54,7 @@ const GLOBAL_FILIALS_DATA = [
       company: '&laquoТранс Стартер КЗ&raquo',
       address: 'г.Алматы, пр.Гагарина, 236-Б',
       phones: ['8-727-346-82-08'],
-      website: ''
+      website: 'tstarter.kz'
     }
   ],
   [
@@ -72,7 +72,7 @@ const GLOBAL_FILIALS_DATA = [
       company: '&laquoТранс Стартер Серов&raquo',
       address: 'г.Серов, ул.Кирова, 49/10Б',
       phones: ['8 (34385) 9-81-03'],
-      website: ''
+      website: 'ekb.tstarter.ru'
     }
   ],
   [
@@ -81,7 +81,7 @@ const GLOBAL_FILIALS_DATA = [
       company: '&laquoТранс Стартер Березовский&raquo',
       address: 'г.Березовский, Березовский тракт, 2Г',
       phones: ['8 (343) 268-11-90'],
-      website: ''
+      website: 'ekb.tstarter.ru'
     }
   ],
 ];
@@ -95,7 +95,7 @@ const GLOBAL_FRANCHISE_DATA = [
         company: '&laquoТранс Стартер Астрахань&raquo',
         address: 'г.Астрахань, ул.Славянская, д.1',
         phones: ['8-906-456-05-26', '8-937-509-79-82'],
-        website: ''
+        website: 'ast.tstarter,ru'
       }
     ],
     [
@@ -104,7 +104,7 @@ const GLOBAL_FRANCHISE_DATA = [
         company: '&laquoТранс Стартер Архангельск&raquo',
         address: 'г.Архангельск, Окружное ш., д.11, стр.2',
         phones: ['8 (8182) 4-777-51', '8 (8182) 4-777-56', '8 (8182) 4-777-62'],
-        website: ''
+        website: 'arh.tstarter.ru'
       }
     ],
     [
@@ -113,7 +113,7 @@ const GLOBAL_FRANCHISE_DATA = [
         company: '&laquoТранс Стартер Омск&raquo',
         address: 'г.Омск, Красноярский тракт, 119/1',
         phones: ['8 (3812) 59-11-99', '8 (908) 116-77-77'],
-        website: ''
+        website: 'omsk.tstarter,ru'
       }
     ],
     [
@@ -122,7 +122,7 @@ const GLOBAL_FRANCHISE_DATA = [
         company: '&laquoТранс Стартер Краснодар&raquo',
         address: 'г.Краснодар, ул.Сормовская д.1',
         phones: ['8 (961) 853-39-94'],
-        website: ''
+        website: 'krd.tstarter.ru'
       }
     ],
     [
@@ -131,7 +131,7 @@ const GLOBAL_FRANCHISE_DATA = [
         company: '&laquoТранс Стартер Саратов&raquo',
         address: 'г.Саратов, Мурманский проезд, д.1А',
         phones: ['8 (8452) 49-49-26', '8 (953) 634-43-80'],
-        website: ''
+        website: 'saratov.tstarter.ru'
       }
   ],
 ]
