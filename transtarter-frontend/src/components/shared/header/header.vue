@@ -25,6 +25,9 @@
                         <li class="desktop-header__menu-item">
                             <a href="/contacts">Контакты</a>
                         </li>
+                        <li class="desktop-header__menu-item desktop-header__old-site-btn">
+                            <a :href="oldSiteUrl">Старая версия сайта</a>
+                        </li>
                         <li
                             class="desktop-header__menu-item"
                             v-for="(link, idx) of parsedLinks"
@@ -58,6 +61,10 @@
             <div class="mobile-header__menu">
                 <!-- left -->
                 <ts-ui-mobile-menu></ts-ui-mobile-menu>
+
+                <li class="mobile-header__menu mobile-header__menu__old-site-btn">
+                    <a :href="oldSiteUrl">Старая версия сайта</a>
+                </li>
 
                 <!-- right -->
                 <ts-ui-user-account-mobile></ts-ui-user-account-mobile>
@@ -115,6 +122,7 @@ import SearchFormMobile from '@/components/shared/header/search-form/search-form
 })
 export default class Header extends Vue {
     @Prop(String) readonly links!: string | undefined
+    oldSiteUrl = process.env.VUE_APP_OLD_SITE
     parsedLinks = {}
     mounted() {
         if (this.links) {

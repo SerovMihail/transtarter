@@ -90,7 +90,7 @@ export default class UserAccountDesktop extends Vue {
         return AuthModule.logged
     }
     get loggingIn() {
-        return AuthModule.loggingIn
+        return AuthModule.status.isLoading
     }
     get avatarTimestamp() {
         if (AuthModule.profile) {
@@ -178,6 +178,10 @@ export default class UserAccountDesktop extends Vue {
         &:hover {
             background-color: lighten($color, 8%) !important;
         }
+    }
+    &__old-site-btn {
+        color: #ffec5a;
+        font-size: 20px;
     }
     &__login {
         display: flex;

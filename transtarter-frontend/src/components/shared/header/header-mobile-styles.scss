@@ -1,4 +1,4 @@
-@media (max-width: 1200px) {
+@media (max-width: 1340px) {
     .desktop-header {
         display: none !important
     }
@@ -42,6 +42,12 @@
                     font-size: 12px;
                     text-transform: uppercase;
                 }
+            }
+            &__old-site-btn {
+                color: #ffec5a;
+                font-size: 14px;
+                display: flex;
+                align-items: center;
             }
             &__right {
                 display: flex;
