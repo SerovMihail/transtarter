@@ -7,14 +7,15 @@
   <div id="map" style="width: 100%; height: 624px"></div>
   <select class="mobile-city-select">
     <option value="default">Выберете город</option>
-    <option value="Moscow">Москва</option>
     <option value="Kaliningrad">Калининград</option>
+    <option value="Moscow">Москва</option>
+    <option value="Dzerzhinsky">Дзержинский</option>
     <option value="Yekaterinburg">Екатеринбург</option>
-    <option value="Berezovski">Березовский</option>
     <option value="Krasnodar">Краснодар</option>
     <option value="Almaty">Алматы</option>
     <option value="Kyiv">Киев</option>
     <option value="Serov">Серов</option>
+    <option value="Berezovsky">Березовский</option>
   </select>
 
   <div style="position: absolute;left:4%; top: 70px; z-index:9999">
@@ -25,14 +26,15 @@
           <div class="map-info__header-text">Выберете свой или ближайший город</div>
           <select name="" class="desktop-city-select" id="">
             <option value="default">Выберете город</option>
-            <option value="Moscow">Москва</option>
             <option value="Kaliningrad">Калининград</option>
-              <option value="Yekaterinburg">Екатеринбург</option>
-            <option value="Berezovski">Березовский</option>
+            <option value="Moscow">Москва</option>
+            <option value="Dzerzhinsky">Дзержинский</option>
+            <option value="Yekaterinburg">Екатеринбург</option>
             <option value="Krasnodar">Краснодар</option>
             <option value="Almaty">Алматы</option>
             <option value="Kyiv">Киев</option>
             <option value="Serov">Серов</option>
+            <option value="Berezovsky">Березовский</option>
           </select>
         </div>
         <div class="map-info__body">
@@ -80,7 +82,7 @@
 					Нажимая на кнопку, вы даете согласие на обработку своих персональных данных и соглашаетесь с Политикой конфиденциальности
 				</div>
 			</div>
-			
+
 		</div> -->
     </div>
 
@@ -91,60 +93,13 @@
 
 </div>
 
-
+<script src="./global_addresses.js"></script>
 
 <script>
 
-
   (function () {
     var myMap;
-    const placemarksData = [
-    [
-        [55.645943569081666,37.67312399999999],
-        'г. Москва Каширское ш. д.41',
-        '8-495-744-37-75',
-    ],
-    [
-        [55.64204706910142,37.82867649999988],
-        'Московская область, г.Дзержинский, ул.Энергетиков 18А',
-        ' 8-495-748-97-74',
-    ],
-    [
-        [54.73466856993723,20.513289999999976],
-        'г. Калининград, ул.Первомайская, д.17',
-        '8-4012-525-400',
-    ],
-    [
-        [56.81833556789966,60.63350600000002],
-        'г. Екатеринбург, ул.Ткачей, 14-А',
-        '8-343-219-88-66',
-    ],
-    [
-        [45.063578574591006,38.972447499999966],
-        'г. Краснодар, ул. Дальняя, 2',
-        '8-861-290-09-19',
-    ],
-    [
-        [43.21356007453611,76.8984115],
-        'г. Алматы пр.Гагарина, 236-Б',
-        '8-727-346-82-08',
-    ],
-    [
-        [50.48895707299117,30.482164499999907],
-        'г. Киев Московский пр. д.15',
-        '+380 44 222 67-85',
-    ],
-    [
-        [59.60026806460948,60.55263950000002],
-        'г. Серов ул. Кирова, 49/10Б',
-        '8 (34385) 9-81-03',
-    ],
-    [
-        [56.898849067774634,60.767417499999965],
-        'г. Березовский, Березовский тракт, 2г',
-        '8 (343) 268-11-90',
-    ],
-] ;
+    const placemarksData = GLOBAL_FILIALS_DATA;
 
     const mobileResolution = '768px';
     ymaps.ready(init);
@@ -176,7 +131,7 @@
                         </div>
                     <div id="zoom-out" class="ya-maps__zoom-control">
                         <div style="width:32px; height:2px; position: absolute; top: 50%; left: 50%; background: white; transform: translateX(-50%) translateY(-50%);"> </div>
-            
+
                     </div>
                     </div>
                 `, {
@@ -242,9 +197,14 @@
           iconImageOffset: [-24, -64]
         });
         const hintContent = `
-                    <div class="hint-container">
-                        <div class="ya-maps__header">Адрес офиса</div>
-                            ${address}</div>
+                        <div class="hint-container">
+                            <div class="ya-maps__company">
+                              ${address.company}
+                            </div>
+                            <div class="ya-maps__header">Адрес офиса:</div>
+                            ${address.address}<br>
+                            ${address.phone}
+                        </div>
                         <!-- <a class="ya-maps__email" href="malito:alice@tstarter.ru">alice@tstarter.ru </a> -->
                         <!--<div class="ya-maps__person">
                             <div class="ya-maps__face" style="background-image:url('https://res.cloudinary.com/duz1yo4sl/image/upload/v1553510444/woman_face_1.png');"></div>
@@ -322,65 +282,55 @@
             myMap.setCenter([58.057765855189736, -2.335747242274284]);
             myMap.setZoom(3);
             break;
-          } case 'Kaliningrad': {
+          }
+          case 'Kaliningrad': {
             myMap.setCenter([54.704528907978, 20.473791500000015]);
             myMap.setZoom(12);
             break;
-          } case 'Moscow': {
+          }
+          case 'Moscow': {
             myMap.setCenter([55.584222181163646, 37.38552449999999]);
             myMap.setZoom(9);
             break;
-          } case 'Astrakhan': {
-            myMap.setCenter([46.34647366903166, 48.03767646826173]);
+          }
+          case 'Dzerzhinsky': {
+            myMap.setCenter([55.630939, 37.849616]);
             myMap.setZoom(12);
             break;
-          } case 'Arkhangelsk': {
-            myMap.setCenter([64.56272891354934, 40.55266499999995]);
-            myMap.setZoom(10);
-            break;
-          } case 'Krasnodar': {
-            myMap.setCenter([45.06165537048585, 38.962197500000016]);
-            myMap.setZoom(12);
-            break;
-          } case 'Leningrad': {
-            myMap.setCenter([59.91807704072416, 30.304899499999895]);
-            myMap.setZoom(10);
-            break;
-          } case 'Yekaterinburg': {
+          }
+          case 'Yekaterinburg': {
             myMap.setCenter([56.78875104810377, 60.60157099999987]);
             myMap.setZoom(10);
             break;
-          } case 'Orenburg': {
-            myMap.setCenter([51.7933427886505, 55.197472000000005]);
-            myMap.setZoom(11);
+          }
+          case 'Krasnodar': {
+            myMap.setCenter([45.06165537048585, 38.962197500000016]);
+            myMap.setZoom(12);
             break;
-          } case 'Perm': {
-            myMap.setCenter([58.02283310604378, 56.2294204999999]);
-            myMap.setZoom(11);
-            break;
-          } case 'Almaty': {
+          }
+          case 'Almaty': {
             myMap.setCenter([43.221309640757674, 76.95543649999995]);
             myMap.setZoom(11);
             break;
-          } case 'Kyiv': {
+          }
+          case 'Kyiv': {
             myMap.setCenter([50.40239488870545, 30.532734499999968]);
             myMap.setZoom(11);
             break;
-          } case 'Novosibirsk': {
-            myMap.setCenter([55.000665013597725, 82.95603900000002]);
-            myMap.setZoom(10);
-            break;
-          } case 'Berezovski': {
-            myMap.setCenter([56.90658036621604,60.82641536949153]);
-            myMap.setZoom(13);
-            break;
-          } case 'Serov': {
+          }
+          case 'Serov': {
             myMap.setCenter([59.60633329588266,60.580495999999975]);
             myMap.setZoom(12);
             break;
           }
+          case 'Berezovski': {
+            myMap.setCenter([56.90658036621604,60.82641536949153]);
+            myMap.setZoom(13);
+            break;
+          }
         }
-      }// myMap.geoObjects.add(myPlacemark);
+      }
+      // myMap.geoObjects.add(myPlacemark);
       myMap.behaviors.disable('scrollZoom');
     }
   }())
@@ -772,10 +722,18 @@
     font-size: 14px;
   }
 
-  .ya-maps__header {
-    font-family: 'PT Sans';
-    font-weight: bold;
+  .hint-container {
+    font-family: 'PT Sans', sans-serif;
+  }
+
+  .ya-maps__company {
     font-size: 16px;
+    margin: 5px 0 3px;
+  }
+
+  .ya-maps__header {
+    font-weight: bold;
+    font-size: 14px;
     line-height: 24px;
     color: #323230;
   }
