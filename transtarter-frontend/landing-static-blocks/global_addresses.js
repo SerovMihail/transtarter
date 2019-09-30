@@ -95,7 +95,7 @@ const GLOBAL_FRANCHISE_DATA = [
         company: '&laquoТранс Стартер Астрахань&raquo',
         address: 'г.Астрахань, ул.Славянская, д.1',
         phones: ['8-906-456-05-26', '8-937-509-79-82'],
-        website: 'ast.tstarter,ru'
+        website: 'ast.tstarter.ru'
       }
     ],
     [
