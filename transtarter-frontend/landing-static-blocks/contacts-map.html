@@ -104,16 +104,28 @@
 
     const mobileResolution = '768px';
     ymaps.ready(init);
-    function init() {// ymaps.geolocation.get({provider: 'yandex',
+
+    function init() {
+      // ymaps.geolocation.get({provider: 'yandex',
       //     mapStateAutoApply: true}).then(result =>{myMap.geoObjects.add(result.geoObjects);
       // myMap.geoObjects.remove(result.geoObjects);
       // console.log(result.geoObjects);});
+
       const mapId = document.getElementById("map");
+
       myMap = new ymaps.Map(mapId, {
         center: [54.24801290964209,37.773155011718764],
         zoom: 4,
         controls: []
       });
+
+      const mapCluster = new ymaps.Clusterer({
+        preset: 'islands#darkGreenClusterIcons',
+        clusterHideIconOnBalloonOpen: false,
+        geoObjectHideIconOnBalloonOpen: false,
+        hasBalloon: false
+      });
+
       var geolocationLayout = ymaps.templateLayoutFactory.createClass(`
                 <div class="ya-maps__zoom-control">
                     <svg  class="ya-maps__zoom-svg-icon"  style="left: 46%; width: 33px;"viewBox="0 0 31 34" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -285,8 +297,24 @@
           }
         })
         return placemark;
-      }// myPlacemark = new Placemark('Москва',[55.74954, 37.621587]);
-      placemarksData.forEach(placemarkData => { myMap.geoObjects.add(new Placemark(...placemarkData)); })
+      }
+
+      //*-------------------  Cluster of YMap ---------------------*//
+      const points = placemarksData.map( point => point[0] );
+      const geoObjects = [];
+
+      placemarksData.forEach( marker => {
+        geoObjects.push( Placemark( marker[0], marker[1]) );
+      });
+
+      mapCluster.add(geoObjects);
+      myMap.geoObjects.add(mapCluster);
+
+      myMap.setBounds(mapCluster.getBounds(), {
+          checkZoomRange: true
+      });
+      /*-------------------------- End Cluster ---------------------------*/
+
 
       const mapSelector = document.querySelector(".desktop-city-select");
       const mapSelectorMobile = document.querySelector(".mobile-city-select");
@@ -383,6 +411,7 @@
     padding-bottom: 16px;
     color: white;
     text-align: center;
+    font-family: sans-serif;
   }
 
   .map-info__header select {
@@ -406,6 +435,7 @@
   .map-info__body {
     padding: 24px 46px 22px 18px;
     display: none;
+    font-family: sans-serif;
   }
 
   .map-info__body-title {
