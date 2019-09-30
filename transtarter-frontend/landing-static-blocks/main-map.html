@@ -110,16 +110,27 @@
 
     const mobileResolution = '768px';
     ymaps.ready(init);
-    function init() {// ymaps.geolocation.get({provider: 'yandex',
-      //     mapStateAutoApply: true}).then(result =>{myMap.geoObjects.add(result.geoObjects);
+
+    function init() {
+      // ymaps.geolocation.get({provider: 'yandex',
+      // mapStateAutoApply: true}).then(result =>{myMap.geoObjects.add(result.geoObjects);
       // myMap.geoObjects.remove(result.geoObjects);
       // console.log(result.geoObjects);});
       const mapId = document.getElementById("map");
+
       myMap = new ymaps.Map(mapId, {
         center: [58.057765855189736, -2.335747242274284],
         zoom: 3,
         controls: []
       });
+
+      const mapCluster = new ymaps.Clusterer({
+        preset: 'islands#invertedVioletClusterIcons',
+        clusterHideIconOnBalloonOpen: false,
+        geoObjectHideIconOnBalloonOpen: false,
+        hasBalloon: false
+      });
+
       var geolocationLayout = ymaps.templateLayoutFactory.createClass(`
                 <div class="ya-maps__zoom-control">
                     <svg  class="ya-maps__zoom-svg-icon"  style="left: 46%; width: 33px;"viewBox="0 0 31 34" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -128,6 +139,7 @@
 
                 </div>`
       );
+
       var ZoomLayout = ymaps.templateLayoutFactory.createClass(`
                     <div>
                         <div id="zoom-in" class="ya-maps__zoom-control">
@@ -163,6 +175,7 @@
             map.setZoom(map.getZoom() - 1, { checkZoomRange: true });
           }
         });
+
       var zoomControl = new ymaps.control.ZoomControl({ options: { layout: ZoomLayout } });
       var geolocationControl = new ymaps.control.GeolocationControl({ options: { layout: geolocationLayout } });
 
@@ -179,8 +192,6 @@
           right: '30px'
         }
       });
-
-
 
 
       myGeoObject = new ymaps.GeoObject({
@@ -255,6 +266,7 @@
           mapInfoBlock.style.animationName = "blink";
           setTimeout(() => { mapInfoBlock.style.animationName = ""; }, animationDurationMilliseconds)
         }
+
         placemark.events.add('click', function (e) {
           document.getElementsByClassName('map-info__body')[0].style.display = "block";
           const phoneList = document.getElementById("phone-list");
@@ -292,9 +304,31 @@
       }
 
       // myPlacemark = new Placemark('Москва',[55.74954, 37.621587]);
-      placemarksData.forEach(placemarkData => {
-        myMap.geoObjects.add(new Placemark(...placemarkData));
-      })
+      // placemarksData.forEach(placemarkData => {
+      //   myMap.geoObjects.add(new Placemark(...placemarkData));
+      // });
+
+
+      //*-------------------  Cluster of YMap ---------------------*//
+      mapCluster.options.set({
+          gridSize: 10,
+      });
+
+      const points = placemarksData.map( point => point[0] );
+      const geoObjects = [];
+
+      for(var i = 0, len = points.length; i < len; i++) {
+        geoObjects[i] = new ymaps.Placemark(points[i]);
+      };
+
+      mapCluster.add(geoObjects);
+      myMap.geoObjects.add(mapCluster);
+
+      myMap.setBounds(mapCluster.getBounds(), {
+          checkZoomRange: true
+      });
+    /*-------------------------- End Cluster ---------------------------*/
+
 
       const mapSelector = document.querySelector(".desktop-city-select");
       const mapSelectorMobile = document.querySelector(".mobile-city-select");
