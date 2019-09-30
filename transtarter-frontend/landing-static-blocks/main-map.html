@@ -125,7 +125,7 @@
       });
 
       const mapCluster = new ymaps.Clusterer({
-        preset: 'islands#invertedVioletClusterIcons',
+        preset: 'islands#darkGreenClusterIcons',
         clusterHideIconOnBalloonOpen: false,
         geoObjectHideIconOnBalloonOpen: false,
         hasBalloon: false
@@ -210,12 +210,18 @@
           let template = '';
           tel.forEach(singleTel => { template += `<div class="ya-maps__phone"><span class="ya-maps__phone-link" >${singleTel}</span></div>` })
           telTemplate = template;
-        } else { telTemplate = `<div class="ya-maps__phone"><span class="ya-maps__phone-link" >${tel}</span></div>` } const placemark = new ymaps.Placemark(coords, null, {
+        } else {
+          elTemplate = `<div class="ya-maps__phone"><span class="ya-maps__phone-link" >${tel}</span></div>`
+
+        }
+
+        const placemark = new ymaps.Placemark(coords, null, {
           iconLayout: 'default#image',
           iconImageHref: 'https://res.cloudinary.com/duz1yo4sl/image/upload/v1553700558/ui/map_pin.png',
           iconImageSize: [48, 64],
           iconImageOffset: [-24, -64]
         });
+
         const hintContent = `
                     <div class="hint-container">
                         <div class="ya-maps__company">
@@ -309,16 +315,20 @@
       // });
 
 
-      //*-------------------  Cluster of YMap ---------------------*//
-      mapCluster.options.set({
-          gridSize: 10,
-      });
 
+
+      //*-------------------  Cluster of YMap ---------------------*//
       const points = placemarksData.map( point => point[0] );
       const geoObjects = [];
 
       for(var i = 0, len = points.length; i < len; i++) {
-        geoObjects[i] = new ymaps.Placemark(points[i]);
+        geoObjects[i] = new ymaps.Placemark(points[i], {}, {
+          iconLayout: 'default#image',
+          iconImageHref: 'https://res.cloudinary.com/duz1yo4sl/image/upload/v1553700558/ui/map_pin.png',
+          iconImageSize: [48, 64],
+          iconImageOffset: [-24, -64],
+
+        });
       };
 
       mapCluster.add(geoObjects);
