@@ -128,7 +128,8 @@
         preset: 'islands#darkGreenClusterIcons',
         clusterHideIconOnBalloonOpen: false,
         geoObjectHideIconOnBalloonOpen: false,
-        hasBalloon: false
+        hasBalloon: false,
+        zoomMargin: 200
       });
 
       var geolocationLayout = ymaps.templateLayoutFactory.createClass(`
@@ -313,7 +314,7 @@
       myMap.geoObjects.add(mapCluster);
 
       myMap.setBounds(mapCluster.getBounds(), {
-          checkZoomRange: true
+        zoomMargin: 100
       });
     /*-------------------------- End Cluster ---------------------------*/
 
