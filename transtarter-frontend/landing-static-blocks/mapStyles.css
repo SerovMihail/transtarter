@@ -403,6 +403,7 @@
 }
 
 .hint-container {
+    user-select: none;
     font-family: "PT Sans", sans-serif;
 }
 
