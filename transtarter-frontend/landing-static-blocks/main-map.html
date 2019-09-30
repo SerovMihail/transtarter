@@ -202,18 +202,9 @@
         properties: { iconColor: '#3b5998', }
       }, {});
 
-      function Placemark(coords = myMap.getCenter(), address = "", tel = "") {
+      function Placemark(coords = myMap.getCenter(), address = "", tel="") {
         let telTemplate = '';
         const phonelist = address.phones.map( phone => `<li>${phone}</li>` );
-
-        if (Array.isArray(tel)) {
-          let template = '';
-          tel.forEach(singleTel => { template += `<div class="ya-maps__phone"><span class="ya-maps__phone-link" >${singleTel}</span></div>` })
-          telTemplate = template;
-        } else {
-          elTemplate = `<div class="ya-maps__phone"><span class="ya-maps__phone-link" >${tel}</span></div>`
-
-        }
 
         const placemark = new ymaps.Placemark(coords, null, {
           iconLayout: 'default#image',
@@ -263,7 +254,7 @@
                     </div>
                 </div>
                 `;
-        placemark.properties.set({ balloonContentBody, hintContent, address, tel });
+        placemark.properties.set({ balloonContentBody, hintContent, address });
 
         function animateMapInfo() {
           const mapInfoBlock = document.querySelector('.map-info');
@@ -277,7 +268,7 @@
           document.getElementsByClassName('map-info__body')[0].style.display = "block";
           const phoneList = document.getElementById("phone-list");
           e.stopPropagation();
-          const { address, tel } = placemark.properties.getAll();
+          const { address } = placemark.properties.getAll();
           const mapAsideAddress = document.getElementById('mapAsideAddress');
           const mobileList = document.getElementById('phone-list');
           const mobile = window.matchMedia(`(max-width: ${mobileResolution})`).matches;
@@ -306,30 +297,17 @@
             });
           }
         })
+
         return placemark;
       }
-
-      // myPlacemark = new Placemark('Москва',[55.74954, 37.621587]);
-      // placemarksData.forEach(placemarkData => {
-      //   myMap.geoObjects.add(new Placemark(...placemarkData));
-      // });
-
-
-
 
       //*-------------------  Cluster of YMap ---------------------*//
       const points = placemarksData.map( point => point[0] );
       const geoObjects = [];
 
-      for(var i = 0, len = points.length; i < len; i++) {
-        geoObjects[i] = new ymaps.Placemark(points[i], {}, {
-          iconLayout: 'default#image',
-          iconImageHref: 'https://res.cloudinary.com/duz1yo4sl/image/upload/v1553700558/ui/map_pin.png',
-          iconImageSize: [48, 64],
-          iconImageOffset: [-24, -64],
-
-        });
-      };
+      placemarksData.forEach( marker => {
+        geoObjects.push( Placemark( marker[0], marker[1]) );
+      });
 
       mapCluster.add(geoObjects);
       myMap.geoObjects.add(mapCluster);
