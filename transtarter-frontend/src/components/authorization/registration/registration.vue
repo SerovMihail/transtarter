@@ -79,7 +79,7 @@
 
 <script lang="ts">
 import { Component, Prop, Vue } from 'vue-property-decorator'
-import { Carousel, Slide } from 'vue-carousel'
+// import { Carousel, Slide } from 'vue-carousel'
 import RegistrationForm from '@/components/authorization/registration/registration-form/registration-form.vue'
 import { mixins } from 'vue-class-component'
 import { ClosablePopup } from '@/components/mixins/closable-popup'
@@ -88,8 +88,8 @@ import { store } from '@/store/index'
 
 @Component({
     components: {
-        Carousel,
-        Slide,
+        // Carousel,
+        // Slide,
         'ts-ui-registration-form': RegistrationForm,
     },
 })
