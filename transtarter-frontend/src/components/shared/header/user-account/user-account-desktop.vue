@@ -273,7 +273,7 @@ export default class UserAccountDesktop extends Vue {
             margin-left: 8px;
         }
     }
-    &__svg-list {
+    ::v-deep &__svg-list {
         height: 19px;
         fill: white;
     }

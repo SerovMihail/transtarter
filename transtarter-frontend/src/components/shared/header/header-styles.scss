@@ -1,6 +1,17 @@
 .header {
     font: 600 16px 'PT Sans';
     .desktop-header {
+    &__svg-list {
+        height: 19px;
+        fill: white;
+    }
+
+        .el-icon-warning-outline,
+        .el-icon-warning {
+            font-size: 20px;
+            color: white;
+            // color: $amber-approx;
+        }
         font-weight: 600;
         display: block;
         &__menu {
