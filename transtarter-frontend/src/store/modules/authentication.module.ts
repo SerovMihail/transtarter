@@ -213,7 +213,7 @@ export class Authentication extends VuexModule implements IAuthState {
             this.auth.saveUserInfo(COOKIE_STORAGE_KEY, user)
             this.context.commit('SUCCESS_LOGIN', { user, userProfile })
 
-            this.context.dispatch('updateCartInfo')
+            await this.context.dispatch('updateCartInfo')
             await this.context.dispatch('updatePartner')
         } else {
             this.context.commit('ERROR_LOGIN')
