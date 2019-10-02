@@ -106,7 +106,6 @@
     // GLOBAL_FILIALS_DATA from global_addresses.js file !!!
     const placemarksData = GLOBAL_FILIALS_DATA;
 
-
     const mobileResolution = '768px';
     ymaps.ready(init);
 
@@ -128,7 +127,7 @@
         clusterHideIconOnBalloonOpen: false,
         geoObjectHideIconOnBalloonOpen: false,
         hasBalloon: false,
-        zoomMargin: document.documentElement.clientWidth > 768 ? 200 : 100
+        zoomMargin: document.documentElement.clientWidth > 768 ? 190 : 130
       });
 
       var geolocationLayout = ymaps.templateLayoutFactory.createClass(`
