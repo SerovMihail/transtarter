@@ -128,7 +128,7 @@
         geoObjectHideIconOnBalloonOpen: false,
         hasBalloon: false,
         hasBalloon: false,
-        zoomMargin: 200
+        zoomMargin: document.documentElement.clientWidth > 768 ? 200 : 100
       });
 
       var geolocationLayout = ymaps.templateLayoutFactory.createClass(`
@@ -203,7 +203,6 @@
       }, {});
 
       function Placemark(coords = myMap.getCenter(), address = "", tel = "") {
-        console.log( tel );
         let telTemplate = '';
         const phonelist = address.phones.map( phone => `<li>${phone}</li>` ).join('');
 

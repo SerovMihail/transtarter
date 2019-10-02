@@ -121,7 +121,7 @@
         geoObjectHideIconOnBalloonOpen: false,
         hasBalloon: false,
         hasBalloon: false,
-        zoomMargin: 200
+        zoomMargin: document.documentElement.clientWidth > 768 ? 200 : 100
       });
 
       var geolocationLayout = ymaps.templateLayoutFactory.createClass(`
