@@ -6,5 +6,8 @@
         </app-modal>
     </div>
 </template>
-<style lang="scss" src="../../../../src/assets/scss/modules/_app-modal.scss"></style>
+<style lang="scss">
+.contragent-restriction-modal {
+}
+</style>
 <script src="./contragent-restriction-modal.ts" lang="ts"></script>

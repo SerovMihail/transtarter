@@ -182,7 +182,7 @@ export default class AccountInfoMobile extends Vue {
         position: absolute;
         top: 7px;
         right: 4px;
-        color: $punch-approx;
+        color: $punch-approx !important;
     }
 }
 </style>
