@@ -1,7 +1,8 @@
 .unsupported-browser {
   position: relative;
   background: #323230;
-  height: 100%; }
+  height: 100%;
+  font-family: sans-serif; }
   .unsupported-browser * {
     margin: 0;
     padding: 0; }
@@ -13,14 +14,19 @@
     width: 80%;
     padding: 30px 0;
     margin: 0 auto; }
+  .unsupported-browser__link {
+    color: #11a815;
+  }
   .unsupported-browser__title {
-    font-family: 'Exo\ 2';
-    font-size: 24px;
+    /* font-family: 'Exo\ 2'; */
+    font-weight: bold;
+    font-size: 22px;
     margin-bottom: 8px; }
   .unsupported-browser__old-site-version {
     font-size: 20px;
     text-align: center; }
     .unsupported-browser__old-site-version a {
+      font-size 18px:
       color: #0cb520; }
   .unsupported-browser__browsers-container {
     width: 556px;
@@ -59,3 +65,24 @@
     padding: 26px; }
     .unsupported-browser__browser-container:hover a {
       text-decoration: underline; }
+
+    .unsupported-browser__instruction {
+      margin: 20px auto;
+      max-width: 600px;
+      height: 150px;
+      position: relative;
+    }
+      .unsupported-browser__instruction-text {
+        float: left;
+        font-size: 16px;
+        max-width: 48%;
+        position: absolute;
+        top: 30%;
+        font-weight: bold;
+
+      }
+      .unsupported-browser__instruction-img {
+        float: right;
+        max-width: 48%;
+        height: 150px;
+      }
