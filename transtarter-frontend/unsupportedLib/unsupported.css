@@ -61,11 +61,11 @@ body {
     margin: 0 auto;
     margin-bottom: 10px; }
     .unsupported-browser__icon--chrome {
-      background-image: url("./assets/chrome.png"); }
+      background-image: url("https://res.cloudinary.com/duz1yo4sl/image/upload/v1570110752/chrome.png"); }
     .unsupported-browser__icon--firefox {
-      background-image: url("./assets/firefox.png"); }
+      background-image: url("https://res.cloudinary.com/duz1yo4sl/image/upload/v1570110752/firefox.png"); }
     .unsupported-browser__icon--opera {
-      background-image: url("./assets/opera.png"); }
+      background-image: url("https://res.cloudinary.com/duz1yo4sl/image/upload/v1570110752/opera.png"); }
   .unsupported-browser__chrome-text {
     /* line-height: 48px; */
     font-size: 18px;

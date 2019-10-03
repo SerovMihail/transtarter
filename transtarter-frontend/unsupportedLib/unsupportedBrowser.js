@@ -60,7 +60,7 @@
         'и нажмите "авторизоваться", следуя инструкции ниже'+
       '</div>' +
       '<div class="unsupported-browser__instruction-img">' +
-        '<img src="./assets/instruction.png" >' +
+        '<img src="https://res.cloudinary.com/duz1yo4sl/image/upload/v1570110752/instruction.png" >' +
       '</div>'
       '<div style="clear: both;"></div>'
     '</div>' +
