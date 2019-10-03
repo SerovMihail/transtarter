@@ -32,9 +32,11 @@
         '</div>'
     var isValidBrowserVersion = true
     var clientBrowser = bowser.getParser(navigator.userAgent)
+    var clientOS = clientBrowser.getOS()
+
     var clientBrowserEngine = clientBrowser.parseEngine().name
-    if (clientBrowser.is('Chrome')) {
-        isValidBrowserVersion = clientBrowser.satisfies({ chrome: '>49.0.2623.112' })
+    if (clientBrowser.is('Chrome') || clientBrowser.parsedResult.os.versionName === 'XP' ) {
+      isValidBrowserVersion = clientBrowser.satisfies({ chrome: '>49.0.2623.112' })
     }
     if (clientBrowserEngine === 'EdgeHTML') {
         w.location.href = fallbackUrl
