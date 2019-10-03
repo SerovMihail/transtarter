@@ -14,19 +14,46 @@
                   'Вы используете Windows XP, данная операционная система не поддерживается данным сайтом' +
                 '</div>' +
               '</div>' +
+
+              '<div class="unsupported-browser__browsers-container" ="">' +
+                '<div class="unsupported-browser__browser-container" ="">' +
+                  '<a href="https://www.mozilla.org/ru/firefox/new" ="">' +
+                    '<div class="unsupported-browser__icon unsupported-browser__icon--firefox" ="">' +
+                    '</div>' +
+                  '</a>' +
+                  '<a href="https://www.mozilla.org/ru/firefox/new" class="unsupported-browser__chrome-text"="">Firefox</a>' +
+                '</div>' +
+
+                '<div class="unsupported-browser__browser-container" ="">' +
+                  '<a href="https://www.google.com/chrome" ="">' +
+                    '<div class="unsupported-browser__icon unsupported-browser__icon--chrome" ="">' +
+                    '</div>' +
+                  '</a>' +
+                  '<a href="https://www.google.com/chrome" class="unsupported-browser__chrome-text"="">Google&nbsp;Chrome</a>' +
+                '</div>' +
+
+                '<div class="unsupported-browser__browser-container" ="">' +
+                  '<a href="https://www.opera.com/ru" ="">' +
+                    '<div class="unsupported-browser__icon unsupported-browser__icon--opera" ="">' +
+                    '</div>' +
+                  '</a>'+
+                  '<a href = "https://www.opera.com/ru" class="unsupported-browser__chrome-text" = "" > Firefox</a > ' +
+                '</div>' +
+              '</div>' +
+
               '<div class="unsupported-browser__old-site-version" ="">' +
                 'Пожалуйста перейдите на предыдущую версию сайта ' +
                 '<a class="unsupported-browser__link" href="' + fallbackUrl + '">' + fallbackUrl + '</a>' +
               '</div>' +
-    '<div class="unsupported-browser__instruction">' +
-    '<div class="unsupported-browser__instruction-text">' +
-      'и нажмите "авторизоваться", следуя инструкции ниже'+
-    '</div>' +
-    '<div class="unsupported-browser__instruction-img">' +
-      '<img src="./assets/instruction.png" >' +
-    '</div>'
-    '<div style="clear: both;"></div>'
-    '</div>' +
+              '<div class="unsupported-browser__instruction">' +
+              '<div class="unsupported-browser__instruction-text">' +
+                'и нажмите "авторизоваться", следуя инструкции ниже'+
+              '</div>' +
+              '<div class="unsupported-browser__instruction-img">' +
+                '<img src="./assets/instruction.png" >' +
+              '</div>'
+              '<div style="clear: both;"></div>'
+              '</div>' +
             '</div>' +
           '</div>' +
         '</div>'

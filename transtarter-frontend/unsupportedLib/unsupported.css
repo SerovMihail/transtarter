@@ -42,7 +42,7 @@ body {
       font-size 18px:
       color: #0cb520; }
   .unsupported-browser__browsers-container {
-    width: 556px;
+    max-width: 800px;
     margin: 0 auto;
     margin-top: 42px;
     margin-bottom: 40px; }
@@ -54,8 +54,8 @@ body {
     background: white;
     padding: 28px; }
   .unsupported-browser__icon {
-    width: 120px;
-    height: 120px;
+    width: 100px;
+    height: 100px;
     background-size: contain;
     background-repeat: no-repeat;
     margin: 0 auto;
@@ -67,15 +67,15 @@ body {
     .unsupported-browser__icon--opera {
       background-image: url("./assets/opera.png"); }
   .unsupported-browser__chrome-text {
-    line-height: 48px;
-    font-size: 24px;
+    /* line-height: 48px; */
+    font-size: 18px;
     color: #0cb520; }
     .unsupported-browser__chrome-text:hover {
       text-decoration: underline; }
   .unsupported-browser__browser-container {
     text-align: center;
-    float: left;
-    padding: 26px; }
+    display: inline-block;
+    width: 33.333%;}
     .unsupported-browser__browser-container:hover a {
       text-decoration: underline; }
 
