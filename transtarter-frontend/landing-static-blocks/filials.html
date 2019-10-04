@@ -82,7 +82,13 @@
     const mapEl = document.getElementById("map");
     const bodyEl = document.querySelector('body');
 
-    const initMapObserver = (entries) => {
+    const optionsMapObserver = {
+      root: bodyEl,
+      rootMargin: '200px',
+      threshold: 1.0
+    };
+
+    function callbackMapObserver (entries) {
       if(myMap !== null) return;
 
       entries.forEach(entry => {
@@ -90,16 +96,11 @@
           ymaps.ready(init);
         }
       })
-    };
-
-    const observer = new IntersectionObserver(initMapObserver);
-    observer.options = {
-      root: bodyEl,
-      rootMargin: '200px',
-      threshold: 1.0
     }
 
-    observer.observe(mapEl);
+    const initMapObserver = new IntersectionObserver(callbackMapObserver, optionsMapObserver);
+
+    initMapObserver.observe(mapEl);
 
     function init() {
       // ymaps.geolocation.get({provider: 'yandex',
