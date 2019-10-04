@@ -103,5 +103,5 @@
 
   renderBrowserError.innerHTML = template;
 
-})(window, document, 'https://old.tstarter.ru')
+})(window, document, 'https://old.tstarter.ru/store/')
 
