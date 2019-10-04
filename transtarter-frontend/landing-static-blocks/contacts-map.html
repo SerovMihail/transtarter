@@ -76,28 +76,26 @@
     const placemarksData = GLOBAL_FILIALS_DATA;
     const mobileResolution = '768px';
     let myMap = null;
-    const mapEl = document.getElementById("map");
-    const bodyEl = document.querySelector('body');
+    const mapEl = document.getElementById('map');
 
     const optionsMapObserver = {
-      root: bodyEl,
       rootMargin: '200px',
       threshold: 1.0
     };
 
-    function callbackMapObserver (entries) {
-      if(myMap !== null) return;
+    function initMapObserver (entries) {
+        if(myMap !== null) return;
 
-      entries.forEach(entry => {
-        if( entry.isIntersecting ) {
-          ymaps.ready(init);
-        }
-      })
-    }
+        entries.forEach(entry => {
+            if( entry.isIntersecting ) {
+                ymaps.ready(init);
+            }
+        })
+    };
 
-    const initMapObserver = new IntersectionObserver(callbackMapObserver, optionsMapObserver);
+    const observer = new IntersectionObserver(initMapObserver, optionsMapObserver);
 
-    initMapObserver.observe(mapEl);
+    observer.observe(mapEl);
 
     function init() {
       // ymaps.geolocation.get({provider: 'yandex',
