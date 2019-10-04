@@ -6,8 +6,8 @@
     <link rel="stylesheet" href="./mapStyles.css">
     <script src="./global_addresses.js"></script>
   </head>
-<body>
-<div class="map-wrap" style="position: relative">
+<body style="margin-top: 1000px">
+<div class="map-wrap" style="position: relative;">
   <div id="map" style="width: 100%; height: 624px"></div>
   <select class="mobile-city-select">
     <option value="default">Выберете город</option>
@@ -56,41 +56,11 @@
               <ul id="phone-list" class="map-info__phone-list">
                 <li>8 (495) 748-97-74</li>
               </ul>
-
-              <!-- emails -->
               <div id="company-site"></div>
             </div>
           </div>
-          <!-- <div class="map-info__section">
-					<div class="map-info__body-title">Часы работы:</div>
-					<div class="map-info__body-content">
-						Будни 8:00-20:00 <br>
-						Выходные 9:00-18:00
-					</div>
-				</div> -->
         </div>
       </div>
-      <!-- <div class="map-leave-info">
-			<div class="map-leave-info__header">
-					Обсудите сотрудничество с представителем «Транс Стартер» в Москве
-			</div>
-			<div class="map-leave-info__body">
-				<div class="map-leave-info__face"></div>
-				<div class="map-leave-info__photo-caption">
-					Константинопольский Константин Константинович
-				</div>
-				<form class="map-leave-info__form">
-					<input type="text" placeholder="Как к вам обращаться?">
-					<input type="text" placeholder="Введите телефон">
-					<input type="email" placeholder="Введите email">
-					<button class="button-yellow" type="button">Обсудить сотрудничество</button>
-				</form>
-				<div class="map-leave-info__agreement">
-					Нажимая на кнопку, вы даете согласие на обработку своих персональных данных и соглашаетесь с Политикой конфиденциальности
-				</div>
-			</div>
-
-		</div> -->
     </div>
   </div>
 </div>
@@ -101,13 +71,31 @@
 
   (function () {
 
-    var myMap;
-
     // GLOBAL_FILIALS_DATA from global_addresses.js file !!!
     const placemarksData = GLOBAL_FILIALS_DATA;
-
     const mobileResolution = '768px';
-    ymaps.ready(init);
+    let myMap = null;
+    const mapEl = document.getElementById("map");
+    const bodyEl = document.querySelector('body');
+
+    const initMapObserver = (entries) => {
+      if(myMap !== null) return;
+
+      entries.forEach(entry => {
+        if( entry.isIntersecting ) {
+          ymaps.ready(init);
+        }
+      })
+    };
+
+    const observer = new IntersectionObserver(initMapObserver);
+    observer.options = {
+      root: bodyEl,
+      rootMargin: '200px',
+      threshold: 1.0
+    }
+
+    observer.observe(mapEl);
 
     function init() {
       // ymaps.geolocation.get({provider: 'yandex',
@@ -130,7 +118,7 @@
         zoomMargin: document.documentElement.clientWidth > 768 ? 190 : 130
       });
 
-      var geolocationLayout = ymaps.templateLayoutFactory.createClass(`
+      const geolocationLayout = ymaps.templateLayoutFactory.createClass(`
                 <div class="ya-maps__zoom-control">
                     <svg  class="ya-maps__zoom-svg-icon"  style="left: 46%; width: 33px;"viewBox="0 0 31 34" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M2.81905 15.1705L28.6062 2.4232L20.8704 30.7352L16.0521 19.5546L15.8683 19.1281L15.424 18.9934L2.81905 15.1705Z" stroke="white" stroke-width="2"/>
@@ -139,7 +127,7 @@
                 </div>`
       );
 
-      var ZoomLayout = ymaps.templateLayoutFactory.createClass(`
+      const ZoomLayout = ymaps.templateLayoutFactory.createClass(`
                     <div>
                         <div id="zoom-in" class="ya-maps__zoom-control">
                             <svg  class="ya-maps__zoom-svg-icon" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -165,18 +153,18 @@
           clear: function () { },
 
           zoomIn: function () {
-            var map = this.getData().control.getMap();
+            const map = this.getData().control.getMap();
             map.setZoom(map.getZoom() + 1, { checkZoomRange: true });
           },
 
           zoomOut: function () {
-            var map = this.getData().control.getMap();
+            const map = this.getData().control.getMap();
             map.setZoom(map.getZoom() - 1, { checkZoomRange: true });
           }
         });
 
-      var zoomControl = new ymaps.control.ZoomControl({ options: { layout: ZoomLayout } });
-      var geolocationControl = new ymaps.control.GeolocationControl({ options: { layout: geolocationLayout } });
+      const zoomControl = new ymaps.control.ZoomControl({ options: { layout: ZoomLayout } });
+      const geolocationControl = new ymaps.control.GeolocationControl({ options: { layout: geolocationLayout } });
 
       myMap.controls.add(geolocationControl, {
         position: {
