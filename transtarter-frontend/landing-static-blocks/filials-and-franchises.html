@@ -2,11 +2,16 @@
   <head>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="initial-scale=1.0, user-scalable=no, maximum-scale=1" />
-
-    <script src="https://api-maps.yandex.ru/2.1/?apikey=64a23fa1-6705-4827-978a-ab84dc6ad5ad&lang=ru_RU" type="text/javascript"></script>
-    <link rel="stylesheet" href="./mapStyles.css">
   </head>
 <body>
+
+<!-- Yandex MAP -->
+<script src="https://api-maps.yandex.ru/2.1/?apikey=64a23fa1-6705-4827-978a-ab84dc6ad5ad&lang=ru_RU" type="text/javascript"></script>
+<script src="https://rawcdn.githack.com/SerovMihail/transtarter/7a514668a9d70c141fb77fc3d03651391c00675d/transtarter-frontend/landing-static-blocks/global_addresses.js"></script>
+
+<!-- Styles of Yandex Map -->
+<link rel="stylesheet" href="https://rawcdn.githack.com/SerovMihail/transtarter/7a514668a9d70c141fb77fc3d03651391c00675d/transtarter-frontend/landing-static-blocks/mapStyles.css">
+
 <div class="map-wrap" style="position: relative">
   <div id="map" style="width: 100%; height: 624px"></div>
   <select class="mobile-city-select">
@@ -70,8 +75,6 @@
     </div>
   </div>
 </div>
-
-<script src="./global_addresses.js"></script>
 
 <script>
   (function () {
