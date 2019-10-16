@@ -2317,11 +2317,10 @@ module.exports = __webpack_require__("8378").getIteratorMethod = function (it) {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-__webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _node_modules_vue_style_loader_index_js_ref_8_oneOf_1_0_node_modules_css_loader_index_js_ref_8_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_8_oneOf_1_2_node_modules_postcss_loader_src_index_js_ref_8_oneOf_1_3_node_modules_sass_loader_lib_loader_js_ref_8_oneOf_1_4_node_modules_cache_loader_dist_cjs_js_ref_0_0_node_modules_vue_loader_lib_index_js_vue_loader_options_search_form_select_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("245d");
 /* harmony import */ var _node_modules_vue_style_loader_index_js_ref_8_oneOf_1_0_node_modules_css_loader_index_js_ref_8_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_8_oneOf_1_2_node_modules_postcss_loader_src_index_js_ref_8_oneOf_1_3_node_modules_sass_loader_lib_loader_js_ref_8_oneOf_1_4_node_modules_cache_loader_dist_cjs_js_ref_0_0_node_modules_vue_loader_lib_index_js_vue_loader_options_search_form_select_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_vue_style_loader_index_js_ref_8_oneOf_1_0_node_modules_css_loader_index_js_ref_8_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_8_oneOf_1_2_node_modules_postcss_loader_src_index_js_ref_8_oneOf_1_3_node_modules_sass_loader_lib_loader_js_ref_8_oneOf_1_4_node_modules_cache_loader_dist_cjs_js_ref_0_0_node_modules_vue_loader_lib_index_js_vue_loader_options_search_form_select_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_0__);
-/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _node_modules_vue_style_loader_index_js_ref_8_oneOf_1_0_node_modules_css_loader_index_js_ref_8_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_8_oneOf_1_2_node_modules_postcss_loader_src_index_js_ref_8_oneOf_1_3_node_modules_sass_loader_lib_loader_js_ref_8_oneOf_1_4_node_modules_cache_loader_dist_cjs_js_ref_0_0_node_modules_vue_loader_lib_index_js_vue_loader_options_search_form_select_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_0__) if(__WEBPACK_IMPORT_KEY__ !== 'default') (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _node_modules_vue_style_loader_index_js_ref_8_oneOf_1_0_node_modules_css_loader_index_js_ref_8_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_8_oneOf_1_2_node_modules_postcss_loader_src_index_js_ref_8_oneOf_1_3_node_modules_sass_loader_lib_loader_js_ref_8_oneOf_1_4_node_modules_cache_loader_dist_cjs_js_ref_0_0_node_modules_vue_loader_lib_index_js_vue_loader_options_search_form_select_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_0__[key]; }) }(__WEBPACK_IMPORT_KEY__));
- /* harmony default export */ __webpack_exports__["default"] = (_node_modules_vue_style_loader_index_js_ref_8_oneOf_1_0_node_modules_css_loader_index_js_ref_8_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_8_oneOf_1_2_node_modules_postcss_loader_src_index_js_ref_8_oneOf_1_3_node_modules_sass_loader_lib_loader_js_ref_8_oneOf_1_4_node_modules_cache_loader_dist_cjs_js_ref_0_0_node_modules_vue_loader_lib_index_js_vue_loader_options_search_form_select_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_0___default.a); 
+/* unused harmony reexport * */
+ /* unused harmony default export */ var _unused_webpack_default_export = (_node_modules_vue_style_loader_index_js_ref_8_oneOf_1_0_node_modules_css_loader_index_js_ref_8_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_8_oneOf_1_2_node_modules_postcss_loader_src_index_js_ref_8_oneOf_1_3_node_modules_sass_loader_lib_loader_js_ref_8_oneOf_1_4_node_modules_cache_loader_dist_cjs_js_ref_0_0_node_modules_vue_loader_lib_index_js_vue_loader_options_search_form_select_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_0___default.a); 
 
 /***/ }),
 
@@ -7635,6 +7634,9 @@ function () {
 // EXTERNAL MODULE: ./src/models/index.ts
 var models = __webpack_require__("0d59");
 
+// EXTERNAL MODULE: ./node_modules/core-js/modules/es6.function.name.js
+var es6_function_name = __webpack_require__("7f7f");
+
 // CONCATENATED MODULE: ./src/services/axios.service.ts
 
 
@@ -7663,52 +7665,71 @@ instance.interceptors.request.use(function (config) {
 
 
 
-class profile_service_ProfileService {
-  constructor() {
+
+
+
+var profile_service_ProfileService =
+/*#__PURE__*/
+function () {
+  function ProfileService() {
+    _classCallCheck(this, ProfileService);
+
     this.identityServerHost = "https://identity-test.tstarter.ru";
     this.userKey = 'user';
-    this.identityUserKey = `${this.userKey}:${this.identityServerHost}:kl`;
+    this.identityUserKey = "".concat(this.userKey, ":").concat(this.identityServerHost, ":kl");
   }
 
-  getProfileInfoByUserId(login) {
-    return axios_service.get(`/api/profiles/${login}`).then(x => x);
-  }
-
-  headProfileAvatarByUserLogin(login) {
-    var result = axios_service.head(`api/profiles/avatar`, {
-      params: {
-        userLogin: login
-      }
-    });
-    return result;
-  }
-
-  updateProfileInfo(updatedUserProfile) {
-    return axios_service.put(`/api/profiles`, updatedUserProfile).then(x => {
-      this.updateUserName(updatedUserProfile.name);
-      return x;
-    });
-  }
-
-  updateUserName(newUserName) {
-    var key = this.identityUserKey;
-    var user = lib_default.a.getItem(this.userKey);
-
-    if (!user) {
-      return;
+  _createClass(ProfileService, [{
+    key: "getProfileInfoByUserId",
+    value: function getProfileInfoByUserId(login) {
+      return axios_service.get("/api/profiles/".concat(login, "?t=").concat(Date.now())).then(function (x) {
+        return x;
+      });
     }
+  }, {
+    key: "headProfileAvatarByUserLogin",
+    value: function headProfileAvatarByUserLogin(login) {
+      var result = axios_service.head("api/profiles/avatar?t=".concat(Date.now()), {
+        params: {
+          userLogin: login
+        }
+      });
+      return result;
+    }
+  }, {
+    key: "updateProfileInfo",
+    value: function updateProfileInfo(updatedUserProfile) {
+      var _this = this;
 
-    var userObject = JSON.parse(user);
-    userObject.profile.name = newUserName;
-    userObject.profile.preferred_username = newUserName;
-    lib_default.a.setItem(this.userKey, JSON.stringify(userObject));
-    store.dispatch('auth/updateUser', {
-      key,
-      userObject
-    });
-  }
+      return axios_service.put("/api/profiles", updatedUserProfile).then(function (x) {
+        _this.updateUserName(updatedUserProfile.name);
 
-}
+        return x;
+      });
+    }
+  }, {
+    key: "updateUserName",
+    value: function updateUserName(newUserName) {
+      var key = this.identityUserKey;
+      var user = lib_default.a.getItem(this.userKey);
+
+      if (!user) {
+        return;
+      }
+
+      var userObject = JSON.parse(user);
+      userObject.profile.name = newUserName;
+      userObject.profile.preferred_username = newUserName;
+      lib_default.a.setItem(this.userKey, JSON.stringify(userObject));
+      store.dispatch('auth/updateUser', {
+        key: key,
+        userObject: userObject
+      });
+    }
+  }]);
+
+  return ProfileService;
+}();
 // EXTERNAL MODULE: ./node_modules/core-js/modules/es7.symbol.async-iterator.js
 var es7_symbol_async_iterator = __webpack_require__("ac4d");
 
@@ -7836,7 +7857,7 @@ function () {
   }, {
     key: "getCartInfo",
     value: function getCartInfo() {
-      return axios_service.get("/api/ts/Carts/info");
+      return axios_service.get("/api/ts/Carts/info?t=".concat(Date.now()));
     }
   }, {
     key: "sendOrder",
@@ -7848,26 +7869,42 @@ function () {
   return CartApiService;
 }();
 // CONCATENATED MODULE: ./src/services/partner-api.service.ts
+
+
+
 /* eslint-disable import/no-duplicates */
 
-class partner_api_service_PartnerApiService {
-  getPartnerInfoById(id) {
-    return axios_service.get(`/api/ts/users/${id}/info`);
+var partner_api_service_PartnerApiService =
+/*#__PURE__*/
+function () {
+  function PartnerApiService() {
+    _classCallCheck(this, PartnerApiService);
   }
 
-  getPartnerById(id) {
-    return axios_service.get(`/api/Partners/${id}`);
-  }
+  _createClass(PartnerApiService, [{
+    key: "getPartnerInfoById",
+    value: function getPartnerInfoById(id) {
+      return axios_service.get("/api/ts/users/".concat(id, "/info?t=").concat(Date.now()));
+    }
+  }, {
+    key: "getPartnerById",
+    value: function getPartnerById(id) {
+      return axios_service.get("/api/Partners/".concat(id, "?t=").concat(Date.now()));
+    }
+  }, {
+    key: "getPartnerBalance",
+    value: function getPartnerBalance() {
+      return axios_service.get("/api/ts/users/current/balance?t=".concat(Date.now()));
+    }
+  }, {
+    key: "getPartnerRestrictions",
+    value: function getPartnerRestrictions() {
+      return axios_service.get("/api/ts/users/current/restrictions?t=".concat(Date.now()));
+    }
+  }]);
 
-  getPartnerBalance() {
-    return axios_service.get(`/api/ts/users/current/balance`);
-  }
-
-  getPartnerRestrictions() {
-    return axios_service.get(`/api/ts/users/current/restrictions`);
-  }
-
-}
+  return PartnerApiService;
+}();
 // CONCATENATED MODULE: ./src/store/modules/authentication.module.ts
 
 
@@ -9776,9 +9813,6 @@ var registration_formvue_type_template_id_8c9dc214_staticRenderFns = [function (
 
 // CONCATENATED MODULE: ./src/components/authorization/registration/registration-form/registration-form.vue?vue&type=template&id=8c9dc214&
 
-// EXTERNAL MODULE: ./node_modules/core-js/modules/es6.function.name.js
-var es6_function_name = __webpack_require__("7f7f");
-
 // EXTERNAL MODULE: ./node_modules/core-js/modules/es6.regexp.replace.js
 var es6_regexp_replace = __webpack_require__("a481");
 
@@ -11672,16 +11706,15 @@ search_form_selectvue_type_script_lang_ts_SearchFormSelect = __decorate([vue_cla
 /* harmony default export */ var search_form_selectvue_type_script_lang_ts_ = (search_form_selectvue_type_script_lang_ts_SearchFormSelect);
 // CONCATENATED MODULE: ./src/components/shared/header/search-form/search-form-select/search-form-select.ts?vue&type=script&lang=ts&
  /* harmony default export */ var search_form_select_search_form_selectvue_type_script_lang_ts_ = (search_form_selectvue_type_script_lang_ts_); 
+// EXTERNAL MODULE: ./src/components/shared/header/search-form/search-form-select/search-form-select.vue?vue&type=style&index=0&lang=scss&
+var search_form_selectvue_type_style_index_0_lang_scss_ = __webpack_require__("27f8");
+
 // CONCATENATED MODULE: ./src/components/shared/header/search-form/search-form-select/search-form-select.vue
 
 
 
-function search_form_select_injectStyles (context) {
-  
-  var style0 = __webpack_require__("27f8")
-if (style0.__inject__) style0.__inject__(context)
 
-}
+
 
 /* normalize component */
 
@@ -11690,10 +11723,10 @@ var search_form_select_component = normalizeComponent(
   search_form_selectvue_type_template_id_c0fb5686_render,
   search_form_selectvue_type_template_id_c0fb5686_staticRenderFns,
   false,
-  search_form_select_injectStyles,
+  null,
   null,
   null
-  ,true
+  
 )
 
 /* harmony default export */ var search_form_select = (search_form_select_component.exports);

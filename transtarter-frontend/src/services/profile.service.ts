@@ -10,10 +10,10 @@ export class ProfileService {
     private identityUserKey = `${this.userKey}:${this.identityServerHost}:kl`
 
     public getProfileInfoByUserId(login: string) {
-        return axios.get<IUserProfile>(`/api/profiles/${login}`).then(x => x)
+        return axios.get<IUserProfile>(`/api/profiles/${login}?t=${Date.now()}`).then(x => x)
     }
     public headProfileAvatarByUserLogin(login: string) {
-        const result = axios.head(`api/profiles/avatar`, {
+        const result = axios.head(`api/profiles/avatar?t=${Date.now()}`, {
             params: {
                 userLogin: login,
             },
