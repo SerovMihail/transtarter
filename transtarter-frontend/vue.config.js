@@ -24,7 +24,8 @@ module.exports = {
         plugins: [
             new CopyWebpackPlugin([
                 { from: 'node_modules/oidc-client/dist/oidc-client.min.js', to: 'js' },
-            ]),
+                { from: 'src/static/common.js', to: 'js' }
+            ])
         ],
         // this section will remove hash from file names
         output: {

@@ -43,11 +43,7 @@
     var clientBrowser = bowser.getParser(navigator.userAgent)
     var clientBrowserEngine = clientBrowser.parseEngine().name
     if (clientBrowser.is('Chrome')) {
-<<<<<<< HEAD
-        isValidBrowserVersion = clientBrowser.satisfies({ chrome: '>49.0.2623.112' })
-=======
         isValidBrowserVersion = clientBrowser.satisfies({ chrome: '>49.0.2623.75' })
->>>>>>> f0340e0bcb943496162ab408782971b68c685d33
     }
     if (clientBrowserEngine === 'EdgeHTML') {
         w.location.href = fallbackUrl
