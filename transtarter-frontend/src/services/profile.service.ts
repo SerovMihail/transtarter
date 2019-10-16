@@ -12,9 +12,13 @@ export class ProfileService {
     public getProfileInfoByUserId(login: string) {
         return axios.get<IUserProfile>(`/api/profiles/${login}`).then(x => x)
     }
-    public getProfileAvatarStatusByUserId(login: string) {
-        const avatar = axios.get<IUserProfile>(`/api/profiles/${login}/avatar`)
-        return avatar
+    public headProfileAvatarByUserLogin(login: string) {
+        const result = axios.head(`api/profiles/avatar`, {
+            params: {
+                userLogin: login,
+            },
+        })
+        return result
     }
     public updateProfileInfo(updatedUserProfile: IUserProfile) {
         return axios.put<boolean>(`/api/profiles`, updatedUserProfile).then(x => {
