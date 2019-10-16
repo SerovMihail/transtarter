@@ -1,6 +1,6 @@
 //sticky-global-header
 document.addEventListener("DOMContentLoaded", function(event) {
-    const bitrixHeaderDiv = document.querySelector(".landing-main > div:first-child");
+    const bitrixHeaderDiv = document.querySelector("#ts-ui-header");
     if (!bitrixHeaderDiv) {
         return;
     }
@@ -10,6 +10,10 @@ document.addEventListener("DOMContentLoaded", function(event) {
 
 //lazy load for .lozad
 document.addEventListener("DOMContentLoaded", () => {
+    if (!lozad) {
+        return;
+    }
+
     var observer = lozad('.lozad', {
         rootMargin: '100px'
     });
