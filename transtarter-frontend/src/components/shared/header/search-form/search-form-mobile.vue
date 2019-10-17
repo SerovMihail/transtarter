@@ -1,26 +1,21 @@
 <template>
-    <form class="search__form">
+    <div class="search__form">
         <div class="form-row">
             <search-form-select
                 class="search-from-mobile"
                 @optionWasChanged="loadedInput = $event"
             ></search-form-select>
         </div>
-
         <template v-if="loadedInput === 'Номер детали'">
             <search-by-number type="mobile" @searchText="searchText = $event" />
         </template>
         <template v-else-if="loadedInput === 'Марка'">
             <search-by-model class="search-from-mobile" />
-            <button type="submit" style="height: 40px; width: 100%" class="search__btn-search">
-                <div class="search__icon-lins" style="left:50%; transform-translate: -50%"></div>
-            </button>
         </template>
-
         <template v-else-if="loadedInput === 'VIN - номер'">
             <search-by-vin type="mobile" />
         </template>
-    </form>
+    </div>
 </template>
 
 <script lang="ts">
