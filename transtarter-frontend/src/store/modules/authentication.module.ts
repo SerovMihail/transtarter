@@ -14,11 +14,12 @@ import {
 import { ProfileService } from '@/services/profile.service'
 import { CartApiService } from '@/services/cart.api.service'
 import { PartnerApiService } from '@/services/partner-api.service'
+import { FavouritesApiService } from '@/services/favourites-api.service'
 
 const profileService = new ProfileService()
 const partnerApiService = new PartnerApiService()
 const cartApiService = new CartApiService()
-
+const favouritesApiService = new FavouritesApiService()
 const userContragentsString = <string>CookieStorage.getItem(COOKIE_TS_USER_CONTRAGENT)
 const contragentString = <string>CookieStorage.getItem(COOKIE_SELECTED_CONTRAGENT)
 const contragent: any = contragentString ? JSON.parse(contragentString) : null
@@ -39,6 +40,7 @@ export interface IAuthState {
     partnerProfile: IPartner | null
     userContragents: any
     itemsAmount?: null | number
+    favouritesAmount: null | number
     status: {
         isLoading: boolean
         loggingIn: boolean
@@ -67,7 +69,7 @@ export class Authentication extends VuexModule implements IAuthState {
     }
     public avatar = ''
     itemsAmount = null
-
+    favouritesAmount = null
     accessTokenExpired: boolean | undefined
 
     auth = new AuthService()
@@ -157,6 +159,10 @@ export class Authentication extends VuexModule implements IAuthState {
             this.itemsAmount = amount
         }
     }
+    @Mutation
+    SET_FAVOURITES_ITEMS_AMOUNT(amount) {
+        this.favouritesAmount = amount
+    }
 
     @Mutation
     UPDATE_PARTNER(partner: IPartner) {
@@ -216,6 +222,7 @@ export class Authentication extends VuexModule implements IAuthState {
             ])
 
             userProfile = userProfileResponse.data
+            this.context.dispatch('updateFavourites')
             if (avatarResponse.status === 200) {
                 userProfile.avatarTimestamp = new Date().getTime()
             }
@@ -266,6 +273,14 @@ export class Authentication extends VuexModule implements IAuthState {
     async updateCartInfo() {
         const { data: cartData } = await cartApiService.getCartInfo()
         this.context.commit('SET_CART_ITEMS_AMOUNT', cartData)
+    }
+
+    @Action
+    async updateFavourites() {
+        if (this.partnerProfile && this.partnerProfile.id) {
+            const { data } = await favouritesApiService.getFavourites(this.partnerProfile.id)
+            this.context.commit('SET_FAVOURITES_ITEMS_AMOUNT', data.totalCount)
+        }
     }
 
     @Action
