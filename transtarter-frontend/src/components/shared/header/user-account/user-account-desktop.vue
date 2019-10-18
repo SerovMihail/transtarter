@@ -44,13 +44,15 @@
         <!-- block for users -->
         <div
             v-if="loggedIn && !loggingIn && !singleContrAgent && contrAgent"
-            class="desktop-header__login-item"
+            class="desktop-header__login-item desktop-header__contragent"
             @click="toggleContrAgent"
         >
-            {{ contrAgent }}
+            <div class="nobreak">
+                {{ contrAgent }}
+            </div>
         </div>
         <div
-            class="desktop-header__login-item user-info"
+            class="user-info"
             id="user-menu-desktop"
             v-if="loggedIn && !loggingIn"
             @click="toggleUserMenu()"
@@ -108,7 +110,7 @@ export default class UserAccountDesktop extends Vue {
 
     get userName() {
         return AuthModule.name.length > 10
-            ? AuthModule.name.substring(0, 10) + '...'
+            ? AuthModule.name.substring(0, 12) + '...'
             : AuthModule.name
     }
 
@@ -182,6 +184,9 @@ export default class UserAccountDesktop extends Vue {
     &__old-site-btn {
         color: #ffec5a;
         font-size: 20px;
+        @include media-notebook-header {
+            font-size: 18px;
+        }
     }
     &__login {
         display: flex;

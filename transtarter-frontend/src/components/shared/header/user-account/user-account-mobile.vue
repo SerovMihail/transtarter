@@ -1,9 +1,8 @@
 <template>
     <div class="mobile-header__menu__right">
-        <!-- <div class="menu-item">
-            <div class="map-alt"></div>
-        </div> -->
-
+        <div class="mobile-header__loading" v-if="loggingIn">
+            Загрузка...
+        </div>
         <div class="menu-item" v-if="loggedIn && !loggingIn" @click="goToCart()">
             <div class="shopping-cart"></div>
             <span v-if="cartAggregateAmount" class="notify-counter">{{ cartAggregateAmount }}</span>
@@ -18,14 +17,17 @@
         >
             <i class="el-icon-warning"></i>
         </div>
-        <div id="user-menu" class="menu-item">
-            <!-- block for guests -->
-
-            <div class="new-user" @click="toggleUserMenu()" v-if="!loggedIn"></div>
-
-            <!-- end for guests -->
-            <!-- block for users -->
-            <div class="user-avatar" v-if="loggedIn" @click="toggleUserMenu()"></div>
+        <div v-if="!loggingIn" id="user-menu" class="menu-item">
+            <div v-if="!loggedIn" class="new-user" @click="toggleUserMenu"></div>
+            <template v-else>
+                <div v-if="!avatarTimestamp" class="user-avatar" @click="toggleUserMenu()"></div>
+                <div
+                    v-else
+                    class="user-avatar"
+                    :style="`background-image: url('${imageUrl}')`"
+                    @click="toggleUserMenu()"
+                ></div>
+            </template>
         </div>
     </div>
 </template>
@@ -60,6 +62,24 @@ export default class UserAccountMobile extends Vue {
         return Boolean(AuthModule.isOrderingDisabled)
     }
 
+    get avatarTimestamp() {
+        if (AuthModule.profile) {
+            // @ts-ignore
+            return AuthModule.profile.avatarTimestamp
+        }
+    }
+
+    get userId() {
+        if (AuthModule.profile) {
+            // @ts-ignore
+            return AuthModule.profile.id
+        }
+    }
+
+    get imageUrl() {
+        return `${this.webApi}/api/profiles/${this.userId}/avatar?t=${this.avatarTimestamp}`
+    }
+
     toggleUserMenu() {
         store.dispatch('display/toggleBlockShowUser')
     }
@@ -78,4 +98,22 @@ export default class UserAccountMobile extends Vue {
 }
 </script>
 
-<style lang="scss"></style>
+<style lang="scss">
+.mobile-header {
+    &__loading {
+        padding-right: 8px;
+    }
+    &__warning {
+        $color: #c73131;
+        background-color: $color;
+        &:hover {
+            background-color: lighten($color, 8%) !important;
+        }
+    }
+    .el-icon-warning-outline,
+    .el-icon-warning {
+        font-size: 20px;
+        color: white;
+    }
+}
+</style>

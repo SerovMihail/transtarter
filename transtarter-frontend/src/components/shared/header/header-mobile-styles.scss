@@ -14,7 +14,7 @@
             height: 100%;
             color: white;
             justify-content: space-between;
-            height: 40px;
+            min-height: 40px;
             &__left {
                 display: flex;
                 align-items: center;
@@ -48,6 +48,8 @@
                 font-size: 14px;
                 display: flex;
                 align-items: center;
+                padding-left: 8px;
+                text-align: center;
             }
             &__right {
                 display: flex;
@@ -85,6 +87,7 @@
                         width: 17px;
                         height: 17px;
                         background: $amber-approx;
+                        color: $black;
                         border-radius: 100px;
                         display: flex;
                         justify-content: center;

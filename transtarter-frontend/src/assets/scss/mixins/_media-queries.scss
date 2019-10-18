@@ -8,3 +8,9 @@
         @content;
     }
 }
+
+@mixin media-notebook-header() {
+    @media (max-width: 1440px) {
+        @content;
+    }
+}
