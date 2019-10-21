@@ -43,11 +43,6 @@
                                         Контакты
                                     </a>
                                 </li>
-                                <li class="link-item" style="padding-bottom: 0;">
-                                    <a class="cards_group__card_link" href="/policy">
-                                        Политика конфиденциальности
-                                    </a>
-                                </li>
                             </ul>
                         </div>
                     </div>
@@ -136,7 +131,7 @@
                     </div>
                 </div>
 
-                <!-- <div class="additional-links">
+                <div class="additional-links">
                     <span class="additional-links-left">
                         <a
                             class="cards_group__card_link bottom-link"
@@ -147,7 +142,7 @@
                             Политика конфиденциальности
                         </a>
                     </span>
-                </div> -->
+                </div>
             </div>
         </div>
     </footer>
