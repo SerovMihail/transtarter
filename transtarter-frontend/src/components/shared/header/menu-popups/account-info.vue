@@ -39,6 +39,13 @@
                     {{ cartAggregateAmount }}
                 </span>
             </a>
+            <a class="menu-popup_list-item" :href="`${webAppHost}/account/favourites`">
+                Избранное
+
+                <span v-if="favouritesAmount > 0" class="menu-popup_list-item-notify">
+                    {{ favouritesAmount }}
+                </span>
+            </a>
             <a class="menu-popup_list-item" :href="`${webAppHost}/account/orders`">
                 Заказы и оплаты
             </a>
@@ -156,6 +163,9 @@ export default class AccountInfoMobile extends Vue {
     }
     get isOrderingDisabled() {
         return AuthModule.isOrderingDisabled
+    }
+    get favouritesAmount() {
+        return AuthModule.favouritesAmount
     }
     vcoMiddleware(e, el) {
         const path = e.composedPath()

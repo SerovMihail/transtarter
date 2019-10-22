@@ -45,5 +45,5 @@
         </div>
     </div>
 </template>
-<style src="./search-form-select.scss" lang="scss"></style>
 <script src="./search-form-select.ts" lang="ts"></script>
+<style lang="scss" src="./search-form-select.scss"></style>

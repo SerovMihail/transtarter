@@ -14,11 +14,12 @@ import {
 import { ProfileService } from '@/services/profile.service'
 import { CartApiService } from '@/services/cart.api.service'
 import { PartnerApiService } from '@/services/partner-api.service'
+import { FavouritesApiService } from '@/services/favourites-api.service'
 
 const profileService = new ProfileService()
 const partnerApiService = new PartnerApiService()
 const cartApiService = new CartApiService()
-
+const favouritesApiService = new FavouritesApiService()
 const userContragentsString = <string>CookieStorage.getItem(COOKIE_TS_USER_CONTRAGENT)
 const contragentString = <string>CookieStorage.getItem(COOKIE_SELECTED_CONTRAGENT)
 const contragent: any = contragentString ? JSON.parse(contragentString) : null
@@ -39,6 +40,7 @@ export interface IAuthState {
     partnerProfile: IPartner | null
     userContragents: any
     itemsAmount?: null | number
+    favouritesAmount: null | number
     status: {
         isLoading: boolean
         loggingIn: boolean
@@ -67,7 +69,7 @@ export class Authentication extends VuexModule implements IAuthState {
     }
     public avatar = ''
     itemsAmount = null
-
+    favouritesAmount = null
     accessTokenExpired: boolean | undefined
 
     auth = new AuthService()
@@ -153,7 +155,13 @@ export class Authentication extends VuexModule implements IAuthState {
     }
     @Mutation
     SET_CART_ITEMS_AMOUNT(amount) {
-        this.itemsAmount = amount
+        if (amount >= 0) {
+            this.itemsAmount = amount
+        }
+    }
+    @Mutation
+    SET_FAVOURITES_ITEMS_AMOUNT(amount) {
+        this.favouritesAmount = amount
     }
 
     @Mutation
@@ -191,32 +199,38 @@ export class Authentication extends VuexModule implements IAuthState {
             return
         }
 
-        if (user) {
-            try {
-                const userProfileResponse = await profileService.getProfileInfoByUserId(
-                    user.profile.name
-                )
-                userProfile = userProfileResponse.data
-            } catch (err) {
-                console.log(err)
+        try {
+            const userProfilePromise = profileService.getProfileInfoByUserId(user.profile.name)
+
+            const avatarStatusPromise = profileService.headProfileAvatarByUserLogin(
+                user.profile.name
+            )
+
+            const updatePartnerPromise = this.context.dispatch('updatePartner')
+            const updateCartInfoPromise = this.context.dispatch('updateCartInfo')
+
+            const [
+                userProfileResponse,
+                avatarResponse,
+                updateCartInfoResponse,
+                updatePartnerResponse,
+            ] = await Promise.all([
+                userProfilePromise,
+                avatarStatusPromise,
+                updateCartInfoPromise,
+                updatePartnerPromise,
+            ])
+
+            userProfile = userProfileResponse.data
+            this.context.dispatch('updateFavourites')
+            if (avatarResponse.status === 200) {
+                userProfile.avatarTimestamp = new Date().getTime()
             }
-        }
-        if (user && userProfile) {
-            try {
-                const hasAvatarResponse = await profileService.getProfileAvatarStatusByUserId(
-                    userProfile.id
-                )
-                if (hasAvatarResponse.status === 200) {
-                    userProfile.avatarTimestamp = new Date().getTime()
-                }
-            } catch (e) {}
+
             this.auth.saveUserInfo(COOKIE_STORAGE_KEY, user)
             this.context.commit('SUCCESS_LOGIN', { user, userProfile })
-
-            await this.context.dispatch('updateCartInfo')
-            await this.context.dispatch('updatePartner')
-        } else {
-            this.context.commit('ERROR_LOGIN')
+        } catch (err) {
+            console.log(err)
         }
 
         this.context.commit('STOP_LOADING')
@@ -248,33 +262,54 @@ export class Authentication extends VuexModule implements IAuthState {
     @Action
     async updateContrAgent(contragent: any) {
         CookieStorage.setItem(COOKIE_SELECTED_CONTRAGENT, JSON.stringify(contragent))
-        await this.context.commit('UPDATE_CONTR_AGENT', contragent)
-        await this.context.dispatch('updateCartInfo')
-        await this.context.dispatch('updatePartner')
+        this.context.commit('UPDATE_CONTR_AGENT', contragent)
+
+        const updatePartnerPromise = this.context.dispatch('updatePartner')
+        const updateCartInfoPromise = this.context.dispatch('updateCartInfo')
+        await Promise.all([updatePartnerPromise, updateCartInfoPromise])
     }
 
     @Action
     async updateCartInfo() {
-        const { data: cartData } = await cartApiService.getCart()
-        this.context.commit('SET_CART_ITEMS_AMOUNT', cartData.itemAggregatesCount)
+        const { data: cartData } = await cartApiService.getCartInfo()
+        this.context.commit('SET_CART_ITEMS_AMOUNT', cartData)
+    }
+
+    @Action
+    async updateFavourites() {
+        if (this.partnerProfile && this.partnerProfile.id) {
+            const { data } = await favouritesApiService.getFavourites(this.partnerProfile.id)
+            this.context.commit('SET_FAVOURITES_ITEMS_AMOUNT', data.totalCount)
+        }
     }
 
     @Action
     async updatePartner() {
-        if (!this.contragent) {
+        if (!contragent) {
             return
         }
 
         try {
-            const { data: partner } = await partnerApiService.getPartnerById(this.contragent.id)
-            const { data: partnerBalance } = await partnerApiService.getPartnerBalance()
-            const { data: partnerRestrictions } = await partnerApiService.getPartnerRestrictions()
+            const getPartnerByIdPromise = partnerApiService.getPartnerById(contragent.id)
+            const getPartnerBalancePromise = partnerApiService.getPartnerBalance()
+            const getPartnerRestrictionsPromise = partnerApiService.getPartnerRestrictions()
+            const [
+                { data: partner },
+                { data: partnerBalance },
+                { data: partnerRestrictions },
+            ] = await Promise.all([
+                getPartnerByIdPromise,
+                getPartnerBalancePromise,
+                getPartnerRestrictionsPromise,
+            ])
 
             partner.balance = partnerBalance
             partner.restrictions = partnerRestrictions
 
             this.context.commit('UPDATE_PARTNER', partner)
-        } catch (err) {}
+        } catch (err) {
+            console.log(err)
+        }
     }
 
     @Action

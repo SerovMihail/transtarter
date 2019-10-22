@@ -1,14 +1,8 @@
 <template>
-    <form class="container search__form" @submit.prevent="goToResults">
+    <div class="container search__form">
         <search-from-select @optionWasChanged="optionWasChanged($event)"></search-from-select>
         <template v-if="loadedInput === 'Номер детали'">
             <search-by-number @searchText="searchText = $event" />
-            <a
-                class="search__btn-search"
-                :href="`${searchBaseUrl}/detail-number/${this.searchText}`"
-            >
-                Найти
-            </a>
         </template>
         <template v-else-if="loadedInput === 'Марка'">
             <search-by-model />
@@ -18,7 +12,7 @@
             <search-by-vin @searchText="searchText = $event" />
             <button type="button" class="search__btn-search">Найти</button>
         </template>
-    </form>
+    </div>
 </template>
 
 <script lang="ts">
@@ -51,17 +45,6 @@ export default class SearchFormDesktop extends Vue {
     optionWasChanged(option: string) {
         this.loadedInput = option
         this.searchText = ''
-    }
-    get searchLink(): string {
-        if (this.loadedInput === 'Номер детали') {
-            return this.searchBaseUrl + '/detail-number/' + this.searchText
-        } else if (this.loadedInput === 'VIN - номер') {
-            return '/vin-number/' + this.searchText
-        }
-        return ''
-    }
-    goToResults() {
-        window.location.href = this.searchLink
     }
 }
 </script>

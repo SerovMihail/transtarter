@@ -6,7 +6,7 @@ import axios from 'axios'
 @Component
 export class HeaderSearchText extends Vue {
     private webApi = process.env.VUE_APP_WEB_APP_API
-    searchText: string | number = ''
+    searchText: string = ''
 
     foundItems: ISearchResult[] = []
 
@@ -53,11 +53,6 @@ export class HeaderSearchText extends Vue {
 
     @Watch('searchText')
     onChildChanged(val: string, oldVal: string) {
-        // if (val.length >= 3) {
-        //     this.findItems()
-        // } else if (val.length <= 3 && oldVal.length >= 3) {
-        //     this.foundItems = []
-        // }
         this.$emit('searchText', this.searchText)
     }
 }

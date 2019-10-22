@@ -40,7 +40,7 @@ export class CartApiService implements ICartService {
         }
     }
     getCartInfo() {
-        return axios.get(`/api/ts/Carts/info`)
+        return axios.get(`/api/ts/Carts/info?t=${Date.now()}`)
     }
     sendOrder(order: any) {
         return axios.post('/api/Orders', order)
