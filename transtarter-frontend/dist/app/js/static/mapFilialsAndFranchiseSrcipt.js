@@ -1,7 +1,7 @@
 /* eslint-disable */
 ;(function() {
     // GLOBAL_FILIALS_DATA from global_addresses.js file !!!
-    const placemarksData = GLOBAL_FILIALS_DATA;
+    const placemarksData = GLOBAL_FILIALS_DATA.concat(GLOBAL_FRANCHISE_DATA);
     const mobileResolution = '768px';
     let myMap = null;
     const mapEl = document.getElementById('map');
@@ -21,13 +21,13 @@
     observer.observe(mapEl);
     function init() {
       // ymaps.geolocation.get({provider: 'yandex',
-      // mapStateAutoApply: true}).then(result =>{myMap.geoObjects.add(result.geoObjects);
+      //     mapStateAutoApply: true}).then(result =>{myMap.geoObjects.add(result.geoObjects);
       // myMap.geoObjects.remove(result.geoObjects);
       // console.log(result.geoObjects);});
       const mapId = document.getElementById("map");
       myMap = new ymaps.Map(mapId, {
-        center: [58.057765855189736, -2.335747242274284],
-        zoom: 3,
+        center: [54.24801290964209,37.773155011718764],
+        zoom: 4,
         controls: []
       });
       const mapCluster = new ymaps.Clusterer({
@@ -35,16 +35,17 @@
         clusterHideIconOnBalloonOpen: false,
         geoObjectHideIconOnBalloonOpen: false,
         hasBalloon: false,
+        hasBalloon: false,
         zoomMargin: document.documentElement.clientWidth > 768 ? 190 : 130
       });
-      const geolocationLayout = ymaps.templateLayoutFactory.createClass(`
+      var geolocationLayout = ymaps.templateLayoutFactory.createClass(`
                 <div class="ya-maps__zoom-control">
                     <svg  class="ya-maps__zoom-svg-icon"  style="left: 46%; width: 33px;"viewBox="0 0 31 34" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M2.81905 15.1705L28.6062 2.4232L20.8704 30.7352L16.0521 19.5546L15.8683 19.1281L15.424 18.9934L2.81905 15.1705Z" stroke="white" stroke-width="2"/>
                     </svg>
                 </div>`
       );
-      const ZoomLayout = ymaps.templateLayoutFactory.createClass(`
+      var ZoomLayout = ymaps.templateLayoutFactory.createClass(`
                     <div>
                         <div id="zoom-in" class="ya-maps__zoom-control">
                             <svg  class="ya-maps__zoom-svg-icon" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -66,16 +67,16 @@
           },
           clear: function () { },
           zoomIn: function () {
-            const map = this.getData().control.getMap();
+            var map = this.getData().control.getMap();
             map.setZoom(map.getZoom() + 1, { checkZoomRange: true });
           },
           zoomOut: function () {
-            const map = this.getData().control.getMap();
+            var map = this.getData().control.getMap();
             map.setZoom(map.getZoom() - 1, { checkZoomRange: true });
           }
         });
-      const zoomControl = new ymaps.control.ZoomControl({ options: { layout: ZoomLayout } });
-      const geolocationControl = new ymaps.control.GeolocationControl({ options: { layout: geolocationLayout } });
+      var zoomControl = new ymaps.control.ZoomControl({ options: { layout: ZoomLayout } });
+      var geolocationControl = new ymaps.control.GeolocationControl({ options: { layout: geolocationLayout } });
       myMap.controls.add(geolocationControl, {
         position: {
           top: '80px',
@@ -95,10 +96,14 @@
         },
         properties: { iconColor: '#3b5998', }
       }, {});
-      function Placemark(coords = myMap.getCenter(), address = "", tel="") {
+      function Placemark(coords = myMap.getCenter(), address = "", tel = "") {
         let telTemplate = '';
-        const phonelist = address.phones.map( phone => `<li>${phone}</li>` );
-        const placemark = new ymaps.Placemark(coords, null, {
+        const phonelist = address.phones.map( phone => `<li>${phone}</li>` ).join('');
+        if (Array.isArray(tel)) {
+          let template = '';
+          tel.forEach(singleTel => { template += `<div class="ya-maps__phone"><span class="ya-maps__phone-link" >${singleTel}</span></div>` })
+          telTemplate = template;
+        } else { telTemplate = `<div class="ya-maps__phone"><span class="ya-maps__phone-link" >${tel}</span></div>` } const placemark = new ymaps.Placemark(coords, null, {
           iconLayout: 'default#image',
           iconImageHref: 'https://res.cloudinary.com/duz1yo4sl/image/upload/v1553700558/ui/map_pin.png',
           iconImageSize: [48, 64],
@@ -144,19 +149,19 @@
                     </div>
                 </div>
                 `;
-        placemark.properties.set({ balloonContentBody, hintContent, address });
+        placemark.properties.set({ balloonContentBody, hintContent, address, tel });
         function animateMapInfo() {
           const mapInfoBlock = document.querySelector('.map-info');
           const animationDurationMilliseconds = 400;
           mapInfoBlock.style.animationDuration = animationDurationMilliseconds + "ms";
           mapInfoBlock.style.animationName = "blink";
-                setTimeout(() => { mapInfoBlock.style.animationName = ""; }, animationDurationMilliseconds)
-            }
+          setTimeout(() => { mapInfoBlock.style.animationName = ""; }, animationDurationMilliseconds)
+        }
         placemark.events.add('click', function (e) {
           document.getElementsByClassName('map-info__body')[0].style.display = "block";
           const phoneList = document.getElementById("phone-list");
           e.stopPropagation();
-          const { address } = placemark.properties.getAll();
+          const { address, tel } = placemark.properties.getAll();
           const mapAsideAddress = document.getElementById('mapAsideAddress');
           const mobileList = document.getElementById('phone-list');
           const mobile = window.matchMedia(`(max-width: ${mobileResolution})`).matches;
@@ -168,8 +173,6 @@
             link.innerHTML = address.website;
             link.target = "_blank";
             companySiteEl.appendChild(link);
-          }else {
-            companySiteEl.innerHTML = "";
           }
           if (!mobile) {
             placemark.properties.set({ balloonContentBody: null });
@@ -209,50 +212,71 @@
             myMap.setCenter([58.057765855189736, -2.335747242274284]);
             myMap.setZoom(3);
             break;
-          }
-          case 'Kaliningrad': {
+          } case 'Kaliningrad': {
             myMap.setCenter([54.704528907978, 20.473791500000015]);
             myMap.setZoom(12);
             break;
-          }
-          case 'Moscow': {
+          } case 'Moscow': {
             myMap.setCenter([55.584222181163646, 37.38552449999999]);
             myMap.setZoom(9);
             break;
-          }
-          case 'Dzerzhinsky': {
-            myMap.setCenter([55.630939, 37.849616]);
+          } case 'Astrakhan': {
+            myMap.setCenter([46.34647366903166, 48.03767646826173]);
             myMap.setZoom(12);
             break;
-          }
-          case 'Yekaterinburg': {
-            myMap.setCenter([56.78875104810377, 60.60157099999987]);
+          } case 'Arkhangelsk': {
+            myMap.setCenter([64.56272891354934, 40.55266499999995]);
             myMap.setZoom(10);
             break;
-          }
-          case 'Krasnodar': {
+          } case 'Krasnodar': {
             myMap.setCenter([45.06165537048585, 38.962197500000016]);
             myMap.setZoom(12);
             break;
-          }
-          case 'Almaty': {
+          } case 'Leningrad': {
+            myMap.setCenter([59.91807704072416, 30.304899499999895]);
+            myMap.setZoom(10);
+            break;
+          } case 'Yekaterinburg': {
+            myMap.setCenter([56.78875104810377, 60.60157099999987]);
+            myMap.setZoom(10);
+            break;
+          } case 'Orenburg': {
+            myMap.setCenter([51.7933427886505, 55.197472000000005]);
+            myMap.setZoom(11);
+            break;
+          } case 'Perm': {
+            myMap.setCenter([58.02283310604378, 56.2294204999999]);
+            myMap.setZoom(11);
+            break;
+          } case 'Almaty': {
             myMap.setCenter([43.221309640757674, 76.95543649999995]);
             myMap.setZoom(11);
             break;
-          }
-          case 'Kyiv': {
+          } case 'Kyiv': {
             myMap.setCenter([50.40239488870545, 30.532734499999968]);
             myMap.setZoom(11);
             break;
-          }
-          case 'Serov': {
-            myMap.setCenter([59.605391, 60.573588]);
-            myMap.setZoom(11);
+          } case 'Novosibirsk': {
+            myMap.setCenter([55.000665013597725, 82.95603900000002]);
+            myMap.setZoom(10);
             break;
           }
-          case 'Berezovski': {
+           case 'Berezovski': {
             myMap.setCenter([56.90658036621604,60.82641536949153]);
             myMap.setZoom(13);
+            break;
+          }
+           case 'Serov': {
+              myMap.setCenter([59.60633329588266,60.580495999999975]);
+            myMap.setZoom(12);
+            break;
+          } case 'Omsk': {
+              myMap.setCenter([55.070792258316466,73.34821759765622]);
+            myMap.setZoom(12);
+            break;
+          } case 'Saratov': {
+              myMap.setCenter([51.53920339085138,46.007006499999896]);
+            myMap.setZoom(12);
             break;
           }
         }
