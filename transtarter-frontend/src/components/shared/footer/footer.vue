@@ -135,7 +135,7 @@
                     <span class="additional-links-left">
                         <a
                             class="cards_group__card_link bottom-link"
-                            href="/politika"
+                            href="/policy"
                             target="_blank"
                             rel="noopener noreferrer"
                         >
