@@ -2,9 +2,9 @@
     <div>
         <!-- main sections -->
         <layout-header></layout-header>
-        .
-        <div class="container typography ">
-            <h2>Политика конфиденциальности</h2>
+        <reg-btn />
+        <div class="container typography">
+            <h2 style="margin-top: 20px">Политика конфиденциальности</h2>
             <ol>
                 <li>
                     <strong>Какую информацию мы сохраняем?</strong>
@@ -17,34 +17,31 @@
                 </li>
                 <li>
                     <strong>Как мы используем Вашу информацию?</strong>
-                    <ul>
-                        <li>
-                            Персонализация сервиса (Ваша информация помогает нам лучше
-                            соответствовать Вашим индивидуальным потребностям и удобствам).
-                        </li>
-                        <li>
-                            Улучшение нашего сайта (мы постоянно прилагаем усилия для
-                            усовершенствования нашего сервиса, принимая во внимание Ваши замечания и
-                            предложения).
-                        </li>
-                        <li>
-                            Улучшение работы с клиентами (Ваша информация помогает нам повысить
-                            эффективность ответов на запросы клиентов и повысить качество службы
-                            поддержки).
-                        </li>
-                        <li>
-                            Обработка транзакций. Ваша информация, вне зависимости от степени
-                            приватности, без Вашего согласия не может быть продана, обменяна или
-                            передана любой другой компании ни под каким предлогом, кроме как для
-                            доставки заказанных продуктов и услуг.
-                        </li>
-                        <li>
-                            Рассылка периодических электронных писем. Адрес электронной почты,
-                            предоставленный Вами при заказе сервиса, может быть использован для
-                            передачи Вам информации, касаемо Вашего заказа, а также новостей
-                            компании, обновлений сервиса, информации о похожих продуктах и т.п.
-                        </li>
-                    </ul>
+                    <p>
+                        Персонализация сервиса (Ваша информация помогает нам лучше соответствовать
+                        Вашим индивидуальным потребностям и удобствам).
+                    </p>
+                    <p>
+                        Улучшение нашего сайта (мы постоянно прилагаем усилия для усовершенствования
+                        нашего сервиса, принимая во внимание Ваши замечания и предложения).
+                    </p>
+                    <p>
+                        Улучшение работы с клиентами (Ваша информация помогает нам повысить
+                        эффективность ответов на запросы клиентов и повысить качество службы
+                        поддержки).
+                    </p>
+                    <p>
+                        Обработка транзакций. Ваша информация, вне зависимости от степени
+                        приватности, без Вашего согласия не может быть продана, обменяна или
+                        передана любой другой компании ни под каким предлогом, кроме как для
+                        доставки заказанных продуктов и услуг.
+                    </p>
+                    <p>
+                        Рассылка периодических электронных писем. Адрес электронной почты,
+                        предоставленный Вами при заказе сервиса, может быть использован для передачи
+                        Вам информации, касаемо Вашего заказа, а также новостей компании, обновлений
+                        сервиса, информации о похожих продуктах и т.п.
+                    </p>
                 </li>
                 <li>
                     <strong>Используем ли мы куки?</strong>
@@ -84,15 +81,18 @@
                         передавать информацию, сгенерированную Вами, нашему боту/сервису с целью
                         предоставить возможность пользоваться сервисом. Больше информации о Политике
                         Конфиденциальности Microsoft можно найти на странице:
-                        http://go.microsoft.com/fwlink/?LinkId=521839.
+                        <a href="http://go.microsoft.com/fwlink/?LinkId=521839">
+                            http://go.microsoft.com/fwlink/?LinkId=521839
+                        </a>
                     </p>
                     <p>
                         Также, Ваше взаимодействие с ботом/сервисом в то же время происходит
                         согласно Условий Пользования конкретного канала коммуникации, его Политике
                         Конфиденциальности и политике сбора данных. Чтобы пожаловаться на
                         использование бота на базе Microsoft Bot Framework to Microsoft, посетите
-                        сайт Microsoft Bot Framework по адресу https://www.botframework.com и
-                        используйте ссылку в меню “Report Abuse” для обратной связи с Microsoft.
+                        сайт Microsoft Bot Framework по адресу
+                        <a href="https://www.botframework.com">https://www.botframework.com</a>
+                        и используйте ссылку в меню “Report Abuse” для обратной связи с Microsoft.
                     </p>
                 </li>
                 <li>
@@ -197,6 +197,7 @@ import LayoutHeader from '@/components/shared/header/header.vue'
 import LayoutFooter from '@/components/shared/footer/footer.vue'
 import SelectCity from '@/components/shared/select-city/select-city.vue'
 import YourCity from '@/components/shared/your-city/your-city.vue'
+import RegBtn from '@/components/shared/reg-btn/reg-btn.vue'
 // popups
 import Registration from '@/components/authorization/registration/registration.vue'
 // import LogIn from '@/components/authorization/log-in/log-in.vue'
@@ -217,6 +218,7 @@ import ContragentRestrictionModal from '@/components/shared/contragent-restricti
         LayoutFooter,
         YourCity,
         SelectCity,
+        RegBtn,
         // popups
         Registration,
         // logIn,
@@ -231,46 +233,4 @@ import ContragentRestrictionModal from '@/components/shared/contragent-restricti
 export default class Main extends Vue {}
 </script>
 
-<style lang="scss">
-.typography {
-    h1,
-    h2,
-    h3,
-    h4,
-    h5,
-    h6 {
-        font-family: Exo 2;
-    }
-    h1 {
-        font-style: normal;
-        font-weight: bold;
-        font-size: 72px;
-        line-height: 80px;
-        color: #323230;
-    }
-    h2 {
-        font-style: normal;
-        font-weight: bold;
-        font-size: 40px;
-        line-height: 48px;
-    }
-    p {
-        line-height: 28px;
-        font-size: 19px;
-        font-family: 'PT Sans';
-    }
-    ol,
-    ul {
-        list-style-position: inside;
-    }
-    li {
-        margin-top: 10px;
-        p {
-            margin-top: 4px;
-        }
-    }
-    /* or 120% */
-
-    color: #323230;
-}
-</style>
+<style lang="scss"></style>

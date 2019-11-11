@@ -161,7 +161,7 @@
                 своих персональных данных и соглашаетесь
                 <br />
                 с
-                <a href="/politika" class="policy-link solid-border-grey">
+                <a href="/policy" class="policy-link solid-border-grey">
                     Политикой конфиденциальности
                 </a>
             </div>

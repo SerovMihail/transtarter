@@ -11,7 +11,7 @@ export class FavouritesApiService {
     }
 
     public getFavourites(partnerId: number): Promise<AxiosResponse<IFavouriteDto>> {
-        return axios.get(`/api/partners/${partnerId}/favourites`, {
+        return axios.get(`/api/partners/${partnerId}/favourites?t=${Date.now()}`, {
             params: {
                 skip: 0,
                 take: INT_32_MAX_VALUE,
