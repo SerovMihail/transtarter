@@ -5,10 +5,7 @@
                 <div class="cards_group">
                     <div class="cards_group__card">
                         <div class="cards_group__card_header card_header_logo">ТРАНС СТАРТЕР</div>
-                        <div
-                            class="cards_group__card_body specialization"
-                            style="line-height: 24px;"
-                        >
+                        <div class="cards_group__card_body specialization">
                             Продажа стартеров, генераторов
                             <br />
                             и запчастей с 1995 г.
@@ -47,24 +44,14 @@
                         </div>
                     </div>
                     <div class="cards_group__card">
-                        <div
-                            class="cards_group__card_body cards_group__card_soc"
-                            style="line-height: 24px;"
-                        >
-                            Задавайте свои вопросы прямо сейчас
+                        <div class="cards_group__card_body cards_group__card_soc">
+                            <div>
+                                Задавайте свои вопросы
+                                <br />
+                                прямо сейчас
+                            </div>
 
                             <ul class="cards_group__card_soc-list">
-                                <!-- <li>
-                                    <a href="#!" class="social-link" target="_blank">
-                                        <span class="social-link-icon social-link-viber-icon"></span>
-                                    </a>
-                                </li> -->
-
-                                <!-- <li>
-                                    <a href="https://t.me/tstarter" target="_blank" class="social-link ">
-                                        <span class="social-link-icon social-link-telegram-icon"></span>
-                                    </a>
-                                </li> -->
                                 <li>
                                     <a
                                         href="https://vk.com/transstarter777"
@@ -87,11 +74,6 @@
                                     </a>
                                 </li>
 
-                                <!-- <li>
-                                    <a href="#!" class="social-link" target="_blank">
-                                        <span class="social-link-icon social-link-whats-up-icon"></span>
-                                    </a>
-                                </li> -->
                                 <li>
                                     <a
                                         href="https://www.instagram.com/transstarter/"
@@ -107,11 +89,7 @@
                         </div>
                     </div>
                     <div class="cards_group__card call-card">
-                        <a
-                            class="cards_group__card_header"
-                            style="margin-bottom: 8px;"
-                            href="tel:+7-495-748-97-74"
-                        >
+                        <a class="cards_group__card_header" href="tel:+7-495-748-97-74">
                             +7 (495) 748-97-74
                         </a>
                         <div>
@@ -125,9 +103,6 @@
                                 {{ oldSiteName }}
                             </a>
                         </div>
-                        <!-- <div class="cards_group__card_body">
-                            <ts-ui-toggle-register-call-popup></ts-ui-toggle-register-call-popup>
-                        </div> -->
                     </div>
                 </div>
 
