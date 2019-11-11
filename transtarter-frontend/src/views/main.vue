@@ -2,7 +2,7 @@
     <div>
         <!-- main sections -->
         <layout-header></layout-header>
-
+        <reg-btn />
         <div class="container typography">
             <h2 style="margin-top: 20px">Политика конфиденциальности</h2>
             <ol>
@@ -197,6 +197,7 @@ import LayoutHeader from '@/components/shared/header/header.vue'
 import LayoutFooter from '@/components/shared/footer/footer.vue'
 import SelectCity from '@/components/shared/select-city/select-city.vue'
 import YourCity from '@/components/shared/your-city/your-city.vue'
+import RegBtn from '@/components/shared/reg-btn/reg-btn.vue'
 // popups
 import Registration from '@/components/authorization/registration/registration.vue'
 // import LogIn from '@/components/authorization/log-in/log-in.vue'
@@ -217,6 +218,7 @@ import ContragentRestrictionModal from '@/components/shared/contragent-restricti
         LayoutFooter,
         YourCity,
         SelectCity,
+        RegBtn,
         // popups
         Registration,
         // logIn,
