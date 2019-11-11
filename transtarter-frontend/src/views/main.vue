@@ -81,15 +81,18 @@
                         передавать информацию, сгенерированную Вами, нашему боту/сервису с целью
                         предоставить возможность пользоваться сервисом. Больше информации о Политике
                         Конфиденциальности Microsoft можно найти на странице:
-                        http://go.microsoft.com/fwlink/?LinkId=521839.
+                        <a href="http://go.microsoft.com/fwlink/?LinkId=521839">
+                            http://go.microsoft.com/fwlink/?LinkId=521839
+                        </a>
                     </p>
                     <p>
                         Также, Ваше взаимодействие с ботом/сервисом в то же время происходит
                         согласно Условий Пользования конкретного канала коммуникации, его Политике
                         Конфиденциальности и политике сбора данных. Чтобы пожаловаться на
                         использование бота на базе Microsoft Bot Framework to Microsoft, посетите
-                        сайт Microsoft Bot Framework по адресу https://www.botframework.com и
-                        используйте ссылку в меню “Report Abuse” для обратной связи с Microsoft.
+                        сайт Microsoft Bot Framework по адресу
+                        <a href="https://www.botframework.com">https://www.botframework.com</a>
+                        и используйте ссылку в меню “Report Abuse” для обратной связи с Microsoft.
                     </p>
                 </li>
                 <li>
