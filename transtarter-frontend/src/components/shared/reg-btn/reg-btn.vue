@@ -1,10 +1,10 @@
 <template>
-    <div v-if="!loggedIn">
+    <div v-if="!loggedIn" class="register-block">
         <div>
-            <p class="special-price">
+            <p class="register-block__special-price">
                 Специальная цена доступна только для оптовых клиентов.
             </p>
-            <p class="reg-to-get-sale">
+            <p class="register-block__reg-to-get-sale">
                 Зарегистрируйтесь, чтобы покупать запчасти со скидкой
             </p>
         </div>
@@ -32,21 +32,24 @@ export default class RegBtn extends Vue {
 </script>
 
 <style lang="scss">
-.btn-reg {
-    width: 352px;
-    height: 72px;
-}
-
-@media (max-width: 768px) {
-    .btn-reg {
-        width: 100%;
-        height: 40px;
+.register-block {
+    &__special-price,
+    &__reg-to-get-sale {
+        font-size: 20px !important;
+        line-height: 28px !important;
+    }
+    &__reg-to-get-sale {
+        font-weight: bold;
+        margin-bottom: 22px;
     }
 }
 
-.news-and-sales .bg-image .overflow-text .special-price,
-.news-and-sales .bg-image .overflow-text .reg-to-get-sale {
-    font-size: 16px !important;
-    line-height: 24px !important;
+.btn-reg {
+    width: 352px;
+    height: 72px;
+    @media (max-width: 768px) {
+        width: 100%;
+        height: 40px;
+    }
 }
 </style>

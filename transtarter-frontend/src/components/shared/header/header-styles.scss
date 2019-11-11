@@ -293,10 +293,15 @@
     }
 }
 
-@media (min-width: 1200px) {
+@include media-desktop {
     .menu-popup {
         width: 240px;
-        right: 0;
         margin: 0;
+        &_left {
+            left: 0;
+        }
+        &_right {
+            right: 0;
+        }
     }
 }

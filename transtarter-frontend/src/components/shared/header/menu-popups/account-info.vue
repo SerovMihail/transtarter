@@ -1,5 +1,9 @@
 <template>
-    <div v-if="showBlocksShowUser && loggedIn" class="menu-popup" v-click-outside="vcoConfig">
+    <div
+        v-if="showBlocksShowUser && loggedIn"
+        class="menu-popup menu-popup_right"
+        v-click-outside="vcoConfig"
+    >
         <div class="user-fullname">
             {{ userName }}
         </div>
