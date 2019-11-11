@@ -144,7 +144,8 @@ module.exports = {
     },
     // this section will remove hash from file names
     chainWebpack: config => {
-        if (!envArgs.isServeBuild) {
+        if (!buildLightConfig) {
+            console.log("enable shadow css")
             enableShadowCss(config)
         }
 
