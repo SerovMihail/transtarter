@@ -1,5 +1,5 @@
 <template>
-    <div v-if="!loggedIn" class="register-block">
+    <div v-if="!loggedIn && !loggingIn" class="register-block">
         <div>
             <p class="register-block__special-price">
                 Специальная цена доступна только для оптовых клиентов.
@@ -23,6 +23,10 @@ import { AuthModule } from '@/store/modules/authentication.module'
 export default class RegBtn extends Vue {
     get loggedIn() {
         return AuthModule.logged
+    }
+
+    get loggingIn() {
+        return AuthModule.status.isLoading
     }
 
     toggleRegistrationPopup() {
