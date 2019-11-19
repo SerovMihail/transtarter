@@ -1,5 +1,5 @@
 <template>
-    <div class="menu-popup" v-if="showBlocksShowMenu" v-click-outside="vcoConfig">
+    <div class="menu-popup menu-popup_left" v-if="showBlocksShowMenu" v-click-outside="vcoConfig">
         <ul class="menu-popup_list">
             <li>
                 <a class="menu-popup_list-item" href="/special-offers">Акции и новинки</a>

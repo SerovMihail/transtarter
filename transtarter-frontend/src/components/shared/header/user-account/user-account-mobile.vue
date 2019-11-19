@@ -3,13 +3,21 @@
         <div class="mobile-header__loading" v-if="loggingIn">
             Загрузка...
         </div>
-        <div class="menu-item" v-if="loggedIn && !loggingIn" @click="goToCart()">
+        <a
+            class="menu-item"
+            v-if="loggedIn && !loggingIn"
+            :href="`${this.webAppHost}/account/cart`"
+        >
             <div class="shopping-cart"></div>
             <span v-if="cartAggregateAmount" class="notify-counter">{{ cartAggregateAmount }}</span>
-        </div>
-        <li class="menu-item" v-if="loggedIn && !loggingIn" @click="goToOrders()">
+        </a>
+        <a
+            class="menu-item"
+            v-if="loggedIn && !loggingIn"
+            :href="`${this.webAppHost}/account/orders`"
+        >
             <svg-list class="desktop-header__svg-list" />
-        </li>
+        </a>
         <div
             v-if="isParterRestricted && loggedIn && !loggingIn"
             class="menu-item desktop-header__warning"

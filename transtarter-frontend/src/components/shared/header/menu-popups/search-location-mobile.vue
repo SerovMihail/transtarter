@@ -1,5 +1,5 @@
 <template>
-    <div class="menu-popup" v-if="showBlocksShowLocation">
+    <div class="menu-popup menu-popup_left" v-if="showBlocksShowLocation">
         <div class="container search__location">
             <div class="search__location-left">
                 <div class="search__city border-white link">

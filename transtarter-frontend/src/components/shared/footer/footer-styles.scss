@@ -1,6 +1,7 @@
 .footer {
     color: $silver-chalice;
     font-family: 'PT Sans';
+    line-height: 24px;
     .footer__content {
         @include media-mobile {
             $padding-x: 20px;
@@ -32,7 +33,7 @@
                 }
                 &_body .links {
                     .links-item {
-                        padding-bottom: 6px;                        
+                                             
                     }
                     .mb-20 {
                         margin-bottom: 20px;

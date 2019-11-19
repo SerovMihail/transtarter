@@ -1,5 +1,5 @@
 <template>
-    <div class="menu-popup" v-if="showBlocksShowUser && !loggedIn">
+    <div class="menu-popup menu-popup_right" v-if="showBlocksShowUser && !loggedIn">
         <ul class="menu-popup_list" v-click-outside="vcoConfig">
             <li class="menu-popup_list-item" @click="logIn()">
                 <a>Вход</a>

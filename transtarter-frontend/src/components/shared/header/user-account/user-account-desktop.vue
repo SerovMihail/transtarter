@@ -1,24 +1,24 @@
 <template>
     <ul class="desktop-header__login">
-        <li
+        <a
             class="desktop-header__login-item desktop-header__login-item_icon-cart"
             :class="{ 'desktop-header__login-item_icon-cart--empty-cart': !cartAggregateAmount }"
             v-if="loggedIn && !loggingIn"
-            @click="goToCart()"
+            :href="`${this.webAppHost}/account/cart`"
         >
             <span v-if="cartAggregateAmount" class="icon-shopping-cart desktop-header__icon-cart">
                 <i>{{ cartAggregateAmount }}</i>
             </span>
             <div class="shopping-cart"></div>
-        </li>
-        <li
+        </a>
+        <a
             class="desktop-header__login-item"
             v-if="loggedIn && !loggingIn"
             v-tooltip.bottom="'Заказы и оплаты'"
-            @click="goToOrders()"
+            :href="`${this.webAppHost}/account/orders`"
         >
             <svg-list class="desktop-header__svg-list" />
-        </li>
+        </a>
         <div
             v-if="isParterRestricted && loggedIn && !loggingIn"
             class="desktop-header__login-item desktop-header__warning"
@@ -138,14 +138,6 @@ export default class UserAccountDesktop extends Vue {
         if (this.loggedIn) {
             store.dispatch('auth/setInitialItemsAmount')
         }
-    }
-
-    goToCart() {
-        window.location.href = `${this.webAppHost}/account/cart`
-    }
-
-    goToOrders() {
-        window.location.href = `${this.webAppHost}/account/orders`
     }
 
     toggleContrAgent() {
