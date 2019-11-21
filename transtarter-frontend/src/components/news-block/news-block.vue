@@ -81,4 +81,4 @@
         </div> -->
 </template>
 <script src="./news-block.ts" lang="ts"></script>
-<style src="./news-block.scss" lang="scss" scoped></style>
+<style src="./news-block.scss" lang="scss"></style>

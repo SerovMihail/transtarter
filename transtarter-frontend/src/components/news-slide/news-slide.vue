@@ -1,21 +1,21 @@
-<template functional>
+<template>
     <div class="news-slide">
-        <a tag="div" :href="`${props.newsRootUrl}/news/${props.newsId}`">
+        <a tag="div" :href="`${newsRootUrl}/news/${newsId}`">
             <div
                 class="news-slide__container"
-                :style="[props.img ? { 'background-image': `url('${props.img}')` } : null]"
+                :style="[img ? { 'background-image': `url('${img}')` } : null]"
             >
                 <div class="news-slide__container-shadow">
                     <div class="news-slide__content">
                         <div class="news-slide__title">
-                            {{ props.title }}
+                            {{ title }}
                         </div>
                         <div class="news-slide__footer">
                             <span class="news-slide__category">
-                                {{ props.category || 'Новости' }}
+                                {{ category || 'Новости' }}
                             </span>
                             •
-                            <span>{{ props.date }}</span>
+                            <span>{{ date }}</span>
                         </div>
                     </div>
                 </div>
@@ -24,4 +24,4 @@
     </div>
 </template>
 <script src="./news-slide.ts" lang="ts"></script>
-<style src="./news-slide.scss" lang="scss" scoped></style>
+<style src="./news-slide.scss" lang="scss"></style>

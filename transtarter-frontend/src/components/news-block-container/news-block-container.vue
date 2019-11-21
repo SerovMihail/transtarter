@@ -21,9 +21,8 @@
                 :pagination-enabled="false"
                 :space-padding="20"
                 :loop="true"
-                :navigate-to="[4, false]"
             >
-                <slide v-for="newsItem of news" :key="newsItem.id" :title="'Изображение'">
+                <slide v-for="newsItem of news" :key="newsItem.id" :title="newsItem.title">
                     <newsSlide
                         :news-id="newsItem.id"
                         :date="newsItem.date"
@@ -38,4 +37,4 @@
     </div>
 </template>
 <script src="./news-block-container.ts" lang="ts"></script>
-<style src="./news-block-container.scss" lang="scss" scoped></style>
+<style src="./news-block-container.scss" lang="scss"></style>
