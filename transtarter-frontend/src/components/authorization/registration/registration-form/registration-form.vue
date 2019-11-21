@@ -28,15 +28,24 @@
 
             <div class="form-group">
                 <label class="label  registration-form__required-field">Пароль</label>
-                <input
-                    v-model.trim="password"
-                    placeholder="Пароль"
-                    class="form-control password-input"
-                    type="password"
-                    required
-                    utocomplete="new-password"
-                    :class="{ 'invalid-input': errors.PasswordError }"
-                />
+                <div class="registration-form__password-group">
+                    <input
+                        ref="passwordInput"
+                        v-model.trim="password"
+                        placeholder="Пароль"
+                        class="form-control registration-form__password-input"
+                        type="password"
+                        required
+                        utocomplete="new-password"
+                        :class="{ 'invalid-input': errors.PasswordError }"
+                    />
+                    <div
+                        class="registration-form__password-glance-btn"
+                        @click="changePasswordVisibility"
+                    >
+                        <component :is="svgShowPasswordComponent" />
+                    </div>
+                </div>
                 <div v-if="errors.PasswordError" class="invalid-text">
                     Пароль
                     <span v-if="errors.PasswordTooShort">должен быть как минимум 6 символов.</span>
@@ -182,10 +191,12 @@ import { VueMaskDirective } from 'v-mask'
 import Spinner from '@/components/spinner/spinner.vue'
 import AppSelect from '@/components/core-ui/app-select/app-select'
 import { store } from '@/store'
+import SvgEyeVisible from '@/components/svg/svg-eye-visible.vue'
+import SvgEyeHidden from '@/components/svg/svg-eye-hidden.vue'
 Vue.directive('mask', VueMaskDirective)
 
 @Component({
-    components: { Spinner, AppSelect },
+    components: { Spinner, AppSelect, SvgEyeVisible, SvgEyeHidden },
 })
 export default class RegistrationForm extends Vue {
     get regForm() {
@@ -207,6 +218,7 @@ export default class RegistrationForm extends Vue {
         { name: 'Частное лицо' },
         { name: 'Другое' },
     ]
+    passwordVisibility = false
     loadingForm = false
     userName = ''
     userLastName = ''
@@ -288,6 +300,9 @@ export default class RegistrationForm extends Vue {
 
         return true
     }
+    get svgShowPasswordComponent() {
+        return this.passwordVisibility ? 'svg-eye-visible' : 'svg-eye-hidden'
+    }
 
     onSubmit(e: Event) {
         this.handleError()
@@ -308,6 +323,19 @@ export default class RegistrationForm extends Vue {
                     this.handleError(errorMessagesArr)
                 })
         }
+    }
+    changePasswordVisibility() {
+        this.passwordVisibility = !this.passwordVisibility
+        const passwordInput = this.$refs.passwordInput as HTMLInputElement
+        passwordInput.focus()
+        if (passwordInput.type === 'password') {
+            passwordInput.type = 'text'
+        } else {
+            passwordInput.type = 'password'
+        }
+        setTimeout(() => {
+            passwordInput.setSelectionRange(this.password.length, this.password.length)
+        }, 0)
     }
 }
 </script>
