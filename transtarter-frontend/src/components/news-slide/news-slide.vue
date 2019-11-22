@@ -1,6 +1,6 @@
 <template>
     <div class="news-slide">
-        <a tag="div" :href="`${newsRootUrl}/news/${newsId}`">
+        <a :href="`${newsRootUrl}/news/${newsId}`">
             <div
                 class="news-slide__container"
                 :style="[img ? { 'background-image': `url('${img}')` } : null]"
