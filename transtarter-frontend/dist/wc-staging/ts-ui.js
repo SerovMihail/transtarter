@@ -13512,12 +13512,12 @@ var news_blockshadow_component = normalizeComponent(
 )
 
 /* harmony default export */ var news_blockshadow = (news_blockshadow_component.exports);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"74e89c02-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/news-block-container/news-block-container.vue?vue&type=template&id=3cc58546&shadow
-var news_block_containervue_type_template_id_3cc58546_shadow_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"news-block-container"},[_c('div',{staticClass:"news-block-container__news-header"},[_c('h1',{staticClass:"news-block-container__news-title"},[_vm._v("\n            Каждый день мы пополняем ассортимент или запускаем новую акцию\n        ")]),_c('a',{staticClass:"news-block-container__news-all",attrs:{"href":(_vm.vueAppWebApp + "/news")}},[_vm._v("\n            Все новости\n        ")])]),_c('mq-layout',{attrs:{"mq":"desktop"}},[_c('news-block',{attrs:{"items":_vm.news}})],1),_c('mq-layout',{attrs:{"mq":['laptop', 'mobile']}},[_c('news-block',{attrs:{"small":"","items":_vm.news}})],1),_c('mq-layout',{attrs:{"mq":'tablet'}},[_c('carousel',{attrs:{"autoplay":"","per-page":1,"pagination-enabled":false,"space-padding":20,"loop":true}},_vm._l((_vm.news),function(newsItem){return _c('slide',{key:newsItem.id,attrs:{"title":newsItem.title}},[_c('newsSlide',{attrs:{"news-id":newsItem.id,"date":newsItem.date,"title":newsItem.title,"category":newsItem.badgeName,"img":newsItem.previewPicture,"newsRootUrl":_vm.vueAppWebApp}})],1)}),1)],1)],1)}
-var news_block_containervue_type_template_id_3cc58546_shadow_staticRenderFns = []
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"74e89c02-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/news-block-container/news-block-container.vue?vue&type=template&id=8d15b3a0&shadow
+var news_block_containervue_type_template_id_8d15b3a0_shadow_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"news-block-container"},[_c('div',{staticClass:"news-block-container__news-header"},[_c('h1',{staticClass:"news-block-container__news-title"},[_vm._v("\n            Каждый день мы пополняем ассортимент или запускаем новую акцию\n        ")]),_c('a',{staticClass:"news-block-container__news-all",attrs:{"href":(_vm.vueAppWebApp + "/news")}},[_vm._v("\n            Все новости\n        ")])]),_c('mq-layout',{attrs:{"mq":"desktop"}},[_c('news-block',{attrs:{"items":_vm.news}})],1),_c('mq-layout',{attrs:{"mq":['laptop', 'mobile']}},[_c('news-block',{attrs:{"small":"","items":_vm.news}})],1),_c('mq-layout',{attrs:{"mq":['mobilePhone', 'tablet']}},[_c('carousel',{attrs:{"autoplay":"","per-page":1,"pagination-enabled":false,"space-padding":20,"loop":true}},_vm._l((_vm.news),function(newsItem){return _c('slide',{key:newsItem.id,attrs:{"title":newsItem.title}},[_c('newsSlide',{attrs:{"news-id":newsItem.id,"date":newsItem.date,"title":newsItem.title,"category":newsItem.badgeName,"img":newsItem.previewPicture,"newsRootUrl":_vm.vueAppWebApp}})],1)}),1)],1)],1)}
+var news_block_containervue_type_template_id_8d15b3a0_shadow_staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./src/components/news-block-container/news-block-container.vue?vue&type=template&id=3cc58546&shadow
+// CONCATENATED MODULE: ./src/components/news-block-container/news-block-container.vue?vue&type=template&id=8d15b3a0&shadow
 
 // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"74e89c02-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/news-block/news-block.vue?vue&type=template&id=4e4cdbf7&
 var news_blockvue_type_template_id_4e4cdbf7_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"news-block"},[(!_vm.small)?_c('div',{class:['news-block__large-blocks']},_vm._l((_vm.items.slice(0, 3)),function(newsItem){return _c('a',{key:newsItem.id,class:[
@@ -13688,12 +13688,12 @@ var vue_carousel_min = __webpack_require__("0a63");
 var moment = __webpack_require__("c1df");
 var moment_default = /*#__PURE__*/__webpack_require__.n(moment);
 
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"74e89c02-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/news-block-container/news-block-container.vue?vue&type=template&id=dfec58f2&
-var news_block_containervue_type_template_id_dfec58f2_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"news-block-container"},[_c('div',{staticClass:"news-block-container__news-header"},[_c('h1',{staticClass:"news-block-container__news-title"},[_vm._v("\n            Каждый день мы пополняем ассортимент или запускаем новую акцию\n        ")]),_c('a',{staticClass:"news-block-container__news-all",attrs:{"href":(_vm.vueAppWebApp + "/news")}},[_vm._v("\n            Все новости\n        ")])]),_c('mq-layout',{attrs:{"mq":"desktop"}},[_c('news-block',{attrs:{"items":_vm.news}})],1),_c('mq-layout',{attrs:{"mq":['laptop', 'mobile']}},[_c('news-block',{attrs:{"small":"","items":_vm.news}})],1),_c('mq-layout',{attrs:{"mq":'tablet'}},[_c('carousel',{attrs:{"autoplay":"","per-page":1,"pagination-enabled":false,"space-padding":20,"loop":true}},_vm._l((_vm.news),function(newsItem){return _c('slide',{key:newsItem.id,attrs:{"title":newsItem.title}},[_c('newsSlide',{attrs:{"news-id":newsItem.id,"date":newsItem.date,"title":newsItem.title,"category":newsItem.badgeName,"img":newsItem.previewPicture,"newsRootUrl":_vm.vueAppWebApp}})],1)}),1)],1)],1)}
-var news_block_containervue_type_template_id_dfec58f2_staticRenderFns = []
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"74e89c02-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/news-block-container/news-block-container.vue?vue&type=template&id=32a1020f&
+var news_block_containervue_type_template_id_32a1020f_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"news-block-container"},[_c('div',{staticClass:"news-block-container__news-header"},[_c('h1',{staticClass:"news-block-container__news-title"},[_vm._v("\n            Каждый день мы пополняем ассортимент или запускаем новую акцию\n        ")]),_c('a',{staticClass:"news-block-container__news-all",attrs:{"href":(_vm.vueAppWebApp + "/news")}},[_vm._v("\n            Все новости\n        ")])]),_c('mq-layout',{attrs:{"mq":"desktop"}},[_c('news-block',{attrs:{"items":_vm.news}})],1),_c('mq-layout',{attrs:{"mq":['laptop', 'mobile']}},[_c('news-block',{attrs:{"small":"","items":_vm.news}})],1),_c('mq-layout',{attrs:{"mq":['mobilePhone', 'tablet']}},[_c('carousel',{attrs:{"autoplay":"","per-page":1,"pagination-enabled":false,"space-padding":20,"loop":true}},_vm._l((_vm.news),function(newsItem){return _c('slide',{key:newsItem.id,attrs:{"title":newsItem.title}},[_c('newsSlide',{attrs:{"news-id":newsItem.id,"date":newsItem.date,"title":newsItem.title,"category":newsItem.badgeName,"img":newsItem.previewPicture,"newsRootUrl":_vm.vueAppWebApp}})],1)}),1)],1)],1)}
+var news_block_containervue_type_template_id_32a1020f_staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./src/components/news-block-container/news-block-container.vue?vue&type=template&id=dfec58f2&
+// CONCATENATED MODULE: ./src/components/news-block-container/news-block-container.vue?vue&type=template&id=32a1020f&
 
 // EXTERNAL MODULE: ./node_modules/json2mq/index.js
 var json2mq = __webpack_require__("a48b");
@@ -13963,8 +13963,8 @@ if (style0.__inject__) style0.__inject__(context)
 
 var news_block_container_component = normalizeComponent(
   news_block_container_news_block_containervue_type_script_lang_ts_,
-  news_block_containervue_type_template_id_dfec58f2_render,
-  news_block_containervue_type_template_id_dfec58f2_staticRenderFns,
+  news_block_containervue_type_template_id_32a1020f_render,
+  news_block_containervue_type_template_id_32a1020f_staticRenderFns,
   false,
   news_block_container_injectStyles,
   null,
@@ -14064,8 +14064,8 @@ if (style0.__inject__) style0.__inject__(context)
 
 var news_block_containershadow_component = normalizeComponent(
   news_block_container_news_block_containervue_type_script_lang_ts_shadow,
-  news_block_containervue_type_template_id_3cc58546_shadow_render,
-  news_block_containervue_type_template_id_3cc58546_shadow_staticRenderFns,
+  news_block_containervue_type_template_id_8d15b3a0_shadow_render,
+  news_block_containervue_type_template_id_8d15b3a0_shadow_staticRenderFns,
   false,
   news_block_containershadow_injectStyles,
   null,

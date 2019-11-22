@@ -14,7 +14,7 @@
         <mq-layout :mq="['laptop', 'mobile']">
             <news-block small :items="news" />
         </mq-layout>
-        <mq-layout :mq="'tablet'">
+        <mq-layout :mq="['mobilePhone', 'tablet']">
             <carousel
                 autoplay
                 :per-page="1"
