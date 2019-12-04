@@ -21,6 +21,8 @@ class yandexMap extends Vue {
     geoObjects: object[] = []
     placemarksData: IMapPoint[] = [];
     iframeStyles = staticFiles.iframeStyles
+
+    showInfoBlock = false
     get shownCities(): string[] {
         let result = [
             ...new Set(
@@ -205,7 +207,6 @@ class yandexMap extends Vue {
         this.mapLoaded = true
     }
 
-    showInfoBlock = false
 
     selectedCity = { name: 'Выберите город', value: 'default' }
     
@@ -219,7 +220,7 @@ class yandexMap extends Vue {
             this.selectedCity.value = event.name
             this.setMapPosition(event.name)
         }
-        this.showInfoBlock = false
+        // this.showInfoBlock = false
 
     }
     readonly citiesCoords: ICitiesCoords = citiesCoords
@@ -228,8 +229,9 @@ class yandexMap extends Vue {
         if(this.citiesCoords.hasOwnProperty(city)) {
             this.myMap.setCenter(this.citiesCoords[city].center);
             this.myMap.setZoom(this.citiesCoords[city].zoom);
-            this.showInfoBlock = true;
         } else {
+            // if there is no such city in the list of cities
+            // showInfo block hides an position and zoom set to default
             this.showInfoBlock = false;
             this.myMap.setCenter([54.24801290964209, 37.773155011718764])
             this.myMap.setZoom(4)
@@ -239,6 +241,7 @@ class yandexMap extends Vue {
     onPlacemarkClick(city, animateInfoBlock): void {
         city = city.name || city;
         if(this.selectedCity.name !== city) {
+            this.showInfoBlock = true;
             this.selectedCity.name = city
             this.selectedCity.value = city
             animateInfoBlock();

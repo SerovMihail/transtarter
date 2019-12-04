@@ -85,9 +85,8 @@ export class Placemark {
         }
 
         placemark.events.add('click', e => {
+            // TODO: move this code to onClick callbackMethod in src/components/yandex-map/yandex-map.ts file
             e.stopPropagation()
-            const mapInfoBody = shadowDocument.querySelector('.map-info__body') as HTMLDivElement
-            mapInfoBody.style.display = 'block'
             const phoneList = shadowDocument.getElementById('phone-list') as HTMLElement
 
             const { info, tel } = placemark.properties.getAll()
