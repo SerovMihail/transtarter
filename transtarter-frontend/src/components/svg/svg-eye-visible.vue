@@ -6,8 +6,8 @@
     </svg>
 </template>
 <script lang="ts">
-import { Vue, Component } from "vue-property-decorator";
+import { Vue, Component } from 'vue-property-decorator'
 @Component({})
 class SvgEyeVisible extends Vue {}
-export default SvgEyeVisible;
+export default SvgEyeVisible
 </script>

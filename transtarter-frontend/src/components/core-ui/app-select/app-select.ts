@@ -1,17 +1,18 @@
-import { Vue, Component, Prop } from 'vue-property-decorator'
-import { closable } from '@/directives/v-click-outside-exclude'
+import { Vue, Component, Prop, Watch } from 'vue-property-decorator'
 import vClickOutside from 'v-click-outside'
 
 Vue.use(vClickOutside)
-Vue.directive('closable', closable)
 @Component({})
 class AppSelect extends Vue {
     @Prop([Array, Object]) readonly options!: [] | object
     @Prop([Object]) readonly selected!: { name: string }
     @Prop([String]) readonly placeholder!: string
-    selectedOption = {
+    @Prop(Boolean) readonly native!: boolean
+    selectedOption: any = {
         name: '',
     }
+    nativeSelectorValue = ''
+
     showMenu = false
     placeholderText = 'Please select an item'
     mounted() {
@@ -23,14 +24,25 @@ class AppSelect extends Vue {
 
     updateOption(option: any) {
         this.selectedOption = option
+        this.nativeSelectorValue = option.value
         this.showMenu = false
         this.$emit('updateOption', this.selectedOption)
     }
+    @Watch('selected.name')
+    onSelectedChange(val) {
+        this.updateOption(this.selected)
+    }
 
+    vcoConfig = {
+        handler: this.toggleMenu,
+        vcoMiddleware: this.vcoMiddleware,
+    }
     toggleMenu() {
-        setTimeout(() => {
-            this.showMenu = !this.showMenu
-        }, 10)
+        this.showMenu = !this.showMenu
+    }
+    vcoMiddleware(e, el) {
+        debugger
+        const path = e.composedPath()
     }
 }
 export default AppSelect

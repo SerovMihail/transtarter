@@ -6,6 +6,7 @@
             <br />
             <news-block-container />
             <br />
+            <yandex-map placemarks-type="filials" />
         </div>
 
         <!-- <ts-map /> -->
@@ -57,6 +58,7 @@ import FindDetail from '@/components/find-detail/find-detail.vue'
 
 import ContragentRestrictionModal from '@/components/shared/contragent-restriction-modal/contragent-restriction-modal'
 import NewsBlockContainer from '@/components/news-block-container/news-block-container'
+import YandexMap from '@/components/yandex-map/yandex-map'
 
 @Component({
     components: {
@@ -75,12 +77,12 @@ import NewsBlockContainer from '@/components/news-block-container/news-block-con
         // TsMap,
         ContragentRestrictionModal,
         NewsBlockContainer,
+        YandexMap,
     },
 })
 export default class Main extends Vue {}
 </script>
 
-<<<<<<< HEAD
 <style lang="scss">
 .typography {
     h1,
@@ -143,6 +145,3 @@ export default class Main extends Vue {}
     }
 }
 </style>
-=======
-<style lang="scss"></style>
->>>>>>> staging
