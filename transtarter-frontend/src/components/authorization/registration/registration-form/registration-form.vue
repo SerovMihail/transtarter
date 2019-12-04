@@ -62,23 +62,6 @@
             </div>
             <div class="form-group">
                 <label class="label registration-form__required-field">
-                    Имя контактного лица
-                </label>
-                <input
-                    v-model.trim="userName"
-                    placeholder="Имя"
-                    class="form-control name-input"
-                    type="text"
-                    required
-                    :class="{ 'invalid-input': errors.UserNameError }"
-                />
-                <div v-if="errors.UserNameError" class="invalid-text">
-                    В имени пользователя нельзя использовать пробелы, цифры и специальные символы (
-                    $#! ).
-                </div>
-            </div>
-            <div class="form-group">
-                <label class="label registration-form__required-field">
                     Введите фамилию контактного лица
                 </label>
                 <input
@@ -86,6 +69,7 @@
                     placeholder="Фамилия"
                     class="form-control name-input"
                     type="text"
+                    maxlength="100"
                     required
                     :class="{ 'invalid-input': errors.UserLastNameError }"
                 />
@@ -95,12 +79,31 @@
                 </div>
             </div>
             <div class="form-group">
+                <label class="label registration-form__required-field">
+                    Введите имя контактного лица
+                </label>
+                <input
+                    v-model.trim="userName"
+                    placeholder="Имя"
+                    class="form-control name-input"
+                    type="text"
+                    maxlength="100"
+                    required
+                    :class="{ 'invalid-input': errors.UserNameError }"
+                />
+                <div v-if="errors.UserNameError" class="invalid-text">
+                    В имени пользователя нельзя использовать пробелы, цифры и специальные символы (
+                    $#! ).
+                </div>
+            </div>
+            <div class="form-group">
                 <label class="label">Введите отчество контактного лица</label>
                 <input
                     v-model.trim="userPatronymic"
                     placeholder="Отчество"
                     class="form-control name-input"
                     type="text"
+                    maxlength="100"
                     :class="{ 'invalid-input': errors.UserPatronymicNameError }"
                 />
                 <div v-if="errors.UserPatronymicNameError" class="invalid-text">
@@ -125,17 +128,6 @@
                     Неправильно введён номер.
                 </div>
             </div>
-
-            <!-- <div class="form-group">
-                <label class="label">Какую организацию вы представляете?</label>
-
-                <app-select
-                    :options="organizationVariants"
-                    :selected="organizationVariant"
-                    @updateOption="changeOrganizationVariant"
-                />
-            </div> -->
-
             <div class="form-group">
                 <label class="label registration-form__required-field">
                     Введите наименование организации
@@ -153,6 +145,7 @@
                         placeholder="Название организации"
                         class="form-control second-selector"
                         type="text"
+                        maxlength="100"
                         required
                     />
                 </div>
@@ -207,7 +200,6 @@ export default class RegistrationForm extends Vue {
             phone: this.phone.replace(/[+ ()_-]/g, ''),
             email: this.email,
             password: this.password,
-            // organizationVariant: "Автосервис",
             companyName: this.organizationName + ' ' + this.organizationType.name,
         }
     }
@@ -228,14 +220,9 @@ export default class RegistrationForm extends Vue {
     password = ''
     organizationName = ''
     organizationType = { name: 'OOO' }
-    // organizationVariants = [{ name: "Автосервис" }, { name: "Частное лицо" }];
-    // organizationVariant = { name: "Автосервис" };
     changeOption(payload: any) {
         this.organizationType = payload
     }
-    // changeOrganizationVariant(payload: any) {
-    //     this.organizationVariant = payload;
-    // }
     errors: IregistrationErrors = {
         PasswordError: false,
         UserNameError: false,

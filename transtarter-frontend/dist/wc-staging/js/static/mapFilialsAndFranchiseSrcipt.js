@@ -267,16 +267,20 @@
             break;
           }
            case 'Serov': {
-              myMap.setCenter([59.60633329588266,60.580495999999975]);
+            myMap.setCenter([59.60633329588266,60.580495999999975]);
             myMap.setZoom(12);
             break;
           } case 'Omsk': {
-              myMap.setCenter([55.070792258316466,73.34821759765622]);
+            myMap.setCenter([55.070792258316466,73.34821759765622]);
             myMap.setZoom(12);
             break;
           } case 'Saratov': {
-              myMap.setCenter([51.53920339085138,46.007006499999896]);
+            myMap.setCenter([51.53920339085138,46.007006499999896]);
             myMap.setZoom(12);
+            break;
+          } case 'Kirov': {
+            myMap.setCenter([58.565420065904114,49.608258]);
+            myMap.setZoom(15);
             break;
           }
         }
