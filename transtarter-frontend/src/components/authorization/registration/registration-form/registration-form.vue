@@ -28,15 +28,24 @@
 
             <div class="form-group">
                 <label class="label  registration-form__required-field">Пароль</label>
-                <input
-                    v-model.trim="password"
-                    placeholder="Пароль"
-                    class="form-control password-input"
-                    type="password"
-                    required
-                    utocomplete="new-password"
-                    :class="{ 'invalid-input': errors.PasswordError }"
-                />
+                <div class="registration-form__password-group">
+                    <input
+                        ref="passwordInput"
+                        v-model.trim="password"
+                        placeholder="Пароль"
+                        class="form-control registration-form__password-input"
+                        type="password"
+                        required
+                        utocomplete="new-password"
+                        :class="{ 'invalid-input': errors.PasswordError }"
+                    />
+                    <div
+                        class="registration-form__password-glance-btn"
+                        @click="changePasswordVisibility"
+                    >
+                        <component :is="svgShowPasswordComponent" />
+                    </div>
+                </div>
                 <div v-if="errors.PasswordError" class="invalid-text">
                     Пароль
                     <span v-if="errors.PasswordTooShort">должен быть как минимум 6 символов.</span>
@@ -53,23 +62,6 @@
             </div>
             <div class="form-group">
                 <label class="label registration-form__required-field">
-                    Имя контактного лица
-                </label>
-                <input
-                    v-model.trim="userName"
-                    placeholder="Имя"
-                    class="form-control name-input"
-                    type="text"
-                    required
-                    :class="{ 'invalid-input': errors.UserNameError }"
-                />
-                <div v-if="errors.UserNameError" class="invalid-text">
-                    В имени пользователя нельзя использовать пробелы, цифры и специальные символы (
-                    $#! ).
-                </div>
-            </div>
-            <div class="form-group">
-                <label class="label registration-form__required-field">
                     Введите фамилию контактного лица
                 </label>
                 <input
@@ -77,6 +69,7 @@
                     placeholder="Фамилия"
                     class="form-control name-input"
                     type="text"
+                    maxlength="100"
                     required
                     :class="{ 'invalid-input': errors.UserLastNameError }"
                 />
@@ -86,12 +79,31 @@
                 </div>
             </div>
             <div class="form-group">
+                <label class="label registration-form__required-field">
+                    Введите имя контактного лица
+                </label>
+                <input
+                    v-model.trim="userName"
+                    placeholder="Имя"
+                    class="form-control name-input"
+                    type="text"
+                    maxlength="100"
+                    required
+                    :class="{ 'invalid-input': errors.UserNameError }"
+                />
+                <div v-if="errors.UserNameError" class="invalid-text">
+                    В имени пользователя нельзя использовать пробелы, цифры и специальные символы (
+                    $#! ).
+                </div>
+            </div>
+            <div class="form-group">
                 <label class="label">Введите отчество контактного лица</label>
                 <input
                     v-model.trim="userPatronymic"
                     placeholder="Отчество"
                     class="form-control name-input"
                     type="text"
+                    maxlength="100"
                     :class="{ 'invalid-input': errors.UserPatronymicNameError }"
                 />
                 <div v-if="errors.UserPatronymicNameError" class="invalid-text">
@@ -116,17 +128,6 @@
                     Неправильно введён номер.
                 </div>
             </div>
-
-            <!-- <div class="form-group">
-                <label class="label">Какую организацию вы представляете?</label>
-
-                <app-select
-                    :options="organizationVariants"
-                    :selected="organizationVariant"
-                    @updateOption="changeOrganizationVariant"
-                />
-            </div> -->
-
             <div class="form-group">
                 <label class="label registration-form__required-field">
                     Введите наименование организации
@@ -144,6 +145,7 @@
                         placeholder="Название организации"
                         class="form-control second-selector"
                         type="text"
+                        maxlength="100"
                         required
                     />
                 </div>
@@ -182,10 +184,12 @@ import { VueMaskDirective } from 'v-mask'
 import Spinner from '@/components/spinner/spinner.vue'
 import AppSelect from '@/components/core-ui/app-select/app-select'
 import { store } from '@/store'
+import SvgEyeVisible from '@/components/svg/svg-eye-visible.vue'
+import SvgEyeHidden from '@/components/svg/svg-eye-hidden.vue'
 Vue.directive('mask', VueMaskDirective)
 
 @Component({
-    components: { Spinner, AppSelect },
+    components: { Spinner, AppSelect, SvgEyeVisible, SvgEyeHidden },
 })
 export default class RegistrationForm extends Vue {
     get regForm() {
@@ -196,7 +200,6 @@ export default class RegistrationForm extends Vue {
             phone: this.phone.replace(/[+ ()_-]/g, ''),
             email: this.email,
             password: this.password,
-            // organizationVariant: "Автосервис",
             companyName: this.organizationName + ' ' + this.organizationType.name,
         }
     }
@@ -207,6 +210,7 @@ export default class RegistrationForm extends Vue {
         { name: 'Частное лицо' },
         { name: 'Другое' },
     ]
+    passwordVisibility = false
     loadingForm = false
     userName = ''
     userLastName = ''
@@ -216,14 +220,9 @@ export default class RegistrationForm extends Vue {
     password = ''
     organizationName = ''
     organizationType = { name: 'OOO' }
-    // organizationVariants = [{ name: "Автосервис" }, { name: "Частное лицо" }];
-    // organizationVariant = { name: "Автосервис" };
     changeOption(payload: any) {
         this.organizationType = payload
     }
-    // changeOrganizationVariant(payload: any) {
-    //     this.organizationVariant = payload;
-    // }
     errors: IregistrationErrors = {
         PasswordError: false,
         UserNameError: false,
@@ -288,6 +287,9 @@ export default class RegistrationForm extends Vue {
 
         return true
     }
+    get svgShowPasswordComponent() {
+        return this.passwordVisibility ? 'svg-eye-visible' : 'svg-eye-hidden'
+    }
 
     onSubmit(e: Event) {
         this.handleError()
@@ -308,6 +310,19 @@ export default class RegistrationForm extends Vue {
                     this.handleError(errorMessagesArr)
                 })
         }
+    }
+    changePasswordVisibility() {
+        this.passwordVisibility = !this.passwordVisibility
+        const passwordInput = this.$refs.passwordInput as HTMLInputElement
+        passwordInput.focus()
+        if (passwordInput.type === 'password') {
+            passwordInput.type = 'text'
+        } else {
+            passwordInput.type = 'password'
+        }
+        setTimeout(() => {
+            passwordInput.setSelectionRange(this.password.length, this.password.length)
+        }, 0)
     }
 }
 </script>

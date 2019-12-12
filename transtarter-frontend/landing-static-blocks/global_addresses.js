@@ -133,4 +133,13 @@ const GLOBAL_FRANCHISE_DATA = [
             website: 'saratov.tstarter.ru'
         }
     ],
+    [
+        [58.565420065904114, 49.608258],
+        {
+            company: '&laquoТранс Стартер Киров&raquo',
+            address: 'г. Киров, ул.Производственная, 39/1',
+            phones: ['8 (8332) 78-73-71', '8 909 135-55-33'],
+            website: 'kirov.tstarter.ru'
+        }
+    ],
 ]

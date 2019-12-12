@@ -16,6 +16,31 @@
 .registration-form {
     padding-right: 20%;
     position: relative;
+    &__password-group {
+        position: relative;
+    }
+    &__password-input {
+        padding-right: 42px !important;
+    }
+    &__password-glance-btn {
+        user-select: none;
+        width: 42px;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        right: 0;
+        cursor: pointer;
+        svg {
+            position: relative;
+            top: 50%;
+            left: 50%;
+            width: 50%;
+            height: auto;
+            fill: #787878;
+            transform: translate(-50%, -50%);
+
+        }
+    }
     &__required-field {
         &::after {
             content: ' *';
