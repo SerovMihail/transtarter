@@ -1,6 +1,6 @@
 import { Vue, Component, Prop } from 'vue-property-decorator'
 import cookieStorage from 'cookie-storage-domain'
-import axios from 'axios'
+import identityAxios from '@/services/axios-identity.service'
 import { store } from '@/store/'
 import { DisplayModule } from '@/store/modules/display.module'
 import { AuthModule } from '@/store/modules/authentication.module'
@@ -34,7 +34,7 @@ class ContragentModal extends Vue {
     async dispatchContragent(contrAgent: any) {
         if (!this.forLogin) {
             try {
-                const { data } = await axios.get(
+                const { data } = await identityAxios.get(
                     `${this.identityApi}/api/Account/partner/${contrAgent.id}`
                 )
 
