@@ -31,7 +31,7 @@ export const GLOBAL_FILIALS_DATA: IMapPoint[] = [
         },
     },
     {
-        coords: [54.6902360699703, 20.53148999999996],
+        coords: [54.690736, 20.531366],
         info: {
             company: '&laquoТранс Стартер КЛД&raquo',
             address: 'г.Калининград, ул. Дзержинского, 59б',
