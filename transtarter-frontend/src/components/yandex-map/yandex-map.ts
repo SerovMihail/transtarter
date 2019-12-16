@@ -195,9 +195,6 @@ class yandexMap extends Vue {
             /* -------------------------- End Cluster --------------------------- */
 
             const mapSelectorMobile = self.shadowDocument.querySelector('.mobile-city-select')
-            // mapSelectorMobile.addEventListener('change', e => {
-            //     setMapPosition(e)
-            // })
 
             // /*eslint-disable*/
             myMap.behaviors.disable('scrollZoom')
@@ -210,7 +207,7 @@ class yandexMap extends Vue {
 
     selectedCity = { name: 'Выберите город', value: 'default' }
     
-    changeOrganizationVariant(event) {
+    changeOrganizationVariant(event, config) {
         if(typeof event === "string") {
             this.selectedCity.name = event
             this.selectedCity.value = event
@@ -220,19 +217,19 @@ class yandexMap extends Vue {
             this.selectedCity.value = event.name
             this.setMapPosition(event.name)
         }
-        // this.showInfoBlock = false
+        this.showInfoBlock = false;
 
     }
     readonly citiesCoords: ICitiesCoords = citiesCoords
 
     setMapPosition(city: string): void {
+        console.log('set map position')
         if(this.citiesCoords.hasOwnProperty(city)) {
             this.myMap.setCenter(this.citiesCoords[city].center);
             this.myMap.setZoom(this.citiesCoords[city].zoom);
         } else {
             // if there is no such city in the list of cities
             // showInfo block hides an position and zoom set to default
-            this.showInfoBlock = false;
             this.myMap.setCenter([54.24801290964209, 37.773155011718764])
             this.myMap.setZoom(4)
         }
@@ -240,12 +237,12 @@ class yandexMap extends Vue {
 
     onPlacemarkClick(city, animateInfoBlock): void {
         city = city.name || city;
-        if(this.selectedCity.name !== city) {
+        this.selectedCity.name = city
+        this.selectedCity.value = city
+        animateInfoBlock();
+        setTimeout(()=> {
             this.showInfoBlock = true;
-            this.selectedCity.name = city
-            this.selectedCity.value = city
-            animateInfoBlock();
-        }
+        })
     }
 }
 export default yandexMap
