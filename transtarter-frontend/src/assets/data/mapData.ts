@@ -31,6 +31,16 @@ export const GLOBAL_FILIALS_DATA: IMapPoint[] = [
         },
     },
     {
+        coords: [54.6902360699703, 20.53148999999996],
+        info: {
+            company: '&laquoТранс Стартер КЛД&raquo',
+            address: 'г.Калининград, ул. Дзержинского, 59б',
+            phones: ['8-4012-520-890'],
+            website: 'kld.tstarter.ru',
+            city: 'Калининград',
+        },
+    },
+    {
         coords: [56.81833556789966, 60.63350600000002],
         info: {
             company: '&laquoТранс Стартер ЕКБ&raquo',
@@ -226,6 +236,6 @@ export const citiesCoords: ICitiesCoords = {
     },
     Дзержинский: {
         center: [55.584222181163646, 37.38552449999999],
-        zoom: 10,
+        zoom: 9,
     },
 }

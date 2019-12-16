@@ -121,6 +121,7 @@ export class Placemark {
                 })
             }
 
+            console.log('click')
             onClick(placemark.properties.getAll().info.city, animateMapInfo)
         })
         this.placemark = placemark
