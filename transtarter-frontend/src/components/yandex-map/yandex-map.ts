@@ -3,10 +3,11 @@ import { Vue, Component, Prop } from 'vue-property-decorator'
 import { orderBy } from 'lodash'
 import {Placemark} from './Placemark';
 import {ICitiesCoords, IMapPoint} from "@/models/map"
-import {GLOBAL_FILIALS_DATA, GLOBAL_FRANCHISE_DATA, citiesCoords } from "@/assets/data/mapData"
 import appSelect from '@/components/core-ui/app-select/app-select'
 import * as staticFiles from './static-files';
-
+import axios from 'axios';
+const bitrixCmsRootUrl = process.env.VUE_APP_BITRIX_CMS 
+import { MapService } from "@/services/map.service";
 @Component({
     components: {
         appSelect,
@@ -15,13 +16,15 @@ import * as staticFiles from './static-files';
 class yandexMap extends Vue {
     @Prop( String ) readonly placemarksType!:  "filials" | "franchise" | "all";
     private myMap: any = {}
+    mapApiKey = '64a23fa1-6705-4827-978a-ab84dc6ad5ad';
     mapLoaded = false
     geolocationControlLayout = staticFiles.geolocationControlLayout ;
     zoomControlLayout  = staticFiles.zoomControlLayout;
     geoObjects: object[] = []
     placemarksData: IMapPoint[] = [];
     iframeStyles = staticFiles.iframeStyles
-
+    mapService = new MapService();
+    citiesCoords: ICitiesCoords  = {};
     showInfoBlock = false
     get shownCities(): string[] {
         let result = [
@@ -49,6 +52,28 @@ class yandexMap extends Vue {
     iframeWindow: any = null;
     iframeDocument: any = null;
     shadowDocument: any = null;
+    async created() {
+        try {
+            const { data: mapData } = await this.mapService.getCitiesCoords();
+            this.citiesCoords = mapData;
+        } catch(e) {
+            console.log(e, 'cannot load list of cities')
+        }
+        try {
+            const { data: mapMarksData } = await this.mapService.getMapMarks();
+            if(this.placemarksType === "filials") {
+                this.placemarksData = mapMarksData.filialsData;
+            } else if(this.placemarksType === "franchise") {
+                this.placemarksData = mapMarksData.franchiseData;
+            } else {
+                this.placemarksData = mapMarksData.filialsData.concat(mapMarksData.franchiseData);
+            }
+        } catch(e) {
+            console.log(e, 'cannot get map marks')
+        }
+
+
+    }
     mounted() {
         try {
             const customTag: any = document.getElementsByTagName('TS-UI-YANDEX-MAP')[0];
@@ -69,18 +94,10 @@ class yandexMap extends Vue {
         this.mapEl = document.createElement("div");
         this.mapEl.id = 'map'
         IFrameDocument!.body.appendChild(this.mapEl);
-        if(this.placemarksType === "filials") {
-            this.placemarksData = GLOBAL_FILIALS_DATA;
-        } else if(this.placemarksType === "franchise") {
-            this.placemarksData = GLOBAL_FRANCHISE_DATA;
-        } 
-        else {
-            this.placemarksData = GLOBAL_FILIALS_DATA.concat(GLOBAL_FRANCHISE_DATA)
-        }
         const yaMapScript = document.createElement('SCRIPT')
         yaMapScript.setAttribute(
             'src',
-            'https://api-maps.yandex.ru/2.1/?apikey=64a23fa1-6705-4827-978a-ab84dc6ad5ad&lang=ru_RU'
+            `https://api-maps.yandex.ru/2.1/?apikey=${this.mapApiKey}&lang=ru_RU`
             )
             yaMapScript.setAttribute('async', '')
             yaMapScript.setAttribute('defer', '')
@@ -220,7 +237,6 @@ class yandexMap extends Vue {
         this.showInfoBlock = false;
 
     }
-    readonly citiesCoords: ICitiesCoords = citiesCoords
 
     setMapPosition(city: string): void {
         console.log('set map position')
