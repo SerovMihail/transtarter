@@ -15,11 +15,18 @@ class SearchByNumber extends Mixins(HeaderSearchText) {
     webAppUrl = process.env.VUE_APP_WEB_APP
 
     @Prop(String) readonly type!: string
+    isMovingToResultsActive = false
 
     async goToResults() {
+        if (this.isMovingToResultsActive) {
+            return
+        }
+
+        this.isMovingToResultsActive = true
+
         try {
             const searchText = this.searchText.trim()
-            const { data } = await this.productsApiService.searchByNumber(searchText, 2, 0)
+            const { data } = await this.productsApiService.searchByNumber(searchText, 2, 0, true)
             const exactMatch =
                 data.length === 1 && data[0].number.toLowerCase() === searchText.toLowerCase()
             if (exactMatch) {
@@ -31,6 +38,10 @@ class SearchByNumber extends Mixins(HeaderSearchText) {
         } catch (err) {
             this.goToSearchResultsPage(this.searchText.trim())
         }
+
+        setTimeout(() => {
+            this.isMovingToResultsActive = false
+        }, 5000)
     }
 
     private goToDetailPageDirectly(detail: any) {
