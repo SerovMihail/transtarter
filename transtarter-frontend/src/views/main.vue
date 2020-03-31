@@ -4,8 +4,6 @@
         <layout-header></layout-header>
         <div class="container">
             <br />
-            <news-block-container />
-            <br />
             <yandex-map placemarks-type="filials" />
         </div>
 

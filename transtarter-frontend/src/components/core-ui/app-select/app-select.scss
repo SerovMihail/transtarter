@@ -12,6 +12,9 @@
         left: 0;
         flex-direction: column;
         background-color: white;
+
+        max-height: 450px;
+        overflow-y: auto;        
         @media (max-width: 1024px) and (orientation: landscape) {
             max-height: 350px;
             overflow-y: auto;

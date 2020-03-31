@@ -203,7 +203,7 @@ export class Authentication extends VuexModule implements IAuthState {
             const userProfilePromise = profileService.getProfileInfoByUserId(user.profile.name)
 
             const avatarStatusPromise = profileService.headProfileAvatarByUserLogin(
-                user.profile.name
+                user.profile.name as string
             )
 
             const updatePartnerPromise = this.context.dispatch('updatePartner')
