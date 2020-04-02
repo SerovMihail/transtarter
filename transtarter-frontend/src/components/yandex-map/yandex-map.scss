@@ -115,12 +115,6 @@
         line-height: 20px;
     }
 
-    @media (max-width: 767px) {
-        .map-info {
-            display: none;
-        }
-    }
-
     .map-leave-info {
         width: 360px;
         background: white;
@@ -257,7 +251,7 @@
         line-height: 19px;
     }
 
-    @media (max-width: 768px) {
+    @media (max-width: 769px) {
         .map-leave-info {
             display: none;
         }
@@ -267,7 +261,7 @@
         display: none;
     }
 
-    @media (max-width: 768px) {
+    @media (max-width: 769px) , (max-height: 769px) {
         .map-leave-info--mobile {
             display: block;
             width: 100%;
@@ -424,12 +418,6 @@
     .mobile-city-select:focus,
     .mobile-city-select:active {
         outline: none;
-    }
-
-    @media (min-width: 768px) {
-        .mobile-city-select {
-            display: none;
-        }
     }
 
     @keyframes blink {

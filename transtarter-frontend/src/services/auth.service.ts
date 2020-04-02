@@ -74,6 +74,8 @@ export class AuthService {
     }
 
     public updateUserStorage(key: string, userObject: User): void {
-        this.userManager.settings.userStore.set(key, JSON.stringify(userObject))
+        if (this.userManager.settings.userStore) {
+            this.userManager.settings.userStore.set(key, JSON.stringify(userObject))
+        }
     }
 }

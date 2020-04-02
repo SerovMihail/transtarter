@@ -1,0 +1,17 @@
+@media (max-width: 1024px) {
+    .map-info {
+        display: none !important;
+    }
+    .mobile-city-select {
+        display: block !important;
+    }    
+}
+
+@media (min-width: 1025px)  {
+    .map-info {
+        display: block !important;
+    }    
+    .mobile-city-select {
+        display: none !important;
+    }
+} 
