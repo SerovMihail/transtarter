@@ -26,7 +26,7 @@
                             <a href="/contacts">Контакты</a>
                         </li>
                         <li class="desktop-header__menu-item desktop-header__old-site-btn">
-                            <a :href="oldSiteUrl">Старая версия сайта</a>
+                            <a :href="headerSiteLinkUrl">ZEBRA-AUTO.RU</a>
                         </li>
                         <li
                             class="desktop-header__menu-item"
@@ -63,7 +63,7 @@
                 <ts-ui-mobile-menu></ts-ui-mobile-menu>
 
                 <li class="mobile-header__menu mobile-header__menu__old-site-btn">
-                    <a :href="oldSiteUrl">Старая версия сайта</a>
+                    <a :href="headerSiteLinkUrl">ZEBRA-AUTO.RU</a>
                 </li>
 
                 <!-- right -->
@@ -122,7 +122,7 @@ import SearchFormMobile from '@/components/shared/header/search-form/search-form
 })
 export default class Header extends Vue {
     @Prop(String) readonly links!: string | undefined
-    oldSiteUrl = process.env.VUE_APP_OLD_SITE
+    headerSiteLinkUrl = 'https://zebra-auto.ru/';
     parsedLinks = {}
     mounted() {
         if (this.links) {
