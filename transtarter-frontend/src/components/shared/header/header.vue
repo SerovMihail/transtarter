@@ -26,7 +26,7 @@
                             <a href="/contacts">Контакты</a>
                         </li>
                         <li class="desktop-header__menu-item desktop-header__old-site-btn">
-                            <a :href="headerSiteLinkUrl">ZEBRA-AUTO.RU</a>
+                            <a :href="headerSiteLinkUrl" target="_blank">ZEBRA-AUTO.RU</a>
                         </li>
                         <li
                             class="desktop-header__menu-item"
